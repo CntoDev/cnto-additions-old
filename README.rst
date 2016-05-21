@@ -23,11 +23,15 @@ Few rules (to keep things organized)
   - two people can work on the same file, without one destroying work
     of the other by overwriting the other's version - git does clean merges
     on text
+  - if your addon is already packed/binarized
 
-- if your addon is already packed/binarized
+    - extract PBOs using ie. cpbo / PBO Manager / DePbo / ...
+    - de-binarize configs using ie. unRap
 
-  - extract PBOs using ie. cpbo / PBO Manager / DePbo / ...
-  - de-binarize configs using ie. unRap
+- when commiting new changes, prefix commit message header (1st line) with
+  the name of the addon being updated (if the commit updates one), ie.
+
+      stamina_tweaks: adjust max carry weight to 1400
 
 Using this super-repository
 ---------------------------
