@@ -41,7 +41,11 @@ To actually create a mod out of this repository, you can simply
 1. clone it as `git clone --depth 1 --recursive <url> '@cnto'`
 2. pack all directories inside `addons` into PBOs
 3. ship it
-4. to update, instead of `git pull`, use `git pull --recurse-submodules`
+4. to update, instead of `git pull`, use
+
+       git pull
+       git submodule update --init
+       git pull --recurse-submodules
 
 However it's recommended to exclude git metadata from this repository as well as
 all the submodules, to reduce size. You can easily achieve this by having the
