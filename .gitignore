@@ -2,6 +2,7 @@
 *.pbo
 *.bin
 !*
+$PREFIX$
 
 # executables
 *.com
