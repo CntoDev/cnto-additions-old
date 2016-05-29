@@ -1,7 +1,5 @@
-class CfgPatches
-{
-    class GrassKeys
-    {
+class CfgPatches {
+    class GrassKeys {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {"cba_keybinding"};

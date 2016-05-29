@@ -1,7 +1,5 @@
-class CfgPatches
-{
-    class Stamina_Tweak
-    {
+class CfgPatches {
+    class Stamina_Tweak {
         units[] = {};
         weapons[] = {};
         requiredVersion = 1.54;  /* new stamina system needed */
@@ -14,8 +12,7 @@ class CfgPatches
     };
 };
 
-class CfgMovesFatigue
-{
+class CfgMovesFatigue {
     /* make sway recovery faster when changing stances, offset by weight */
     aimPrecisionSpeedCoef = 20;  //default 5
     /* disable sprinting for this amount of secs when stamina runs out */
@@ -33,8 +30,7 @@ class CfgMovesFatigue
     terrainDrainRun = -1.4;      //default -1
 };
 
-class CfgInventoryGlobalVariable
-{
+class CfgInventoryGlobalVariable {
     /* how much a soldier can carry (weight bar width) */
     maxSoldierLoad = 1400;     //default 1000, ACE 1200
 };
