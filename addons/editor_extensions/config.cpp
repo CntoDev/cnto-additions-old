@@ -2,7 +2,7 @@ class CfgPatches {
     class Editor_Extensions {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {};
+        requiredAddons[] = {"3den"};
     };
 };
 
