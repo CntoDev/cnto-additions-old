@@ -22,6 +22,7 @@ class CfgFunctions {
         };
         class misc {
             file = "\editor_extensions\functions\misc";
+            class modifyLoadout;
         };
     };
 };
