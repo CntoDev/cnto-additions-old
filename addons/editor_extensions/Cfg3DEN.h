@@ -1,6 +1,8 @@
 class Object {
     class AttributeCategories {
-        class StateSpecial {
+        class A3EE {
+            displayName = "A3EE";
+            collapsed = 1;
             class Attributes {
                 class TurnIntoSimpleObject {
                     property = "intoSimpleObject";
