@@ -61,7 +61,7 @@ class a3ee_custom_location : a3ee_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class makeloc { init = "if (isServer) then { (_this select 0) call a3ee_fnc_createLoc }"; };
+        class makeloc { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_createLoc }"; };
     };
 };
 
@@ -84,7 +84,7 @@ class a3ee_hide_terrain : a3ee_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class hideterr { init = "if (isServer) then { (_this select 0) call a3ee_fnc_hideTerrain }"; };
+        class hideterr { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_hideTerrain }"; };
     };
 };
 
@@ -159,7 +159,7 @@ class a3ee_briefing : a3ee_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class send_briefing { init = "if (isServer) then { (_this select 0) call a3ee_fnc_sendBriefing }"; };
+        class send_briefing { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_sendBriefing }"; };
     };
 };
 
@@ -228,6 +228,42 @@ class a3ee_exec_code : a3ee_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_fnc_executeCode }"; };
+        class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_executeCode }"; };
+    };
+};
+
+class a3ee_insta_osd : a3ee_module_base {
+    scope = 2;
+    icon = "\A3\modules_f\data\iconStrategicMapMission_ca.paa";
+    displayName = "Insta OSD Location Info";
+    class Attributes {
+        class header {
+            property = "a3ee_header";
+            control = "Edit";
+            displayName = "Custom header";
+            expression = "_this setVariable [""%s"",_value]";
+            typeName = "STRING";
+            defaultValue = """""";
+            tooltip = "Displayed in bold above the location info. If unset, no header is displayed.\n\nGood for ie. mission name.";
+        };
+        class delay {
+            property = "a3ee_delay";
+            control = "EditShort";
+            displayName = "Wait secs";
+            expression = "_this setVariable [""%s"",_value]";
+            typeName = "NUMBER";
+            defaultValue = "20";
+            tooltip = "Wait this many seconds after mission start before displaying the text. Don't use low values as many people might still be loading in even >10 seconds after start.";
+        };
+        class tojip {
+            property = "a3ee_tojip";
+            control = "Checkbox";
+            displayName = "Show to JIP players";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = "false";
+        };
+    };
+    class EventHandlers : EventHandlers {
+        class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_instaOSD }"; };
     };
 };

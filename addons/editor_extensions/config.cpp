@@ -10,21 +10,25 @@ class CfgFunctions {
     class a3ee {
         class object_attrs {
             file = "\editor_extensions\functions\object_attrs";
-            class intoSimpleObject;
+            class oa_simpleObject;
         };
         class mission_attrs {
             file = "\editor_extensions\functions\mission_attrs";
         };
         class modules {
             file = "\editor_extensions\functions\modules";
-            class createLoc;
-            class hideTerrain;
-            class sendBriefing;
-            class executeCode;
+            class m_createLoc;
+            class m_hideTerrain;
+            class m_sendBriefing;
+            class m_executeCode;
+            class m_instaOSD;
         };
         class misc {
             file = "\editor_extensions\functions\misc";
             class modifyLoadout;
+            class nearLocText;
+            class typeText;
+            class instaOSD;
         };
     };
 };
