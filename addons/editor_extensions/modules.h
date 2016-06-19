@@ -51,6 +51,14 @@ class a3ee_custom_location : a3ee_module_base {
             typeName = "STRING";
             defaultValue = """NameVillage""";
         };
+        class delcorpse {
+            property = "a3ee_delcorpse";
+            control = "Checkbox";
+            displayName = "Delete player corpses";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = "false";
+            tooltip = "Delete corpse left by a player on disconnect or respawn if that corpse was left in this location. Doesn't affect corpses created via other means (ie. AI corpses or deaths without respawn or disconnect).\n\nIf AI was enabled for the playable slot and player left an alive AI after disconnect, it will also be removed.";
+        };
     };
     class EventHandlers : EventHandlers {
         class makeloc { init = "if (isServer) then { (_this select 0) call a3ee_fnc_createLoc }"; };
