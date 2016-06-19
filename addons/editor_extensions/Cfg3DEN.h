@@ -5,11 +5,11 @@ class Object {
             collapsed = 1;
             class Attributes {
                 class TurnIntoSimpleObject {
-                    property = "intoSimpleObject";
-                    displayName = "Turn into SimpleObject";
+                    property = "a3ee_simpleobject";
                     control = "Checkbox";
-                    defaultValue = "false";
+                    displayName = "Turn into SimpleObject";
                     expression = "[_this,_value] call a3ee_fnc_intoSimpleObject";
+                    defaultValue = "false";
                     tooltip = "Re-create the object as SimpleObject (see wiki) before mission start, reducing performance impact. Good for simple props, sandbags, etc. Makes object indestructible and disables simulation.";
                 };
             };
