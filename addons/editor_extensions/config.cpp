@@ -19,6 +19,7 @@ class CfgFunctions {
             file = "\editor_extensions\functions\modules";
             class createLoc;
             class hideTerrain;
+            class sendBriefing;
         };
         class misc {
             file = "\editor_extensions\functions\misc";

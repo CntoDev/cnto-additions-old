@@ -56,6 +56,7 @@ class a3ee_custom_location : a3ee_module_base {
         class makeloc { init = "if (isServer) then { (_this select 0) call a3ee_fnc_createLoc }"; };
     };
 };
+
 class a3ee_hide_terrain : a3ee_module_base {
     scope = 2;
     icon = "\A3\modules_f\data\iconStrategicMapImage_ca.paa";
@@ -76,5 +77,80 @@ class a3ee_hide_terrain : a3ee_module_base {
     };
     class EventHandlers : EventHandlers {
         class hideterr { init = "if (isServer) then { (_this select 0) call a3ee_fnc_hideTerrain }"; };
+    };
+};
+
+class a3ee_briefing : a3ee_module_base {
+    scope = 2;
+    icon = "\a3\Modules_f\data\iconHQ_ca.paa";
+    displayName = "Briefing";
+    class Attributes {
+        class briefingfor {
+            property = "a3ee_briefingfor";
+            control = "Combo";
+            displayName = "Briefing for";
+            expression = "_this setVariable [""%s"",_value]";
+            class Values {
+                class Everyone { name = "Everyone"; value = "everyone"; };
+                class Side_BLUFOR { name = "Side - BLUFOR"; value = "side_blufor"; };
+                class Side_OPFOR { name = "Side - OPFOR"; value = "side_opfor"; };
+                class Side_Indep { name = "Side - Independent"; value = "side_indep"; };
+                class Side_Civ { name = "Side - Civilian"; value = "side_civ"; };
+                /* synchronizedObjects doesn't work here, we would need to spawn + wait,
+                 * but we can't know what to wait for, so this logic can't easily support
+                 * briefings for synchronized players */
+                //class Synced { name = "Synchronized groups (non-JIP)"; value = "synced"; };
+            };
+            typeName = "STRING";
+            defaultValue = """everyone""";
+        };
+        class situation {
+            property = "a3ee_briefing_situation";
+            control = "EditMulti5";
+            displayName = "Situation";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = """""";
+            typeName = "STRING";
+            tooltip = "Description here.";
+        };
+        class mission {
+            property = "a3ee_briefing_mission";
+            control = "EditMulti5";
+            displayName = "Mission";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = """""";
+            typeName = "STRING";
+            tooltip = "Description here.";
+        };
+        class execution {
+            property = "a3ee_briefing_execution";
+            control = "EditMulti5";
+            displayName = "Execution";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = """""";
+            typeName = "STRING";
+            tooltip = "Description here.";
+        };
+        class logistics {
+            property = "a3ee_briefing_logistics";
+            control = "EditMulti5";
+            displayName = "Logistics";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = """""";
+            typeName = "STRING";
+            tooltip = "Description here.";
+        };
+        class other {
+            property = "a3ee_briefing_other";
+            control = "EditMulti5";
+            displayName = "Other";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = """""";
+            typeName = "STRING";
+            tooltip = "Description here.";
+        };
+    };
+    class EventHandlers : EventHandlers {
+        class send_briefing { init = "if (isServer) then { (_this select 0) call a3ee_fnc_sendBriefing }"; };
     };
 };

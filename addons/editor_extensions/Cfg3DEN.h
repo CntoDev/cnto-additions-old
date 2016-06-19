@@ -16,3 +16,19 @@ class Object {
         };
     };
 };
+
+/* doesn't work, squashes lines together
+class Attributes {
+    class EditMulti3;
+    class EditMulti5: EditMulti3 {
+        class Controls { class Title; class Value; };
+    };
+    class EditBig15: EditMulti5 {
+        h = 5 * SIZE_M * GRID_H;
+        class Controls: Controls {
+            class Title: Title { h = 5 * SIZE_M * GRID_H; };
+            class Value: Value { h = 5 * SIZE_M * GRID_H; };
+        };
+    };
+};
+*/
