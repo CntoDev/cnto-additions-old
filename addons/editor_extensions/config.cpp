@@ -20,6 +20,7 @@ class CfgFunctions {
             class createLoc;
             class hideTerrain;
             class sendBriefing;
+            class executeCode;
         };
         class misc {
             file = "\editor_extensions\functions\misc";

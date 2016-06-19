@@ -39,6 +39,6 @@ private _delcorpse = _this getVariable "delcorpse";
             )];
         };
     }
-] remoteExec ["BIS_fnc_call", 0, true];
+] remoteExec ["call", 0, true];
 
 deleteVehicle _this;

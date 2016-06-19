@@ -162,3 +162,72 @@ class a3ee_briefing : a3ee_module_base {
         class send_briefing { init = "if (isServer) then { (_this select 0) call a3ee_fnc_sendBriefing }"; };
     };
 };
+
+class a3ee_exec_code : a3ee_module_base {
+    scope = 2;
+    icon = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
+    displayName = "Execute code (init)";
+    class Attributes {
+        class execonmp {
+            property = "a3ee_execonmp";
+            control = "Combo";
+            displayName = "Execute on (MP)";
+            expression = "_this setVariable [""%s"",_value]";
+            class Values {
+                class All { name = "All"; value = 0; };
+                class Server_Only { name = "Server only"; value = 2; };
+                class Clients_Only { name = "Clients only"; value = -2; };
+            };
+            typeName = "NUMBER";
+            defaultValue = "0";
+        };
+        class forjip {
+            property = "a3ee_forjip";
+            control = "Checkbox";
+            displayName = "Run for JIP players";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = "true";
+        };
+        class execenv {
+            property = "a3ee_execenv";
+            control = "Combo";
+            displayName = "Environment";
+            expression = "_this setVariable [""%s"",_value]";
+            class Values {
+                class Unscheduled { name = "Unscheduled"; value = 0; };
+                class Scheduled { name = "Scheduled"; value = 1; };
+            };
+            typeName = "NUMBER";
+            defaultValue = "0";
+        };
+        class waitforplayer {
+            property = "a3ee_waitforplayer";
+            control = "Checkbox";
+            displayName = "Wait for non-null player";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = "true";
+            tooltip = "Works only in Scheduled environment. Doesn't work on dedicated server.";
+        };
+        class waitforstart {
+            property = "a3ee_waitforstart";
+            control = "Checkbox";
+            displayName = "Wait for mission start";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = "false";
+            tooltip = "Works only in Scheduled environment.";
+        };
+        class code {
+            property = "a3ee_code";
+            control = "EditCode30";
+            displayName = "Code";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = """""";
+            typeName = "STRING";
+            validate = "expression";
+            tooltip = "Code to run. No valid arguments are passed, do not parse any.";
+        };
+    };
+    class EventHandlers : EventHandlers {
+        class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_fnc_executeCode }"; };
+    };
+};
