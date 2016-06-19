@@ -114,7 +114,7 @@ class a3ee_briefing : a3ee_module_base {
         };
         class situation {
             property = "a3ee_briefing_situation";
-            control = "EditMulti5";
+            control = "EditBig15";
             displayName = "Situation";
             expression = "_this setVariable [""%s"",_value]";
             defaultValue = """""";
@@ -123,7 +123,7 @@ class a3ee_briefing : a3ee_module_base {
         };
         class mission {
             property = "a3ee_briefing_mission";
-            control = "EditMulti5";
+            control = "EditBig15";
             displayName = "Mission";
             expression = "_this setVariable [""%s"",_value]";
             defaultValue = """""";
@@ -132,7 +132,7 @@ class a3ee_briefing : a3ee_module_base {
         };
         class execution {
             property = "a3ee_briefing_execution";
-            control = "EditMulti5";
+            control = "EditBig15";
             displayName = "Execution";
             expression = "_this setVariable [""%s"",_value]";
             defaultValue = """""";
@@ -141,7 +141,7 @@ class a3ee_briefing : a3ee_module_base {
         };
         class logistics {
             property = "a3ee_briefing_logistics";
-            control = "EditMulti5";
+            control = "EditBig15";
             displayName = "Logistics";
             expression = "_this setVariable [""%s"",_value]";
             defaultValue = """""";
@@ -150,7 +150,7 @@ class a3ee_briefing : a3ee_module_base {
         };
         class other {
             property = "a3ee_briefing_other";
-            control = "EditMulti5";
+            control = "EditBig15";
             displayName = "Other";
             expression = "_this setVariable [""%s"",_value]";
             defaultValue = """""";
