@@ -4,8 +4,8 @@ private _contents = [
     ["Situation", _this getVariable "situation"],
     ["Mission", _this getVariable "mission"],
     ["Execution", _this getVariable "execution"],
-    ["Logistics", _this getVariable "logistics"],
-    ["Other", _this getVariable "other"]
+    ["Admin & Logistics", _this getVariable "admin_logistics"],
+    ["Command & Signal", _this getVariable "command_signal"]
 ];
 /* filter out empty */
 _contents = _contents select { (_x select 1) != "" };
