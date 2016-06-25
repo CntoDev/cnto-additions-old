@@ -1,3 +1,13 @@
+/* expand Transformation on Logic by default, so that Size config
+ * for area-using modules can be seen */
+class Logic {
+    class AttributeCategories {
+        class Transformation {
+            collapsed = 0;
+        };
+    };
+};
+
 class Object {
     class AttributeCategories {
         class A3EE {
