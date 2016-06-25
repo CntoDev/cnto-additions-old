@@ -161,8 +161,16 @@ class a3ee_briefing : a3ee_module_base {
 class a3ee_exec_code : a3ee_module_base {
     scope = 2;
     icon = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
-    displayName = "Execute code (init)";
+    displayName = "Execute code";
     class Attributes {
+        class enabledexec {
+            property = "a3ee_enabledexec";
+            control = "Checkbox";
+            displayName = "Enable";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = "true";
+            tooltip = "Enable this module. Uncheck to disable without having to remove the module completely.";
+        };
         class execonmp {
             property = "a3ee_execonmp";
             control = "Combo";
@@ -179,7 +187,7 @@ class a3ee_exec_code : a3ee_module_base {
         class forjip {
             property = "a3ee_forjip";
             control = "Checkbox";
-            displayName = "Run for JIP players";
+            displayName = "Exec for JIP players";
             expression = "_this setVariable [""%s"",_value]";
             defaultValue = "true";
         };
@@ -193,7 +201,7 @@ class a3ee_exec_code : a3ee_module_base {
                 class Scheduled { name = "Scheduled"; value = 1; };
             };
             typeName = "NUMBER";
-            defaultValue = "0";
+            defaultValue = "1";
         };
         class waitforplayer {
             property = "a3ee_waitforplayer";
@@ -211,6 +219,22 @@ class a3ee_exec_code : a3ee_module_base {
             defaultValue = "false";
             tooltip = "Works only in Scheduled environment.";
         };
+        class runoninit {
+            property = "a3ee_runoninit";
+            control = "Checkbox";
+            displayName = "Run on init";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = "true";
+            tooltip = "Run once, on player initialization.";
+        };
+        class runonrespawn {
+            property = "a3ee_runonrespawn";
+            control = "Checkbox";
+            displayName = "Run on respawn";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = "false";
+            tooltip = "Run on each player respawn, passing [newunit,oldunit] as args, like the Respawn EH.\n\nIgnores waiting for player and mission start. Works only on clients and fires only for respawn of client's own player unit, not for any other units.";
+        };
         class code {
             property = "a3ee_code";
             control = "EditCode30";
@@ -218,7 +242,9 @@ class a3ee_exec_code : a3ee_module_base {
             expression = "_this setVariable [""%s"",_value]";
             defaultValue = """""";
             typeName = "STRING";
-            validate = "expression";
+            /* does only init line -like validation, forbits passed local vars
+             * like _this on the compiler level - unusable for ie. respawn code */
+            //validate = "expression";
             tooltip = "Code to run. No valid arguments are passed, do not parse any.";
         };
     };
