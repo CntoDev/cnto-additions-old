@@ -2,7 +2,7 @@
  * alters player's loadout, swapping/removing/adding items in their respective
  * places of the getUnitLoadout array
  *
- * should be used from init.sqf
+ * doesn't handle respawn by itself (!!), add EH if you want it
  */
 
 /*
@@ -15,13 +15,6 @@
  *     ["exec", { some code }]
  *   ]
  */
-
-if (isNil "a3ee_modifyLoadout_gear") then {
-    a3ee_modifyLoadout_gear = _this;
-    player addEventHandler ["Respawn", {
-        a3ee_modifyLoadout_gear call a3ee_fnc_modifyLoadout;
-    }];
-};
 
 /* input arr: getUnitLoadout standard container format (uniform/vest/pack) */
 private _add_container = {
@@ -46,7 +39,7 @@ private _swap_weapon = {
     };
     /* weapon mags */
     private _primag = _arr select 4;
-    if ((count _primag > 0) && {(_secmag select 0) isEqualTo _old}) then { _primag set [0, _new] };
+    if ((count _primag > 0) && {(_primag select 0) isEqualTo _old}) then { _primag set [0, _new] };
     private _secmag = _arr select 5;
     if ((count _secmag > 0) && {(_secmag select 0) isEqualTo _old}) then { _secmag set [0, _new] };
     /* weapon bipod */
