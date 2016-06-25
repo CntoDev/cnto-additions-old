@@ -294,6 +294,14 @@
 
 [
     "AE - Util",
+    "[U] Delete units (really)",
+    {
+        [{ deleteVehicle _this }, _this] call Ares_Extras_fnc_ForUnits;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AE - Util",
     "[U] Immortal - On",
     {
         [{ _this allowDamage false }, _this] call Ares_Extras_fnc_ForUnitsMP;
