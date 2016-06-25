@@ -117,13 +117,7 @@ class a3ee_briefing : a3ee_module_base {
             control = "EditBig15";
             displayName = "Situation";
             expression = "_this setVariable [""%s"",_value]";
-            defaultValue = """General situation, in and around the AO, of political, military, civilian and other nature. Implications of previous operations, expected situational forecasts, etc."" + toString [10,10] + \
-                            ""<font size='18'>Area of Operations</font>"" + toString [10] + \
-                            ""Terrain, areas of interest, weather, time of day, etc."" + toString [10,10] + \
-                            ""<font size='18'>Enemy forces</font>"" + toString [10] + \
-                            ""Composition, disposition, strength, assets. Recent activities, locations."" + toString [10,10] + \
-                            ""<font size='18'>Friendly forces</font>"" + toString [10] + \
-                            ""Adjacent friendly elements, composition and their mission (tasking).""";
+            defaultValue = """""";
             typeName = "STRING";
         };
         class mission {
@@ -131,7 +125,7 @@ class a3ee_briefing : a3ee_module_base {
             control = "EditBig15";
             displayName = "Mission";
             expression = "_this setVariable [""%s"",_value]";
-            defaultValue = """A concise statement that includes the Who, What, Where, When, and Why of the operation to be conducted. It should be short (1-5 sentences) and to the point.""";
+            defaultValue = """""";
             typeName = "STRING";
         };
         class execution {
@@ -139,15 +133,7 @@ class a3ee_briefing : a3ee_module_base {
             control = "EditBig15";
             displayName = "Execution";
             expression = "_this setVariable [""%s"",_value]";
-            defaultValue = """<font size='18'>Commander's Intent</font>"" + toString [10] + \
-                            ""What does the higher command want the element to do, purpose of the operation, how the situation should be resolved."" + toString [10,10] + \
-                            ""<font size='18'>Concept of the Operation</font>"" + toString [10] + \
-                            ""Movement and maneuver, who should move where and when (ie. in relation to other elements), incl. supporting elements. Ie. air moving into AO only after AA is taken down."" + toString [10,10] + \
-                            ""Fire support plan (if fire support is available) - purpose, priorities, restrictions (ie. regarding civilian areas)."" + toString [10,10] + \
-                            ""<font size='18'>Tasks</font>"" + toString [10] + \
-                            ""Clear list of primary and secondary tasks to be completed on the operation."" + toString [10,10] + \
-                            ""<font size='18'>Coordination</font>"" + toString [10] + \
-                            ""Rules of Engangement, environmental considerations, other risk reduction measures (ie. periodic visual/radio checks).""";
+            defaultValue = """""";
             typeName = "STRING";
         };
         class admin_logistics {
@@ -155,12 +141,7 @@ class a3ee_briefing : a3ee_module_base {
             control = "EditBig15";
             displayName = "Admin & Logistics";
             expression = "_this setVariable [""%s"",_value]";
-            defaultValue = """<font size='18'>Personnel extraction</font>"" + toString [10] + \
-                            ""Civilian, POW and WIA/casualty evacuation plan - how, when, in what form."" + toString [10,10] + \
-                            ""<font size='18'>Resupply and reinforcement</font>"" + toString [10] + \
-                            ""What (type, size), when, where, how delivered."" + toString [10,10] + \
-                            ""<font size='18'>Available assets</font>"" + toString [10] + \
-                            ""Additional logistical assets such as transport vehicles available for the mission.""";
+            defaultValue = """""";
             typeName = "STRING";
         };
         class command_signal {
@@ -168,8 +149,7 @@ class a3ee_briefing : a3ee_module_base {
             control = "EditBig15";
             displayName = "Command & Signal";
             expression = "_this setVariable [""%s"",_value]";
-            defaultValue = """Communication/signal methods (radio, smoke, code words, etc.)."" + toString [10,10] + \
-                            ""Succession of command, who should take over which element.""";
+            defaultValue = """""";
             typeName = "STRING";
         };
     };
