@@ -22,6 +22,7 @@ class CfgFunctions {
             class m_sendBriefing;
             class m_executeCode;
             class m_instaOSD;
+            class m_arsenal;
         };
         class misc {
             file = "\editor_extensions\functions\misc";

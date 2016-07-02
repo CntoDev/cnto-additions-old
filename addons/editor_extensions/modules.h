@@ -288,3 +288,36 @@ class a3ee_insta_osd : a3ee_module_base {
         class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_instaOSD }"; };
     };
 };
+
+class a3ee_arsenal : a3ee_module_base {
+    scope = 2;
+    icon = "iconCrateAmmo";
+    displayName = "Arsenal";
+    class Attributes {
+        class actiontext {
+            property = "a3ee_actiontext";
+            control = "Edit";
+            displayName = "Action text";
+            expression = "_this setVariable [""%s"",_value]";
+            typeName = "STRING";
+            defaultValue = """Arsenal""";
+            tooltip = "Name of the action menu item shown to players.";
+        };
+        class condition {
+            property = "a3ee_condition";
+            control = "EditCode";
+            displayName = "Condition";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = """true""";
+            tooltip = "Custom condition (expression) for showing the action menu item.\n\nSpecial variables:\n  _target (unit to which action is attached to)\n  _this (caller/executing unit)";
+        };
+        class structured_hint {
+            property = "a3ee_structured_hint";
+            control = "StructuredText1";
+            description = "Hint: Synchronize to one or more objects/units.";
+        };
+    };
+    class EventHandlers : EventHandlers {
+        class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_arsenal }"; };
+    };
+};
