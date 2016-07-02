@@ -19,7 +19,7 @@ private _condition = _this getVariable "condition";
 
         {
             _x addAction [
-                "<t color='#00ccff'>" + _text + "</t>",
+                _text,
                 { ["Open", true] spawn BIS_fnc_arsenal },
                 nil,
                 0.1,
