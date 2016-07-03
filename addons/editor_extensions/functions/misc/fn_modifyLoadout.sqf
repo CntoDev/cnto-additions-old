@@ -5,6 +5,8 @@
  * doesn't handle respawn by itself (!!), add EH if you want it
  */
 
+if (isNull player) exitWith {};
+
 /*
  * input: array of arrays, each with 2-4 members, first being the action
  * ie.
