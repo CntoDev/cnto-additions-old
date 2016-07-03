@@ -1,8 +1,21 @@
-/* create a new Curator instance, with all addons allowed, and export it
- * in a publicVariable, for others to assign it
- * NOTE: this can be done only before mission start, unfortunately */
+/* create a new Curator instance, with all addons allowed, returning it */
 
 if (!isServer) exitWith {};
+
+/*
+ * While the Curator doesn't require any client-side configuration and once
+ * assigned, it Just Works for the assigned client, there are some nice features
+ * and keybinds people know from BIS configuration of Curator and these need to
+ * be set locally on each client that is going to use the Curator.
+ *
+ * Hence the following:
+ *
+ * _forclient:
+ *   player object or client id to create EHs for, 0 = everybody
+ * _onjip:
+ *   if _forclient would match JIPing player, create EHs on it
+ */
+params [["_forclient", 0], ["_onjip", true]];
 
 private _logic = (creategroup sideLogic) createUnit ["Insta_Zeus_Dumb_Curator", [0,0,0], [], 0, "NONE"];
 
@@ -32,7 +45,6 @@ _logic addCuratorAddons _addons;
     _logic addeventhandler ["curatorWaypointDoubleClicked",{(_this select 1) call bis_fnc_showCuratorAttributes;}];
     _logic addeventhandler ["curatorMarkerDoubleClicked",{(_this select 1) call bis_fnc_showCuratorAttributes;}];
     player call bis_fnc_curatorRespawn;
-}] remoteExec ["spawn", 0, true];
+}] remoteExec ["spawn", _forclient, _onjip];
 
-Insta_Zeus_Curator = _logic;
-publicVariable "Insta_Zeus_Curator";
+_logic;

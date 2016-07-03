@@ -10,7 +10,8 @@ class CfgFunctions {
     class Insta_Zeus {
         class All {
             file = "\insta_zeus";
-            class mkCurator { postInit = 1 };
+            class mkCurator;
+            class createGlobalCurator { postInit = 1 };
             class maintainCurator { postInit = 1 };
             class registerKeys { postInit = 1; };  /* for arsenal */
             class arsenal;
