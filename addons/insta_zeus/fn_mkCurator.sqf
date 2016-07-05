@@ -33,8 +33,9 @@ _logic addCuratorAddons _addons;
     params ["_logic"];
     if (!hasInterface) exitWith {};
     waitUntil { !isNull _logic };
+
     /* ModuleCurator_F has function="BIS_fnc_moduleCurator", the following
-    * is taken from it to register vanilla Zeus behavior */
+     * is taken from it to register vanilla Zeus behavior */
     _logic addeventhandler ["curatorFeedbackMessage",{_this call bis_fnc_showCuratorFeedbackMessage;}];
     _logic addeventhandler ["curatorPinged",{_this call bis_fnc_curatorPinged;}];
     _logic addeventhandler ["curatorObjectPlaced",{_this call bis_fnc_curatorObjectPlaced;}];
@@ -44,7 +45,13 @@ _logic addCuratorAddons _addons;
     _logic addeventhandler ["curatorGroupDoubleClicked",{(_this select 1) call bis_fnc_showCuratorAttributes;}];
     _logic addeventhandler ["curatorWaypointDoubleClicked",{(_this select 1) call bis_fnc_showCuratorAttributes;}];
     _logic addeventhandler ["curatorMarkerDoubleClicked",{(_this select 1) call bis_fnc_showCuratorAttributes;}];
-    player call bis_fnc_curatorRespawn;
+
+    /* don't call bis_fnc_curatorRespawn, it doesn't seem to work in dedicated
+     * multiplayer because of assignCurator not working for about 1-3 seconds
+     * after player respawns
+     * - for Insta_Zeus_Curator itself, we don't care as it's re-assigned on
+     *   the next fn_maintainCurator loop iteration */
+    //player call bis_fnc_curatorRespawn;
 }] remoteExec ["spawn", _forclient, _onjip];
 
 _logic;
