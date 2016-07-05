@@ -32,9 +32,11 @@ private _delcorpse = _this getVariable "delcorpse";
                     "deleteVehicle (_this select 0);" +
                 "}; false"
             )];
+            /* hideBody gives a few seconds to Respawn EHs like
+             * BIS_fnc_curatorRespawn to work with the corpse */
             addMissionEventHandler ["EntityRespawned", compile (
                 "if (position (_this select 1) in " + _internal_loc + ") then {" +
-                    "deleteVehicle (_this select 1);" +
+                    "hideBody (_this select 1);" +
                 "}; false"
             )];
         };
