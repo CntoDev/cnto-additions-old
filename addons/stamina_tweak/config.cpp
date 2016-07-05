@@ -3,12 +3,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = 1.54;  /* new stamina system needed */
-        /* since we want to override maxSoldierLoad defined by ACE3,
-         * we need to load after it, hence the dependency */
-        requiredAddons[] = {"ace_movement"};
-        /* if you wish to run this stamina tweak without ACE3, comment
-         * out the above requiredAddons and uncomment the following */
-        //requiredAddons[] = {"A3_Modules_F"};
+        requiredAddons[] = {"A3_Modules_F"};
     };
 };
 
@@ -32,5 +27,5 @@ class CfgMovesFatigue {
 
 class CfgInventoryGlobalVariable {
     /* how much a soldier can carry (weight bar width) */
-    maxSoldierLoad = 1400;     //default 1000, ACE 1200
+    maxSoldierLoad = 1400;     //default 1000
 };
