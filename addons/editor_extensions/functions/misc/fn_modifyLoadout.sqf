@@ -1,11 +1,9 @@
 /*
- * alters player's loadout, swapping/removing/adding items in their respective
+ * alters unit loadout, swapping/removing/adding items in their respective
  * places of the getUnitLoadout array
  *
  * doesn't handle respawn by itself (!!), add EH if you want it
  */
-
-if (isNull player) exitWith {};
 
 /*
  * input: array of arrays, each with 2-4 members, first being the action
@@ -16,7 +14,22 @@ if (isNull player) exitWith {};
  *     ["del",  "some_weapon"],
  *     ["exec", { some code }]
  *   ]
+ *
+ * player unit is used by default, to modify other units, specify a list
+ * of them as the last member of the modification array, ie.
+ *   [
+ *     ["swap", "old_item", "new_item"],
+ *     [someunit, anotherunit, player]
+ *   ]
  */
+
+if (count _this < 1) exitWith {};
+private _last = _this select (count _this - 1);
+private _units = [player];
+if (count _last > 0 && typeName (_last select 0) == "OBJECT") then {
+    _units = _last;
+    _this deleteAt (count _this - 1);
+};
 
 /* input arr: getUnitLoadout standard container format (uniform/vest/pack) */
 private _add_container = {
@@ -94,62 +107,66 @@ private _del_container = {
     };
 };
 
-/* https://community.bistudio.com/wiki/Talk:getUnitLoadout */
-private _gear = getUnitLoadout player;
-_gear params ["_priweap", "_launcher", "_handgun", "_uniform", "_vest",
-              "_backpack", "_helmet", "_facewear", "_binoc", "_linked"];
 {
-    switch (_x select 0) do {
-        case "add": {
-            _x params ["_act", "_item", "_where", "_cnt"];
-            switch (_where) do {
-                case "uniform": {
-                    [_uniform, _item, _cnt] call _add_container;
-                };
-                case "vest": {
-                    [_vest, _item, _cnt] call _add_container;
-                };
-                case "backpack": {
-                    [_backpack, _item, _cnt] call _add_container;
+    private _unit = _x;
+
+    /* https://community.bistudio.com/wiki/Talk:getUnitLoadout */
+    private _gear = getUnitLoadout _unit;
+    _gear params ["_priweap", "_launcher", "_handgun", "_uniform", "_vest",
+                  "_backpack", "_helmet", "_facewear", "_binoc", "_linked"];
+    {
+        switch (_x select 0) do {
+            case "add": {
+                _x params ["_act", "_item", "_where", "_cnt"];
+                switch (_where) do {
+                    case "uniform": {
+                        [_uniform, _item, _cnt] call _add_container;
+                    };
+                    case "vest": {
+                        [_vest, _item, _cnt] call _add_container;
+                    };
+                    case "backpack": {
+                        [_backpack, _item, _cnt] call _add_container;
+                    };
                 };
             };
-        };
-        case "swap": {
-            _x params ["_act", "_old", "_new"];
-            [_priweap, _old, _new] call _swap_weapon;
-            [_launcher, _old, _new] call _swap_weapon;
-            [_handgun, _old, _new] call _swap_weapon;
-            [_uniform, _old, _new] call _swap_container;
-            [_vest, _old, _new] call _swap_container;
-            [_backpack, _old, _new] call _swap_container;
-            if (_helmet == _old) then { _gear set [6, _new] };
-            // facewear not supported
-            [_binoc, _old, _new] call _swap_weapon;
-            for "_i" from 0 to (count _linked - 1) do {
-                private _item = _linked select _i;
-                if ((_item == _old)) then { _linked set [_i, _new] };
+            case "swap": {
+                _x params ["_act", "_old", "_new"];
+                [_priweap, _old, _new] call _swap_weapon;
+                [_launcher, _old, _new] call _swap_weapon;
+                [_handgun, _old, _new] call _swap_weapon;
+                [_uniform, _old, _new] call _swap_container;
+                [_vest, _old, _new] call _swap_container;
+                [_backpack, _old, _new] call _swap_container;
+                if (_helmet == _old) then { _gear set [6, _new] };
+                // facewear not supported
+                [_binoc, _old, _new] call _swap_weapon;
+                for "_i" from 0 to (count _linked - 1) do {
+                    private _item = _linked select _i;
+                    if ((_item == _old)) then { _linked set [_i, _new] };
+                };
+            };
+            case "del": {
+                _x params ["_act", "_item"];
+                [_priweap, _item] call _del_weapon;
+                [_launcher, _item] call _del_weapon;
+                [_handgun, _item] call _del_weapon;
+                [_uniform, _item] call _del_container;
+                [_vest, _item] call _del_container;
+                [_backpack, _item] call _del_container;
+                if (_helmet == _item) then { _gear set [6, ""] };
+                // facewear not supported
+                [_binoc, _item] call _del_weapon;
+                for "_i" from 0 to (count _linked - 1) do {
+                    private _name = _linked select _i;
+                    if ((_item == _name)) then { _linked set [_i, ""] };
+                };
+            };
+            case "exec": {
+                _x params ["_act", "_code"];
+                _unit call _code;
             };
         };
-        case "del": {
-            _x params ["_act", "_item"];
-            [_priweap, _item] call _del_weapon;
-            [_launcher, _item] call _del_weapon;
-            [_handgun, _item] call _del_weapon;
-            [_uniform, _item] call _del_container;
-            [_vest, _item] call _del_container;
-            [_backpack, _item] call _del_container;
-            if (_helmet == _item) then { _gear set [6, ""] };
-            // facewear not supported
-            [_binoc, _item] call _del_weapon;
-            for "_i" from 0 to (count _linked - 1) do {
-                private _name = _linked select _i;
-                if ((_item == _name)) then { _linked set [_i, ""] };
-            };
-        };
-        case "exec": {
-            _x params ["_act", "_code"];
-            player call _code;
-        };
-    };
-} forEach _this;
-player setUnitLoadout [_gear, true];
+    } forEach _this;
+    _unit setUnitLoadout [_gear, true];
+} forEach (_units select { !isNull _x });
