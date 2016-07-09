@@ -23,6 +23,7 @@ class CfgFunctions {
             class m_executeCode;
             class m_instaOSD;
             class m_arsenal;
+            class m_arsenalRespawn;
         };
         class misc {
             file = "\editor_extensions\functions\misc";

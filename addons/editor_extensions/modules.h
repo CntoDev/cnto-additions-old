@@ -321,3 +321,19 @@ class a3ee_arsenal : a3ee_module_base {
         class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_arsenal }"; };
     };
 };
+
+class a3ee_arsenal_respawn : a3ee_module_base {
+    scope = 2;
+    icon = "\a3\Modules_f\data\iconRespawn_ca.paa";
+    displayName = "Arsenal Respawn";
+    class Attributes {
+        class structured_hint {
+            property = "a3ee_structured_hint";
+            control = "StructuredText3";
+            description = "Hint: Use when you have Edited loadout for at least one player to preserve their loadout across respawn. Do not use otherwise as it adds a small overhead to all players.";
+        };
+    };
+    class EventHandlers : EventHandlers {
+        class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_arsenalRespawn }"; };
+    };
+};
