@@ -302,6 +302,53 @@
 
 [
     "AE - Util",
+    "[G] Locality - Get",
+    {
+        [{
+            [[clientOwner, _this], {
+                params ["_client", "_groups"];
+                private _owners = _groups apply { [groupOwner _x, _x] };
+                /* callback to the client */
+                [_owners, {
+                    {
+                        _x params ["_owner", "_grp"];
+                        systemChat format ["%1: %2", _owner, _grp];
+                    } forEach _this;
+                }] remoteExec ["call", _client];
+            }] remoteExec ["call", 2];
+        }, _this, true] call Ares_Extras_fnc_Selection;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Util",
+    "[G] Locality - Set",
+    {
+        private _hcs = (entities "HeadlessClient_F") select { _x in allPlayers };
+        if (count _hcs < 1) exitWith {
+            ["No Headless Clients found."] call Ares_fnc_ShowZeusMessage;
+        };
+        _hcs = _hcs apply { [name _x, _x] };
+
+        private _reply = [
+            "Set locality / owner of groups", [
+                "Choose new owner",
+                _hcs
+            ]
+        ] call Ares_Extras_fnc_Dialog;
+        if (isNil "_reply") exitWith {};
+
+        [[_reply, {
+            [_this, {
+                params ["_newowner", "_groups"];
+                _newowner = owner _newowner;  /* passed unit */
+                { _x setGroupOwner _newowner } forEach _groups;
+            }] remoteExec ["call", 2];
+        }], _this, true] call Ares_Extras_fnc_Selection;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AE - Util",
     "[U] Immortal - On",
     {
         [{ _this allowDamage false }, _this] call Ares_Extras_fnc_ForUnitsMP;
