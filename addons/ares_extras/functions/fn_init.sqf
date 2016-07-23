@@ -28,6 +28,35 @@
 
 [
     "AE - AI",
+    "[U] Movement (MOVE) - Enable",
+    {
+        [{ _this enableAI "MOVE" }, _this] call Ares_Extras_fnc_ForUnitsMP;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - AI",
+    "[U] Movement (MOVE) - Disable",
+    {
+        [{ _this disableAI "MOVE" }, _this] call Ares_Extras_fnc_ForUnitsMP;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - AI",
+    "[U] Movement (PATH) - Enable",
+    {
+        [{ _this enableAI "PATH" }, _this] call Ares_Extras_fnc_ForUnitsMP;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - AI",
+    "[U] Movement (PATH) - Disable",
+    {
+        [{ _this disableAI "PATH" }, _this] call Ares_Extras_fnc_ForUnitsMP;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AE - AI",
     "[U] Unload cargo in combat - On",
     {
         [{
