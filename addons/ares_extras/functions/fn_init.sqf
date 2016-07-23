@@ -101,6 +101,59 @@
     }
 ] call Ares_fnc_RegisterCustomModule;
 
+[
+    "AE - AI",
+    "[U] Suppress (manual, ~90sec)",
+    {
+        params ["_pos", "_unit"];
+        if (isNil "_unit" || isNull _unit) then {
+            _unit = _pos;  /* fn_manualSuppress can work with it */
+        };
+
+        /* use selected unit as a suppression destination, let user
+         * mouse-drag-select suppression source(s) */
+        [[_unit, {
+            params ["_dst", "_units"];
+            // remoteExec could break global variable suppression state lock
+            _units = _units select { local _x };
+            {
+                [_dst, _x] call Ares_Extras_fnc_manualSuppress;
+            } forEach _units;
+        }], [[0,0,0],objNull]] call Ares_Extras_fnc_Selection;
+        /*      ^^^^^^^^ force mouse selection */
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - AI",
+    "[U] Suppress (bis, ~90sec)",
+    {
+        params ["_pos", "_unit"];
+        if (isNil "_unit" || isNull _unit) exitWith {};
+        [[_unit, {
+            params ["_dst", "_units"];
+            _units = _units select { local _x };
+            {
+                [_dst, _x] call Ares_Extras_fnc_bisSuppress;
+            } forEach _units;
+        }], [[0,0,0],objNull]] call Ares_Extras_fnc_Selection;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - AI",
+    "[U] Suppress (bis)",
+    {
+        params ["_pos", "_unit"];
+        if (isNil "_unit" || isNull _unit) exitWith {};
+        [[_unit, {
+            params ["_dst", "_units"];
+            _units = _units select { local _x };
+            {
+                [_dst, _x, 0, 0] call Ares_Extras_fnc_bisSuppress;
+            } forEach _units;
+        }], [[0,0,0],objNull]] call Ares_Extras_fnc_Selection;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
 /*
  * Environment
  */

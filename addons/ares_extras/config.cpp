@@ -27,5 +27,11 @@ class CfgFunctions {
             class vehLightOn;
             class setPosAGLS;
         };
+        /* these provide A3MT-like functionality, but didn't come from it */
+        class New {
+            file = "\ares_extras\functions\new";
+            class manualSuppress;
+            class bisSuppress;
+        };
     };
 };
