@@ -370,8 +370,8 @@
             [_this, {
                 params ["_newowner", "_groups"];
                 _newowner = owner _newowner;  /* passed unit */
-                { _x setGroupOwner _newowner } forEach _groups;
-            }] remoteExec ["call", 2];
+                { _x setGroupOwner _newowner; sleep 10; } forEach _groups;
+            }] remoteExec ["spawn", 2];
         }], _this, true] call Ares_Extras_fnc_Selection;
     }
 ] call Ares_fnc_RegisterCustomModule;
