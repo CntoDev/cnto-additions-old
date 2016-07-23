@@ -122,7 +122,7 @@
             {
                 _x hideObjectGlobal true;
             } count nearestTerrainObjects [_pos, [], _radius];
-        }] call Ares_Extras_fnc_execServer;
+        }] remoteExec ["call", 2];
     }
 ] call Ares_fnc_RegisterCustomModule;
 [
@@ -142,7 +142,7 @@
             {
                 _x hideObjectGlobal false;
             } count nearestTerrainObjects [_pos, [], _radius];
-        }] call Ares_Extras_fnc_execServer;
+        }] remoteExec ["call", 2];
     }
 ] call Ares_fnc_RegisterCustomModule;
 
@@ -282,7 +282,7 @@
         [[_curator, _toadd], {
             params ["_curator", "_units"];
             _curator addCuratorEditableObjects [_units, true];
-        }] call Ares_Extras_fnc_execServer;
+        }] remoteExec ["call", 2];
     }
 ] call Ares_fnc_RegisterCustomModule;
 [
@@ -304,7 +304,7 @@
         [[_curator, _todel], {
             params ["_curator", "_units"];
             _curator removeCuratorEditableObjects [_units, true];
-        }] call Ares_Extras_fnc_execServer;
+        }] remoteExec ["call", 2];
     }
 ] call Ares_fnc_RegisterCustomModule;
 [
@@ -316,7 +316,7 @@
             [[_curator, _this], {
                 params ["_curator", "_units"];
                 _curator removeCuratorEditableObjects [_units, true];
-            }] call Ares_Extras_fnc_execServer;
+            }] remoteExec ["call", 2];
         }, _this] call Ares_Extras_fnc_Selection;
     }
 ] call Ares_fnc_RegisterCustomModule;
