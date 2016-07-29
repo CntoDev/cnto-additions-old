@@ -13,4 +13,6 @@ if (is3DEN) exitWith {};
     }
 ] remoteExec ["spawn", 0, true];
 
-deleteVehicle _this;
+// the above is run only once, on the server, so it is safe
+// to keep the module for existence checks
+//deleteVehicle _this;

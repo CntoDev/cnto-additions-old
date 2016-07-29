@@ -31,6 +31,7 @@ class CfgFunctions {
             class nearLocText;
             class typeText;
             class instaOSD;
+            class arsenalRespawn { postInit = 1; };
         };
     };
 };
