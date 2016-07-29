@@ -11,8 +11,9 @@ class CfgFunctions {
         class All {
             file = "\insta_zeus";
             class mkCurator;
-            class createGlobalCurator { postInit = 1 };
-            class maintainCurator { postInit = 1 };
+            class createGlobalCurator { postInit = 1; };
+            class maintainCurator { postInit = 1; };
+            class onRespawn { postInit = 1; };
             class registerKeys { postInit = 1; };  /* for arsenal */
             class arsenal;
             //class activateAddons { preInit = 1; };
