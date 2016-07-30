@@ -318,6 +318,21 @@
 
 [
     "AE - Util",
+    "[U] Captive - On",
+    {
+        [{ _this setCaptive true }, _this] call Ares_Extras_fnc_ForUnitsMP;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Util",
+    "[U] Captive - Off",
+    {
+        [{ _this setCaptive false }, _this] call Ares_Extras_fnc_ForUnitsMP;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AE - Util",
     "[P] Curator - Add",
     {
         params ["_pos", "_unit"];
