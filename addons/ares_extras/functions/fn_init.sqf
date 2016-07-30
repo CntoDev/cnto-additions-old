@@ -28,35 +28,6 @@
 
 [
     "AE - AI",
-    "[U] Movement (MOVE) - Enable",
-    {
-        [{ _this enableAI "MOVE" }, _this] call Ares_Extras_fnc_ForUnitsMP;
-    }
-] call Ares_fnc_RegisterCustomModule;
-[
-    "AE - AI",
-    "[U] Movement (MOVE) - Disable",
-    {
-        [{ _this disableAI "MOVE" }, _this] call Ares_Extras_fnc_ForUnitsMP;
-    }
-] call Ares_fnc_RegisterCustomModule;
-[
-    "AE - AI",
-    "[U] Movement (PATH) - Enable",
-    {
-        [{ _this enableAI "PATH" }, _this] call Ares_Extras_fnc_ForUnitsMP;
-    }
-] call Ares_fnc_RegisterCustomModule;
-[
-    "AE - AI",
-    "[U] Movement (PATH) - Disable",
-    {
-        [{ _this disableAI "PATH" }, _this] call Ares_Extras_fnc_ForUnitsMP;
-    }
-] call Ares_fnc_RegisterCustomModule;
-
-[
-    "AE - AI",
     "[U] Unload cargo in combat - On",
     {
         [{
@@ -153,6 +124,29 @@
         }], [[0,0,0],objNull]] call Ares_Extras_fnc_Selection;
     }
 ] call Ares_fnc_RegisterCustomModule;
+
+/*
+ * AI Features
+ */
+
+{
+
+[
+    "AE - AI Features",
+    format ["[U] %1 - Disable", _x],
+    compile format [
+        "[{ _this disableAI ""%1"" }, _this] call Ares_Extras_fnc_ForUnitsMP", _x
+    ]
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - AI Features",
+    format ["[U] %1 - Enable", _x],
+    compile format [
+        "[{ _this enableAI ""%1"" }, _this] call Ares_Extras_fnc_ForUnitsMP", _x
+    ]
+] call Ares_fnc_RegisterCustomModule;
+
+} forEach ["AUTOTARGET", "MOVE", "ANIM", "AUTOCOMBAT", "PATH"];
 
 /*
  * Environment
