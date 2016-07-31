@@ -14,8 +14,7 @@
         ["Within radius of 500m", 500],
         ["Within radius of 1km", 1000],
         ["Within radius of 5km", 5000],
-        ["Within radius of 10km", 10000],
-        ["Within radius of 100km", 100000]
+        ["Within radius of 10km", 10000]
     ],
     3
 ];
