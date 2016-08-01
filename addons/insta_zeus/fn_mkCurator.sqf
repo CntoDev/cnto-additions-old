@@ -34,6 +34,9 @@ _logic addCuratorAddons _addons;
     if (!hasInterface) exitWith {};
     waitUntil { !isNull _logic };
 
+    /* add all players */
+    _logic addCuratorEditableObjects [allPlayers, false];
+
     /* ModuleCurator_F has function="BIS_fnc_moduleCurator", the following
      * is taken from it to register vanilla Zeus behavior */
     _logic addeventhandler ["curatorFeedbackMessage",{_this call bis_fnc_showCuratorFeedbackMessage;}];

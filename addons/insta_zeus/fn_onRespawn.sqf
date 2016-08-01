@@ -13,8 +13,8 @@ addMissionEventHandler ["EntityRespawned", {
 
     /* any unit respawned, add it to curators in which it was editable */
     {
-        _x addCuratorEditableObjects [[_new], false];
-        //_x removeCuratorEditableObjects [[_old], false];
+        _x addCuratorEditableObjects [[_new], true];
+        //_x removeCuratorEditableObjects [[_old], true];
     } foreach (objectcurators _old);
 
     /* curator controller/player itself respawned, re-assign curator obj */
