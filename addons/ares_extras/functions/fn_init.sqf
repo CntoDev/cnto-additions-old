@@ -99,7 +99,9 @@
     "[U] Suppress (bis, ~90sec)",
     {
         params ["_pos", "_unit"];
-        if (isNil "_unit" || isNull _unit) exitWith {};
+        if (isNil "_unit" || isNull _unit) exitWith {
+            ["No unit selected."] call Ares_fnc_ShowZeusMessage;
+        };
         [[_unit, {
             params ["_dst", "_units"];
             _units = _units select { local _x };
@@ -114,7 +116,9 @@
     "[U] Suppress (bis)",
     {
         params ["_pos", "_unit"];
-        if (isNil "_unit" || isNull _unit) exitWith {};
+        if (isNil "_unit" || isNull _unit) exitWith {
+            ["No unit selected."] call Ares_fnc_ShowZeusMessage;
+        };
         [[_unit, {
             params ["_dst", "_units"];
             _units = _units select { local _x };
@@ -487,5 +491,30 @@
             params ["_pos", "_units"];
             [_units, _pos] call Ares_Extras_fnc_teleport;
         }], _this] call Ares_Extras_fnc_Selection;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AE - Util",
+    "Give Zeus to player",
+    {
+        params ["_pos", "_unit"];
+        if (isNil "_unit" || isNull _unit) exitWith {
+            ["No unit selected."] call Ares_fnc_ShowZeusMessage;
+        };
+        if (!isNull getAssignedCuratorLogic _unit) exitWith {
+            ["Player already has Zeus."] call Ares_fnc_ShowZeusMessage;
+        };
+        [_unit, {
+            if (!isNull getAssignedCuratorLogic _this) exitWith {};
+            private _curator = ([_this, false] call insta_zeus_fnc_mkCurator);
+            0 = [_curator, _this] spawn {
+                params ["_curator", "_unit"];
+                waitUntil {
+                    _unit assignCurator _curator;
+                    !isNull getAssignedCuratorUnit _curator;
+                };
+            };
+        }] remoteExec ["call", 2];
     }
 ] call Ares_fnc_RegisterCustomModule;
