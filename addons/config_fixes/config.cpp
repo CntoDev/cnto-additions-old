@@ -4,6 +4,10 @@
  * - smoke bounce - reduce bounciness of UGL smoke shells, as they can,
  *   by default, bounce even kilometers from their original impact
  *
+ * - flare intensity - increase brightness/intensity of flares, so they
+ *   actually can illuminate something (even without NVGs!)
+ *   - taken from https://feedback.bistudio.com/T76756
+ *
  * - sdv visibility - reduce SDV (submarine) visibility to compensate
  *   for bad underwater detection logic (by default, they can be seen by AI
  *   from 200+m on the shore)
@@ -18,7 +22,8 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
-            "A3_Weapons_F",          // smoke bounce
+            "A3_Weapons_F",          // smoke bounce, flare intensity
+            "ace_grenades",          // flare intensity
             "A3_Boat_F_Beta_SDV_01", // sdv visibility
             "rhsusf_c_weapons",      // smoke bounce
             "rhs_c_weapons"          // smoke bounce, remove rakurs
@@ -52,6 +57,27 @@ class CfgAmmo {
         simulation = "shotSmoke";
         /* multiplier; small bounce, on 400m flat ground shot ~10m bounce */
         deflectionSlowDown = 0.3;
+    };
+
+    /* flare intensity */
+    class FlareCore;
+    class FlareBase;
+    class Flare_82mm_AMOS_White: FlareCore {
+        timeToLive = 80;
+        brightness = 200;
+        intensity  = 5000000;
+    };
+    class F_40mm_White: FlareBase {
+        brightness = 120;
+        intensity  = 5000000;
+    };
+    class F_20mm_White: FlareBase {
+        brightness = 80;
+        intensity  = 5000000;
+    };
+    class F_Signal_Green: FlareBase {
+        brightness = 80;
+        intensity  = 5000000;
     };
 };
 
