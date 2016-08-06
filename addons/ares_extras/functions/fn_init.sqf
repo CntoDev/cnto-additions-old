@@ -493,6 +493,18 @@
         }], _this] call Ares_Extras_fnc_Selection;
     }
 ] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Util",
+    "[U] Teleport (high alt.)",
+    {
+        params ["_pos", "_unit"];
+        _pos = [_pos select 0, _pos select 1, 3000];
+        [[_pos, {
+            params ["_pos", "_units"];
+            [_units, _pos] call Ares_Extras_fnc_teleport;
+        }], _this] call Ares_Extras_fnc_Selection;
+    }
+] call Ares_fnc_RegisterCustomModule;
 
 [
     "AE - Util",
