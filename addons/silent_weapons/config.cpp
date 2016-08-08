@@ -30,7 +30,7 @@ class CfgAmmo {
         dangerRadiusHit = 2;
         suppressionRadiusBulletClose = 1;
         suppressionRadiusHit = 2;
-        audibleFire = 0.1;
+        audibleFire = 0.1;  //~10m
         visibleFire = 0.001;
     };
 
@@ -55,6 +55,7 @@ class CfgWeapons {
     class muzzle_snds_H : ItemCore {
         class ItemInfo : InventoryMuzzleItem_Base_F {
             class AmmoCoef {
+                /* ~10m */
                 audibleFire = 0.005;
                 visibleFire = 0.005;
             };
@@ -64,6 +65,7 @@ class CfgWeapons {
     class muzzle_snds_L : muzzle_snds_H {
         class ItemInfo : InventoryMuzzleItem_Base_F {
             class AmmoCoef {
+                /* as close as it gets, ~5m */
                 audibleFire = 0.001;
                 visibleFire = 0.001;
             };
