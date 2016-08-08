@@ -15,6 +15,8 @@
  * - remove rakurs - remove an annoying RHS scope which has higher Arsenal
  *   priority than <None>, being the default for many (even vanilla) weapons
  *
+ * - powerful kir - increase damage of ASP-1 Kir and RHS asp val / vss to
+ *   account for the insane durability of RHS Russian units
  */
 
 class CfgPatches {
@@ -22,10 +24,10 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
-            "A3_Weapons_F",          // smoke bounce, flare intensity
+            "A3_Weapons_F",          // smoke bounce, flare intensity, powerful kir
             "ace_grenades",          // flare intensity
             "A3_Boat_F_Beta_SDV_01", // sdv visibility
-            "rhsusf_c_weapons",      // smoke bounce
+            "rhsusf_c_weapons",      // smoke bounce, powerful kir
             "rhs_c_weapons"          // smoke bounce, remove rakurs
         };
     };
@@ -78,6 +80,29 @@ class CfgAmmo {
     class F_Signal_Green: FlareBase {
         brightness = 80;
         intensity  = 5000000;
+    };
+
+    /* powerful kir */
+    class BulletBase;
+    class B_127x54_Ball : BulletBase {
+        hit = 40;  //default: 20
+        dangerRadiusBulletClose = 1;
+        dangerRadiusHit = 2;
+        suppressionRadiusBulletClose = 1;
+        suppressionRadiusHit = 2;
+        audibleFire = 0.001;
+        visibleFire = 0.000001;
+    };
+    //as val / vss vintorez
+    class rhs_B_762x39_Ball;
+    class rhs_B_9x39_SP5 : rhs_B_762x39_Ball {
+        hit = 30;  //default: 7.73
+        dangerRadiusBulletClose = 1;
+        dangerRadiusHit = 2;
+        suppressionRadiusBulletClose = 1;
+        suppressionRadiusHit = 2;
+        audibleFire = 0.001;
+        visibleFire = 0.000001;
     };
 };
 
