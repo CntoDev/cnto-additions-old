@@ -78,9 +78,8 @@
     {
         params ["_pos", "_unit"];
         if (isNil "_unit" || isNull _unit) then {
-            _unit = _pos;  /* fn_manualSuppress can work with it */
+            _unit = _pos;  /* use pos as dst */
         };
-
         /* use selected unit as a suppression destination, let user
          * mouse-drag-select suppression source(s) */
         [[_unit, {
@@ -99,8 +98,8 @@
     "[U] Suppress (bis, ~90sec)",
     {
         params ["_pos", "_unit"];
-        if (isNil "_unit" || isNull _unit) exitWith {
-            ["No unit selected."] call Ares_fnc_ShowZeusMessage;
+        if (isNil "_unit" || isNull _unit) then {
+            _unit = _pos;  /* use pos as dst */
         };
         [[_unit, {
             params ["_dst", "_units"];
@@ -116,8 +115,8 @@
     "[U] Suppress (bis)",
     {
         params ["_pos", "_unit"];
-        if (isNil "_unit" || isNull _unit) exitWith {
-            ["No unit selected."] call Ares_fnc_ShowZeusMessage;
+        if (isNil "_unit" || isNull _unit) then {
+            _unit = _pos;  /* use pos as dst */
         };
         [[_unit, {
             params ["_dst", "_units"];

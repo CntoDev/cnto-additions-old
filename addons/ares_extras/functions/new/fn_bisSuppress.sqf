@@ -16,6 +16,11 @@ _script = _this spawn {
     params ["_dst", "_unit", ["_duration", 60+random 60], ["_fudge", random 10]];
     private _endtime = time + _duration + _fudge*3;
 
+    /* create dummy target as duSuppressiveFire is broken with position */
+    // if it's not an object == it is a position array
+    if (!(_dst isEqualType objNull)) then {
+        _dst = createVehicle ["Land_HelipadEmpty_F", _dst, [], 0, "CAN_COLLIDE"];
+    };
     _unit reveal _dst;
     sleep _fudge;
 
@@ -25,6 +30,10 @@ _script = _this spawn {
         _unit reveal _dst;
         _unit doSuppressiveFire _dst;
         sleep 5;
+    };
+
+    if (typeOf _dst == "Land_HelipadEmpty_F") then {
+        deleteVehicle _dst;
     };
 };
 _unit setVariable ["suppression_script_active", _script];
