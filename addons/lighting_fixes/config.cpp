@@ -53,12 +53,10 @@ class CfgWeapons {
                 innerAngle = 1;
                 outerAngle = 120;
                 coneFadeCoef = 10;
+                flareMaxDistance = 250;
                 class Attenuation {
-                    constant = 0.01;
-                    linear = 0.01;
-                    quadratic = 0.02;
-                    hardLimitStart = 400;
-                    hardLimitEnd = 500;
+                    hardLimitStart = 200;
+                    hardLimitEnd = 300;
                 };
             };
         };
