@@ -45,6 +45,13 @@ class CfgAmmo {
         audibleFire = 0.1;
         visibleFire = 0.001;
     };
+
+    /* silent grenade throwing, AI still hears explosion */
+    class Grenade;
+    class GrenadeHand : Grenade {
+        visibleFire = 0.001;
+        audibleFire = 0.005;
+    };
 };
 
 class CfgWeapons {
