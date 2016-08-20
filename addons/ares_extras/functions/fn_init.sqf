@@ -310,6 +310,128 @@
 ] call Ares_fnc_RegisterCustomModule;
 
 /*
+ * Respawn
+ */
+
+[
+    "AE - Respawn",
+    "Add Respawn",
+    {
+        params ["_pos", "_unit"];
+        [_pos, nil, false] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Add Respawn (west)",
+    {
+        params ["_pos", "_unit"];
+        [_pos, west, false] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Add Respawn (east)",
+    {
+        params ["_pos", "_unit"];
+        [_pos, east, false] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Add Respawn (resistance)",
+    {
+        params ["_pos", "_unit"];
+        [_pos, resistance, false] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Add Respawn (civilian)",
+    {
+        params ["_pos", "_unit"];
+        [_pos, civilian, false] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AE - Respawn",
+    "Set Respawn",
+    {
+        params ["_pos", "_unit"];
+        [_pos, nil, true] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Set Respawn (west)",
+    {
+        params ["_pos", "_unit"];
+        [_pos, west, true] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Set Respawn (east)",
+    {
+        params ["_pos", "_unit"];
+        [_pos, east, true] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Set Respawn (resistance)",
+    {
+        params ["_pos", "_unit"];
+        [_pos, resistance, true] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Set Respawn (civilian)",
+    {
+        params ["_pos", "_unit"];
+        [_pos, civilian, true] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AE - Respawn",
+    "Del Respawn",
+    {
+        [nil, nil, true] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Del Respawn (west)",
+    {
+        [nil, west, true] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Del Respawn (east)",
+    {
+        [nil, east, true] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Del Respawn (resistance)",
+    {
+        [nil, resistance, true] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Respawn",
+    "Del Respawn (civilian)",
+    {
+        [nil, civilian, true] call Ares_Extras_fnc_respawnMarker;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+/*
  * Util
  */
 
