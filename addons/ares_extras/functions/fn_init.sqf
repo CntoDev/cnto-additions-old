@@ -431,6 +431,17 @@
     }
 ] call Ares_fnc_RegisterCustomModule;
 
+[
+    "AE - Respawn",
+    "Move JIP teleport point",
+    {
+        /* needs the Editor_Extensions pbo */
+        params ["_pos", "_unit"];
+        a3ee_teleport_on_jip_pos = _pos;
+        publicVariable "a3ee_teleport_on_jip_pos";
+    }
+] call Ares_fnc_RegisterCustomModule;
+
 /*
  * Util
  */
