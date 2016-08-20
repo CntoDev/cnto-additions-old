@@ -295,7 +295,7 @@ class a3ee_arsenal : a3ee_module_base {
     displayName = "Arsenal";
     class Attributes {
         class actiontext {
-            property = "a3ee_actiontext";
+            property = "a3ee_arsenal_actiontext";
             control = "Edit";
             displayName = "Action text";
             expression = "_this setVariable [""%s"",_value]";
@@ -304,7 +304,7 @@ class a3ee_arsenal : a3ee_module_base {
             tooltip = "Name of the action menu item shown to players.";
         };
         class condition {
-            property = "a3ee_condition";
+            property = "a3ee_arsenal_condition";
             control = "EditCode";
             displayName = "Condition";
             expression = "_this setVariable [""%s"",_value]";
@@ -312,7 +312,7 @@ class a3ee_arsenal : a3ee_module_base {
             tooltip = "Custom condition (expression) for showing the action menu item.\n\nSpecial variables:\n  _target (unit to which action is attached to)\n  _this (caller/executing unit)";
         };
         class structured_hint {
-            property = "a3ee_structured_hint";
+            property = "a3ee_arsenal_structured_hint";
             control = "StructuredText1";
             description = "Hint: Synchronize to one or more objects/units.";
         };
@@ -335,5 +335,14 @@ class a3ee_arsenal_respawn : a3ee_module_base {
     };
     class EventHandlers : EventHandlers {
         class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_arsenalRespawn }"; };
+    };
+};
+
+class a3ee_teleport_on_jip : a3ee_module_base {
+    scope = 2;
+    icon = "\a3\Missions_F_Curator\data\img\iconMPTypeSectorControl_ca.paa";
+    displayName = "Teleport on JIP";
+    class EventHandlers : EventHandlers {
+        class teleport { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_teleportOnJIP }"; };
     };
 };
