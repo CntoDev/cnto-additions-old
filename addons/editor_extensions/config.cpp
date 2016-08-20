@@ -32,12 +32,30 @@ class CfgFunctions {
             class typeText;
             class instaOSD;
             class arsenalRespawn { postInit = 1; };
+            class checkApex;
         };
     };
 };
 
 class Cfg3DEN {
 #include "Cfg3DEN.h"
+};
+
+class ctrlMenuStrip;
+class display3DEN {
+    class Controls {
+        class MenuStrip: ctrlMenuStrip {
+            class Items {
+                class Tools {
+                    items[] += {"A3EE_Check_Apex"};
+                };
+                class A3EE_Check_Apex {
+                    text = "Check for Apex objects";
+                    action = "collect3DENHistory { [] call a3ee_fnc_checkApex }";
+                };
+            };
+        };
+    };
 };
 
 class CfgFactionClasses {
