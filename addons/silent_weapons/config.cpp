@@ -11,7 +11,9 @@ class CfgPatches {
             "A3_Weapons_F",
             "A3_Weapons_F_Acc",
             "ace_ballistics",  //overwrites suppressors
-            "rhsusf_c_weapons"
+            "rhsusf_c_weapons",
+            "rhs_c_weapons",
+            "rhs_sounds"
         };
     };
 };
@@ -34,15 +36,15 @@ class CfgAmmo {
         visibleFire = 0.001;
     };
 
-    /* AS Val / VSS Vintorez ammo, covers SP6 as well */
-    class rhs_B_762x39_Ball;
-    class rhs_B_9x39_SP5 : rhs_B_762x39_Ball {
+    /* AS Val / VSS Vintorez special ammo */
+    class rhs_B_9x39_SP5;
+    class SW_SP5_SuperHeavy_Frag : rhs_B_9x39_SP5 {
         hit = 50;  //default: 7.73
         dangerRadiusBulletClose = 1;
         dangerRadiusHit = 2;
         suppressionRadiusBulletClose = 1;
         suppressionRadiusHit = 2;
-        audibleFire = 0.1;
+        audibleFire = 0.05;  // slightly more than 9mm pistol
         visibleFire = 0.001;
     };
 
@@ -51,6 +53,17 @@ class CfgAmmo {
     class GrenadeHand : Grenade {
         visibleFire = 0.001;
         audibleFire = 0.005;
+    };
+};
+
+class CfgMagazines {
+    class rhs_10rnd_9x39mm_SP5;
+    class SW_10rnd_SP5_SuperHeavy_Frag : rhs_10rnd_9x39mm_SP5 {
+        mass = 20;
+        ammo = "SW_SP5_SuperHeavy_Frag";
+        displayName = "SP-5 10Rnd SuperHeavy Frag Mag";
+        descriptionShort = "Caliber: 9x60mm<br />Rounds: 10<br />Used in: AS Val";
+        author = "";
     };
 };
 
