@@ -91,4 +91,39 @@ class CfgWeapons {
             };
         };
     };
+
+    /* AS Val has very loud AK-ish silenced sound tails, reconfigure it after
+     * the vanilla PDW (nice re-chamber sound, non-dlc, no watermarking) */
+    class rhs_weap_ak74m_Base_F;
+    class rhs_weap_ak74m : rhs_weap_ak74m_Base_F {
+        class Single;
+        class FullAuto;
+    };
+    class rhs_weap_asval : rhs_weap_ak74m {
+        magazines[] += {"SW_10rnd_SP5_SuperHeavy_Frag"};
+        class Single : Single {
+            class StandardSound {
+                begin1[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\Silencer_Vermin_short_01",0.891251,1,400};
+                begin2[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\Silencer_Vermin_short_02",0.891251,1,400};
+                begin3[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\Silencer_Vermin_short_03",0.891251,1,400};
+                soundBegin[] = {"begin1",0.33,"begin2",0.33,"begin3",0.34};
+                SoundSetShot[] = {"SMGVermin_silencerShot_SoundSet","SMGVermin_silencerTail_SoundSet","SMGVermin_silencerInteriorTail_SoundSet"};
+                closure1[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\closure_Vermin_01",0.562341,1,10};
+                closure2[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\closure_Vermin_02",0.562341,1.1,10};
+                soundClosure[] = {"closure1",0.5,"closure2",0.5};
+            };
+        };
+        class FullAuto : FullAuto {
+            class StandardSound {
+                begin1[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\Silencer_Vermin_short_01",0.891251,1,400};
+                begin2[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\Silencer_Vermin_short_02",0.891251,1,400};
+                begin3[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\Silencer_Vermin_short_03",0.891251,1,400};
+                soundBegin[] = {"begin1",0.33,"begin2",0.33,"begin3",0.34};
+                SoundSetShot[] = {"SMGVermin_silencerShot_SoundSet","SMGVermin_silencerTail_SoundSet","SMGVermin_silencerInteriorTail_SoundSet"};
+                closure1[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\closure_Vermin_01",0.562341,1,10};
+                closure2[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\closure_Vermin_02",0.562341,1.1,10};
+                soundClosure[] = {"closure1",0.5,"closure2",0.5};
+            };
+        };
+    };
 };
