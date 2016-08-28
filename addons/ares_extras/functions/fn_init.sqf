@@ -149,7 +149,7 @@
     ]
 ] call Ares_fnc_RegisterCustomModule;
 
-} forEach ["AUTOTARGET", "MOVE", "ANIM", "AUTOCOMBAT", "PATH"];
+} forEach ["MOVE", "ANIM", "AUTOCOMBAT", "PATH"];
 
 /*
  * Environment
