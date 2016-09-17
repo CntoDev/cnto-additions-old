@@ -1,8 +1,5 @@
 if (isDedicated) exitWith {};
 
-// TEMP: if using (now obsolete) Arsenal Respawn module, do nothing
-if (count entities "a3ee_arsenal_respawn" > 0) exitWith {};
-
 0 = [] spawn {
     waitUntil { !isNull player };
     waitUntil { !isNil { player getVariable "saved3deninventory" } };

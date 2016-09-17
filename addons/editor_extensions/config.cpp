@@ -23,7 +23,6 @@ class CfgFunctions {
             class m_executeCode;
             class m_instaOSD;
             class m_arsenal;
-            class m_arsenalRespawn;
             class m_teleportOnJIP;
         };
         class misc {
