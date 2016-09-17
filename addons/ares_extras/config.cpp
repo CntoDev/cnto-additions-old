@@ -32,7 +32,6 @@ class CfgFunctions {
             file = "\ares_extras\functions\new";
             class manualSuppress;
             class bisSuppress;
-            class respawnMarker;
         };
     };
 };
