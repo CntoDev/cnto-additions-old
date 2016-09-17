@@ -103,9 +103,8 @@
         };
         [[_unit, {
             params ["_dst", "_units"];
-            _units = _units select { local _x };
             {
-                [_dst, _x] call Ares_Extras_fnc_bisSuppress;
+                [_dst, _x] remoteExec ["Ares_Extras_fnc_bisSuppress", _dst];
             } forEach _units;
         }], [[0,0,0],objNull]] call Ares_Extras_fnc_Selection;
     }
@@ -120,9 +119,8 @@
         };
         [[_unit, {
             params ["_dst", "_units"];
-            _units = _units select { local _x };
             {
-                [_dst, _x, 0, 0] call Ares_Extras_fnc_bisSuppress;
+                [_dst, _x, 0, 0] remoteExec ["Ares_Extras_fnc_bisSuppress", _dst];
             } forEach _units;
         }], [[0,0,0],objNull]] call Ares_Extras_fnc_Selection;
     }
