@@ -4,8 +4,7 @@ if (_veh == player) exitWith {
     10 fadeSound 1;
 };
 
-private _coef = profileNamespace getVariable "quiet_vehicles_coef";
-if (isNil "_coef") exitWith {};
+private _coef = profileNamespace getVariable ["quiet_vehicles_coef", 0.4];
 
 if (_veh isKindOf "Car" || _veh isKindOf "Tank" || {_veh isKindOf "Helicopter" || _veh isKindOf "Plane" || {_veh isKindOf "Ship"}}) then {
     /* entered vehicle eligible for sound reduction */
