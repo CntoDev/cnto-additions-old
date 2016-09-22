@@ -10,8 +10,9 @@ class Logic {
 
 class Object {
     class AttributeCategories {
-        class A3EE {
-            displayName = "A3EE";
+        /* "Custom" is a universal name that can be shared with other mods */
+        class Custom {
+            displayName = "Custom";
             collapsed = 1;
             class Attributes {
                 class IntoSimpleObject {
