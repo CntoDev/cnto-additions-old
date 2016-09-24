@@ -9,7 +9,6 @@ class CfgPatches {
         weapons[] = {};
         requiredAddons[] = {
             "A3_Weapons_F",
-            "A3_Weapons_F_Acc",  //flashlight
             "ace_grenades"  //overwrites flare intensity
         };
     };
@@ -40,26 +39,4 @@ class CfgAmmo {
         brightness = 80;
         intensity  = 5000000;
     };
-};
-
-class CfgWeapons {
-    /* weapon-attached flashlight */
-    class ItemCore;
-    class InventoryFlashLightItem_Base_F;
-    class acc_flashlight: ItemCore {
-        class ItemInfo: InventoryFlashLightItem_Base_F {
-            class Flashlight {
-                intensity = 400;
-                innerAngle = 1;
-                outerAngle = 120;
-                coneFadeCoef = 10;
-                flareMaxDistance = 250;
-                class Attenuation {
-                    hardLimitStart = 200;
-                    hardLimitEnd = 300;
-                };
-            };
-        };
-    };
-
 };
