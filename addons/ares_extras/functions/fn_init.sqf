@@ -337,10 +337,12 @@
 ] call Ares_fnc_RegisterCustomModule;
 [
     "AE - Respawn",
-    "Move respawn_resistance",
+    "Move respawn_guerrila",
     {
         params ["_pos", "_unit"];
-        "respawn_resistance" setMarkerPos _pos;
+        "respawn_guerrila" setMarkerPos _pos;
+        "respawn_guerilla" setMarkerPos _pos;
+        "respawn_guerrilla" setMarkerPos _pos;
     }
 ] call Ares_fnc_RegisterCustomModule;
 [
