@@ -40,6 +40,7 @@ class CfgAmmo {
     class rhs_B_9x39_SP5;
     class SW_SP5_SuperHeavy_Frag : rhs_B_9x39_SP5 {
         hit = 50;  //default: 7.73
+        caliber = 0.5;  //penetrate less, damage more
         dangerRadiusBulletClose = 1;
         dangerRadiusHit = 2;
         suppressionRadiusBulletClose = 1;
