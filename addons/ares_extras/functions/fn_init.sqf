@@ -371,6 +371,16 @@
 
 [
     "AE - Util",
+    "[U] ACE FullHeal",
+    {
+        [{
+            [player, _this] call ace_medical_fnc_treatmentAdvanced_fullHeal;
+        }, _this] call Ares_Extras_fnc_ForUnitsMP;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AE - Util",
     "[U] Captive - On",
     {
         [{ _this setCaptive true }, _this] call Ares_Extras_fnc_ForUnitsMP;
