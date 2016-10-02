@@ -214,12 +214,18 @@
 [
     "AE - Environment",
     "End Mission - Won",
-    { ["end1", true] remoteExec ["BIS_fnc_endMission"] }
+    {
+        [] remoteExec ["ocap_fnc_exportData", 2];
+        ["end1", true] remoteExec ["BIS_fnc_endMission"];
+    }
 ] call Ares_fnc_RegisterCustomModule;
 [
     "AE - Environment",
     "End Mission - Lost",
-    { ["end1", false] remoteExec ["BIS_fnc_endMission"] }
+    {
+        [] remoteExec ["ocap_fnc_exportData", 2];
+        ["end1", false] remoteExec ["BIS_fnc_endMission"];
+    }
 ] call Ares_fnc_RegisterCustomModule;
 
 /*
