@@ -75,6 +75,8 @@ class CfgWeapons {
         };
     };
     class rhsusf_acc_M952V : rhsusf_acc_anpeq15_light {
+        /* "flashlight" inventory image, instead of laser package */
+        picture = "\A3\weapons_F\Data\UI\gear_accv_flashlight_CA.paa";
         class ItemInfo : ItemInfo {
             mass = 1;
         };
