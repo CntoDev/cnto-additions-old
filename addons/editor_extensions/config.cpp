@@ -24,6 +24,7 @@ class CfgFunctions {
             class m_instaOSD;
             class m_arsenal;
             class m_teleportOnJIP;
+            class m_moveRespawn;
         };
         class misc {
             file = "\editor_extensions\functions\misc";
