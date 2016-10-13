@@ -21,7 +21,10 @@
     "[G] Force WP behaviour",
     {
         [{
-            [_this, currentWaypoint _this] setWaypointForceBehaviour true;
+            {
+                _x setWaypointForceBehaviour true;
+                _x setWaypointBehaviour "AWARE";
+            } forEach waypoints _this;
         }, _this] call Ares_Extras_fnc_ForGroups;
     }
 ] call Ares_fnc_RegisterCustomModule;
