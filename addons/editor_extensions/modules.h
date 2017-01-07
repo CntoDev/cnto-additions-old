@@ -349,3 +349,19 @@ class a3ee_move_respawn : a3ee_module_base {
         class teleport { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_moveRespawn }"; };
     };
 };
+
+class a3ee_attach_synced : a3ee_module_base {
+    scope = 2;
+    icon = "\a3\Modules_F\Data\iconTaskCreate_ca.paa";
+    displayName = "Attach synced";
+    class Attributes {
+        class structured_hint {
+            property = "a3ee_attach_synced_structured_hint";
+            control = "StructuredText2";
+            description = "Hint: First, synchronize the the object/unit you want everything else to attach to with this module. Then, synchronize all of the other objects/units you want to attach.";
+        };
+    };
+    class EventHandlers : EventHandlers {
+        class attach { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_attachSynced }"; };
+    };
+};
