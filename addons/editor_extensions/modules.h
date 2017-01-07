@@ -11,7 +11,7 @@ class a3ee_module_base : Logic {
 
 class a3ee_custom_location : a3ee_module_base {
     scope = 2;
-    icon = "\A3\modules_f\data\iconStrategicMapInit_ca.paa";
+    icon = "\A3\modules_f\data\portraitStrategicMapOpen_ca.paa";
     displayName = "Custom Location";
     canSetArea = 1;
     class AttributeValues {
@@ -67,7 +67,7 @@ class a3ee_custom_location : a3ee_module_base {
 
 class a3ee_hide_terrain : a3ee_module_base {
     scope = 2;
-    icon = "\A3\modules_f\data\iconStrategicMapImage_ca.paa";
+    icon = "\A3\modules_f\data\portraitStrategicMapImage_ca.paa";
     displayName = "Hide Terrain";
     canSetArea = 1;
     class AttributeValues {
@@ -90,7 +90,7 @@ class a3ee_hide_terrain : a3ee_module_base {
 
 class a3ee_briefing : a3ee_module_base {
     scope = 2;
-    icon = "\a3\Modules_f\data\iconHQ_ca.paa";
+    icon = "\a3\Modules_f\data\portraitHQ_ca.paa";
     displayName = "Briefing (OPORD)";
     class Attributes {
         class briefingfor {
@@ -255,7 +255,7 @@ class a3ee_exec_code : a3ee_module_base {
 
 class a3ee_insta_osd : a3ee_module_base {
     scope = 2;
-    icon = "\A3\modules_f\data\iconStrategicMapMission_ca.paa";
+    icon = "\A3\modules_f\data\portraitStrategicMapMission_ca.paa";
     displayName = "Insta OSD Location Info";
     class Attributes {
         class header {
@@ -324,7 +324,7 @@ class a3ee_arsenal : a3ee_module_base {
 
 class a3ee_teleport_on_jip : a3ee_module_base {
     scope = 2;
-    icon = "\a3\Missions_F_Curator\data\img\iconMPTypeSectorControl_ca.paa";
+    icon = "\a3\Missions_F_Curator\data\img\portraitMPTypeSectorControl_ca.paa";
     displayName = "Teleport on JIP";
     class EventHandlers : EventHandlers {
         class teleport { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_teleportOnJIP }"; };
@@ -333,7 +333,7 @@ class a3ee_teleport_on_jip : a3ee_module_base {
 
 class a3ee_move_respawn : a3ee_module_base {
     scope = 2;
-    icon = "\a3\Missions_F_Curator\data\img\iconMPTypeSectorControl_ca.paa";
+    icon = "\a3\Missions_F_Curator\data\img\portraitMPTypeSectorControl_ca.paa";
     displayName = "Move respawn";
     class Attributes {
         class movemarkers {
