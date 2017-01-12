@@ -1,10 +1,14 @@
 if(isServer) then {
-sleep 5;
-Spectator_Players = [];
-{
-	if(_x isKindOf "VirtualSpectator_F") then {
-    Spectator_Players pushback getPlayerUID _x;
-    };
-} forEach allPlayers;
-publicVariable "Spectator_Players";
+	0 = [] spawn {
+		// wait until mission has loaded in and players are initialized
+		waitUntil {time > 10 };
+
+		Spectator_Players = [];
+		{
+			if(isPlayer _x) then {
+		    Spectator_Players pushback getPlayerUID _x;
+		    };
+		} forEach entities "VirtualSpectator_F";
+		publicVariable "Spectator_Players";
+	};
 };
