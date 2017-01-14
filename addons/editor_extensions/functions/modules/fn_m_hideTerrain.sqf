@@ -10,6 +10,6 @@ if (_rect || _rx != _ry) exitWith {
 /* TODO: remake into (faster) nearTerrainObjects on 1.61+ */
 {
     _x hideObjectGlobal true;
-} count nearestTerrainObjects [_this, _filter, _rx];
+} count nearestTerrainObjects [_this, _filter, _rx, false, true];
 
 deleteVehicle _this;

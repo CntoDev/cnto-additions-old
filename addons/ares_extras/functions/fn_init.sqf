@@ -172,7 +172,7 @@
             params ["_pos", "_radius"];
             {
                 _x hideObjectGlobal true;
-            } count nearestTerrainObjects [_pos, [], _radius];
+            } count nearestTerrainObjects [_pos, [], _radius, false, true];
         }] remoteExec ["call", 2];
     }
 ] call Ares_fnc_RegisterCustomModule;
@@ -192,7 +192,7 @@
             params ["_pos", "_radius"];
             {
                 _x hideObjectGlobal false;
-            } count nearestTerrainObjects [_pos, [], _radius];
+            } count nearestTerrainObjects [_pos, [], _radius, false, true];
         }] remoteExec ["call", 2];
     }
 ] call Ares_fnc_RegisterCustomModule;
