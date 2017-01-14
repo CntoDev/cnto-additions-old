@@ -11,7 +11,7 @@ class CfgFunctions {
         class All {
             file = "\grasskeys";
             class init { postInit = 1; };
-            class setGrass;
+            class setTerrain;
         };
     };
 };
