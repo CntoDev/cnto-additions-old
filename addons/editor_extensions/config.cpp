@@ -10,7 +10,6 @@ class CfgFunctions {
     class a3ee {
         class object_attrs {
             file = "\editor_extensions\functions\object_attrs";
-            class oa_simpleObject;
         };
         class mission_attrs {
             file = "\editor_extensions\functions\mission_attrs";
