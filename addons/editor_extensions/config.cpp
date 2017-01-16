@@ -33,7 +33,11 @@ class CfgFunctions {
             class typeText;
             class instaOSD;
             class arsenalRespawn { postInit = 1; };
+        };
+        class menu {
+            file = "\editor_extensions\functions\menu";
             class checkApex;
+            class fillRoleDesc;
         };
     };
 };
@@ -42,22 +46,7 @@ class Cfg3DEN {
 #include "Cfg3DEN.h"
 };
 
-class ctrlMenuStrip;
-class display3DEN {
-    class Controls {
-        class MenuStrip: ctrlMenuStrip {
-            class Items {
-                class Tools {
-                    items[] += {"A3EE_Check_Apex"};
-                };
-                class A3EE_Check_Apex {
-                    text = "Check for Apex objects";
-                    action = "collect3DENHistory { [] call a3ee_fnc_checkApex }";
-                };
-            };
-        };
-    };
-};
+#include "menu.h"
 
 class CfgFactionClasses {
     class NO_CATEGORY;
