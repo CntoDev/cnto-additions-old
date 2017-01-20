@@ -1,4 +1,6 @@
-if (isNull getAssignedCuratorLogic player) exitWith {};
+/* allow only if logged in, see fn_maintainCurator */
+if (isMultiplayer && !serverCommandAvailable "#kick") exitWith {};
+
 switch _this do {
     case "open": {
         ["Open", true] spawn BIS_fnc_arsenal;
