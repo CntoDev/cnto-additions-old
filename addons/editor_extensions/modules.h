@@ -365,3 +365,19 @@ class a3ee_attach_synced : a3ee_module_base {
         class attach { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_attachSynced }"; };
     };
 };
+
+class a3ee_kill_on_jip : a3ee_module_base {
+    scope = 2;
+    icon = "iconMan";
+    displayName = "Kill player on JIP";
+    class Attributes {
+        class structured_hint {
+            property = "a3ee_kill_on_jip_structured_hint";
+            control = "StructuredText2";
+            description = "Hint: Simply kill players who Join In Progress. Good for PvP in combination with spectator-on-death for one-life PvP missions.";
+        };
+    };
+    class EventHandlers : EventHandlers {
+        class kill_on_jip { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_killOnJIP }"; };
+    };
+};

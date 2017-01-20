@@ -25,6 +25,7 @@ class CfgFunctions {
             class m_teleportOnJIP;
             class m_moveRespawn;
             class m_attachSynced;
+            class m_killOnJIP;
         };
         class misc {
             file = "\editor_extensions\functions\misc";
