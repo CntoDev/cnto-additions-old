@@ -27,6 +27,10 @@ class CfgFunctions {
             class m_attachSynced;
             class m_killOnJIP;
         };
+        class objects {
+            file = "\editor_extensions\functions\objects";
+            class o_teamColor;
+        };
         class misc {
             file = "\editor_extensions\functions\misc";
             class modifyLoadout;
