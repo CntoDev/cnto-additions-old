@@ -27,3 +27,21 @@ class Object {
         };
     };
 };
+
+class Group {
+    class AttributeCategories {
+        class Init {
+            class Attributes {
+                class a3ee_persistent_callsign {
+                    property = "a3ee_persistent_callsign";
+                    control = "Edit";
+                    displayName = "Persistent Callsign";
+                    expression = "";
+                    typeName = "STRING";
+                    defaultValue = """""";
+                    tooltip = "Set a persistent callsign for a group. This callsign will be restored whenever possible (on group placement, copy-paste across missions, when placed from sqe composition, etc.), overriding the default Callsign field above.";
+                };
+            };
+        };
+    };
+};

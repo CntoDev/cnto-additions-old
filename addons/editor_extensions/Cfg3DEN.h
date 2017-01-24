@@ -10,6 +10,10 @@ class Logic {
 
 #include "attributes.h"
 
+class EventHandlers {
+#include "EHs.h"
+}
+
 #include "\a3\3DEN\UI\macros.inc"
 class Attributes {
     class EditMulti3;
