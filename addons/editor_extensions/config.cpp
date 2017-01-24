@@ -38,12 +38,12 @@ class CfgFunctions {
             class typeText;
             class instaOSD;
             class arsenalRespawn { postInit = 1; };
-            class restorePersistentCallsigns;
         };
         class menu {
             file = "\editor_extensions\functions\menu";
             class checkApex;
             class fillRoleDesc;
+            class restorePersistentCallsigns;
         };
     };
 };

@@ -39,7 +39,7 @@ class Group {
                     expression = "";
                     typeName = "STRING";
                     defaultValue = """""";
-                    tooltip = "Set a persistent callsign for a group. This callsign will be restored whenever possible (on group placement, copy-paste across missions, when placed from sqe composition, etc.), overriding the default Callsign field above.";
+                    tooltip = "Set a persistent callsign for a group. This callsign can be restored via the Eden editor Tools menu, overriding the default Callsign field above.";
                 };
             };
         };
