@@ -10,6 +10,8 @@ if (!hasInterface) exitWith {};
         player assignCurator Insta_Zeus_Curator;
     };
     0 = Insta_Zeus_Curator spawn {
+        /* wait for any other unit-linked curators to take over */
+        sleep 5;
         while {true} do {
             /* #logout works only on dedicated, #kick is on hosted as well */
             if (serverCommandAvailable "#kick") then {
