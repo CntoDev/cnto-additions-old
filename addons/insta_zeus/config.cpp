@@ -2,7 +2,10 @@ class CfgPatches {
     class Insta_Zeus {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"cba_keybinding"};
+        requiredAddons[] = {
+            "3den",
+            "cba_keybinding"
+        };
     };
 };
 
@@ -13,6 +16,11 @@ class CfgFunctions {
             file = "\insta_zeus\functions\admin_curator";
             class createGlobalCurator { postInit = 1; };
             class maintainCurator { postInit = 1; };
+        };
+        /* checkbox-based (Eden) per-unit curator instances */
+        class UnitCurator {
+            file = "\insta_zeus\functions\unit_curator";
+            class createUnitCurator;
         };
         /* keybind-based arsenal functionality for the admin instance */
         class Arsenal {
@@ -43,5 +51,25 @@ class CfgVehicles {
         scope = 1;
         /* creates a curator instance upon creating this Vehicle */
         simulation = "curator";
+    };
+};
+
+class Cfg3DEN {
+    class Object {
+        class AttributeCategories {
+            class Control {
+                class Attributes {
+                    class insta_zeus_unit_curator {
+                        property = "insta_zeus_unit_curator";
+                        control = "Checkbox";
+                        displayName = "Create Zeus for this unit";
+                        expression = "[_this, _value] call Insta_Zeus_fnc_createUnitCurator";
+                        condition = "objectBrain";
+                        defaultValue = "false";
+                        tooltip = "Create a new Curator instance and assign it to the unit.\nWorks only in Multiplayer (global admin Curator instance is used in SP regardless).";
+                    };
+                };
+            };
+        };
     };
 };
