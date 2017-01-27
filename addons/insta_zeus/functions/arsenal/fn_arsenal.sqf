@@ -3,6 +3,12 @@ if (isMultiplayer && !serverCommandAvailable "#kick") exitWith {};
 
 switch _this do {
     case "open": {
+        /*
+         * if remotely controlling a unit, opening BI Arsenal breaks everything
+         * on v1.62+, making you unable to ever open the Arsenal UI without
+         * rejoining the mission, so let's prevent it here
+         */
+        if (!(cameraOn isEqualTo vehicle player)) exitWith {};
         ["Open", true] spawn BIS_fnc_arsenal;
     };
     case "spawn": {
