@@ -16,11 +16,10 @@ if (is3DEN) exitWith {};
     private _target = _synced select 0;
     _synced deleteAt 0;
 
-    private _tdir = vectorDir _target;
-    private _tup = vectorUp _target;
     {
-        // TODO: rotation, https://forums.bistudio.com/topic/201471-restoring-original-vectordirup-after-attachto/
+        private _dir = getDir _x;
         _x attachTo [_target];
+        _x setDir (_dir - getDir _x);
     } forEach _synced;
 
     deleteVehicle _this;
