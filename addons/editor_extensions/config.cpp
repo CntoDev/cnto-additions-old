@@ -33,7 +33,6 @@ class CfgFunctions {
         };
         class misc {
             file = "\editor_extensions\functions\misc";
-            class modifyLoadout;
             class nearLocText;
             class typeText;
             class instaOSD;
@@ -44,6 +43,11 @@ class CfgFunctions {
             class checkApex;
             class fillRoleDesc;
             class restorePersistentCallsigns;
+        };
+        class extras {
+            file = "\editor_extensions\functions\extras";
+            class modifyLoadout;
+            class godlike;
         };
     };
 };
