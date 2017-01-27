@@ -41,7 +41,7 @@ private "_curator";
 /* atomic */
 isNil {
     {
-        if (getAssignedCuratorUnit _x isEqualTo objNull) exitWith {
+        if (getAssignedCuratorUnit _x == objNull) exitWith {
             _curator = _x;
         };
     } forEach Insta_Zeus_Unit_Curators;

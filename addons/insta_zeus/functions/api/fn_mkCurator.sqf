@@ -69,7 +69,7 @@ _logic addCuratorAddons _addons;
         private _me = getAssignedCuratorUnit _curator;
         private _editfor = (
             (allCurators - [_curator]) select {
-                side getAssignedCuratorUnit _x isEqualTo side _me;
+                side getAssignedCuratorUnit _x == side _me;
             }
         );
         [[_unit, _editfor], {

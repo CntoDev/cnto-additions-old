@@ -2,7 +2,7 @@
     params ["_unit", "_color"];
 
     /* default white color on unit creation -> no change needed */
-    if (_color isEqualTo "MAIN") exitWith {};
+    if (_color == "MAIN") exitWith {};
 
     /*
      * the game seems to ignore any color settings for a few seconds

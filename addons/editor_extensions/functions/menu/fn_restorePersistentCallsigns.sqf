@@ -10,7 +10,7 @@ private _restore_one = {
     _sign = _sign select 0;
 
     /* already assigned? */
-    if (_sign isEqualTo groupId _this) exitWith {0};
+    if (_sign == groupId _this) exitWith {0};
 
     /* does it already exist? */
     if (_sign in (allGroups apply { groupId _x })) exitWith {

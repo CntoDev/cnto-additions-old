@@ -6,7 +6,7 @@ if (isDedicated) exitWith {};
 
 0 = _this spawn {
     waitUntil { !isNull player };
-    if (!(player isEqualTo _this )) exitWith {};
+    if (player != _this) exitWith {};
 
     _this allowDamage false;
     _this setCaptive true;

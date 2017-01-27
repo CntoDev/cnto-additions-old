@@ -21,7 +21,7 @@ if (!hasInterface) exitWith {};
                 };
             } else {
                 /* only if the assigned curator is our global one */
-                if (_this isEqualTo getAssignedCuratorLogic player) then {
+                if (_this == getAssignedCuratorLogic player) then {
                     _this remoteExec ["unassignCurator", 2];
                 };
             };
