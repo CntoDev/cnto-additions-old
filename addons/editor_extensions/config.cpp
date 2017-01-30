@@ -44,6 +44,13 @@ class CfgFunctions {
             class fillRoleDesc;
             class restorePersistentCallsigns;
         };
+        class extended_gear {
+            file = "\editor_extensions\functions\extgear";
+            class eg_goggles;
+            class eg_insignia;
+            class eg_face;
+            class extendedGear { postInit = 1; };
+        };
         class extras {
             file = "\editor_extensions\functions\extras";
             class modifyLoadout;
