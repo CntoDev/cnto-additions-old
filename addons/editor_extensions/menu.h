@@ -11,6 +11,7 @@ class display3DEN {
                     picture = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
                     items[] += {
                         "A3EE_Check_Apex",
+                        "A3EE_Check_Overload",
                         "A3EE_Fill_Role_Desc",
                         "A3EE_Restore_Persistent_Callsigns"
                     };
@@ -19,6 +20,11 @@ class display3DEN {
                     text = "Check for Apex objects";
                     picture = "\a3\Modules_F_Curator\Data\portraitordnancerocket_ca.paa";
                     action = "collect3DENHistory { [] call a3ee_fnc_checkApex }";
+                };
+                class A3EE_Check_Overload {
+                    text = "Check for overloaded units";
+                    picture = "\a3\Modules_F_Curator\Data\portraitrespawninventory_ca.paa";
+                    action = "collect3DENHistory { [] call a3ee_fnc_checkOverload }";
                 };
                 class A3EE_Fill_Role_Desc {
                     text = "Fill in Role Description";

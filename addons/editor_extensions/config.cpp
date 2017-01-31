@@ -41,6 +41,7 @@ class CfgFunctions {
         class menu {
             file = "\editor_extensions\functions\menu";
             class checkApex;
+            class checkOverload;
             class fillRoleDesc;
             class restorePersistentCallsigns;
         };
