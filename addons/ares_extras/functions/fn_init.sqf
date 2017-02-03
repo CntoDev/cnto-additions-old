@@ -153,6 +153,90 @@
 } forEach ["MOVE", "ANIM", "AUTOCOMBAT", "PATH"];
 
 /*
+ * Debug
+ */
+
+[
+    "AE - Debug",
+    "[G] Locality - Get",
+    {
+        [{
+            [[clientOwner, _this], {
+                params ["_client", "_groups"];
+                private _owners = _groups apply { [groupOwner _x, _x] };
+                /* callback to the client */
+                [_owners, {
+                    {
+                        _x params ["_owner", "_grp"];
+                        systemChat format ["%1: %2", _owner, _grp];
+                    } forEach _this;
+                }] remoteExec ["call", _client];
+            }] remoteExec ["call", 2];
+        }, _this, true] call Ares_Extras_fnc_Selection;
+    }
+] call Ares_fnc_RegisterCustomModule;
+[
+    "AE - Debug",
+    "[G] Locality - Set",
+    {
+        private _hcs = (entities "HeadlessClient_F") select { _x in allPlayers };
+        if (count _hcs < 1) exitWith {
+            ["No Headless Clients found."] call Ares_fnc_ShowZeusMessage;
+        };
+        _hcs = _hcs apply { [name _x, _x] };
+
+        private _reply = [
+            "Set locality / owner of groups", [
+                "Choose new owner",
+                _hcs
+            ]
+        ] call Ares_Extras_fnc_Dialog;
+        if (isNil "_reply") exitWith {};
+
+        [[_reply, {
+            [_this, {
+                params ["_newowner", "_groups"];
+                _newowner = owner _newowner;  /* passed unit */
+                { _x setGroupOwner _newowner; sleep 10; } forEach _groups;
+            }] remoteExec ["spawn", 2];
+        }], _this, true] call Ares_Extras_fnc_Selection;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AE - Debug",
+    "[U] Reset anim state",
+    {
+        [{ _this switchMove "" }, _this, 0] call Ares_Extras_fnc_ForUnitsMP;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AE - Debug",
+    "Give Zeus to player (may crash)",
+    {
+        params ["_pos", "_unit"];
+        if (isNil "_unit" || isNull _unit) exitWith {
+            ["No unit selected."] call Ares_fnc_ShowZeusMessage;
+        };
+        if (!isNull getAssignedCuratorLogic _unit) exitWith {
+            ["Player already has Zeus."] call Ares_fnc_ShowZeusMessage;
+        };
+        [_unit, {
+            if (!isNull getAssignedCuratorLogic _this) exitWith {};
+            private _curator = ([_this, false] call insta_zeus_fnc_mkCurator);
+            0 = [_curator, _this] spawn {
+                params ["_curator", "_unit"];
+                waitUntil {
+                    _unit assignCurator _curator;
+                    !isNull getAssignedCuratorUnit _curator;
+                };
+            };
+        }] remoteExec ["call", 2];
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+/*
  * Environment
  */
 
@@ -471,53 +555,6 @@
 
 [
     "AE - Util",
-    "[G] Locality - Get",
-    {
-        [{
-            [[clientOwner, _this], {
-                params ["_client", "_groups"];
-                private _owners = _groups apply { [groupOwner _x, _x] };
-                /* callback to the client */
-                [_owners, {
-                    {
-                        _x params ["_owner", "_grp"];
-                        systemChat format ["%1: %2", _owner, _grp];
-                    } forEach _this;
-                }] remoteExec ["call", _client];
-            }] remoteExec ["call", 2];
-        }, _this, true] call Ares_Extras_fnc_Selection;
-    }
-] call Ares_fnc_RegisterCustomModule;
-[
-    "AE - Util",
-    "[G] Locality - Set",
-    {
-        private _hcs = (entities "HeadlessClient_F") select { _x in allPlayers };
-        if (count _hcs < 1) exitWith {
-            ["No Headless Clients found."] call Ares_fnc_ShowZeusMessage;
-        };
-        _hcs = _hcs apply { [name _x, _x] };
-
-        private _reply = [
-            "Set locality / owner of groups", [
-                "Choose new owner",
-                _hcs
-            ]
-        ] call Ares_Extras_fnc_Dialog;
-        if (isNil "_reply") exitWith {};
-
-        [[_reply, {
-            [_this, {
-                params ["_newowner", "_groups"];
-                _newowner = owner _newowner;  /* passed unit */
-                { _x setGroupOwner _newowner; sleep 10; } forEach _groups;
-            }] remoteExec ["spawn", 2];
-        }], _this, true] call Ares_Extras_fnc_Selection;
-    }
-] call Ares_fnc_RegisterCustomModule;
-
-[
-    "AE - Util",
     "[U] Immortal - On",
     {
         [{ _this allowDamage false }, _this] call Ares_Extras_fnc_ForUnitsMP;
@@ -528,14 +565,6 @@
     "[U] Immortal - Off",
     {
         [{ _this allowDamage true }, _this] call Ares_Extras_fnc_ForUnitsMP;
-    }
-] call Ares_fnc_RegisterCustomModule;
-
-[
-    "AE - Util",
-    "[U] Reset anim state",
-    {
-        [{ _this switchMove "" }, _this, 0] call Ares_Extras_fnc_ForUnitsMP;
     }
 ] call Ares_fnc_RegisterCustomModule;
 
@@ -580,27 +609,3 @@
     }
 ] call Ares_fnc_RegisterCustomModule;
 
-[
-    "AE - Util",
-    "Give Zeus to player",
-    {
-        params ["_pos", "_unit"];
-        if (isNil "_unit" || isNull _unit) exitWith {
-            ["No unit selected."] call Ares_fnc_ShowZeusMessage;
-        };
-        if (!isNull getAssignedCuratorLogic _unit) exitWith {
-            ["Player already has Zeus."] call Ares_fnc_ShowZeusMessage;
-        };
-        [_unit, {
-            if (!isNull getAssignedCuratorLogic _this) exitWith {};
-            private _curator = ([_this, false] call insta_zeus_fnc_mkCurator);
-            0 = [_curator, _this] spawn {
-                params ["_curator", "_unit"];
-                waitUntil {
-                    _unit assignCurator _curator;
-                    !isNull getAssignedCuratorUnit _curator;
-                };
-            };
-        }] remoteExec ["call", 2];
-    }
-] call Ares_fnc_RegisterCustomModule;
