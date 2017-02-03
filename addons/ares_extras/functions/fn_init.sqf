@@ -236,6 +236,47 @@
     }
 ] call Ares_fnc_RegisterCustomModule;
 
+[
+    "AE - Debug",
+    "Set player insignia (in profile)",
+    {
+        params ["_pos", "_unit"];
+        if (isNil "_unit" || {isNull _unit || !isPlayer _unit}) exitWith {
+            ["Not placed on a player unit."] call Ares_fnc_ShowZeusMessage;
+        };
+
+        private _cfgs = "true" configClasses (configFile >> "CfgUnitInsignia");
+        private _pairs = _cfgs apply {
+            /* displayName, classname */
+            [getText (_x >> "displayName"), configName _x]
+        };
+        /* prefix "None */
+        _pairs = [["None", ""]] + _pairs;
+
+        private _reply = [
+            "Set player insignia (profile variable)", [
+                [
+                    "Insignia",
+                    _pairs
+                ]
+            ]
+        ] call Ares_Extras_fnc_Dialog;
+        if (isNil "_reply") exitWith {};
+
+        if (_reply == "") then {
+            /* remove insignia */
+            {
+                profileNamespace setVariable ["a3ee_player_insignia", nil];
+            } remoteExec ["call", _unit];
+        } else {
+            /* set insignia */
+            [_reply, {
+                profileNamespace setVariable ["a3ee_player_insignia", _this];
+            }] remoteExec ["call", _unit];
+        };
+    }
+] call Ares_fnc_RegisterCustomModule;
+
 /*
  * Environment
  */
