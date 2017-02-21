@@ -37,6 +37,7 @@ class CfgFunctions {
             class typeText;
             class instaOSD;
             class arsenalRespawn { postInit = 1; };
+            class decomment;
         };
         class menu {
             file = "\editor_extensions\functions\menu";
