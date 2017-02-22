@@ -391,7 +391,7 @@ class a3ee_exec_code_3den : a3ee_module_base {
             property = "a3ee_3den_code";
             control = "EditCode30";
             displayName = "Code";
-            expression = "if (is3DEN) then { [] call (compile (_value call a3ee_fnc_decomment)) }";
+            expression = "if (is3DEN) then { [] call (compile (_value call a3ee_fnc_decomment)) } else { deleteVehicle _this }";
             defaultValue = """""";
             typeName = "STRING";
             tooltip = "Code to run in the Eden editor whenever this module is pasted, placed from a composition, loaded in a mission in Eden or when you press ""OK"". Thus make sure the code can be run any number of times in succession without breaking. No valid arguments are passed, do not parse any.";
