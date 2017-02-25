@@ -26,6 +26,7 @@ class CfgFunctions {
             class m_moveRespawn;
             class m_attachSynced;
             class m_killOnJIP;
+            class m_postProcess;
         };
         class objects {
             file = "\editor_extensions\functions\objects";
