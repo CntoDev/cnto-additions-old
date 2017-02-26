@@ -2,7 +2,7 @@ class CfgPatches {
     class Ares_Extras {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"Ares"};
+        requiredAddons[] = {};
     };
 };
 
