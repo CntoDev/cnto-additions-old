@@ -1,10 +1,10 @@
 /*
- * silent weapons - various tweaks of bullet, magazine and weapon AI detect
- * properties to make them more usable in silenced urban/cqb combat
+ * silent ops - various tweaks of bullet, magazine, weapons and soldiers
+ * for "silent" operations
  */
 
 class CfgPatches {
-    class Silent_Weapons {
+    class Silent_Ops {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -13,7 +13,9 @@ class CfgPatches {
             "ace_ballistics",  //overwrites suppressors
             "rhsusf_c_weapons",
             "rhs_c_weapons",
-            "rhs_sounds"
+            "rhs_sounds",
+            "hlcweapons_core",  // HLC_10mm_JHP
+            "hlcweapons_mp5"  // 10mm mp5 smg (mag/weapon/suppressor
         };
     };
 };
@@ -49,11 +51,23 @@ class CfgAmmo {
         visibleFire = 0.001;
     };
 
+    /* NIArms 10mm JHP bullet, increase hit to account for RHS */
+    class HLC_9x19_Ball;
+    class HLC_10mm_FMJ : HLC_9x19_Ball {
+        hit = 14;
+        dangerRadiusBulletClose = 1;
+        dangerRadiusHit = 2;
+        suppressionRadiusBulletClose = 1;
+        suppressionRadiusHit = 2;
+        audibleFire = 0.05;  // slightly more than 9mm pistol
+        visibleFire = 0.001;
+    };
+
     /* silent grenade throwing, AI still hears explosion */
     class Grenade;
     class GrenadeHand : Grenade {
-        visibleFire = 0.001;
         audibleFire = 0.005;
+        visibleFire = 0.001;
     };
 };
 
@@ -65,6 +79,14 @@ class CfgMagazines {
         displayName = "SP-5 10Rnd SuperHeavy Frag Mag";
         descriptionShort = "Caliber: 9x60mm<br />Rounds: 10<br />Used in: AS Val";
         author = "";
+    };
+
+    /* 10mm mp5 - subsonic initspeed, no tracers */
+    class 30Rnd_9x21_Mag;
+    class hlc_30Rnd_10mm_B_MP5 : 30Rnd_9x21_Mag {
+        initspeed = 320;
+        lastroundstracer = 0;
+        tracersevery = 0;
     };
 };
 
@@ -126,5 +148,85 @@ class CfgWeapons {
                 soundClosure[] = {"closure1",0.5,"closure2",0.5};
             };
         };
+    };
+
+    /* NIArms 10mm mp5 silencer */
+    class hlc_muzzle_Agendasix : muzzle_snds_H {};  /* muzzle_snds_H above */
+    class hlc_muzzle_Agendasix10mm : hlc_muzzle_Agendasix {
+        class ItemInfo : ItemInfo {
+            class AmmoCoef : AmmoCoef {
+                /* as close as it gets, ~5m */
+                audibleFire = 0.001;
+                visibleFire = 0.001;
+            };
+        };
+    };
+
+    /* NIArms 10mm mp5 - super fast burst */
+    class hlc_MP5_base;
+    class hlc_smg_MP5N : hlc_MP5_base {
+        class Burst;
+    };
+    class hlc_smg_mp510 : hlc_smg_MP5N {
+        class Burst : Burst {
+            reloadtime = "(20/800)";
+        };
+    };
+};
+
+class CfgVehicles {
+    /*
+     * camouflage:
+     * We use 0.7 spotdistance skill via ASR AI, so use super low
+     * value here, to counteract it
+     */
+    /*
+     * class Sound*:
+     * I should actually just re-define all of the 9000 sounds, but with lower
+     * volume .. though it would be a lot of variables to break on Arma update.
+     * The class Sound* thing is really lazy, but as there are still *some*
+     * quiet footstep sounds, it works reasonably well in practice.
+     */
+    #define SILENT_UNIT_TUNABLES \
+        camouflage = 0.3; \
+        audible = 0.005; \
+        attendant = 1; \
+        engineer = 1; \
+        uavHacker = 1; \
+        canDeactivateMines = 1; \
+        canHideBodies = 1; \
+        class SoundEnvironExt {}; \
+        class SoundGear {};
+
+    /* no I_Soldier_recon_base, imitate it based on B_Soldier_recon_base */
+    class I_Soldier_base_F;
+    class silent_ops_I_Soldier_recon_base : I_Soldier_base_F {
+        scope = 0;
+        detectSkill = 30;
+        displayName = "Recon";
+        editorSubcategory = "EdSubcat_Personnel_SpecialForces";
+        nameSound = "veh_infantry_SF_s";
+        role = "Rifleman";
+        textPlural = "specops";
+        textSingular = "specop";
+        vehicleClass = "MenRecon";
+    };
+
+    class B_Soldier_recon_base;
+    class silent_ops_B_SilentOp : B_Soldier_recon_base {
+        SILENT_UNIT_TUNABLES
+        scope = 2;
+        displayName = "Silent Operative";
+    };
+    class O_Soldier_recon_base;
+    class silent_ops_O_SilentOp : O_Soldier_recon_base {
+        SILENT_UNIT_TUNABLES
+        scope = 2;
+        displayName = "Silent Operative";
+    };
+    class silent_ops_I_SilentOp : silent_ops_I_Soldier_recon_base {
+        SILENT_UNIT_TUNABLES
+        scope = 2;
+        displayName = "Silent Operative";
     };
 };
