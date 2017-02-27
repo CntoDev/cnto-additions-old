@@ -9,6 +9,7 @@ class CfgPatches {
         weapons[] = {"silent_ops_cricket"};
         magazines[] = {"30Rnd_silent_ops_cricket_mag"};
         requiredAddons[] = {
+            "A3_Sounds_F",
             "A3_Weapons_F",
             "A3_Weapons_F_Acc",
             "ace_ballistics",  //overwrites suppressors
@@ -97,6 +98,24 @@ class CfgMagazines {
     };
 };
 
+class CfgSoundSets {
+    class SMGPDW2000_silencerShot_SoundSet;
+    class silent_ops_cricket_silencerShot_SoundSet : SMGPDW2000_silencerShot_SoundSet {
+        volumeFactor = 0.5;
+        volumeCurve = "InverseSquare4Curve";
+    };
+    class SMGPDW2000_silencerTail_SoundSet;
+    class silent_ops_cricket_silencerTail_SoundSet : SMGPDW2000_silencerTail_SoundSet {
+        volumeFactor = 0.3;
+        volumeCurve = "InverseSquare4Curve";
+    };
+    class SMGPDW2000_silencerInteriorTail_SoundSet;
+    class silent_ops_cricket_silencerInteriorTail_SoundSet : SMGPDW2000_silencerInteriorTail_SoundSet {
+        volumeFactor = 0.3;
+        volumeCurve = "InverseSquare4Curve";
+    };
+};
+
 class CfgWeapons {
     class ItemCore;
     class InventoryMuzzleItem_Base_F;
@@ -176,13 +195,41 @@ class CfgWeapons {
         descriptionShort = "Specialist PDW<br/>Caliber: 11.111mm";
         initSpeed = 320;
 
-        modes[] = {"Single", "DualBurst", "FullAuto"};
+        modes[] = {"SSingle", "SDualBurst", "SFullAuto"};
+        class SilencedSound;
         class Burst;
-        class DualBurst : Burst {
+        class SDualBurst : Burst {
             burst = 2;
             reloadTime = 0.01;
             textureType = "dual";
             showToPlayer = 1;
+            class SilencedSound : SilencedSound {
+                SoundSetShot[] = {
+                    "silent_ops_cricket_silencerShot_SoundSet",
+                    "silent_ops_cricket_silencerTail_SoundSet",
+                    "silent_ops_cricket_silencerInteriorTail_SoundSet"
+                };
+            };
+        };
+        class Single;
+        class SSingle : Single {
+            class SilencedSound : SilencedSound {
+                SoundSetShot[] = {
+                    "silent_ops_cricket_silencerShot_SoundSet",
+                    "silent_ops_cricket_silencerTail_SoundSet",
+                    "silent_ops_cricket_silencerInteriorTail_SoundSet"
+                };
+            };
+        };
+        class FullAuto;
+        class SFullAuto : FullAuto {
+            class SilencedSound : SilencedSound {
+                SoundSetShot[] = {
+                    "silent_ops_cricket_silencerShot_SoundSet",
+                    "silent_ops_cricket_silencerTail_SoundSet",
+                    "silent_ops_cricket_silencerInteriorTail_SoundSet"
+                };
+            };
         };
 
         magazines[] = {"30Rnd_silent_ops_cricket_mag"};
