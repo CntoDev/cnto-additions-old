@@ -6,7 +6,8 @@
 class CfgPatches {
     class Silent_Ops {
         units[] = {};
-        weapons[] = {};
+        weapons[] = {"silent_ops_cricket"};
+        magazines[] = {"30Rnd_silent_ops_cricket_mag"};
         requiredAddons[] = {
             "A3_Weapons_F",
             "A3_Weapons_F_Acc",
@@ -14,8 +15,7 @@ class CfgPatches {
             "rhsusf_c_weapons",
             "rhs_c_weapons",
             "rhs_sounds",
-            "hlcweapons_core",  // HLC_10mm_JHP
-            "hlcweapons_mp5"  // 10mm mp5 smg (mag/weapon/suppressor
+            "A3_Weapons_F_SMGs_Pdw2000"
         };
     };
 };
@@ -51,10 +51,12 @@ class CfgAmmo {
         visibleFire = 0.001;
     };
 
-    /* NIArms 10mm JHP bullet, increase hit to account for RHS */
-    class HLC_9x19_Ball;
-    class HLC_10mm_FMJ : HLC_9x19_Ball {
-        hit = 14;
+    /* Silent Cricket FMJ ammo */
+    class B_9x21_Ball;
+    class silent_ops_cricket_ball : B_9x21_Ball {
+        caliber = 3;
+        hit = 16;
+        typicalSpeed = 320;
         dangerRadiusBulletClose = 1;
         dangerRadiusHit = 2;
         suppressionRadiusBulletClose = 1;
@@ -81,12 +83,17 @@ class CfgMagazines {
         author = "";
     };
 
-    /* 10mm mp5 - subsonic initspeed, no tracers */
+    /* Silent Cricket mag */
     class 30Rnd_9x21_Mag;
-    class hlc_30Rnd_10mm_B_MP5 : 30Rnd_9x21_Mag {
+    class 30Rnd_silent_ops_cricket_mag : 30Rnd_9x21_Mag {
+        displayName = "30Rnd Silent Cricket food";
+        ammo = "silent_ops_cricket_ball";
+        descriptionShort = "Caliber: 11.111mm - Fine cut<br />Rounds: 30<br />Used in: You're not quite sure";
         initspeed = 320;
         lastroundstracer = 0;
         tracersevery = 0;
+        /* inv image of a Sting mag */
+        picture = "\A3\weapons_f\data\ui\M_30Rnd_9x21_CA.paa";
     };
 };
 
@@ -150,26 +157,43 @@ class CfgWeapons {
         };
     };
 
-    /* NIArms 10mm mp5 silencer */
-    class hlc_muzzle_Agendasix : muzzle_snds_H {};  /* muzzle_snds_H above */
-    class hlc_muzzle_Agendasix10mm : hlc_muzzle_Agendasix {
-        class ItemInfo : ItemInfo {
-            class AmmoCoef : AmmoCoef {
-                /* as close as it gets, ~5m */
-                audibleFire = 0.001;
-                visibleFire = 0.001;
-            };
-        };
+    /* don't redefine audible/visibleFire, see muzzle_snds_L above */
+    class silent_ops_cricket_supp : muzzle_snds_L {
+        displayName = "Cricket Silencer";
+        descriptionshort = "Remove to create Macho Cricket.<br />Caliber: 11.1111mm";
+        /* "Tundra" suppressor model from hlc/niarms */
+        model = "hlc_core\mesh\accessories\barrel\9\tundra.p3d";
+        picture = "\hlc_core\tex\ui\gear_tundra_ca";
     };
 
-    /* NIArms 10mm mp5 - super fast burst */
-    class hlc_MP5_base;
-    class hlc_smg_MP5N : hlc_MP5_base {
-        class Burst;
+    class MuzzleSlot;
+    class pdw2000_base_F;
+    class hgun_PDW2000_F : pdw2000_base_F {
+        class WeaponSlotsInfo;
     };
-    class hlc_smg_mp510 : hlc_smg_MP5N {
-        class Burst : Burst {
-            reloadtime = "(20/800)";
+    class silent_ops_cricket : hgun_PDW2000_F {
+        displayName = "Silent Cricket";
+        descriptionShort = "Specialist PDW<br/>Caliber: 11.111mm";
+        initSpeed = 320;
+
+        modes[] = {"Single", "DualBurst", "FullAuto"};
+        class Burst;
+        class DualBurst : Burst {
+            burst = 2;
+            reloadTime = 0.01;
+            textureType = "dual";
+            showToPlayer = 1;
+        };
+
+        magazines[] = {"30Rnd_silent_ops_cricket_mag"};
+        discretedistance[] = {10, 100, 150, 200};
+
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            class MuzzleSlot : MuzzleSlot {
+                class compatibleItems {
+                    silent_ops_cricket_supp = 1;
+                };
+            };
         };
     };
 };
