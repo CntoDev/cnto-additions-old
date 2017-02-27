@@ -242,6 +242,15 @@ class CfgWeapons {
                 };
             };
         };
+
+        class LinkedItems {
+            class LinkedItemsMuzzle {
+                slot = "MuzzleSlot";
+                item = "silent_ops_cricket_supp";
+            };
+        };
+        /* so that Arsenal doesn't ignore us because of LinkedItems */
+        baseWeapon = "silent_ops_cricket";
     };
 };
 
