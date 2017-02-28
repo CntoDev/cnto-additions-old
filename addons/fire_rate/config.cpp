@@ -16,11 +16,11 @@ class CfgWeapons {
     /*
      * give M249 variants a slower fire rate option for suppression
      */
-    class Rifle_Base_F;
-    class rhs_weap_saw_base : Rifle_Base_F {
+    class rhs_weap_lmg_minimipara;
+    class rhs_weap_lmg_minimi_railed : rhs_weap_lmg_minimipara {
         class FullAuto;
     };
-    class rhs_weap_lmg_minimipara : rhs_weap_saw_base {
+    class rhs_weap_m249 : rhs_weap_lmg_minimi_railed {
         modes[] = {"FullAuto","SlowAuto","close","short","medium","far_optic1","far_optic2"};
         class FullAuto : FullAuto {
             textureType = "fastAuto";
@@ -28,7 +28,7 @@ class CfgWeapons {
         };
         class SlowAuto : FullAuto {
             textureType = "fullAuto";
-            reloadTime = 0.3;  /* 4x slower than FullAuto */
+            reloadTime = 0.15;  /* 2x slower than FullAuto */
         };
     };
 };
