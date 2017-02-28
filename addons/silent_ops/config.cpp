@@ -191,9 +191,10 @@ class CfgWeapons {
         class WeaponSlotsInfo;
     };
     class silent_ops_cricket : hgun_PDW2000_F {
-        displayName = "Silent Cricket";
+        displayName = "FWI/CPW2000b (Silent Cricket)";
+        author = "Freghar Weapon Industries";
         descriptionShort = "Specialist PDW<br/>Caliber: 11.111mm";
-        initSpeed = 320;
+        initSpeed = -1;
 
         modes[] = {"SSingle", "SDualBurst", "SFullAuto"};
         class SilencedSound;
