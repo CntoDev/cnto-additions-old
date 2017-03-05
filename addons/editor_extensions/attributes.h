@@ -76,5 +76,17 @@ class Group {
                 };
             };
         };
+        class State {
+            class Attributes {
+                class a3ee_locality_transfer {
+                    property = "a3ee_locality_transfer";
+                    control = "Checkbox";
+                    displayName = "Move group to HC";
+                    expression = "_this setVariable [""%s"",_value]";
+                    defaultValue = "false";
+                    tooltip = "Transfer this group to a Headless Client before mission start, but after any unit/group initialization finishes.\nNote that any changes with local effect will be lost.\n\nThis functionality needs a module counterpart.";
+                };
+            };
+        };
     };
 };
