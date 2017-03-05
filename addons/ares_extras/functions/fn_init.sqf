@@ -164,15 +164,9 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     {
         [{
             [[clientOwner, _this], {
-                params ["_client", "_groups"];
+                params ["_zeus", "_groups"];
                 private _owners = _groups apply { [groupOwner _x, _x] };
-                /* callback to the client */
-                [_owners, {
-                    {
-                        _x params ["_owner", "_grp"];
-                        systemChat format ["%1: %2", _owner, _grp];
-                    } forEach _this;
-                }] remoteExec ["call", _client];
+                (str _owners) remoteExec ["systemChat", _zeus];
             }] remoteExec ["call", 2];
         }, _this, true] call Ares_Extras_fnc_Selection;
     }
