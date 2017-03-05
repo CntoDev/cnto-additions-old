@@ -176,24 +176,54 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     "[G] Locality - Set",
     {
         private _hcs = (entities "HeadlessClient_F") select { _x in allPlayers };
-        if (count _hcs < 1) exitWith {
-            ["No Headless Clients found."] call Ares_fnc_ShowZeusMessage;
-        };
-        _hcs = _hcs apply { [name _x, _x] };
+        private _targets =
+            (_hcs apply { [name _x, _x] }) +
+            [["Server", -1]] +
+            ((allPlayers - _hcs) apply { [name _x, _x] } );
 
         private _reply = [
             "Set locality / owner of groups", [
                 "Choose new owner",
-                _hcs
+                _targets
             ]
         ] call Ares_Extras_fnc_Dialog;
         if (isNil "_reply") exitWith {};
 
-        [[_reply, {
+        [[[_reply, clientOwner], {
             [_this, {
-                params ["_newowner", "_groups"];
-                _newowner = owner _newowner;  /* passed unit */
-                { _x setGroupOwner _newowner; sleep 10; } forEach _groups;
+                params ["_args", "_groups"];
+                _args params ["_reply", "_zeus"];
+
+                if (!isNil "ares_extras_transferring_units") exitWith {
+                    "Locality transfer already running." remoteExec ["systemChat", _zeus];
+                };
+                ares_extras_transferring_units = true;
+
+                if (_reply isEqualTo -1) then {
+                    _reply = 2;  /* special value for Server */
+                } else {
+                    _reply = owner _reply;  /* passed unit */
+                };
+
+                _groups = _groups select { groupOwner _x != _reply };
+
+                private _i = 0;
+                private _total = count _groups;
+                format ["Going to transfer %1 groups.", _total] remoteExec ["systemChat", _zeus];
+                {
+                    if (!isNull _x) then {
+                        private _src = groupOwner _x;
+                        _x setGroupOwner _reply;
+                        waitUntil {
+                            !(_src in (units _x apply { owner _x }));
+                        };
+                        _i = _i + 1;
+                        sleep 10;
+                        format ["%1 done (%2/%3)", str _x, _i, _total] remoteExec ["systemChat", _zeus];
+                    };
+                } forEach _groups;
+                ares_extras_transferring_units = nil;
+                "Locality transfer done." remoteExec ["systemChat", _zeus];
             }] remoteExec ["spawn", 2];
         }], _this, true] call Ares_Extras_fnc_Selection;
     }
