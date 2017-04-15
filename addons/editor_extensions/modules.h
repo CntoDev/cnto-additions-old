@@ -203,29 +203,13 @@ class a3ee_exec_code : a3ee_module_base {
             typeName = "NUMBER";
             defaultValue = "1";
         };
-        class waitforplayer {
-            property = "a3ee_waitforplayer";
-            control = "Checkbox";
-            displayName = "Wait for non-null player";
-            expression = "_this setVariable [""%s"",_value]";
-            defaultValue = "true";
-            tooltip = "Works only in Scheduled environment. Doesn't work on dedicated server.";
-        };
-        class waitforstart {
-            property = "a3ee_waitforstart";
-            control = "Checkbox";
-            displayName = "Wait for mission start";
-            expression = "_this setVariable [""%s"",_value]";
-            defaultValue = "false";
-            tooltip = "Works only in Scheduled environment.";
-        };
         class runoninit {
             property = "a3ee_runoninit";
             control = "Checkbox";
             displayName = "Run on init";
             expression = "_this setVariable [""%s"",_value]";
             defaultValue = "true";
-            tooltip = "Run once, on player initialization.";
+            tooltip = "Run once, on mission initialization.";
         };
         class runonrespawn {
             property = "a3ee_runonrespawn";
@@ -233,7 +217,15 @@ class a3ee_exec_code : a3ee_module_base {
             displayName = "Run on respawn";
             expression = "_this setVariable [""%s"",_value]";
             defaultValue = "false";
-            tooltip = "Run on each player respawn, passing [newunit,oldunit] as args, like the Respawn EH.\n\nIgnores waiting for player and mission start. Works only on clients and fires only for respawn of client's own player unit, not for any other units.";
+            tooltip = "Run on each player respawn.\n\nWorks only on clients and fires only for respawn of client's own player unit, not for any other units.";
+        };
+        class keepmodule {
+            property = "a3ee_keepmodule";
+            control = "Checkbox";
+            displayName = "Keep module after mission start";
+            expression = "_this setVariable [""%s"",_value]";
+            defaultValue = "false";
+            tooltip = "Keep this module around at all times and pass it as an object argument to the executed code. This allows the use of this module as a reference point (for positions, distances, synchronizedObjects, etc.).";
         };
         class code {
             property = "a3ee_code";
@@ -245,7 +237,7 @@ class a3ee_exec_code : a3ee_module_base {
             /* does only init line -like validation, forbits passed local vars
              * like _this on the compiler level - unusable for ie. respawn code */
             //validate = "expression";
-            tooltip = "Code to run. No valid arguments are passed, do not parse any.";
+            tooltip = "Code to run. No valid arguments are passed except when the ""Keep module"" checkbox is selected.";
         };
     };
     class EventHandlers : EventHandlers {

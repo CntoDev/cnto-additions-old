@@ -5,6 +5,7 @@ if (!_enable) exitWith {};
 
 private _execonmp = _this getVariable "execonmp";
 private _forjip = _this getVariable "forjip";
+private _keepmodule = _this getVariable "keepmodule";
 
 /* unique internal variable name, based on position */
 private _uid = "exec_code_" + ((str position _this) call BIS_fnc_filterString);
@@ -16,33 +17,39 @@ private _uid = "exec_code_" + ((str position _this) call BIS_fnc_filterString);
      _this getVariable "runoninit",
      _this getVariable "runonrespawn",
      compile ((_this getVariable "code") call a3ee_fnc_decomment),
+     _keepmodule,
+     _this,
      _uid],
     {
         params ["_execenv", "_waitforplayer", "_waitforstart",
-                "_runoninit", "_runonrespawn", "_code", "_uid"];
-
-        private _wrapper = {
-            params ["_waitforplayer", "_waitforstart", "_code"];
-            if (canSuspend && _waitforplayer && !isDedicated) then {
-                waitUntil { !isNull player };
-            };
-            if (canSuspend && _waitforstart) then {
-                waitUntil { time > 0 };
-            };
-            [] call _code;
-        };
+                "_runoninit", "_runonrespawn", "_code",
+                "_keepmodule", "_module", "_uid"];
 
         if (_runoninit) then {
-            private _arg = [_waitforplayer, _waitforstart, _code];
             switch (_execenv) do {
-                case 0: { _arg call _wrapper };
-                case 1: { _arg spawn _wrapper };
+                case 0: {
+                    if (_keepmodule) then {
+                        _module call _code;
+                    } else {
+                        [] call _code;
+                    };
+                };
+                case 1: {
+                    if (_keepmodule) then {
+                        _module spawn _code;
+                    } else {
+                        [] spawn _code;
+                    };
+                };
             };
         };
 
         if (_runonrespawn) then {
-            /* globalize code, so that respawn EH can access it */
-            missionNamespace setVariable [_uid, _code];
+            /* globalize code and module, so that respawn EH can access them */
+            missionNamespace setVariable [_uid+"code", _code];
+            if (_keepmodule) then {
+                missionNamespace setVariable [_uid+"mod", _module];
+            };
 
             /* initial EH addition needs to be in scheduled env, as we need
              * to wait for non-null player obj */
@@ -50,15 +57,19 @@ private _uid = "exec_code_" + ((str position _this) call BIS_fnc_filterString);
                 params ["_execenv", "_uid"];
                 if (isDedicated) exitWith {};  /* no player to respawn */
                 waitUntil { !isNull player };
-
-                private _wrapper = switch (_execenv) do {
-                    case 0: { "_this call " + _uid };
-                    case 1: { "_this spawn " + _uid };
-                };
-                player addEventHandler ["Respawn", compile _wrapper];
+                player addEventHandler ["Respawn", compile (
+                    'private _code = missionNamespace getVariable "' + _uid+"code" + '";' +
+                    'private _arg = missionNamespace getVariable ["' + _uid+"mod" + '", []];' +
+                    (switch (_execenv) do {
+                        case 0: { '_arg call _code' };
+                        case 1: { '_arg spawn _code' };
+                    })
+                )];
             };
         };
     }
 ] remoteExec ["call", _execonmp, _forjip];
 
-deleteVehicle _this;
+if (!_keepmodule) then {
+    deleteVehicle _this;
+};
