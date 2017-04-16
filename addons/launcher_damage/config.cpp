@@ -43,15 +43,3 @@ class CfgMagazines {
         ammo = "tf47_at4_m_HEDP";
     };
 };
-
-class CfgAmmo {
-    /*
-     * make TF47 High Penetration rounds (and any RHS weapons that use them)
-     * more damaging, the default 1000 versus 900 HEAT is too small difference
-     */
-    class tf47_at4_m_HEAT;
-    class tf47_at4_m_HP : tf47_at4_m_HEAT {
-        hit = 1600;
-        indirectHitRange = 0.1;  /* heavy non-explosive projectile */
-    };
-};
