@@ -40,6 +40,7 @@ class CfgFunctions {
             class instaOSD;
             class arsenalRespawn { postInit = 1; };
             class decomment;
+            class boxGuard;
         };
         class menu {
             file = "\editor_extensions\functions\menu";
