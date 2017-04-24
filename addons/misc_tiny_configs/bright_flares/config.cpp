@@ -18,21 +18,21 @@ class CfgPatches {
 class CfgAmmo {
     class FlareCore;
     class FlareBase;
-    class Flare_82mm_AMOS_White: FlareCore {
+    class Flare_82mm_AMOS_White : FlareCore {
         timeToLive = 80;
-        brightness = 200;
         intensity  = 500000;
+        size = 0.1;
     };
-    class F_40mm_White: FlareBase {
-        brightness = 120;
+    class F_40mm_White : FlareBase {
         intensity  = 500000;
+        size = 0.1;
     };
-    class F_20mm_White: FlareBase {
-        brightness = 80;
+    class F_20mm_White : FlareBase {
         intensity  = 500000;
+        size = 0.1;
     };
-    class F_Signal_Green: FlareBase {
-        brightness = 80;
+    class F_Signal_Green : FlareBase {
         intensity  = 500000;
+        size = 0.1;
     };
 };
