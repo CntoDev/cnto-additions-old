@@ -36,16 +36,6 @@ class CfgAmmo {
         ace_frag_gurney_c = 2440;
         ace_frag_gurney_k = 3/5;
     };
-
-    /*
-     * stronger flares, live longer
-     */
-    class F_40mm_White;
-    class m3maaws_tweaks_nightsun : F_40mm_White {
-        intensity = 2500000;
-        timeToLive = 180;
-        size = 0.1;
-    };
 };
 
 class CfgCloudlets {
@@ -60,22 +50,5 @@ class CfgCloudlets {
     class RHS_GDM40TrailEffect;
     class RHS_GDM40TrailEffectLong : RHS_GDM40TrailEffect {
         lifeTime = 60;
-    };
-
-    /*
-     * custom circle of flares
-     */
-    class m3maawsfakeparticleIllum : m3maawsfakeparticle {
-        beforeDestroyScript = "\misc_tiny_configs\m3maaws_tweaks\flarecone.sqf";
-    };
-};
-
-class CfgMagazines {
-    /*
-     * lighter illum mag, half of smoke
-     */
-    class CA_LauncherMagazine;
-    class tf47_m3maaws_ILLUM : CA_LauncherMagazine {
-        mass = 34.18;
     };
 };
