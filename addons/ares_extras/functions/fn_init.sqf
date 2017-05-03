@@ -369,7 +369,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     "AE - Environment",
     "End Mission - Won",
     {
-        [] remoteExec ["ocap_fnc_exportData", 2];
+        { ["stop", cntr_exportPath] call cntr_fnc_export } remoteExecCall ["call", 2];
         ["end1", true] remoteExec ["BIS_fnc_endMission"];
     }
 ] call Ares_fnc_RegisterCustomModule;
@@ -377,7 +377,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     "AE - Environment",
     "End Mission - Lost",
     {
-        [] remoteExec ["ocap_fnc_exportData", 2];
+        { ["stop", cntr_exportPath] call cntr_fnc_export } remoteExecCall ["call", 2];
         ["end1", false] remoteExec ["BIS_fnc_endMission"];
     }
 ] call Ares_fnc_RegisterCustomModule;
