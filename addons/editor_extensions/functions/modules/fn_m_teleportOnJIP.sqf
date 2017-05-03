@@ -7,7 +7,7 @@ publicVariable "a3ee_teleport_on_jip_pos";
 [
     [],  // 'spawn' needs this, doesn't accept just {} like 'call'
     {
-        if (!hasInterface || !didJIP) exitWith {};
+        if (!hasInterface || !isRemoteExecutedJIP) exitWith {};
         waitUntil { !isNull player };
         waitUntil { !isNil "a3ee_teleport_on_jip_pos" };
         player setPosASL a3ee_teleport_on_jip_pos;

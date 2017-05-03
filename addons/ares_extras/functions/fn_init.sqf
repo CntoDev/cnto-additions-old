@@ -520,8 +520,18 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     {
         /* needs the Editor_Extensions pbo */
         params ["_pos", "_unit"];
-        a3ee_teleport_on_jip_pos = _pos;
-        publicVariable "a3ee_teleport_on_jip_pos";
+
+        /* spawn the module if it wasn't placed in the editor */
+        private _cfg = configFile >> "CfgVehicles" >> "a3ee_teleport_on_jip";
+        if (isNil "a3ee_teleport_on_jip_pos") then {
+            if (isClass (configFile >> "CfgVehicles" >> "a3ee_teleport_on_jip")) then {
+                private _grp = createGroup sideLogic;
+                _grp createUnit ["a3ee_teleport_on_jip", _pos, [], 0, "CAN_COLLIDE"];
+            };
+        } else {
+            a3ee_teleport_on_jip_pos = _pos;
+            publicVariable "a3ee_teleport_on_jip_pos";
+        };
     }
 ] call Ares_fnc_RegisterCustomModule;
 
