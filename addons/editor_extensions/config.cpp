@@ -32,6 +32,7 @@ class CfgFunctions {
         class objects {
             file = "\editor_extensions\functions\objects";
             class o_teamColor;
+            class o_acreChannels;
         };
         class misc {
             file = "\editor_extensions\functions\misc";

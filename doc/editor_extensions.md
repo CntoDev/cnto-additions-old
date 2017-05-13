@@ -141,6 +141,15 @@ These are accessible by double-clicking a unit (or right clicking, Attributes).
 The team (unit) color inside a group (squad/fireteam), shown on the vanilla
 group HUD and ShackTac radar HUD.
 
+### Object: Control, ACRE2 Preset Channels
+Default ACRE2 radio channels, set on mission start, for the unit. Works only
+on player units. This field itself is a list of channel numbers to be set on
+1st radio, 2nd radio, etc. according to unit inventory order. Extra values are
+ignored (player has less radios than channels specified) and 0 as a channel
+number means to not touch that specific radio (leave default channel).
+
+Useful for company-wide channel presets for both short and long range radios.
+
 ### Object: Extended Gear
 Overrides for equipment pieces that are normally set from a player's profile.
 Allows forcing facewear (ie. balaclava for special forces), insignia or even
