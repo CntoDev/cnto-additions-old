@@ -1,19 +1,32 @@
+class CfgPatches {
+    class Editor_Extensions_menu {
+        units[] = {};
+        weapons[] = {};
+        requiredAddons[] = {"Editor_Extensions_shared"};
+    };
+};
+
+class CfgFunctions {
+    class a3ee {
+        class menu {
+            file = "\editor_extensions\menu\functions";
+            class checkApex;
+            class checkOverload;
+            class fillRoleDesc;
+        };
+    };
+};
+
 class ctrlMenuStrip;
 class display3DEN {
     class Controls {
         class MenuStrip: ctrlMenuStrip {
             class Items {
-                class Tools {
-                    items[] += { "A3EE" };
-                };
                 class A3EE {
-                    text = "A3EE Tools";
-                    picture = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
                     items[] += {
                         "A3EE_Check_Apex",
                         "A3EE_Check_Overload",
-                        "A3EE_Fill_Role_Desc",
-                        "A3EE_Restore_Persistent_Callsigns"
+                        "A3EE_Fill_Role_Desc"
                     };
                 };
                 class A3EE_Check_Apex {
@@ -30,11 +43,6 @@ class display3DEN {
                     text = "Fill in Role Description";
                     picture = "\a3\Modules_F_Curator\Data\portraitmissionname_ca.paa";
                     action = "collect3DENHistory { [] call a3ee_fnc_fillRoleDesc }";
-                };
-                class A3EE_Restore_Persistent_Callsigns {
-                    text = "Restore persistent Callsigns";
-                    picture = "\a3\Modules_F_Curator\Data\portraitradio_ca.paa";
-                    action = "collect3DENHistory { [] call a3ee_fnc_restorePersistentCallsigns }";
                 };
             };
         };

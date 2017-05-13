@@ -1,11 +1,5 @@
-/* without all the engine logic surrounding Module_F, we just want 3DEN
- * Attributes and init EH */
 class Logic;
 class a3ee_module_base : Logic {
-    scope = 0;
-    category = A3EE;
-    vehicleClass = "Modules";
-    icon = "iconModule";
     class EventHandlers;
 };
 
@@ -158,129 +152,6 @@ class a3ee_briefing : a3ee_module_base {
     };
 };
 
-class a3ee_exec_code : a3ee_module_base {
-    scope = 2;
-    icon = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
-    displayName = "Execute code";
-    class Attributes {
-        class enabledexec {
-            property = "a3ee_enabledexec";
-            control = "Checkbox";
-            displayName = "Enable";
-            expression = "_this setVariable [""%s"",_value]";
-            defaultValue = "true";
-            tooltip = "Enable this module. Uncheck to disable without having to remove the module completely.";
-        };
-        class execonmp {
-            property = "a3ee_execonmp";
-            control = "Combo";
-            displayName = "Execute on (MP)";
-            expression = "_this setVariable [""%s"",_value]";
-            class Values {
-                class All { name = "All"; value = 0; };
-                class Server_Only { name = "Server only"; value = 2; };
-                class Clients_Only { name = "Clients only"; value = -2; };
-            };
-            typeName = "NUMBER";
-            defaultValue = "0";
-        };
-        class forjip {
-            property = "a3ee_forjip";
-            control = "Checkbox";
-            displayName = "Exec for JIP players";
-            expression = "_this setVariable [""%s"",_value]";
-            defaultValue = "true";
-        };
-        class execenv {
-            property = "a3ee_execenv";
-            control = "Combo";
-            displayName = "Environment";
-            expression = "_this setVariable [""%s"",_value]";
-            class Values {
-                class Unscheduled { name = "Unscheduled"; value = 0; };
-                class Scheduled { name = "Scheduled"; value = 1; };
-            };
-            typeName = "NUMBER";
-            defaultValue = "1";
-        };
-        class runoninit {
-            property = "a3ee_runoninit";
-            control = "Checkbox";
-            displayName = "Run on init";
-            expression = "_this setVariable [""%s"",_value]";
-            defaultValue = "true";
-            tooltip = "Run once, on mission initialization.";
-        };
-        class runonrespawn {
-            property = "a3ee_runonrespawn";
-            control = "Checkbox";
-            displayName = "Run on respawn";
-            expression = "_this setVariable [""%s"",_value]";
-            defaultValue = "false";
-            tooltip = "Run on each player respawn.\n\nWorks only on clients and fires only for respawn of client's own player unit, not for any other units.";
-        };
-        class keepmodule {
-            property = "a3ee_keepmodule";
-            control = "Checkbox";
-            displayName = "Keep module after mission start";
-            expression = "_this setVariable [""%s"",_value]";
-            defaultValue = "false";
-            tooltip = "Keep this module around at all times and pass it as an object argument to the executed code. This allows the use of this module as a reference point (for positions, distances, synchronizedObjects, etc.).";
-        };
-        class code {
-            property = "a3ee_code";
-            control = "EditCode30";
-            displayName = "Code";
-            expression = "_this setVariable [""%s"",_value]";
-            defaultValue = """""";
-            typeName = "STRING";
-            /* does only init line -like validation, forbits passed local vars
-             * like _this on the compiler level - unusable for ie. respawn code */
-            //validate = "expression";
-            tooltip = "Code to run. No valid arguments are passed except when the ""Keep module"" checkbox is selected.";
-        };
-    };
-    class EventHandlers : EventHandlers {
-        class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_executeCode }"; };
-    };
-};
-
-class a3ee_insta_osd : a3ee_module_base {
-    scope = 2;
-    icon = "\A3\modules_f\data\portraitStrategicMapMission_ca.paa";
-    displayName = "Insta OSD Location Info";
-    class Attributes {
-        class header {
-            property = "a3ee_header";
-            control = "Edit";
-            displayName = "Custom header";
-            expression = "_this setVariable [""%s"",_value]";
-            typeName = "STRING";
-            defaultValue = """""";
-            tooltip = "Displayed in bold above the location info. If unset, no header is displayed.\n\nGood for ie. mission name.";
-        };
-        class delay {
-            property = "a3ee_delay";
-            control = "EditShort";
-            displayName = "Wait secs";
-            expression = "_this setVariable [""%s"",_value]";
-            typeName = "NUMBER";
-            defaultValue = "20";
-            tooltip = "Wait this many seconds after mission start before displaying the text. Don't use low values as many people might still be loading in even >10 seconds after start.";
-        };
-        class tojip {
-            property = "a3ee_tojip";
-            control = "Checkbox";
-            displayName = "Show to JIP players";
-            expression = "_this setVariable [""%s"",_value]";
-            defaultValue = "false";
-        };
-    };
-    class EventHandlers : EventHandlers {
-        class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_instaOSD }"; };
-    };
-};
-
 class a3ee_arsenal : a3ee_module_base {
     scope = 2;
     icon = "iconCrateAmmo";
@@ -371,23 +242,6 @@ class a3ee_kill_on_jip : a3ee_module_base {
     };
     class EventHandlers : EventHandlers {
         class kill_on_jip { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_killOnJIP }"; };
-    };
-};
-
-class a3ee_exec_code_3den : a3ee_module_base {
-    scope = 2;
-    icon = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
-    displayName = "Execute code (Eden)";
-    class Attributes {
-        class 3den_code {
-            property = "a3ee_3den_code";
-            control = "EditCode30";
-            displayName = "Code";
-            expression = "if (is3DEN) then { [] call (compile (_value call a3ee_fnc_decomment)) } else { deleteVehicle _this }";
-            defaultValue = """""";
-            typeName = "STRING";
-            tooltip = "Code to run in the Eden editor whenever this module is pasted, placed from a composition, loaded in a mission in Eden or when you press ""OK"". Thus make sure the code can be run any number of times in succession without breaking. No valid arguments are passed, do not parse any.";
-        };
     };
 };
 
@@ -571,30 +425,5 @@ class a3ee_post_process : a3ee_module_base {
             AttributesChanged3DEN = "[(_this select 0), 'add'] call a3ee_fnc_m_postProcess";
             UnregisteredFromWorld3DEN = "[(_this select 0), 'del'] call a3ee_fnc_m_postProcess";
         };
-    };
-};
-
-class a3ee_locality_transfer : a3ee_module_base {
-    scope = 2;
-    icon = "iconVirtual";
-    displayName = "Locality transfer (to HC)";
-    class Attributes {
-        class hcs_required {
-            property = "a3ee_hcs_required";
-            control = "EditShort";
-            displayName = "Require HCs";
-            expression = "_this setVariable [""%s"",_value]";
-            defaultValue = "1";
-            typeName = "NUMBER";
-            tooltip = "How many HCs should we wait for on the map briefing screen before starting group redistribution - if this amount of HCs isn't reached before the mission start, the transfer is aborted.";
-        };
-        class structured_hint {
-            property = "a3ee_locality_structured_hint";
-            control = "StructuredText2";
-            description = "Hint: This module does the actual transfer, but you still need to pick which groups to transfer in group attributes.";
-        };
-    };
-    class EventHandlers : EventHandlers {
-        class locality_transfer { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_localityTransfer }"; };
     };
 };
