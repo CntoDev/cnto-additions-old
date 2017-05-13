@@ -476,7 +476,11 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     "Move respawn",
     {
         params ["_pos", "_unit"];
-        "respawn" setMarkerPos _pos;
+        if ({ _x find "respawn" == 0 } count allMapMarkers < 1) then {
+            createMarker ["respawn", _pos];
+        } else {
+            "respawn" setMarkerPos _pos;
+        };
     }
 ] call Ares_fnc_RegisterCustomModule;
 [
@@ -484,7 +488,11 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     "Move respawn_west",
     {
         params ["_pos", "_unit"];
-        "respawn_west" setMarkerPos _pos;
+        if ({ _x find "respawn" == 0 } count allMapMarkers < 1) then {
+            createMarker ["respawn_west", _pos];
+        } else {
+            "respawn_west" setMarkerPos _pos;
+        };
     }
 ] call Ares_fnc_RegisterCustomModule;
 [
@@ -492,7 +500,11 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     "Move respawn_east",
     {
         params ["_pos", "_unit"];
-        "respawn_east" setMarkerPos _pos;
+        if ({ _x find "respawn" == 0 } count allMapMarkers < 1) then {
+            createMarker ["respawn_east", _pos];
+        } else {
+            "respawn_east" setMarkerPos _pos;
+        };
     }
 ] call Ares_fnc_RegisterCustomModule;
 [
@@ -500,9 +512,13 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     "Move respawn_guerrila",
     {
         params ["_pos", "_unit"];
-        "respawn_guerrila" setMarkerPos _pos;
-        "respawn_guerilla" setMarkerPos _pos;
-        "respawn_guerrilla" setMarkerPos _pos;
+        if ({ _x find "respawn" == 0 } count allMapMarkers < 1) then {
+            createMarker ["respawn_guerrila", _pos];
+        } else {
+            "respawn_guerrila" setMarkerPos _pos;
+            "respawn_guerilla" setMarkerPos _pos;
+            "respawn_guerrilla" setMarkerPos _pos;
+        };
     }
 ] call Ares_fnc_RegisterCustomModule;
 [
@@ -510,7 +526,11 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     "Move respawn_civilian",
     {
         params ["_pos", "_unit"];
-        "respawn_civilian" setMarkerPos _pos;
+        if ({ _x find "respawn" == 0 } count allMapMarkers < 1) then {
+            createMarker ["respawn_civilian", _pos];
+        } else {
+            "respawn_civilian" setMarkerPos _pos;
+        };
     }
 ] call Ares_fnc_RegisterCustomModule;
 
