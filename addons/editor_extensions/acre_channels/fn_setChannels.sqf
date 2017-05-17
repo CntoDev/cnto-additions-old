@@ -1,10 +1,9 @@
 private _chlist = _this;
 
-/*
- * ACRE2 needs a while to remove the original radios and replace
- * them with unique radio classes (separate special items)
- */
 waitUntil { [] call acre_api_fnc_isInitialized };
+/* isInitialized is buggy, https://github.com/IDI-Systems/acre2/issues/354 */
+sleep 3;
+
 if (!alive player) exitWith {};
 
 private _radios = [] call acre_api_fnc_getCurrentRadioList;
