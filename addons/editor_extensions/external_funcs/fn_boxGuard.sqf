@@ -11,22 +11,18 @@ if (isServer) then {
     ], true];
 };
 if (hasInterface) then {
-    /* racey, though no clear way to solve it */
-    if (!isNil "boxguard_already_added_eh") exitWith {};
-    boxguard_already_added_eh = true;
+    _box addEventHandler ["ContainerOpened", {
+        params ["_box", "_player"];
 
-    0 = [] spawn {
-        waitUntil { !isNull player };
-        player addEventHandler ["InventoryOpened", {
-            params ["_player", "_target"];
-            private _data = _target getVariable "boxguard_data";
-            if (isNil "_data") exitWith {false};
+        private _data = _box getVariable "boxguard_data";
+        if (isNil "_data") exitWith {};
+        _data params ["_initpos", "_range"];
+        if (position _box distance2D _initpos > _range) exitWith {};
 
-            _data params ["_initpos", "_range"];
-            if (position _target distance2D _initpos > _range) exitWith {false};
-
+        0 = [] spawn {
+            waitUntil { !isNull findDisplay 602 };
+            (findDisplay 602) closeDisplay 0;
             player action ["Gear", objNull];
-            true;
-        }];
-    };
+        };
+    }];
 };
