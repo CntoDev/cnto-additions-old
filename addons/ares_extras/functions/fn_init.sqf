@@ -33,6 +33,16 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
 
 [
     "AE - AI",
+    "[U] Forget enemies",
+    {
+        [{
+            { _this forgetTarget _x } forEach (_this targets [true]);
+        }, _this] call Ares_Extras_fnc_ForUnitsMP;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AE - AI",
     "[U] Unload cargo in combat - On",
     {
         [{
