@@ -24,6 +24,30 @@ class CfgWeapons {
                 ACE_Flashlight_Beam = "\z\ace\addons\map\UI\Flashlight_beam_white_ca.paa";
                 ACE_Flashlight_Size = 2.5;
                 ACE_Flashlight_Sound = 1;
+
+                color[] = {180, 160, 130};
+                ambient[] = {0.9, 0.81, 0.7};
+                intensity = 1000;
+                size = 1;
+                innerAngle = 10;
+                outerAngle = 80;
+                coneFadeCoef = 12;
+                position = "flashdir";
+                direction = "flash";
+                useFlare = 1;
+                flareSize = 1;
+                flareMaxDistance = 300;
+                dayLight = 1;
+
+                class Attenuation {
+                    start = 0;
+                    constant = 0;
+                    linear = 0;
+                    quadratic = 0.2;
+                    hardLimitStart = 260;
+                    hardLimitEnd = 300;
+                };
+                scale[] = {0};
             };
         };
     };
@@ -38,6 +62,30 @@ class CfgWeapons {
                 ACE_Flashlight_Beam = "\z\ace\addons\map\UI\Flashlight_beam_white_ca.paa";
                 ACE_Flashlight_Size = 2.5;
                 ACE_Flashlight_Sound = 1;
+
+                color[] = {180, 160, 130};
+                ambient[] = {0.9, 0.81, 0.7};
+                intensity = 1000;
+                size = 1;
+                innerAngle = 10;
+                outerAngle = 80;
+                coneFadeCoef = 12;
+                position = "flash dir";
+                direction = "flash";
+                useFlare = 1;
+                flareSize = 1;
+                flareMaxDistance = 300;
+                dayLight = 1;
+
+                class Attenuation {
+                    start = 0;
+                    constant = 0;
+                    linear = 0;
+                    quadratic = 0.2;
+                    hardLimitStart = 260;
+                    hardLimitEnd = 300;
+                };
+                scale[] = {0};
             };
         };
     };
