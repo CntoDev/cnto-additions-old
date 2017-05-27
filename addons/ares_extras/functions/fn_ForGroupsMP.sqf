@@ -19,7 +19,7 @@ if (!isNil "_clientid") then {
             params ["_args", "_groups"];
             _args params ["_code", "_clientid"];
             {
-                private _where = _x;
+                private _where = (units _x select 0);
                 if (!isNil "_clientid") then {
                     _where = _clientid;
                 };
