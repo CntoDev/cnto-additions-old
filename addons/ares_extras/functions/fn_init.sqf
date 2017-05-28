@@ -62,16 +62,35 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
 
 [
     "AE - AI",
-    "[G] Fleeing - On",
+    "[G] Flee",
     {
-        [{ _this allowFleeing 1 }, _this] call Ares_Extras_fnc_ForGroupsMP;
-    }
-] call Ares_fnc_RegisterCustomModule;
-[
-    "AE - AI",
-    "[G] Fleeing - Off",
-    {
-        [{ _this allowFleeing 0 }, _this] call Ares_Extras_fnc_ForGroupsMP;
+        [{
+            _this setBehaviour "AWARE";
+            _this setSpeedMode "FULL";
+            {
+                _x setUnitPos "UP";
+                _x disableAI "AUTOCOMBAT";
+                _x disableAI "AUTOTARGET";
+                _x disableAI "TARGET";
+                _x disableAI "SUPPRESSION";
+                {
+                    _this forgetTarget _x;
+                } forEach (_x targets [true]);
+            } forEach units _this;
+            private _isfleeing = _this getVariable "ares_extras_stopfleeing";
+            if (isNil "_isfleeing" || {isNull _isfleeing}) then {
+                _isfleeing = _this spawn {
+                    sleep 120;
+                    {
+                        _x enableAI "AUTOCOMBAT";
+                        _x enableAI "AUTOTARGET";
+                        _x enableAI "TARGET";
+                        _x enableAI "SUPPRESSION";
+                    } forEach units _this;
+                };
+                _this setVariable ["ares_extras_stopfleeing", _isfleeing];
+            };
+        }, _this] call Ares_Extras_fnc_ForGroupsMP;
     }
 ] call Ares_fnc_RegisterCustomModule;
 
