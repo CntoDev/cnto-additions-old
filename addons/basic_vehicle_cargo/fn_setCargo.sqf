@@ -2,7 +2,7 @@
  * wait for various stupid modded init EHs to insert their ...
  * items into misc vehicles, then remove them
  */
-sleep 1;
+sleep 3;
 if (!local _this) exitWith {};
 
 if (_this getVariable ["DontClearCargo", false]) exitWith {};
