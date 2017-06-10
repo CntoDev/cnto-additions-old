@@ -5,7 +5,7 @@ if (isDedicated) exitWith {};
 
     /* arsenal customized, wait for fn_arsenalRespawn to finish */
     waitUntil { !isNil { player getVariable "saved3deninventory" } };
-    if (player getVariable "saved3deninventory") then {
+    if (count entities "a3ee_aresenal_respawn" > 0) then {
         waitUntil { !isNil "a3ee_saved_loadout" };
     };
 

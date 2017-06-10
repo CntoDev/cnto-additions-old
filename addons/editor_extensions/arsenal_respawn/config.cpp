@@ -32,7 +32,7 @@ class CfgVehicles {
             };
         };
         class EventHandlers : EventHandlers {
-            class setup_respawn { init = "if (isServer) then { (_this select 0) call a3ee_arsenal_respawn_fnc_setupRespawn }"; };
+            class setup_respawn { init = "(_this select 0) call a3ee_arsenal_respawn_fnc_setupRespawn"; };
         };
     };
 };
