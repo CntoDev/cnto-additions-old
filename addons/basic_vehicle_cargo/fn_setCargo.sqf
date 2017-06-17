@@ -39,4 +39,10 @@ if (isNumber (_cfg >> "ace_repair_canRepair") && { getNumber (_cfg >> "ace_repai
     /* add repair toolkits / backpacks to repair trucks */
     _this addItemCargoGlobal ["ToolKit", 3];
     _this addBackpackCargoGlobal ["B_AssaultPack_rgr", 3];
+    /* add extra spare tracks/wheels as well */
+    private _added = true;
+    while {_added} do {
+        ["ACE_Track", _this] call ace_cargo_fnc_loadItem;
+        _added = ["ACE_Wheel", _this] call ace_cargo_fnc_loadItem;
+    };
 };
