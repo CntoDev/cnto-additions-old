@@ -19,7 +19,6 @@ class CfgFunctions {
         class All {
             file = "\ai_skill_defaults";
             class setDefaultSkill;
-            class interpolate;
         };
     };
 };
