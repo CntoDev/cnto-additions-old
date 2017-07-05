@@ -16,4 +16,12 @@ class CfgPatches {
 class CfgCloudlets {
     class HouseDestructionSmoke1;
     class housedestructionsmoke : HouseDestructionSmoke1 {};
+
+    /* fuel stations, Lingor, etc. */
+    class FuelFire1;
+    class fuelstationexp : FuelFire1 {};
+    class ObjectDestructionSmokeFuelS;
+    class fuelsmoke1 : ObjectDestructionSmokeFuelS {};
+    class ObjectDestructionSmokeFuelS1_2;
+    class fuelsmoke2 : ObjectDestructionSmokeFuelS1_2 {};
 };
