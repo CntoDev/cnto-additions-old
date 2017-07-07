@@ -52,7 +52,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         private _informed_units = ["groups to be informed"] call Achilles_fnc_SelectUnits;
         if (isNil "_informed_units") exitWith {};
         private _informed = [];
-        { _informed pushBackUnique group _x } forEach _informed_units;
+        { _informed pushBackUnique group _x } forEach (_informed_units select { alive _x });
         {
             [[_x, _revealed], {
                 params ["_toinform", "_toreveal"];
