@@ -19,7 +19,7 @@ addMissionEventHandler ["EntityRespawned", {
 
     /* curator controller/player itself respawned, re-assign curator obj */
     private _curator = getAssignedCuratorLogic _old;
-    if (isNull _curator) then {
+    if (!isNull _curator) then {
         unassignCurator _curator;
         0 = [_curator, _new] spawn {
             params ["_curator", "_new"];
