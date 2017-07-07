@@ -66,6 +66,26 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
 
 [
     "AI Behaviour",
+    "[U] Watch",
+    {
+        params ["_pos", "_unit"];
+        private _dst = _unit;
+        if (isNil "_unit" || isNull _unit) then {
+            _dst = _pos;  /* use pos as dst */
+        };
+        private _watchers = ["watchers"] call Achilles_fnc_SelectUnits;
+        if (isNil "_watchers") exitWith {};
+        {
+            [[_x,_dst], {
+                params ["_unit", "_dst"];
+                _unit doWatch _dst;
+            }] remoteExec ["call", _x];
+        } forEach _watchers;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+[
+    "AI Behaviour",
     "[U] No unload in combat",
     {
         private _units = [_this select 1];
