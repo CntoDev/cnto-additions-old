@@ -10,6 +10,12 @@ if (is3DEN || !local _this) exitWith {};
         _final = _this skillFinal _name;
     };
 
+    /*
+     * set > 0:    because we cannot distinguish between createVehicle and
+     *             createUnit, the latter having initially skill/skillFinal 0
+     * abs check:  because of floating point errors in the final skill
+     */
+
 } forEach (
 #include "skill_values.h"
 );
