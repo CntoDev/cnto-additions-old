@@ -1,4 +1,4 @@
-declare TARGET_D="@cnto-additions"
+declare TARGET_D="@cnto_additions"
 declare SOURCE_D="."
 
 rm -rf ${TARGET_D}
