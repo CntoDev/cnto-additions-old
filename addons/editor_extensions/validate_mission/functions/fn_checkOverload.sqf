@@ -5,8 +5,6 @@
  *   replacing originally light items with heavy ones
  */
 
-if (!is3DEN) exitWith {};
-
 private _ents = [];
 {
     if (loadUniform _x > 1 || loadVest _x > 1 || loadBackpack _x > 1) then {
@@ -14,10 +12,8 @@ private _ents = [];
     };
 } forEach allUnits;
 
-set3DENSelected _ents;
-
 if (count _ents > 0) then {
-    ["Overloaded units found (see selected objects).", 1] call BIS_fnc_3DENNotification;
+    [false, _ents];
 } else {
-    ["No overloaded units found.", 0] call BIS_fnc_3DENNotification;
+    true;
 };
