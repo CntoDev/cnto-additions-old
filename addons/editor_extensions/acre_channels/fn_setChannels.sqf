@@ -1,9 +1,5 @@
 private _chlist = _this;
 
-waitUntil { [] call acre_api_fnc_isInitialized };
-/* isInitialized is buggy, https://github.com/IDI-Systems/acre2/issues/354 */
-sleep 3;
-
 if (!alive player) exitWith {};
 
 private _radios = [] call acre_api_fnc_getCurrentRadioList;

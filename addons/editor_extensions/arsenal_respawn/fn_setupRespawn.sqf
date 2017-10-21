@@ -1,22 +1,45 @@
+if (is3DEN || isDedicated) exitWith {};
+
 /*
- * this module is not a remoteExec+delete like the other ones, as it takes
- * advantage of units (and their init EHs) being processed before postInit
- * functions and BIS_fnc_init, so that any other logic that needs to wait
- * to check if arsenal respawn is enabled can just wait for BIS_fnc_init
- * and then check the presence of this module in the mission, race-free
+ * in other modules that run after BIS_fnc_init or in spawn:
+ * - check !isNil "a3ee_arsenal_respawn_enabled" to see if this module exists
+ *   and if further waiting makes sense or would be infinite
+ * - wait for !isNil "a3ee_arsenal_respawn_done" to read or modify anything
+ *   loadout related
+ * - to check whether the unit had custom arsenal saved for respawn, simply
+ *   check for !isNil "a3ee_arsenal_respawn_loadout" after waiting for "done"
  */
 
-if (is3DEN || isDedicated) exitWith {};
+a3ee_arsenal_respawn_enabled = true;
 
 0 = [] spawn {
     waitUntil { !isNull player };
     waitUntil { !isNil { player getVariable "saved3deninventory" } };
-    /* false - no saved Arsenal for the unit */
-    if (!(player getVariable "saved3deninventory")) exitWith {};
 
-    missionNamespace setVariable ["a3ee_saved_loadout", getUnitLoadout player];
-    player addEventHandler ["Respawn", {
-        private _loadout = (missionNamespace getVariable "a3ee_saved_loadout");
-        player setUnitLoadout [_loadout, false];
+    /* false - no saved Arsenal for the unit */
+    if (!(player getVariable "saved3deninventory")) exitWith {
+        a3ee_arsenal_respawn_done = true;
+    };
+
+    private _loadout = getUnitLoadout player;
+    a3ee_arsenal_respawn_loadout = _loadout;
+
+    player addEventHandler ["Killed", {
+        a3ee_arsenal_respawn_done = nil;
     }];
+
+    player addEventHandler ["Respawn", {
+        player setUnitLoadout [a3ee_arsenal_respawn_loadout, false];
+        a3ee_arsenal_respawn_done = true;
+    }];
+
+    a3ee_arsenal_respawn_done = true;
 };
+
+/*
+ * don't delete this module as we don't remoteExec the thing above to make it
+ * run locally on each client, but ASAP, during object initialization, not JIP
+ * queue execution - this way, we can set a3ee_arsenal_respawn_enabled before
+ * other logic checks it (we set it before BIS_fnc_init starts returning true)
+ */
+//deleteVehicle _this;
