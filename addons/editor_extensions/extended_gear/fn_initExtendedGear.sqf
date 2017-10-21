@@ -3,10 +3,9 @@ if (isDedicated) exitWith {};
 0 = [] spawn {
     waitUntil { !isNull player };
 
-    /* arsenal customized, wait for fn_arsenalRespawn to finish */
-    waitUntil { !isNil { player getVariable "saved3deninventory" } };
-    if (count entities "a3ee_aresenal_respawn" > 0) then {
-        waitUntil { !isNil "a3ee_saved_loadout" };
+    /* arsenal customized, wait for "arsenal respawn" to finish */
+    if (!isNil "a3ee_arsenal_respawn_enabled") then {
+        waitUntil { !isNil "a3ee_arsenal_respawn_done" };
     };
 
     private _goggles = player getVariable ["a3ee_extgear_goggles", ""];
@@ -24,9 +23,9 @@ if (isDedicated) exitWith {};
         } else {
             player linkItem _goggles;
         };
-        /* no respawn logic needed, fn_arsenalRespawn will restore it */
-        if (!isNil "a3ee_saved_loadout") then {
-            a3ee_saved_loadout set [7, _saved_goggles];
+        /* no respawn logic needed, "arsenal respawn" will restore it */
+        if (!isNil "a3ee_arsenal_respawn_loadout") then {
+            a3ee_arsenal_respawn_loadout set [7, _saved_goggles];
         };
     };
 
@@ -49,8 +48,8 @@ if (isDedicated) exitWith {};
         private _saved = (missionNamespace getVariable "a3ee_saved_extgear");
         _saved params ["_goggles", "_insignia", "_face"];
 
-        /* only if not taken care of by fn_arsenalRespawn */
-        if (_goggles != "" && isNil "a3ee_saved_loadout") then {
+        /* only if not taken care of by "aresenal respawn" module */
+        if (_goggles != "" && isNil "a3ee_arsenal_respawn_loadout") then {
             if (_goggles == "None") then {
                 removeGoggles player;
             } else {
