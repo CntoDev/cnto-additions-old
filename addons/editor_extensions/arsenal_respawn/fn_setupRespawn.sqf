@@ -22,6 +22,7 @@ a3ee_arsenal_respawn_enabled = true;
     };
 
     private _loadout = getUnitLoadout player;
+    _loadout call a3ee_arsenal_respawn_fnc_acreFixRadios;
     a3ee_arsenal_respawn_loadout = _loadout;
 
     player addEventHandler ["Killed", {
