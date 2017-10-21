@@ -11,6 +11,7 @@ class CfgFunctions {
         class all {
             file = "\editor_extensions\arsenal_respawn";
             class setupRespawn;
+            class acreFixRadios;
         };
     };
 };
