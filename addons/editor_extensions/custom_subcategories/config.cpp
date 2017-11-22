@@ -6,8 +6,7 @@ class CfgPatches {
     class Eden_Extensions_Custom_Subcategories {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {
-        };
+        requiredAddons[] = {};
     };
 };
 
