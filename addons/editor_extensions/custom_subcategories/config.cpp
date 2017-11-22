@@ -7,7 +7,6 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
-            "A3_3DEN"
         };
     };
 };
