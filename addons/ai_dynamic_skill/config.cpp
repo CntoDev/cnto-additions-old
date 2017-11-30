@@ -3,7 +3,7 @@
  */
 
 class CfgPatches {
-    class AI_Skill_Defaults {
+    class AI_Dynamic_Skill {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -15,18 +15,42 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class AI_Skill_Defaults {
+    class AI_Dynamic_Skill {
         class All {
-            file = "\ai_skill_defaults";
-            class setDefaultSkill;
+            file = "\ai_dynamic_skill";
+            class setSkills;
+            class updateSkills;
+            class watchSkills { postInit = 1; };
+            class currentSkills;
         };
     };
 };
 
 class Extended_Init_Eventhandlers {
     class CAManBase {
-        class AI_Skill_Defaults {
-            init = "(_this select 0) call AI_Skill_Defaults_fnc_setDefaultSkill";
+        class AI_Dynamic_Skill {
+            init = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
+        };
+    };
+};
+class Extended_GetInMan_Eventhandlers {
+    class CAManBase {
+        class AI_Dynamic_Skill {
+            getinman = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
+        };
+    };
+};
+class Extended_GetOutMan_Eventhandlers {
+    class CAManBase {
+        class AI_Dynamic_Skill {
+            getoutman = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
+        };
+    };
+};
+class Extended_SeatSwitchedMan_Eventhandlers {
+    class CAManBase {
+        class AI_Dynamic_Skill {
+            seatswitchedman = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
         };
     };
 };
@@ -39,8 +63,8 @@ class CfgVehicles {
     };
     class CAManBase : Man {
         class EventHandlers : EventHandlers {
-            class AI_Skill_Defaults {
-                init = "(_this select 0) call AI_Skill_Defaults_fnc_setDefaultSkill";
+            class AI_Dynamic_Skill {
+                init = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
             };
         };
     };
