@@ -16,11 +16,11 @@ class CfgWeapons {
     /*
      * give M249 variants a slower fire rate option for suppression
      */
-    class rhs_weap_lmg_minimipara;
-    class rhs_weap_lmg_minimi_railed : rhs_weap_lmg_minimipara {
+    class rhs_weap_m249_pip_S;
+    class rhs_weap_m249_pip_S_para : rhs_weap_m249_pip_S_para {
         class FullAuto;
     };
-    class rhs_weap_m249 : rhs_weap_lmg_minimi_railed {
+    class rhs_weap_m249 : rhs_weap_m249_pip_S_para {
         modes[] = {"FullAuto","SlowAuto","close","short","medium","far_optic1","far_optic2"};
         class FullAuto : FullAuto {
             textureType = "fastAuto";
