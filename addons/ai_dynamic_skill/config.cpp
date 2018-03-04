@@ -36,21 +36,21 @@ class Extended_Init_Eventhandlers {
 class Extended_GetInMan_Eventhandlers {
     class CAManBase {
         class AI_Dynamic_Skill {
-            getinman = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
+            getinman = "isNil { (_this select 0) call AI_Dynamic_Skill_fnc_updateSkills }";
         };
     };
 };
 class Extended_GetOutMan_Eventhandlers {
     class CAManBase {
         class AI_Dynamic_Skill {
-            getoutman = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
+            getoutman = "isNil { (_this select 0) call AI_Dynamic_Skill_fnc_updateSkills }";
         };
     };
 };
 class Extended_SeatSwitchedMan_Eventhandlers {
     class CAManBase {
         class AI_Dynamic_Skill {
-            seatswitchedman = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
+            seatswitchedman = "isNil { (_this select 0) call AI_Dynamic_Skill_fnc_updateSkills }";
         };
     };
 };

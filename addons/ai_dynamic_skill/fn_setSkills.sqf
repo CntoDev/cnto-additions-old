@@ -6,11 +6,10 @@ _this params ["_unit", "_skills"];
     if (time < 600) then {
         /* atomic, prevents other mods from interfering */
         private ["_set", "_final"];
-        isNil {
-            _unit setSkill [_name, _val];
-            _set = _unit skill _name;
-            _final = _unit skillFinal _name;
-        };
+
+        _unit setSkill [_name, _val];
+        _set = _unit skill _name;
+        _final = _unit skillFinal _name;
 
         /*
          * val >= 0.2: because our CfgAISkill override doesn't guarantee anything
