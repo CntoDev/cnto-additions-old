@@ -22,6 +22,7 @@ class CfgFunctions {
             class updateSkills;
             class watchSkills { postInit = 1; };
             class currentSkills;
+            class scheduleInitSkills;
         };
     };
 };
@@ -29,7 +30,7 @@ class CfgFunctions {
 class Extended_Init_Eventhandlers {
     class CAManBase {
         class AI_Dynamic_Skill {
-            init = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
+            init = "(_this select 0) call AI_Dynamic_Skill_fnc_scheduleInitSkills";
         };
     };
 };
