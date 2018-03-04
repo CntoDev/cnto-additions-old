@@ -16,9 +16,7 @@ if (!isServer) exitWith {};
             {
                 /* unscheduled/atomic, in case something deletes the unit */
                 isNil {
-                    if (alive _x) then {  /* also !isNull */
-                        _x call AI_Dynamic_Skill_fnc_updateSkills;
-                    };
+                    _x call AI_Dynamic_Skill_fnc_updateSkills;
                 };
                 sleep _slp;
             } forEach _ents;
