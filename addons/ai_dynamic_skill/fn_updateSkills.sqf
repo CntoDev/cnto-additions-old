@@ -101,5 +101,4 @@ private _skills = [
 [_unit, _skills] call AI_Dynamic_Skill_fnc_setSkills;
 
 /* set new "prev" skills */
-private _curr = _unit call AI_Dynamic_Skill_fnc_currentSkills;
-_unit setVariable ["AI_Dynamic_Skill_prevskills", _curr];
+_unit setVariable ["AI_Dynamic_Skill_prevskills", _skills];
