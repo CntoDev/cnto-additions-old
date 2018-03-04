@@ -3,8 +3,7 @@ _this params ["_unit", "_skills"];
     private _name = _x;
     private _val = _skills select _forEachIndex;
 
-    if (time < 600) then {
-        /* atomic, prevents other mods from interfering */
+    if (time < 600 && {time > 60 && isDedicated}) then {
         private ["_set", "_final"];
 
         _unit setSkill [_name, _val];
