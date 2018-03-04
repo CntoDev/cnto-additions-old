@@ -66,12 +66,6 @@ if (faction _unit in _guerrilla_factions) then {
     _aimingShake = 1.0;
 };
 
-/*
- * further increase Parkinson's based on suppression (no lower than 0.2)
- */
-private _supp = getSuppression _unit min 1;
-_aimingShake = (_aimingShake * (1 - _supp)) max 0.2;
-
 _aimingSpeed = 0.95;
 _endurance = 1.0;
 _spotDistance = 1.0;
