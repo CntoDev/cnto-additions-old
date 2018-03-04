@@ -6,6 +6,9 @@ if (!isServer) exitWith {};
 
 private _unit = _this;
 
+private _initialized = _unit getVariable "AI_Dynamic_Skill_initialized";
+if (isNil "_initialized") exitWith {};
+
 private _prev = _unit getVariable "AI_Dynamic_Skill_prevskills";
 private _curr = _unit call AI_Dynamic_Skill_fnc_currentSkills;
 /* if _prev are not identical to current skills, user has modified them, exit */
