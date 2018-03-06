@@ -20,6 +20,7 @@ class CfgFunctions {
             file = "\ai_dynamic_skill";
             class setSkills;
             class updateSkills;
+            class updateSkillsUnscheduled;
             class watchSkills { postInit = 1; };
             class currentSkills;
             class scheduleInitSkills;
@@ -37,21 +38,21 @@ class Extended_Init_Eventhandlers {
 class Extended_GetInMan_Eventhandlers {
     class CAManBase {
         class AI_Dynamic_Skill {
-            getinman = "isNil { (_this select 0) call AI_Dynamic_Skill_fnc_updateSkills }";
+            getinman = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
         };
     };
 };
 class Extended_GetOutMan_Eventhandlers {
     class CAManBase {
         class AI_Dynamic_Skill {
-            getoutman = "isNil { (_this select 0) call AI_Dynamic_Skill_fnc_updateSkills }";
+            getoutman = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
         };
     };
 };
 class Extended_SeatSwitchedMan_Eventhandlers {
     class CAManBase {
         class AI_Dynamic_Skill {
-            seatswitchedman = "isNil { (_this select 0) call AI_Dynamic_Skill_fnc_updateSkills }";
+            seatswitchedman = "(_this select 0) call AI_Dynamic_Skill_fnc_updateSkills";
         };
     };
 };

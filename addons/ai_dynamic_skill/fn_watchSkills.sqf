@@ -15,10 +15,7 @@ if (!isServer) exitWith {};
         if (_cnt > 0) then {
             private _slp = 10 / _cnt;
             {
-                /* unscheduled/atomic, in case something deletes the unit */
-                isNil {
-                    _x call AI_Dynamic_Skill_fnc_updateSkills;
-                };
+                _x call AI_Dynamic_Skill_fnc_updateSkills;
                 sleep _slp;
             } forEach _ents;
         };
