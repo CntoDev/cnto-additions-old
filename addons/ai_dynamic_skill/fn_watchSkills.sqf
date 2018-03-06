@@ -11,8 +11,9 @@ if (!isServer) exitWith {};
     waitUntil {
         /* update skills of all units every ~10 seconds, spread out */
         private _ents = entities [["CAManBase"], [], true, true] - allPlayers;
-        if (count _ents > 0) then {
-            private _slp = 10 / count _ents;
+        private _cnt = count _ents;
+        if (_cnt > 0) then {
+            private _slp = 10 / _cnt;
             {
                 /* unscheduled/atomic, in case something deletes the unit */
                 isNil {
