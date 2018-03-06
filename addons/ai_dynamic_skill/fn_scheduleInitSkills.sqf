@@ -13,7 +13,7 @@
 
 0 = _this spawn {
     /* wait for the skills to become 0.5, account for dedi server rounding */
-    waitUntil { abs ((_this skill "general")-0.5) < 1e-2 };
+    waitUntil { abs ((_this skill "general")-0.5) < 0.05 };
 
     /* unblock updateSkills and call it */
     _this setVariable ["AI_Dynamic_Skill_initialized", true];

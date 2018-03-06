@@ -1,40 +1,45 @@
 _this params ["_unit", "_skills"];
+
+#define SKILLS "aimingAccuracy", "aimingShake", "aimingSpeed", "endurance", \
+               "spotDistance", "spotTime", "courage", "reloadSpeed", \
+               "commanding", "general"
+
 {
-    private _name = _x;
-    private _val = _skills select _forEachIndex;
+    _unit setSkill [_x, _skills select _forEachIndex];
+} forEach [ SKILLS ];
 
-    if (time < 600 && {time > 60 && isDedicated}) then {
-        private ["_set", "_final"];
+/* verify CustomAILevel Arma3Profile setting during the first 10 minutes */
+if (time < 600 && {time > 60 && isDedicated}) then {
+    private ["_skill", "_final"];
 
-        _unit setSkill [_name, _val];
-        _set = _unit skill _name;
-        _final = _unit skillFinal _name;
-
-        /*
-         * val >= 0.2: because our CfgAISkill override doesn't guarantee anything
-         *             below 0.2, due to engine limitations of CfgAISkill
-         * set > 0:    because we cannot distinguish between createVehicle and
-         *             createUnit, the latter having initially skill/skillFinal 0
-         * abs check:  because of floating point errors in the final skill
-         */
-        if (_val >= 0.2 && _set > 0 && abs (_val-_final) > 1e-2) then {
-            systemChat format [
-                "warning: skill %1 is %2, but skillFinal is %3",
-                _name, _val, _final
-            ];
-        };
-    } else {
-        _unit setSkill [_name, _val];
+    if (isNil "AI_Dynamic_Skill_latest_warning") then {
+	AI_Dynamic_Skill_latest_warning = 0;
     };
-} forEach [
-    "aimingAccuracy",
-    "aimingShake",
-    "aimingSpeed",
-    "endurance",
-    "spotDistance",
-    "spotTime",
-    "courage",
-    "reloadSpeed",
-    "commanding",
-    "general"
-];
+
+    if (time - AI_Dynamic_Skill_latest_warning > 10) then {
+        {
+            private _name = _x;
+            private _val = _skills select _forEachIndex;
+    
+            _skill = _unit skill _name;
+            _final = _unit skillFinal _name;
+    
+            /*
+             * val >= 0.2: because our CfgAISkill override doesn't guarantee anything
+             *             below 0.2, due to engine limitations of CfgAISkill
+             * set > 0:    because we cannot distinguish between createVehicle and
+             *             createUnit, the latter having initially skill/skillFinal 0
+             * abs check:  because of floating point MP errors in the final skill
+             */
+            if (_val >= 0.2 && _skill > 0 && abs (_val-_final) > 0.05) then {
+                private _msg = format [
+                    "ai_dynamic_skill: skill %1 is %2, but skillFinal is %3",
+                    _name, _val toFixed 2, _final toFixed 2
+                ];
+                _msg remoteExec ["systemChat"];
+                diag_log _msg;
+            };
+        } forEach [ SKILLS ];
+        AI_Dynamic_Skill_latest_warning = time;
+    };
+};
