@@ -24,6 +24,7 @@ class CfgFunctions {
             class watchSkills { postInit = 1; };
             class currentSkills;
             class scheduleInitSkills;
+            class warnBadCfg;
         };
     };
 };
