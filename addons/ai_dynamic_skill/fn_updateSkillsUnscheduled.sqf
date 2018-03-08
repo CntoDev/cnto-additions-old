@@ -61,7 +61,7 @@ private _guerrilla_factions = [
 if (faction _unit in _guerrilla_factions) then {
     _aimingShake = 0.4;
 } else {
-    _aimingShake = 1.0;
+    _aimingShake = 0.9;  /* 1.0 seems to do unnatural insta-headshot-kills */
 };
 
 _aimingSpeed = 0.95;
