@@ -17,11 +17,3 @@ if (isClass (configFile >> "CfgPatches" >> "acre_api")) then {
         [] call acre_sys_gui_fnc_closeVolumeControl;
     };
 };
-
-/*
- * this should be obsolete by editor module and CBA setting,
- * but recent (2017-06-01) experience suggests it might still matter
- */
-[0.2] call acre_api_fnc_setLossModelScale;
-[true] call acre_api_fnc_setFullDuplex;
-[false] call acre_api_fnc_setInterference;
