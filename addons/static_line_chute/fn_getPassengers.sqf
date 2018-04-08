@@ -16,7 +16,6 @@ private _cargo = [];
     };
 } forEach crew _vehicle;
 
-/* remove <null> and limit to one group, if specified */
 _cargo = _cargo select {
     /* remove <null> members, empty seats */
     !isNull _x
