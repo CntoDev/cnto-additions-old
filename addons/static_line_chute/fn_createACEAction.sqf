@@ -68,8 +68,11 @@ private _action = [
     "\a3\ui_f\data\gui\cfg\CommunicationMenu\supplydrop_ca.paa",
     {},
     {
-        /* only non-cargo crew can initiate the jump */
-        ((_this select 0) getCargoIndex (_this select 1)) < 0
+        /* only non-cargo crew (or high rank) can initiate the jump */
+        (
+            ((_this select 0) getCargoIndex (_this select 1)) < 0
+            || rankId (_this select 1) >= 3
+        )
         /* above 100m */
         && position (_this select 0) select 2 > 100
         /* only when not already in progress */
