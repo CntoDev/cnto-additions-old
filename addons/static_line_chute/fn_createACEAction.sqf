@@ -6,12 +6,7 @@ Static_Line_Chute_fnc_menu_children_grouplist = {
     params ["_target", "_player", "_params"];
     private _children = [];
 
-    /* get list of groups onboard */
-    private _cargo = _target call Static_Line_Chute_fnc_getPassengers;
-    private _unique_groups = [];
-    {
-        _unique_groups pushBackUnique (group _x);
-    } forEach _cargo;
+    private _groups = _target call Static_Line_Chute_fnc_getPassengerGroups;
 
     {
         private _action = [
@@ -20,14 +15,14 @@ Static_Line_Chute_fnc_menu_children_grouplist = {
             "",
             {
                 params ["_target", "_player", "_params"];
-                [_target, _params] call Static_Line_Chute_fnc_ejectUnits;
+                [_target, _params] spawn Static_Line_Chute_fnc_ejectUnits;
             },
             { true },
             {},
             _x
         ] call ace_interact_menu_fnc_createAction;
         _children pushBack [_action, [], _target];
-    } forEach _unique_groups;
+    } forEach _groups;
 
     _children;
 };
@@ -36,17 +31,32 @@ Static_Line_Chute_fnc_menu_children_all_or_group = {
     params ["_target", "_player", "_params"];
     private _children = [];
 
+    /* all passengers, in cargo index order */
     private _jump_all = [
         "Static_Line_Chute_Jump_jumpall",
         "All Passengers",
         "z\ace\addons\interaction\UI\team\team_management_ca.paa",
         {
             params ["_target", "_player", "_params"];
-            _target call Static_Line_Chute_fnc_ejectUnits;
+            _target spawn Static_Line_Chute_fnc_ejectUnits;
         },
         { true }
     ] call ace_interact_menu_fnc_createAction;
 
+    /* all passengers, groups together, in cargo index order */
+    private _jump_all_groups = [
+        "Static_Line_Chute_Jump_jumpallgroups",
+        "All Groups",
+        "z\ace\addons\interaction\UI\team\team_management_ca.paa",
+        {
+            params ["_target", "_player", "_params"];
+            private _groups = _target call Static_Line_Chute_fnc_getPassengerGroups;
+            [_target, _groups] spawn Static_Line_Chute_fnc_ejectUnits;
+        },
+        { true }
+    ] call ace_interact_menu_fnc_createAction;
+
+    /* one group, in cargo index order */
     private _jump_group = [
         "Static_Line_Chute_Jump_jumpgrp",
         "Only Group",
@@ -58,6 +68,7 @@ Static_Line_Chute_fnc_menu_children_all_or_group = {
 
     [
         [_jump_all, [], _target],
+        [_jump_all_groups, [], _target],
         [_jump_group, [], _target]
     ];
 };
