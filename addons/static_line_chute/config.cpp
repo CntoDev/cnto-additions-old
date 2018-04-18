@@ -27,6 +27,8 @@ class CfgFunctions {
             class createACEAction;
             class addActionToVehicles { postInit = 1; };
             class getPassengers;
+            class getPassengerGroups;
+            class calcJumpDelay;
             class ejectWithChute;
             class ejectUnits;
             class vehicleChat;
