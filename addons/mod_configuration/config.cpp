@@ -24,7 +24,6 @@ class CfgFunctions {
         class All {
             file = "\mod_configuration";
             class acre { postInit = 1; };
-            class ignoreFriendlyFire { postInit = 1; };
             class respawnMarkInvisible { postInit = 1; };
         };
     };
