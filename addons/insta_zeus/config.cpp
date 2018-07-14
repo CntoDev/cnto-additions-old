@@ -4,7 +4,9 @@ class CfgPatches {
         weapons[] = {};
         requiredAddons[] = {
             "3den",
-            "cba_keybinding"
+            "cba_keybinding",
+            "cba_xeh",
+            "acre_api"
         };
     };
 };
@@ -26,7 +28,7 @@ class CfgFunctions {
         class Arsenal {
             file = "\insta_zeus\functions\arsenal";
             class arsenal;
-            class registerKeys { postInit = 1; };
+            class arsenalKeys { postInit = 1; };
         };
         /* misc keepers for all curators */
         class Runtime {
@@ -38,6 +40,15 @@ class CfgFunctions {
         class Api {
             file = "\insta_zeus\functions\api";
             class mkCurator;
+            class curatorOpened;
+        };
+        /* keybinds for acre mode switching */
+        class Acre {
+            file = "\insta_zeus\functions\acre";
+            class toggleAcreCuratorMode;
+            class setAcreSpectator;
+            class acreKeys { postInit = 1; };
+            class acreOpenCloseSpectator;
         };
         //class Unused {
         //    class activateAddons { preInit = 1; };
@@ -71,5 +82,12 @@ class Cfg3DEN {
                 };
             };
         };
+    };
+};
+
+/* for ACRE spectator in Curator */
+class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayCurator {
+        insta_zeus_onLoad = "[true, (_this select 0)] call Insta_Zeus_fnc_acreOpenCloseSpectator";
     };
 };
