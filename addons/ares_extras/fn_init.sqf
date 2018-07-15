@@ -53,14 +53,18 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         if (isNil "_informed_units") exitWith {};
         private _informed = [];
         { _informed pushBackUnique group _x } forEach (_informed_units select { alive _x });
-        {
-            [[_x, _revealed], {
-                params ["_toinform", "_toreveal"];
+        [
+            [_revealed, _informed],
+            {
+                params ["_revealed", "_informed"];
                 {
-                    _toinform reveal _x;
-                } forEach _toreveal;
-            }] remoteExec ["call", units _x select 0];
-        } forEach _informed;
+                    private _toinform = _x;
+                    {
+                        _toinform reveal _x;
+                    } forEach _revealed;
+                } forEach _informed;
+            }
+        ] remoteExec ["call"];  /* reveal has local effect, see wiki */
     }
 ] call Ares_fnc_RegisterCustomModule;
 
