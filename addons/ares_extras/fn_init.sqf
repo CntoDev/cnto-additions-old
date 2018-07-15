@@ -168,6 +168,24 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     }
 ] call Ares_fnc_RegisterCustomModule;
 
+[
+    "AI Behaviour",
+    "[G] Assign Task Force",
+    {
+        params ["_pos", "_unit"];
+        private _groups = [group _unit];
+        if (grpNull in _groups) then {
+            private _units = ["task force member groups"] call Achilles_fnc_SelectUnits;
+            _groups = [];
+            {
+                _groups pushBackUnique group _x;
+            } forEach _units;
+        };
+        if (count _groups < 1) exitWith {};
+        _groups call Ares_Extras_fnc_assignTaskForce;
+    }
+] call Ares_fnc_RegisterCustomModule;
+
 /*
  * Development Tools
  */
