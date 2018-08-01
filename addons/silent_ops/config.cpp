@@ -11,7 +11,8 @@ class CfgPatches {
         requiredAddons[] = {
             "A3_Weapons_F",
             "A3_Weapons_F_Acc",
-            "A3_Characters_F"
+            "A3_Characters_F",
+            "ace_ballistics"  /* muzzle_snds_* overrides */
         };
     };
 };
