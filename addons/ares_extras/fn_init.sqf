@@ -186,6 +186,31 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     }
 ] call Ares_fnc_RegisterCustomModule;
 
+[
+    "AI Behaviour",
+    "[G] Force WP Setting",
+    {
+        params ["_pos", "_unit"];
+        private _groups = [group _unit];
+        if (grpNull in _groups) then {
+            private _units = ["groups to force WPs on"] call Achilles_fnc_SelectUnits;
+            _groups = [];
+            {
+                _groups pushBackUnique group _x;
+            } forEach _units;
+        };
+        if (count _groups < 1) exitWith {};
+        [_groups, {
+            {
+                {
+                    _x setWaypointForceBehaviour true;
+                    _x setWaypointBehaviour "AWARE";
+                } forEach waypoints _x;
+            } forEach _this;
+        }] remoteExec ["call", 2];
+    }
+] call Ares_fnc_RegisterCustomModule;
+
 /*
  * Development Tools
  */
