@@ -52,59 +52,39 @@ class CfgWeapons {
     };
 };
 
+class CfgFactionClasses {
+    class Silent_Ops {
+        displayName = "Silent Operations";
+        side = 3;
+        priority = 10;
+    };
+};
+
 class CfgVehicles {
-    /*
-     * camouflage:
-     * We use 0.7 spotdistance skill via ASR AI, so use super low
-     * value here, to counteract it
-     */
-    /*
-     * class Sound*:
-     * I should actually just re-define all of the 9000 sounds, but with lower
-     * volume .. though it would be a lot of variables to break on Arma update.
-     * The class Sound* thing is really lazy, but as there are still *some*
-     * quiet footstep sounds, it works reasonably well in practice.
-     */
-    #define SILENT_UNIT_TUNABLES \
-        camouflage = 0.3; \
-        audible = 0.005; \
-        attendant = 1; \
-        engineer = 1; \
-        uavHacker = 1; \
-        canDeactivateMines = 1; \
-        canHideBodies = 1; \
-        class SoundEnvironExt {}; \
-        class SoundGear {};
-
-    /* no I_Soldier_recon_base, imitate it based on B_Soldier_recon_base */
-    class I_Soldier_base_F;
-    class silent_ops_I_Soldier_recon_base : I_Soldier_base_F {
-        scope = 0;
-        detectSkill = 30;
-        displayName = "Recon";
-        editorSubcategory = "EdSubcat_Personnel_SpecialForces";
-        nameSound = "veh_infantry_SF_s";
-        role = "Rifleman";
-        textPlural = "specops";
-        textSingular = "specop";
-        vehicleClass = "MenRecon";
-    };
-
     class B_Soldier_recon_base;
-    class silent_ops_B_SilentOp : B_Soldier_recon_base {
-        SILENT_UNIT_TUNABLES
+    class silent_ops_SilentOperative : B_Soldier_recon_base {
         scope = 2;
+        side = 3;  /* allows using any uniforms */
         displayName = "Silent Operative";
-    };
-    class O_Soldier_recon_base;
-    class silent_ops_O_SilentOp : O_Soldier_recon_base {
-        SILENT_UNIT_TUNABLES
-        scope = 2;
-        displayName = "Silent Operative";
-    };
-    class silent_ops_I_SilentOp : silent_ops_I_Soldier_recon_base {
-        SILENT_UNIT_TUNABLES
-        scope = 2;
-        displayName = "Silent Operative";
+        faction = "Silent_Ops";
+        vehicleClass = "Men";
+        editorSubcategory = "EdSubcat_Personnel";
+
+        camouflage = 0.3;
+        audible = 0.005;
+        attendant = 1;
+        engineer = 1;
+        uavHacker = 1;
+        canDeactivateMines = 1;
+        canHideBodies = 1;
+
+        /*
+         * I should actually just re-define all of the 9000 sounds, but with lower
+         * volume .. though it would be a lot of variables to break on Arma update.
+         * The class Sound* thing is really lazy, but as there are still *some*
+         * quiet footstep sounds, it works reasonably well in practice.
+         */
+        class SoundEnvironExt {};
+        class SoundGear {};
     };
 };
