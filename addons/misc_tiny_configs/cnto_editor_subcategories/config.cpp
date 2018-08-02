@@ -3,7 +3,7 @@
  */
 
 class CfgPatches {
-    class Eden_Extensions_Custom_Subcategories {
+    class CNTO_Editor_Subcategories {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {};
