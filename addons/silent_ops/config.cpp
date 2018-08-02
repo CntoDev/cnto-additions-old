@@ -52,23 +52,13 @@ class CfgWeapons {
     };
 };
 
-class CfgFactionClasses {
-    class Silent_Ops {
-        displayName = "Silent Operations";
-        side = 3;
-        priority = 10;
-    };
-};
-
 class CfgVehicles {
     class B_Soldier_recon_base;
     class silent_ops_SilentOperative : B_Soldier_recon_base {
         scope = 2;
         side = 3;  /* allows using any uniforms */
+        faction = "CIV_F";
         displayName = "Silent Operative";
-        faction = "Silent_Ops";
-        vehicleClass = "Men";
-        editorSubcategory = "EdSubcat_Personnel";
 
         camouflage = 0.3;
         audible = 0.005;
