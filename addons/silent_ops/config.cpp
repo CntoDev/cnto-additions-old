@@ -54,7 +54,7 @@ class CfgWeapons {
 
 class CfgVehicles {
     class B_Soldier_recon_base;
-    class silent_ops_SilentOperative : B_Soldier_recon_base {
+    class silent_ops_silent_operative : B_Soldier_recon_base {
         scope = 2;
         side = 3;  /* allows using any uniforms */
         faction = "CIV_F";
