@@ -1,26 +1,18 @@
-The cnto-additions repository
+The arma-additions repository
 =============================
 
-This repo contains small CNTO-specific tweaks, bits and bobs as addons, so that
-there doesn't have to be a @mod for each single one.
+Here be various small tweaks, additions or fixes of various mods that are
+commonly used in "MilSim" or "Serious" Arma 3 gameplay communities.
 
-For anything bigger/nontrivial, please use a separate repository.
+These are maintained mainly by me (Freghar) and as such are pretty specific
+to me, but feel free to browse and cherry-pick what you like or just get
+inspired by some algorithms.
 
-Few rules (to keep things organized)
-------------------------------------
+I realize that the `CfgPatches` names don't have any author-based prefix,
+like many Arma modders like to use, but I don't fancy that approach and have
+deliberately chosen fairly long classnames to hopefully avoid any conflicts.
+Not a great solution, you're right.
 
-- don't upload PBO-packed mods or binarized configs
-  - text data can be much better compressed/deltified by git
-  - in text, we can actually see (diff) what changed between two commits
-  - two people can work on the same file, without one destroying work
-    of the other by overwriting the other's version - git does clean merges
-    on text
-  - if your addon is already packed/binarized
-    - extract PBOs using ie. cpbo / PBO Manager / DePbo / ...
-    - de-binarize configs using ie. unRap
-- when commiting new changes, prefix commit message header (1st line) with
-  the name of the addon being updated (if the commit updates one), ie.
-
-    ```
-    stamina_tweaks: adjust max carry weight to 1400
-    ```
+To build the PBOs, simply pack the directories in `addons`, using `cpbo` or
+`armake` with `--packonly` or using any other tool that can just pack files
+into PBO without processing any `.cpp` or `.h(pp)` files.

@@ -15,7 +15,6 @@ class CfgFunctions {
         class All {
             file = "\spectator_tweaks";
             class acreSpectator { postInit = 1; };
-            class userAuthorization { postInit = 1; };
         };
     };
 };
