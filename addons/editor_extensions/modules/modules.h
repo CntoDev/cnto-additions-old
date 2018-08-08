@@ -59,29 +59,6 @@ class a3ee_custom_location : a3ee_module_base {
     };
 };
 
-class a3ee_hide_terrain : a3ee_module_base {
-    scope = 2;
-    icon = "\A3\modules_f\data\portraitStrategicMapImage_ca.paa";
-    displayName = "Hide Terrain";
-    canSetArea = 1;
-    class AttributeValues {
-        size3[] = {10, 10, -1};
-    };
-    class Attributes {
-        class terrfilter {
-            property = "a3ee_terrfilter";
-            control = "EditArray";
-            displayName = "Filter";
-            expression = "_this setVariable [""%s"",_value]";
-            defaultValue = "[]";
-            tooltip = "If empty, hides any terrain object.\n\nOtherwise, takes a comma-separated list of terrain object types to filter and hide.\n\nPossible values:\ntree, smalltree, bush, building, house, forestborder, foresttriangle, forestsquare, church, chapel, cross, rock, bunker, fortress, fountain, view-tower, lighthouse, quay, fuelstation, hospital, fence, wall, hide, busstop, road, forest, transmitter, stack, ruin, tourism, watertower, track, mainroad, rocks, powerlines, railway, powersolar, powerwave, powerwind, shipwreck, trail";
-        };
-    };
-    class EventHandlers : EventHandlers {
-        class hideterr { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_hideTerrain }"; };
-    };
-};
-
 class a3ee_briefing : a3ee_module_base {
     scope = 2;
     icon = "\a3\Modules_f\data\portraitHQ_ca.paa";
