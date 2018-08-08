@@ -11,7 +11,8 @@ class CfgFunctions {
         class all {
             file = "\editor_extensions\execute_code";
             class decomment;
-            class execModule;
+            class execRuntime;
+            class exec3DEN;
         };
     };
 };
@@ -104,7 +105,7 @@ class CfgVehicles {
             };
         };
         class EventHandlers : EventHandlers {
-            class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_execute_code_fnc_execModule }"; };
+            class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_execute_code_fnc_execRuntime }"; };
         };
     };
     class a3ee_exec_code_3den : a3ee_module_base {
@@ -112,14 +113,31 @@ class CfgVehicles {
         icon = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
         displayName = "Execute code (Eden)";
         class Attributes {
+            class structured_hint {
+                property = "a3ee_exec_code_3den_structured_hint";
+                control = "StructuredText1";
+                description = "Hint: This module will self-delete itself after code execution. See the inhibitor module.";
+            };
             class 3den_code {
                 property = "a3ee_3den_code";
                 control = "EditCode30";
                 displayName = "Code";
-                expression = "if (is3DEN) then { [] call (compile (_value call a3ee_execute_code_fnc_decomment)) } else { deleteVehicle _this }";
+                expression = "[_this, _value] call a3ee_execute_code_fnc_exec3DEN";
                 defaultValue = """""";
                 typeName = "STRING";
-                tooltip = "Code to run in the Eden editor whenever this module is pasted, placed from a composition, loaded in a mission in Eden or when you press ""OK"". Thus make sure the code can be run any number of times in succession without breaking. No valid arguments are passed, do not parse any.";
+                tooltip = "Code to run in the Eden editor whenever this module is pasted, placed from a composition or when you press ""OK"". This module is passed as an argument.";
+            };
+        };
+    };
+    class a3ee_exec_code_3den_inhibit : a3ee_module_base {
+        scope = 2;
+        icon = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
+        displayName = "Execute code inhibit (Eden)";
+        class Attributes {
+            class structured_hint {
+                property = "a3ee_exec_code_3den_inhibit_structured_hint";
+                control = "StructuredText2";
+                description = "Hint: When this module is present in Eden, ""Execute Code (Eden)"" does not execute its code and does not delete itself. This module has no other use.";
             };
         };
     };
