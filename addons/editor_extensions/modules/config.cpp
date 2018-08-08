@@ -12,7 +12,6 @@ class CfgFunctions {
             file = "\editor_extensions\modules\functions";
             class m_createLoc;
             class m_sendBriefing;
-            class m_arsenal;
             class m_teleportOnJIP;
             class m_moveRespawn;
             class m_attachSynced;
