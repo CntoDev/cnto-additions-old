@@ -11,6 +11,9 @@ switch _this do {
         if (cameraOn != vehicle player) exitWith {};
         ["Open", true] spawn BIS_fnc_arsenal;
     };
+    case "ace_open": {
+        [ace_player, ace_player, true] call ace_arsenal_fnc_openBox;
+    };
     case "spawn": {
         private "_pos";
         if (!isNull findDisplay 312) then {
@@ -23,5 +26,8 @@ switch _this do {
         private _box = createVehicle ["Land_RotorCoversBag_01_F", [_px, _py, 50], [], 0, "CAN_COLLIDE"];
         [(getAssignedCuratorLogic player), [[_box], false]] remoteExec ["addCuratorEditableObjects", 2];
         ["AmmoboxInit", [_box, true]] spawn BIS_fnc_arsenal;
+        if (!isNil "ace_arsenal_fnc_initBox") then {
+            [_box, true] call ace_arsenal_fnc_initBox;
+        };
     };
 };
