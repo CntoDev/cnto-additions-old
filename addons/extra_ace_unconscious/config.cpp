@@ -15,7 +15,7 @@ class CfgPatches {
 class CfgFunctions {
     class Extra_ACE_Unconscious {
         class All {
-            file = "\misc_tiny_configs\extra_ace_unconscious";
+            file = "\extra_ace_unconscious";
             class init { postInit = 1; };
             class manageTimer;
         };
