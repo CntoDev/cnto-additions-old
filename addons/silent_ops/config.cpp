@@ -62,6 +62,11 @@ class CfgVehicles {
 
         camouflage = 0.3;
         audible = 0.005;
+        attendant = 1;
+        engineer = 1;
+        uavHacker = 1;
+        canDeactivateMines = 1;
+        canHideBodies = 1;
 
         /*
          * I should actually just re-define all of the 9000 sounds, but with lower
