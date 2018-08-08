@@ -7,12 +7,26 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
+            "A3_Weapons_F_SMGs_SMG_02",
             "rhsusf_c_weapons"  // rhs_weap_lmg_minimipara
         };
     };
 };
 
 class CfgWeapons {
+    /*
+     * make Sting's 3-round burst faster, compensating for slow FPS
+     */
+    class Rifle_Short_Base_F;
+    class SMG_02_base_F : Rifle_Short_Base_F {
+        class Burst;
+    };
+    class SMG_02_F : SMG_02_base_F {
+        class Burst : Burst {
+            reloadTime = 0.01;
+        };
+    };
+
     /*
      * give M249 variants a slower fire rate option for suppression
      */
