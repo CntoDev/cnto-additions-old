@@ -1,9 +1,9 @@
 /*
- * various Arma 3 Spectator related tweaks and configuration
+ * ACRE2 "dead people" channel for Arma 3 Spectator
  */
 
 class CfgPatches {
-    class Spectator_Tweaks {
+    class Spectator_ACRE_Channel {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {};
@@ -11,9 +11,9 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class Spectator_Tweaks {
+    class Spectator_ACRE_Channel {
         class All {
-            file = "\spectator_tweaks";
+            file = "\spectator_acre_channel";
             class acreSpectator { postInit = 1; };
         };
     };
