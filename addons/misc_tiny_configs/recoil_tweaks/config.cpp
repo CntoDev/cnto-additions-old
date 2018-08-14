@@ -11,9 +11,14 @@ class CfgPatches {
 };
 
 class CfgWeapons {
+    class rhs_weap_saw_base;
+    class rhs_weap_lmg_minimipara : rhs_weap_saw_base {  /* RHS M249 */
+        recoil = "recoil_lim";
+    };
+
     class rhs_weap_M249_base;
     class rhs_weap_m240_base : rhs_weap_M249_base {
-        recoil = "recoil_SAW";
+        recoil = "recoil_mk200";
     };
 
     class rhs_pkp_base;
