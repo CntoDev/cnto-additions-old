@@ -8,9 +8,6 @@ Modules
 -------
 These are editor modules available under the Modules, A3EE category.
 
-### Arsenal
-Adds full Arsenal to synchronized objects, optionally with a condition.
-
 ### Attach Synced
 Place the module, then synchronize a "parent" object to it. Then synchronize any
 "child" objects to the module. When you start the mission, the "child" objects
@@ -41,12 +38,6 @@ to init lines, it supports line and block comments, like `init.sqf`.
 Runs a piece of code on every mission load in the Eden editor (and every time
 the module's UI is opened and "OK" is pressed. Also every time it's copy-pasted,
 etc. Useful for storing default mission settings.
-
-### Hide Terrain
-Can hide any hardcoded terrain object, from houses, through trees, rocks, bushes
-to pieces of road (sometimes). Use filters to limit the object types.
-Useful for altering the terrain to create fresh / unfamiliar locations or for
-clearing our areas for base building (ie. inside a forest).
 
 ### Insta OSD Location Info
 Shows an On Screen Display info (bottom right) about the location the players
@@ -92,22 +83,11 @@ Eden editor Tools
 Various helpful tools and checks reachable through the menu bar of the Eden
 editor, Tools, under A3EE Tools.
 
-### Check for Apex objects
-Tries to find any objects from the Arma 3: Apex (Tanoa) expansion, including
-other objects based on these. This is because players without the expansion
-cannot join a mission having (some of) these objects - the idea is to identify
-and remove/replace any Apex-only assets for a mission which is not supposed to
-require the Apex expansion.
-
-Any objects found will remain selected, so you can find them more easily.
-
-### Check for overloaded units
-Looks for units with inventory over their weight limit. This can happen if
-you modified the loadout through a script using ie. `setUnitLoadout`, which can
-add more items than the unit can actually carry. This shouldn't cause major
-issues in the game, but it does overload the units and is often unwanted.
-
-Any units found will remain selected, so you can find them more easily.
+### Validate mission
+This will attempt to find various common errors that mission makers tend to make
+when editing a unit's arsenal (overloaded units, ACRE2 radios with unique IDs,
+etc.) or working in the editor in general. The report is copied to clipboard and
+can be pasted to ie. notepad for review.
 
 ### Fill in Role Description
 Take the group callsign and unit name and put them inside the Role Description
