@@ -3,7 +3,7 @@
  * known targets
  */
 
-if (!isServer) then {
+if (!isServer) exitWith {
     _this remoteExec ["Ares_Extras_fnc_assignTaskForce", 2];
 };
 
