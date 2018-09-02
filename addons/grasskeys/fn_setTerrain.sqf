@@ -1,7 +1,23 @@
-/* only if the game type is not PvP */
-switch (getText (getMissionConfig "header" >> "gameType")) do {
-    case "";  /* "Unknown" */
-    case "CTI";
-    case "Sandbox";
-    case "Coop": { setTerrainGrid _this };
+if (!grasskeys_enable) exitWith {};
+
+switch (_this) do {
+    case "low": {
+        if (grasskeys_hidegrass) then {
+            setTerrainGrid 50;
+        } else {
+            setTerrainGrid 47;
+        };
+    };
+    case "standard": {
+         setTerrainGrid 25;
+    };
+    case "high": {
+         setTerrainGrid 12.5;
+    };
+    case "veryhigh": {
+         setTerrainGrid 6.25;
+    };
+    case "ultra": {
+         setTerrainGrid 3.125;
+    };
 };

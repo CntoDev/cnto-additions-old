@@ -1,5 +1,22 @@
-["GrassKeys", "low",      "Low (no grass)", { 50    call GrassKeys_fnc_setTerrain }, ""] call CBA_fnc_addKeybind;
-["GrassKeys", "standard", "Standard",       { 25    call GrassKeys_fnc_setTerrain }, ""] call CBA_fnc_addKeybind;
-["GrassKeys", "high",     "High",           { 12.5  call GrassKeys_fnc_setTerrain }, ""] call CBA_fnc_addKeybind;
-["GrassKeys", "veryhigh", "Very High",      { 6.25  call GrassKeys_fnc_setTerrain }, ""] call CBA_fnc_addKeybind;
-["GrassKeys", "ultra",    "Ultra",          { 3.125 call GrassKeys_fnc_setTerrain }, ""] call CBA_fnc_addKeybind;
+["GrassKeys", "low",      "Low (no grass)", { "low"      call GrassKeys_fnc_setTerrain }, ""] call CBA_fnc_addKeybind;
+["GrassKeys", "standard", "Standard",       { "standard" call GrassKeys_fnc_setTerrain }, ""] call CBA_fnc_addKeybind;
+["GrassKeys", "high",     "High",           { "high"     call GrassKeys_fnc_setTerrain }, ""] call CBA_fnc_addKeybind;
+["GrassKeys", "veryhigh", "Very High",      { "veryhigh" call GrassKeys_fnc_setTerrain }, ""] call CBA_fnc_addKeybind;
+["GrassKeys", "ultra",    "Ultra",          { "ultra"    call GrassKeys_fnc_setTerrain }, ""] call CBA_fnc_addKeybind;
+
+[
+    "grasskeys_enable",
+    "CHECKBOX",
+    ["Enable", "Allow using the keybinds, otherwise a default terrainGrid from server .Arma3Profile is used."],
+    ["Arma Additions", "GrassKeys"],
+    true,  /* default */
+    true   /* isGlobal */
+] call CBA_settings_fnc_init;
+[
+    "grasskeys_hidegrass",
+    "CHECKBOX",
+    ["Hide grass on ""Low"" setting", "Hide grass on the lowest terrain grid setting."],
+    ["Arma Additions", "GrassKeys"],
+    true,  /* default */
+    true   /* isGlobal */
+] call CBA_settings_fnc_init;
