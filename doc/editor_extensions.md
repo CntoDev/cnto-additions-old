@@ -46,6 +46,13 @@ line of the text (ie. to mission name) and a delay after mission start.
 Useful for a "cinematic" effect when starting the mission, also to give players
 an idea of where they are and what time it is
 
+### Keep Playable AI
+Transfers a player unit as AI to the server upon player disconnect, even with
+`disabledAI` in `description.ext` or Eden. Optionally, makes the AI passive
+(no movement/engagement).
+Useful when players experience technical difficulties and have to re-connect,
+especially for one-life missions with enabled AI on Playable slots.
+
 ### Kill player on JIP
 Simply kill the player unit upon joining if they joined-in-progress (after
 mission start). If spectator was configured for the mission, these players will
