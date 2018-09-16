@@ -211,6 +211,30 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     }
 ] call Ares_fnc_RegisterCustomModule;
 
+[
+    "AI Behaviour",
+    "[G] No Talking",
+    {
+        params ["_pos", "_unit"];
+        private _groups = [group _unit];
+        if (grpNull in _groups) then {
+            private _units = ["groups to shut up"] call Achilles_fnc_SelectUnits;
+            _groups = [];
+            {
+                _groups pushBackUnique group _x;
+            } forEach _units;
+        };
+        if (count _groups < 1) exitWith {};
+        [_groups, {
+            {
+                {
+                    _x setSpeaker "NoVoice";
+                } forEach units _x;
+            } forEach _this;
+        }] remoteExec ["call"];
+    }
+] call Ares_fnc_RegisterCustomModule;
+
 /*
  * Development Tools
  */
