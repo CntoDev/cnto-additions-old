@@ -275,7 +275,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
                 ["Choose new owner", _target_names]
             ]
         ] call Ares_fnc_showChooseDialog;
-        if (count _reply == 0) exitWith {};
+        if (_reply isEqualTo []) exitWith {};
         private _target = _targets select (_reply select 0);
 
         private _units = [_this select 1];
@@ -375,7 +375,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
                 ["Insignia", _names, _defidx, true]
             ]
         ] call Ares_fnc_showChooseDialog;
-        if (count _reply == 0) exitWith {};
+        if (_reply isEqualTo []) exitWith {};
         private _class = _values select (_reply select 0);
 
         if (_class == "") then {
@@ -414,7 +414,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
                 ["Hide/Show", ["Hide","Show"]]
             ]
         ] call Ares_fnc_showChooseDialog;
-        if (count _reply == 0) exitWith {};
+        if (_reply isEqualTo []) exitWith {};
         private _radius = _values select (_reply select 0);
         private _hide = switch (_reply select 1) do {
             case 0: { true };
@@ -427,6 +427,46 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
                 _x hideObjectGlobal _hide;
             } count nearestTerrainObjects [_pos, [], _radius, false, true];
         }] remoteExec ["call", 2];
+    }
+] call Ares_fnc_RegisterCustomModule;
+
+/*
+ * Players
+ */
+
+[
+    "Players",
+    "Set new player unit",
+    {
+        params ["_pos", "_unit"];
+        if (isNil "_unit" || isNull _unit) exitWith {
+            ["No unit selected."] call Ares_fnc_ShowZeusMessage;
+        };
+        if (!(_unit isKindOf "CAManBase")) exitWith {
+            ["Unit is not a soldier."] call Ares_fnc_ShowZeusMessage;
+        };
+
+        Ares_Extras_collected_clients = [];
+        {
+            [[clientOwner, profileName], {
+                Ares_Extras_collected_clients pushBack _this;
+            }] remoteExec ["call", remoteExecutedOwner];
+        } remoteExec ["call"];
+        sleep 1;
+        Ares_Extras_collected_clients sort true;
+
+        private _clients = Ares_Extras_collected_clients apply { _x select 0 };
+        private _names = Ares_Extras_collected_clients apply { _x select 1 };
+        private _reply = [
+            "Set new player unit",
+            [
+                ["Choose client", _names]
+            ]
+        ] call Ares_fnc_showChooseDialog;
+        if (_reply isEqualTo []) exitWith {};
+        private _client = _clients select (_reply select 0);
+
+        _unit remoteExec ["selectPlayer", _client];
     }
 ] call Ares_fnc_RegisterCustomModule;
 
