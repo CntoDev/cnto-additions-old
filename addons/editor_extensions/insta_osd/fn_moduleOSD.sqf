@@ -1,23 +1,23 @@
 if (is3DEN) exitWith {};
 private _header = _this getVariable "header";
-private _delay = _this getVariable "delay";
 private _tojip = _this getVariable "tojip";
 
 [
-    [_header, _delay],
+    _header,
     {
-        0 = _this spawn {
-            params ["_header", "_delay"];
+        a3ee_instaOSD_header = _this;
+        addMissionEventHandler ["PreloadFinished", {
+            0 = [] spawn {
+                waitUntil { time > 0 };
+                sleep 1;
 
-            waitUntil { time > 0 };
-            sleep _delay;
-
-            if (_header != "") then {
-                _header call a3ee_fnc_instaOSD;
-            } else {
-                [] call a3ee_fnc_instaOSD;
+                if (a3ee_instaOSD_header != "") then {
+                    a3ee_instaOSD_header call a3ee_fnc_instaOSD;
+                } else {
+                    [] call a3ee_fnc_instaOSD;
+                };
             };
-        };
+        }];
     }
 ] remoteExec ["call", 0, _tojip];
 

@@ -45,15 +45,6 @@ class CfgVehicles {
                 defaultValue = """""";
                 tooltip = "Displayed in bold above the location info. If unset, no header is displayed.\n\nGood for ie. mission name.";
             };
-            class delay {
-                property = "a3ee_delay";
-                control = "EditShort";
-                displayName = "Wait secs";
-                expression = "_this setVariable [""%s"",_value]";
-                typeName = "NUMBER";
-                defaultValue = "20";
-                tooltip = "Wait this many seconds after mission start before displaying the text. Don't use low values as many people might still be loading in even >10 seconds after start.";
-            };
             class tojip {
                 property = "a3ee_tojip";
                 control = "Checkbox";
