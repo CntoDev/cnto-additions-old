@@ -8,6 +8,13 @@ Modules
 -------
 These are editor modules available under the Modules, A3EE category.
 
+### Ambient Animation
+Place the module, set a comma-separated list of animation names (as seen in the
+Animation Viewer) in its properties and synchronize any soldier units to it.
+Great for adding extra immersion to a mission, though for more dynamic scenes,
+consider scripting `playMove` with compatible animations and triggers instead.
+This module is really just for idle stationary ambient animations.
+
 ### Attach Synced
 Place the module, then synchronize a "parent" object to it. Then synchronize any
 "child" objects to the module. When you start the mission, the "child" objects
