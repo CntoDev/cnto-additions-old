@@ -55,7 +55,7 @@ class a3ee_custom_location : a3ee_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class makeloc { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_createLoc }"; };
+        class makeloc { init = "if (isServer) then { (_this select 0) call a3ee_modules_fnc_createLoc }"; };
     };
 };
 
@@ -125,7 +125,7 @@ class a3ee_briefing : a3ee_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class send_briefing { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_sendBriefing }"; };
+        class send_briefing { init = "if (isServer) then { (_this select 0) call a3ee_modules_fnc_sendBriefing }"; };
     };
 };
 
@@ -134,7 +134,7 @@ class a3ee_teleport_on_jip : a3ee_module_base {
     icon = "\a3\Missions_F_Curator\data\img\portraitMPTypeSectorControl_ca.paa";
     displayName = "Teleport on JIP";
     class EventHandlers : EventHandlers {
-        class teleport { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_teleportOnJIP }"; };
+        class teleport { init = "if (isServer) then { (_this select 0) call a3ee_modules_fnc_teleportOnJIP }"; };
     };
 };
 
@@ -153,7 +153,7 @@ class a3ee_move_respawn : a3ee_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class teleport { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_moveRespawn }"; };
+        class teleport { init = "if (isServer) then { (_this select 0) call a3ee_modules_fnc_moveRespawn }"; };
     };
 };
 
@@ -169,7 +169,7 @@ class a3ee_attach_synced : a3ee_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class attach { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_attachSynced }"; };
+        class attach { init = "if (isServer) then { (_this select 0) call a3ee_modules_fnc_attachSynced }"; };
     };
 };
 
@@ -185,7 +185,7 @@ class a3ee_kill_on_jip : a3ee_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class kill_on_jip { init = "if (isServer) then { (_this select 0) call a3ee_fnc_m_killOnJIP }"; };
+        class kill_on_jip { init = "if (isServer) then { (_this select 0) call a3ee_modules_fnc_killOnJIP }"; };
     };
 };
 
@@ -365,9 +365,9 @@ class a3ee_post_process : a3ee_module_base {
     };
     class EventHandlers : EventHandlers {
         class post_process {
-            init = "if (isServer && !is3DEN) then { (_this select 0) call a3ee_fnc_m_postProcess }";
-            AttributesChanged3DEN = "[(_this select 0), 'add'] call a3ee_fnc_m_postProcess";
-            UnregisteredFromWorld3DEN = "[(_this select 0), 'del'] call a3ee_fnc_m_postProcess";
+            init = "if (isServer && !is3DEN) then { (_this select 0) call a3ee_modules_fnc_postProcess }";
+            AttributesChanged3DEN = "[(_this select 0), 'add'] call a3ee_modules_fnc_postProcess";
+            UnregisteredFromWorld3DEN = "[(_this select 0), 'del'] call a3ee_modules_fnc_postProcess";
         };
     };
 };

@@ -7,16 +7,16 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class a3ee {
-        class modules {
+    class a3ee_modules {
+        class All {
             file = "\editor_extensions\modules\functions";
-            class m_createLoc;
-            class m_sendBriefing;
-            class m_teleportOnJIP;
-            class m_moveRespawn;
-            class m_attachSynced;
-            class m_killOnJIP;
-            class m_postProcess;
+            class createLoc;
+            class sendBriefing;
+            class teleportOnJIP;
+            class moveRespawn;
+            class attachSynced;
+            class killOnJIP;
+            class postProcess;
         };
     };
 };

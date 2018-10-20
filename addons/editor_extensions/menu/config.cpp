@@ -7,8 +7,8 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class a3ee {
-        class menu {
+    class a3ee_menu {
+        class All {
             file = "\editor_extensions\menu\functions";
             class fillRoleDesc;
         };
@@ -28,7 +28,7 @@ class display3DEN {
                 class A3EE_Fill_Role_Desc {
                     text = "Fill in Role Description";
                     picture = "\a3\Modules_F_Curator\Data\portraitmissionname_ca.paa";
-                    action = "collect3DENHistory { [] call a3ee_fnc_fillRoleDesc }";
+                    action = "collect3DENHistory { [] call a3ee_menu_fnc_fillRoleDesc }";
                 };
             };
         };
