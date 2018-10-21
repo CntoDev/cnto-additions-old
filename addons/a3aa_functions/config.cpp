@@ -16,6 +16,36 @@ class CfgFunctions {
             file = "\a3aa_functions\cargo";
             class boxGuard;
         };
+        /* simple wrappers for a circular buffer */
+        class cbuff {
+            file = "\a3aa_functions\cbuff";
+            class cbuffInit;
+            class cbuffGet;
+            class cbuffSet;
+        };
+        /* fast implementation of a "dict" (hash lookup table) */
+        class hash {
+            file = "\a3aa_functions\hash";
+            class hashAppendUnique;
+            class hashCntIncrement;
+            class hashGet;
+            class hashInit;
+            class hashKeyExists;
+            class hashKeyVals;
+            class hashKeys;
+            class hashSet;
+            class hashValues;
+        };
+        /* mission persistence (boxes, vehicles, terrain) saving/loading */
+        class saveload {
+            file = "\a3aa_functions\saveload";
+            class loadCargo;
+            class loadTerrain;
+            class loadVehicle;
+            class saveCargo;
+            class saveTerrain;
+            class saveVehicle;
+        };
     };
     /* historical namespace from editor_extensions, deprecated */
     class a3ee {
