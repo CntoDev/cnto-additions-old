@@ -1,13 +1,28 @@
-params ["_box", "_loadout"];
+params ["_box", "_loadout", "_filter"];
+
+/*
+ * _filter is CODE, which should return true (add) or false (do not add)
+ * and is passed the weap/mag/item/backp classname as an argument
+ */
+
+if (!isNil "_filter") then {
+    _loadout = _loadout apply {
+        _x select { (_x select 0) call _filter };
+    };
+};
+
 _loadout params ["_weaps", "_bmags", "_items", "_packs"];
 
 clearWeaponCargoGlobal _box;
+clearMagazineCargoGlobal _box;
+clearItemCargoGlobal _box;
+clearBackpackCargoGlobal _box;
+
 {
     _x params ["_class", "_cnt"];
     _box addWeaponCargoGlobal [_class, _cnt];
 } forEach _weaps;
 
-clearMagazineCargoGlobal _box;
 {
     _x params ["_class", "_bullets"];
     /* split bullets into magazines */
@@ -23,13 +38,11 @@ clearMagazineCargoGlobal _box;
     };
 } forEach _bmags;
 
-clearItemCargoGlobal _box;
 {
     _x params ["_class", "_cnt"];
     _box addItemCargoGlobal [_class, _cnt];
 } forEach _items;
 
-clearBackpackCargoGlobal _box;
 {
     _x params ["_class", "_cnt"];
     _box addBackpackCargoGlobal [_class, _cnt];

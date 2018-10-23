@@ -13,6 +13,7 @@ class CfgFunctions {
             class baseClass;
             class cargoIsEmpty;
             class isTransport;
+            class weapNativeLinked;
         };
     };
 };
