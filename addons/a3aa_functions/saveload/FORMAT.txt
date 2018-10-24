@@ -4,9 +4,9 @@ member per "object" saved. The structure of each "object" is described here.
 cargo contents:
 [
     list of [weaponclass, amount],
-    list of [magazineclass, amount],
+    list of [magazineclass, amount of bullets combined],
     list of [itemclass, amount],
-    list of [backpackclass, amount]>
+    list of [backpackclass, amount]
 ]
 
 vehicle contents:

@@ -46,6 +46,11 @@ class CfgFunctions {
             class saveTerrain;
             class saveVehicle;
         };
+        /* miscellaneous uncategorized */
+        class misc {
+            file = "\a3aa_functions\misc";
+            class classKindOf;
+        };
     };
     /* historical namespace from editor_extensions, deprecated */
     class a3ee {
