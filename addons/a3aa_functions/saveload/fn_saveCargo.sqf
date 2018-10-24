@@ -43,11 +43,13 @@ private _packs = [] call a3aa_fnc_hashInit;
         private _weapmags = _x select [4, count _x - 5];
         (_x select [count _x - 1, 1]) params ["_underbarrel"];
 
-        /* add magazine bullets */
-        {
-            _x params ["_class", "_bullets"];
-            [_bmags, _class, _bullets] call a3aa_fnc_hashCntIncrement;
-        } forEach _weapmags;
+        /* add magazine bullets - if the weapon has at least 1 magazine */
+        if (!(_weapmags isEqualTo [[]])) then {
+            {
+                _x params ["_class", "_bullets"];
+                [_bmags, _class, _bullets] call a3aa_fnc_hashCntIncrement;
+            } forEach _weapmags;
+        };
 
         private _baseweap = ["CfgWeapons", _weap] call a3aa_saveload_fnc_baseClass;
         private _nativeacc = _baseweap call a3aa_saveload_fnc_weapNativeLinked;
