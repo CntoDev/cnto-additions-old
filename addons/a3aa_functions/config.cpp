@@ -33,6 +33,7 @@ class CfgFunctions {
             class hashKeyExists;
             class hashKeyVals;
             class hashKeys;
+            class hashRem;
             class hashSet;
             class hashValues;
         };

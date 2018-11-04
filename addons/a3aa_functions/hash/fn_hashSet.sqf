@@ -5,4 +5,3 @@ if (_idx == -1) then {
     _idx = _keys find _key;
 };
 _vals set [_idx, _val];
-_val;
