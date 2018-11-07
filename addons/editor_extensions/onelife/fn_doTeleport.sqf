@@ -5,7 +5,9 @@ if (isNil "_data") exitWith { false };
 _data params ["_alive", "_corpse", "_grp", "_time"];
 
 private _loadout = getUnitLoadout _corpse;
-player setUnitLoadout _loadout;
+if (!(_loadout isEqualTo [])) then {
+    player setUnitLoadout _loadout;
+};
 
 _corpse call a3ee_onelife_fnc_deleteCorpse;
 
@@ -31,7 +33,9 @@ if (_in_spectator) then {
 };
 
 /* remove entry from server's list of disconnected clients */
-[getPlayerUID player, {
+private _uid = getPlayerUID player;
+[a3ee_onelife_disconnects, _uid] call a3aa_fnc_hashRem;
+[_uid, {
     [a3ee_onelife_disconnects, _this] call a3aa_fnc_hashRem;
     publicVariable "a3ee_onelife_disconnects";
 }] remoteExecCall ["call", 2];

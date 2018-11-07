@@ -17,8 +17,10 @@ class CfgFunctions {
             class setupPreloadEH { preInit = 1; };
             class deleteCorpse;
             class getDisconnectData;
+            class setDisconnectData;
             class isRejoining;
             class forceSpectator;
+            class spectatorLoop;
             class checkTeleport;
             class doTeleport;
         };
@@ -32,7 +34,7 @@ class CfgVehicles {
     };
     class a3ee_onelife : a3ee_module_base {
         scope = 2;
-        icon = "\a3\Modules_F_Curator\Data\portraitAnimals_ca.paa";
+        icon = "\a3\Modules_F_Curator\Data\portraitAnimals_ca.paa"; // TODO: better icon
         displayName = "One life";
         class Attributes {
             class structured_hint {

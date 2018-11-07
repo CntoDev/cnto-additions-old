@@ -103,46 +103,34 @@ publicVariable "a3ee_onelife_onnewjoin";
         waitUntil { !isNil "a3ee_onelife_onnewjoin" };
         private _onnewjoin = a3ee_onelife_onnewjoin;
 
-        // TODO: rewrite respawn+newjoin+rejoin as one logic, checking regularly
-        // for checkTeleport, in case zeus pardons the player
-
         if (_onrespawn) then {
             player addEventHandler ["Respawn", {
                 params ["_unit", "_corpse"];
                 true call a3ee_onelife_fnc_forceSpectator;
                 /* force spectator on rejoin; false = dead */
                 private _data = [false, _corpse, group _unit, time];
-                [[getPlayerUID player, _data], {
-                    params ["_uid", "_data"];
-                    [
-                        a3ee_onelife_disconnects,
-                        _uid,
-                        _data
-                    ] call a3aa_fnc_hashSet;
-                    publicVariable "a3ee_onelife_disconnects";
-                }] remoteExecCall ["call", 2];
+                _data call a3ee_onelife_fnc_setDisconnectData;
             }];
         };
 
         private _rejoining = [] call a3ee_onelife_fnc_isRejoining;
+
         if (_onnewjoin && didJIP && !_rejoining) exitWith {
-            true call a3ee_onelife_fnc_forceSpectator;
+            /* make up an approx. of what would originally be a dead unit */
+            private _data = [false, objNull, group player, time];
+            _data call a3ee_onelife_fnc_setDisconnectData;
+            [] call a3ee_onelife_fnc_spectatorLoop;
         };
 
-        if (_onrejoin && didJIP) exitWith {
+        if (_onrejoin && didJIP && _rejoining) exitWith {
             if (_disteleport) then {
-                true call a3ee_onelife_fnc_forceSpectator;
-                waitUntil { !isNil "a3ee_onelife_preload_finished" };
-                waitUntil { time > 2 };  /* engine bug; time not synced */
-                /* the first call sometimes doesn't open spectator */
-                true call a3ee_onelife_fnc_forceSpectator;
-                waitUntil {
-                    sleep 1;
-                    [] call a3ee_onelife_fnc_checkTeleport;
-                };
-                [] call a3ee_onelife_fnc_doTeleport;
+                [] call a3ee_onelife_fnc_spectatorLoop;
             } else {
-                true call a3ee_onelife_fnc_forceSpectator;
+                /* pretend the player unit was originally dead */
+                private _data = [] call a3ee_onelife_fnc_getDisconnectData;
+                _data set [0, false];
+                _data call a3ee_onelife_fnc_setDisconnectData;
+                [] call a3ee_onelife_fnc_spectatorLoop;
             };
         };
     }
