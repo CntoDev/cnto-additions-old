@@ -9,6 +9,7 @@ if (is3DEN) exitWith {};
  *   [was alive, unit/corpse, orig group, time of disconnect]
  */
 a3ee_onelife_disconnects = [] call a3aa_fnc_hashInit;
+publicVariable "a3ee_onelife_disconnects";
 
 addMissionEventHandler ["HandleDisconnect", {
     params ["_unit", "_id", "_uid", "_name"];

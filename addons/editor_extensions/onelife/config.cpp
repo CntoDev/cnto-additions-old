@@ -34,7 +34,7 @@ class CfgVehicles {
     };
     class a3ee_onelife : a3ee_module_base {
         scope = 2;
-        icon = "\a3\Modules_F_Curator\Data\portraitAnimals_ca.paa"; // TODO: better icon
+        icon = "A3\Modules_F\Data\HideTerrainObjects\icon32_ca.paa";
         displayName = "One life";
         class Attributes {
             class structured_hint {
@@ -75,8 +75,6 @@ class CfgVehicles {
                 tooltip = "If spectator for rejoining was enabled and the player disconnected while still being alive, allow the player to re-join the original group's leader and continue playing instead of watching as spectator.\nThe player may enter spectator temporarily until it is safely possible to re-join the group leader.\n\nIf spectator for rejoining is disabled, this functionality can still be invoked by calling a3ee_onelife_fnc_doTeleport and checked with a3ee_onelife_fnc_checkTeleport (returns true/false) whether the teleport can be performed. Both should be called on the client only.";
             };
         };
-
-        // TODO: check getmissionconfigvalue "respawn" for == 3 ("BASE")
 
         class EventHandlers : EventHandlers {
             class setup { init = "if (isServer) then { (_this select 0) call a3ee_onelife_fnc_init }"; };
