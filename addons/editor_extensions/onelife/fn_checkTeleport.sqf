@@ -7,7 +7,6 @@ if (
         alive player &&                     /* double checking */
         _alive &&                           /* previous unit was alive */
         !isNull _corpse &&                  /* corpse exists */
-        group player isEqualTo _grp &&      /* joining into same grp */
         {alive leader _grp} &&              /* non-0 units, leader alive */
         {isNull objectParent leader _grp}   /* leader not in a vehicle */
    ) then {
