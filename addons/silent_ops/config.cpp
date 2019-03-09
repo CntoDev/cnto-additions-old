@@ -12,6 +12,7 @@ class CfgPatches {
             "A3_Weapons_F",
             "A3_Weapons_F_Acc",
             "A3_Characters_F",
+            "A3_Weapons_F_Mod",
             "ace_ballistics"  /* muzzle_snds_* overrides */
         };
     };
@@ -45,6 +46,15 @@ class CfgWeapons {
         class ItemInfo : InventoryMuzzleItem_Base_F {
             class AmmoCoef {
                 /* as close as it gets, ~5m */
+                audibleFire = 0.001;
+                visibleFire = 0.001;
+            };
+        };
+    };
+    /* 5.7mm (P90) same as 9mm */
+    class muzzle_snds_570 : ItemCore {
+        class ItemInfo : InventoryMuzzleItem_Base_F {
+            class AmmoCoef {
                 audibleFire = 0.001;
                 visibleFire = 0.001;
             };
