@@ -11,7 +11,6 @@ class CfgFunctions {
         class modules {
             file = "\editor_extensions\modules\functions";
             class m_createLoc;
-            class m_hideTerrain;
             class m_sendBriefing;
             class m_arsenal;
             class m_teleportOnJIP;
