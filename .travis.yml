@@ -5,10 +5,3 @@ before_install:
   - "sudo apt-get install sshpass -y"
 script:
   - "bash -x ./build.sh"
-deploy:
-  - provider: script
-    skip_cleanup: true
-    script: 
-      - "echo 'rename incoming/@cnto_additions incoming/@cnto_additions.old\nmkdir incoming/@cnto_additions\nput -r ./@cnto_additions incoming/' | sshpass -e -- sftp -o StrictHostKeyChecking=no cnto-pipeline@repo.carpenoctem.co"
-    on:
-      branch: master
