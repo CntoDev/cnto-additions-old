@@ -35,7 +35,7 @@ private [
 private _veh = vehicle _unit;
 if (_veh != _unit && {_unit in [driver _veh, gunner _veh, commander _veh]}) then {
     if (_veh isKindOf "Car") then {
-        _aimingAccuracy = 0.6;
+        _aimingAccuracy = 0.5;
     } else {
         _aimingAccuracy = 0.7;
     };
