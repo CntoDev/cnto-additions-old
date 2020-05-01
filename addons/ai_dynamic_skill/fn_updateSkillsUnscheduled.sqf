@@ -74,8 +74,10 @@ _spotDistance = 1.0;
  *  as they leave hard cover)
  */
 _spotTime = switch (behaviour _unit) do {
+    case "STEALTH";
+    case "AWARE":  { 0.7 };
     case "COMBAT": { 0.95 };
-    default { 0.2 };
+    default { 0.5 };
 };
 
 _courage = 0.6;   /* allows retreat when under fire */
