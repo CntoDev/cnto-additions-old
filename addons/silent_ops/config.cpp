@@ -13,8 +13,7 @@ class CfgPatches {
             "A3_Weapons_F_Acc",
             "A3_Characters_F",
             "A3_Weapons_F_Mod",
-            "ace_ballistics",   /* muzzle_snds_* overrides */
-            "rhsusf_c_weapons"  /* rhsusf_silencer_base */
+            "ace_ballistics"  /* muzzle_snds_* overrides */
         };
     };
 };
@@ -58,17 +57,6 @@ class CfgWeapons {
             class AmmoCoef {
                 audibleFire = 0.001;
                 visibleFire = 0.001;
-            };
-        };
-    };
-
-    /* RHS US suppressors in general; make them equivalent to 6.5mm above */
-    class rhsusf_silencer_base : muzzle_snds_H {
-        class ItemInfo : InventoryMuzzleItem_Base_F {
-            class AmmoCoef {
-                /* ~10m */
-                audibleFire = 0.005;
-                visibleFire = 0.005;
             };
         };
     };
