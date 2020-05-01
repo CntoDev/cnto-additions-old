@@ -5,8 +5,7 @@ class CfgPatches {
         requiredAddons[] = {
             "3den",
             "cba_keybinding",
-            "cba_xeh",
-            "acre_api"
+            "cba_xeh"
         };
     };
 };
@@ -41,14 +40,6 @@ class CfgFunctions {
             file = "\insta_zeus\functions\api";
             class mkCurator;
             class curatorOpened;
-        };
-        /* keybinds for acre mode switching */
-        class Acre {
-            file = "\insta_zeus\functions\acre";
-            class toggleAcreCuratorMode;
-            class setAcreSpectator;
-            class acreKeys { postInit = 1; };
-            class acreOpenCloseSpectator;
         };
         //class Unused {
         //    class activateAddons { preInit = 1; };
