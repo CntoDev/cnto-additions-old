@@ -8,8 +8,12 @@ Modules
 -------
 These are editor modules available under the Modules, A3EE category.
 
-### Arsenal
-Adds full Arsenal to synchronized objects, optionally with a condition.
+### Ambient Animation
+Place the module, set a comma-separated list of animation names (as seen in the
+Animation Viewer) in its properties and synchronize any soldier units to it.
+Great for adding extra immersion to a mission, though for more dynamic scenes,
+consider scripting `playMove` with compatible animations and triggers instead.
+This module is really just for idle stationary ambient animations.
 
 ### Attach Synced
 Place the module, then synchronize a "parent" object to it. Then synchronize any
@@ -42,18 +46,19 @@ Runs a piece of code on every mission load in the Eden editor (and every time
 the module's UI is opened and "OK" is pressed. Also every time it's copy-pasted,
 etc. Useful for storing default mission settings.
 
-### Hide Terrain
-Can hide any hardcoded terrain object, from houses, through trees, rocks, bushes
-to pieces of road (sometimes). Use filters to limit the object types.
-Useful for altering the terrain to create fresh / unfamiliar locations or for
-clearing our areas for base building (ie. inside a forest).
-
 ### Insta OSD Location Info
 Shows an On Screen Display info (bottom right) about the location the players
 are currently in, on mission start. Optionally allows setting the first (bold)
 line of the text (ie. to mission name) and a delay after mission start.
 Useful for a "cinematic" effect when starting the mission, also to give players
 an idea of where they are and what time it is
+
+### Keep Playable AI
+Transfers a player unit as AI to the server upon player disconnect, even with
+`disabledAI` in `description.ext` or Eden. Optionally, makes the AI passive
+(no movement/engagement).
+Useful when players experience technical difficulties and have to re-connect,
+especially for one-life missions with enabled AI on Playable slots.
 
 ### Kill player on JIP
 Simply kill the player unit upon joining if they joined-in-progress (after
@@ -92,22 +97,11 @@ Eden editor Tools
 Various helpful tools and checks reachable through the menu bar of the Eden
 editor, Tools, under A3EE Tools.
 
-### Check for Apex objects
-Tries to find any objects from the Arma 3: Apex (Tanoa) expansion, including
-other objects based on these. This is because players without the expansion
-cannot join a mission having (some of) these objects - the idea is to identify
-and remove/replace any Apex-only assets for a mission which is not supposed to
-require the Apex expansion.
-
-Any objects found will remain selected, so you can find them more easily.
-
-### Check for overloaded units
-Looks for units with inventory over their weight limit. This can happen if
-you modified the loadout through a script using ie. `setUnitLoadout`, which can
-add more items than the unit can actually carry. This shouldn't cause major
-issues in the game, but it does overload the units and is often unwanted.
-
-Any units found will remain selected, so you can find them more easily.
+### Validate mission
+This will attempt to find various common errors that mission makers tend to make
+when editing a unit's arsenal (overloaded units, ACRE2 radios with unique IDs,
+etc.) or working in the editor in general. The report is copied to clipboard and
+can be pasted to ie. notepad for review.
 
 ### Fill in Role Description
 Take the group callsign and unit name and put them inside the Role Description
