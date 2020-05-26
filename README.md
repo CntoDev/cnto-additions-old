@@ -1,10 +1,9 @@
-#The cnto-additions repository
-This repo contains small CNTO-specific tweaks, bits and bobs as addons, so that
-there doesn't have to be a @mod for each single one.
+# The CNTO Additions Repository
+This repo contains small CNTO-specific tweaks, bits and bobs as addons, so that there doesn't have to be a @mod for each single one.
 
-The scripts and documentation of this repository were created by <a rel="license" href="https://forums.bistudio.com/user/1115862-freghar/">Freghar</a>.
+The scripts and documentation of this repository were created by <a rel="license" href="https://github.com/freghar/arma-additions">Freghar</a>.
 
-#Features
+# Features
 
 * **a3aa_functions**
   * **a3ee** - misc functions for Editor Extension, loadout, etc.
@@ -13,7 +12,6 @@ The scripts and documentation of this repository were created by <a rel="license
   * **hash** - lightweight hash table (programming thing)
   * **misc** - unclassified helpers
   * **saveload** - persistent box/vehicle/terrain save/load, used by my old guer campaign
-* **ai_dynamic_skill** - dynamic AI skill setting based on combat mode, vehicles, etc.
 * **ares_extras** - additions to (former) Ares, now Achilles
   * **Allow Crew In Immobile (vehicle)** - ai_dynamic_skill enables this by default, but you can disable it for a more vanilla experience
   * **Forget enemies** - incredibly useful if AI suddenly spots sneaky players and you don't want to break the immersion
