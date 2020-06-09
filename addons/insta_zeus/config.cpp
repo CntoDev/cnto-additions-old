@@ -75,10 +75,3 @@ class Cfg3DEN {
         };
     };
 };
-
-/* for ACRE spectator in Curator */
-class Extended_DisplayLoad_EventHandlers {
-    class RscDisplayCurator {
-        insta_zeus_onLoad = "[true, (_this select 0)] call Insta_Zeus_fnc_acreOpenCloseSpectator";
-    };
-};
