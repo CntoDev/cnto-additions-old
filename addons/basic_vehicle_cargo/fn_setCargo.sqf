@@ -29,17 +29,12 @@ private _pick_random_glasses = {
 };
 
 private _this_cfg = configFile >> "CfgVehicles" >> typeOf _this;
-private _is_ammo_truck = {
-    /* getnumber returns 0 on non-existing key */
-    (getNumber (_this_cfg >> "transportAmmo") > 0) ||
-    {getNumber (_this_cfg >> "ace_rearm_defaultSupply") > 0}
-};
 private _is_repair_truck = {
     (getNumber (_this_cfg >> "transportRepair") > 0) ||
     {getNumber (_this_cfg >> "ace_repair_canRepair") > 0}
 };
 
-if (_this isKindOf "Car" && {!(_this call _is_ammo_truck)}) then {
+if (_this isKindOf "Car") then {
     if ("ACE_fieldDressing" call _item_exists) then {
         /* ACE */
         _this addItemCargoGlobal ["ACE_fieldDressing", floor random [0, 2, 8]];
