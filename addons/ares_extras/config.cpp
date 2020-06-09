@@ -22,16 +22,3 @@ class CfgFunctions {
         };
     };
 };
-
-class CfgVehicles {
-    /*
-     * hide all vanilla stuff in Respawn, related to public-server-style-respawn
-     */
-    class Module_F;
-    class ModuleRespawnInventory_F : Module_F {
-        scopeCurator = 0;
-    };
-    class ModuleRespawnPositionWest_F : Module_F {
-        scopeCurator = 0;
-    };
-};
