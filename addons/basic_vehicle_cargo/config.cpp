@@ -12,8 +12,7 @@ class CfgPatches {
         weapons[] = {};
         requiredAddons[] = {
             "3den",
-            "cba_xeh",     /* dynamic class hook from module */
-            "ace_medical"  /* misc supplies inside vehicles */
+            "cba_xeh"     /* dynamic class hook from module */
         };
     };
 };
