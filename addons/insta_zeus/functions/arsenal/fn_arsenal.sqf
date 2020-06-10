@@ -12,7 +12,13 @@ switch _this do {
         ["Open", true] spawn BIS_fnc_arsenal;
     };
     case "ace_open": {
-        [ace_player, ace_player, true] call ace_arsenal_fnc_openBox;
+        if (!isNil "ace_arsenal_fnc_openBox") then {
+            [ace_player, ace_player, true] call ace_arsenal_fnc_openBox;
+        } else {
+            /* fall back to BI arsenal */
+            if (cameraOn != vehicle player) exitWith {};
+            ["Open", true] spawn BIS_fnc_arsenal;
+        };
     };
     case "spawn": {
         private "_pos";
