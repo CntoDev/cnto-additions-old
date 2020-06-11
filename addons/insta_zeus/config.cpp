@@ -41,9 +41,6 @@ class CfgFunctions {
             class mkCurator;
             class curatorOpened;
         };
-        //class Unused {
-        //    class activateAddons { preInit = 1; };
-        //};
     };
 };
 
