@@ -2,6 +2,10 @@
  * create ACE3 menu tree for the pilot/crew
  */
 
+if (!isNil "Static_Line_Chute_created_ace_action") exitWith {
+    Static_Line_Chute_created_ace_action;
+};
+
 Static_Line_Chute_fnc_menu_children_grouplist = {
     params ["_target", "_player", "_params"];
     private _children = [];
@@ -79,24 +83,10 @@ private _action = [
     "\a3\ui_f\data\gui\cfg\CommunicationMenu\supplydrop_ca.paa",
     {},
     {
-        /* only non-cargo crew (or high rank) can initiate the jump */
-        (
-            ((_this select 0) getCargoIndex (_this select 1)) < 0
-            || rankId (_this select 1) >= 3
-        )
-        /* above 100m */
-        && position (_this select 0) select 2 > 100
-        /* only when not already in progress */
-        && !((_this select 0) getVariable ["Static_Line_Chute_jumping", false])
-        /* only with non-zero passengers */
-        && count ((_this select 0) call Static_Line_Chute_fnc_getPassengers) > 0
-        /* only in vehicles with cargo/turret space above 8 */
-        && count (
-            fullCrew [(_this select 0), "turret", true]    /* includes copilot! */
-            + fullCrew [(_this select 0), "cargo", true]
-           ) >= 9
+        [_target, _player] call Static_Line_Chute_fnc_canInitiateJump;
     },
     Static_Line_Chute_fnc_menu_children_all_or_group
 ] call ace_interact_menu_fnc_createAction;
 
+Static_Line_Chute_created_ace_action = _action;
 _action;

@@ -30,8 +30,9 @@ isNil {
         /* limit to one group, if specified */
         && {isNull _group || group _x == _group}
         /* no ACE prisoners or ACE unconscious units */
-        && !(_x getVariable ["ace_captives_isHandcuffed", false])
-        && !(_x getVariable ["ACE_isUnconscious", false])
+        && {!(_x getVariable ["ace_captives_isHandcuffed", false])}
+        && {!(_x getVariable ["ACE_isUnconscious", false])}
+        && {lifeState _x != "INCAPACITATED"}
     };
 };
 

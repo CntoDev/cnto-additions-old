@@ -4,7 +4,7 @@
 
 [_this, {
     params ["_vehicle", "_msg"];
-    if (ace_player in crew _vehicle) then {
+    if (player in crew _vehicle) then {
         systemChat _msg;
     };
 }] remoteExec ["call"];
