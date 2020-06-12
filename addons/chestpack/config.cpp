@@ -2,7 +2,10 @@ class CfgPatches {
     class Chestpack {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"cba_xeh"};
+        requiredAddons[] = {
+            "cba_keybinding",
+            "cba_xeh"
+        };
     };
 };
 
