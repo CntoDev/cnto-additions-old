@@ -87,6 +87,10 @@ Features
 * **grasskeys** - CBA configurable hotkeys for setting terrain complexity (and hiding grass because AI cheats too)
 * **infopanel_control** - CBA configurable left/right panel UI, allows you to disable vanilla mine detector UI, GPS, etc. even if player has the item
 * **insta_zeus** - Zeus (Curator) and ACE Arsenal anytime, anywhere in SP, or for host / logged in admin in MP, no editor support needed
+* **loadout_copier** - copy/pastes loadout in `getUnitLoadout` format to/from clipboard using a keybind
+  * works in Eden editor, Zeus and in 1st/3rd person (separate keybind for convenience)
+  * uses clipboard in Eden or singleplayer, internal variable in MP due to Arma safety limitations
+    * in hosted MP and [if you're the server](https://community.bistudio.com/wiki/copyToClipboard), copy outputs to clipboard in addition to variable, for debugging
 * **misc_tiny_configs** - various Config structure tweaks and (mostly) fixes
   * **add_housedestructionsmoke** - fix for pop-up error on some CUP maps
   * **bright_flares** - Arma lighting update broke all lighting, this makes flares at least somewhat usable again

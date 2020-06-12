@@ -1,6 +1,6 @@
 /*
- * replace unique ACRE radio classnames (ie. "ACRE_PRC343_ID_1")
- * with generic ones (ie. "ACRE_PRC343")
+ * replace unique ACRE radio classnames (ie. "ACRE_PRC343_ID_1") with generic
+ * ones (ie. "ACRE_PRC343") in a getUnitLoadout array
  */
 
 private _replace_radios = {
