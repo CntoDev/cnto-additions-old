@@ -33,8 +33,8 @@ addMissionEventHandler ["PlayerConnected", {
     }] remoteExec ["spawn", _owner];
 }];
 addMissionEventHandler ["HandleDisconnect", {
-	params ["_unit", "_id", "_uid", "_name"];
-	_unit setVariable ["a3ee_directplay_id", nil, true];
+    params ["_unit", "_id", "_uid", "_name"];
+    _unit setVariable ["a3ee_directplay_id", nil, true];
 }];
 // TODO: addMissionEventHandler ["TeamSwitch", { ?
 
