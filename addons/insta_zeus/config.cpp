@@ -27,7 +27,7 @@ class CfgFunctions {
         class Arsenal {
             file = "\insta_zeus\functions\arsenal";
             class arsenal;
-            class arsenalKeys { postInit = 1; };
+            class arsenalKeys;
         };
         /* misc keepers for all curators */
         class Runtime {
@@ -70,5 +70,11 @@ class Cfg3DEN {
                 };
             };
         };
+    };
+};
+
+class Extended_PreInit_EventHandlers {
+    class Insta_Zeus {
+        init = "[] call Insta_Zeus_fnc_arsenalKeys";
     };
 };

@@ -18,7 +18,7 @@ class CfgFunctions {
         class All {
             file = "\disable_channels";
             class init;
-            class disable;
+            class disable { postInit = 1; };
         };
     };
 };
@@ -26,10 +26,5 @@ class CfgFunctions {
 class Extended_PreInit_EventHandlers {
     class Disable_Channels {
         init = "[] call Disable_Channels_fnc_init";
-    };
-};
-class Extended_PostInit_EventHandlers {
-    class Disable_Channels {
-        init = "[] call Disable_Channels_fnc_disable";
     };
 };
