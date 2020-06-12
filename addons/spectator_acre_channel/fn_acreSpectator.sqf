@@ -10,6 +10,9 @@
 
 if (!hasInterface) exitWith {};
 
+/* ACRE2 not loaded */
+if (isNil "acre_api_fnc_setSpectator") exitWith {};
+
 0 = [] spawn {
     while {true} do {
         /* wait for opened spectator */
