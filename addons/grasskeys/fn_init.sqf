@@ -2,36 +2,31 @@
     ["Arma Additions", "GrassKeys"],
     "low",
     "Low (no grass)",
-    { "low" call GrassKeys_fnc_setTerrain },
-    ""
+    { "low" call GrassKeys_fnc_setTerrain }
 ] call CBA_fnc_addKeybind;
 [
     ["Arma Additions", "GrassKeys"],
     "standard",
     "Standard",
-    { "standard" call GrassKeys_fnc_setTerrain },
-    ""
+    { "standard" call GrassKeys_fnc_setTerrain }
 ] call CBA_fnc_addKeybind;
 [
     ["Arma Additions", "GrassKeys"],
     "high",
     "High",
-    { "high" call GrassKeys_fnc_setTerrain },
-    ""
+    { "high" call GrassKeys_fnc_setTerrain }
 ] call CBA_fnc_addKeybind;
 [
     ["Arma Additions", "GrassKeys"],
     "veryhigh",
     "Very High",
-    { "veryhigh" call GrassKeys_fnc_setTerrain },
-    ""
+    { "veryhigh" call GrassKeys_fnc_setTerrain }
 ] call CBA_fnc_addKeybind;
 [
     ["Arma Additions", "GrassKeys"],
     "ultra",
     "Ultra",
-    { "ultra" call GrassKeys_fnc_setTerrain },
-    ""
+    { "ultra" call GrassKeys_fnc_setTerrain }
 ] call CBA_fnc_addKeybind;
 
 [
