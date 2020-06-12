@@ -11,7 +11,7 @@ private _desc = "self";
  */
 
 /* getCursorObjectParams is as imprecise as cursorTarget */
-private _pointed = cursorObject;
+private _pointed = cursorTarget;
 if (_pointed isKindOf "CAManBase" && {player distance _pointed < 2}
                             && {_pointed call Chestpack_fnc_isDead}) then {
     _target = _pointed;
