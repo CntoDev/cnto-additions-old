@@ -18,7 +18,6 @@ class CfgFunctions {
         class All {
             file = "\disable_channels";
             class init;
-            class disable { postInit = 1; };
         };
     };
 };
