@@ -6,7 +6,9 @@
         _pretty,
         ["Arma Additions", "InfoPanel Control"],
         true,  /* default */
-        true   /* isGlobal */
+        true,  /* isGlobal */
+        nil,   /* script */
+        true   /* needRestart */
     ] call CBA_settings_fnc_init;
 } forEach [
     ["MinimapDisplay", "GPS"],

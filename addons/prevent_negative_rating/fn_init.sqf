@@ -4,5 +4,7 @@
     ["Enable", "Prevent player rating from going below 0.\n\nThis prevents players from friendly-fired to be shot upon\nby friendlies and allows them to enter vehicles driven by other players.\n\nAutomatically disabled when using ACE, use:\nACE Interaction -> Disable negative rating"],
     ["Arma Additions", "Prevent Negative Rating"],
     true,  /* default */
-    true   /* isGlobal */
+    true,  /* isGlobal */
+    nil,   /* script */
+    true   /* needRestart */
 ] call CBA_settings_fnc_init;
