@@ -9,6 +9,7 @@ class CfgPatches {
         weapons[] = {};
         requiredAddons[] = {
             "cba_settings",
+            "cba_events",
             "cba_xeh"
         };
     };

@@ -59,6 +59,7 @@ Features
   * (can be overriden on a per-vehicle basis via checkbox in editor)
 * **chestpack** - it's a backpack for your belly! .. for when you need something more immediate on your back, like a parachute
 * **disable_channels** - disable unused chat channels, CBA configurable
+* **dynamic_groups** - set up vanilla [Dynamic Groups](https://community.bistudio.com/wiki/Arma_3_Dynamic_Groups) framework (group management UI) for the mission
 * **editor_extensions** - various in-editor enhancements
   * **acre_channels** - pre-set channels for (multiple) ACRE2 radios a unit might have, complete with in-game Journal entries
   * **ambient_anim** - a module to make linked units animate, MP-synced, optionally aborts when unit enters combat
