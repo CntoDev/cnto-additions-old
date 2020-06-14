@@ -17,3 +17,7 @@
     ["UAVDisplay", "Drone camera"],
     ["CrewDisplay", "Crew list"]
 ];
+
+["CBA_settingsInitialized", {
+    [] call InfoPanel_Control_fnc_applySettings;
+}] call CBA_fnc_addEventHandler;

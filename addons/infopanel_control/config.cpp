@@ -4,6 +4,7 @@ class CfgPatches {
         weapons[] = {};
         requiredAddons[] = {
             "cba_settings",
+            "cba_events",
             "cba_xeh"
         };
     };
@@ -14,7 +15,7 @@ class CfgFunctions {
         class All {
             file = "\infopanel_control";
             class initSettings;
-            class applySettings { postInit = 1; };
+            class applySettings;  /* scheduled by initSettings */
             class disablePanels;
         };
     };

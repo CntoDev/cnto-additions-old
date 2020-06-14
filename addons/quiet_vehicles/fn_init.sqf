@@ -17,11 +17,19 @@
     [0, 1, 1, 1],  /* default; [min,max,default,trailing_decimal_digits] */
     nil,           /* isGlobal - let each client sets its own */
     {
-        /* quiet_vehicles_enable seems to be available already */
-        0 = [] spawn {
-            /* also this runs on mission start, for a player in a vehicle */
-            waitUntil { time > 0 };
+        /* changed mid-mission; after CBA settings initialized */
+        if (time > 0 && !isNil "Quiet_Vehicles_settings_initialized") then {
             [] call Quiet_Vehicles_fnc_adjustSoundVolume;
         };
     }
 ] call CBA_settings_fnc_init;
+
+["CBA_settingsInitialized", {
+    [] call Quiet_Vehicles_fnc_registerEHs;
+    /* this also runs on mission start, for a player in a vehicle */
+    0 = [] spawn {
+        waitUntil { time > 0 };
+        [] call Quiet_Vehicles_fnc_adjustSoundVolume;
+    };
+    Quiet_Vehicles_settings_initialized = true;
+}] call CBA_fnc_addEventHandler;

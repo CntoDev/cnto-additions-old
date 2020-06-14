@@ -5,6 +5,7 @@ class CfgPatches {
         requiredAddons[] = {
             "cba_keybinding",
             "cba_settings",
+            "cba_events",
             "cba_xeh"
         };
     };

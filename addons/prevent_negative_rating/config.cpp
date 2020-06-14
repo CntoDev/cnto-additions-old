@@ -19,7 +19,7 @@ class CfgFunctions {
         class All {
             file = "\prevent_negative_rating";
             class init;
-            class setupEH { postInit = 1; };
+            class setupEH;  /* scheduled by init */
         };
     };
 };

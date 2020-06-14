@@ -4,6 +4,7 @@ class CfgPatches {
         weapons[] = {};
         requiredAddons[] = {
             "cba_keybinding",
+            "cba_events",
             "cba_xeh"
         };
     };

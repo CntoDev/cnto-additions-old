@@ -1,3 +1,4 @@
+if (isNil "GrassKeys_settings_initialized") exitWith {};
 if (!grasskeys_enable) exitWith {};
 
 switch (_this) do {

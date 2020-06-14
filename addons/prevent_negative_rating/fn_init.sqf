@@ -8,3 +8,7 @@
     nil,   /* script */
     true   /* needRestart */
 ] call CBA_settings_fnc_init;
+
+["CBA_settingsInitialized", {
+    [] call Prevent_Negative_Rating_fnc_setupEH;
+}] call CBA_fnc_addEventHandler;

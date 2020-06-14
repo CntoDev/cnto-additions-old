@@ -7,6 +7,7 @@ class CfgPatches {
         weapons[] = {};
         requiredAddons[] = {
             "cba_settings",
+            "cba_events",
             "cba_xeh"
         };
     };
@@ -17,7 +18,7 @@ class CfgFunctions {
         class All {
             file = "\quiet_vehicles";
             class init;
-            class registerEHs { postInit = 1; };
+            class registerEHs;  /* scheduled by init */
             class adjustSoundVolume;
         };
     };
