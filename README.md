@@ -106,6 +106,8 @@ Features
   * **weight_fixes** - adjust inventory weight of (mainly small utility) items to make it less realistic, but more balanced
 * **prevent_negative_rating** - avoids mistreatment by the engine (cannot enter friendly vehicles) after friendly fire
   * does nothing if ACE Interaction is present in the modset (it provides the same functionality)
+* **quiet_vehicles** - lower volume in vehicles for easier direct speech communication
+  * does nothing if ACEX Volume is present in the modset
 * **silent_ops** - various tweaks for stealthy gameplay
   * new **Silent Operative** unit (under CIV)
     * has much quieter footstep sounds and is nearly invisible to AI without NVGs during dusk/dawn/night
