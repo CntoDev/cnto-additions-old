@@ -12,7 +12,7 @@
 [
     "quiet_vehicles_level",
     "SLIDER",
-    ["Sound level", "How much to reduce sound in vehicles."],
+    ["Sound level", "Volume inside vehicles (0 = complete silence, 1 = normal volume)."],
     ["Arma Additions", "Quiet Vehicles"],
     [0, 1, 1, 1],  /* default; [min,max,default,trailing_decimal_digits] */
     nil,           /* isGlobal - let each client sets its own */
