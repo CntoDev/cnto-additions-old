@@ -3,7 +3,7 @@
  */
 
 class CfgPatches {
-    class Portable_Boat {
+    class a3aa_mtc_portable_boat {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -15,7 +15,7 @@ class CfgPatches {
 
 class CfgVehicles {
     class B_Boat_Transport_01_F;
-    class Portable_Boat_boat : B_Boat_Transport_01_F {
+    class a3aa_mtc_portable_boat_boat : B_Boat_Transport_01_F {
         scope = 2;
         displayName = "Portable Boat";
         class assembleInfo {
@@ -23,12 +23,12 @@ class CfgVehicles {
             base = "";
             assembleTo = "";
             displayName = "";
-            dissasembleTo[] = {"Portable_Boat_backpack"};
+            dissasembleTo[] = {"a3aa_portable_boat_backpack"};
         };
     };
 
     class Weapon_Bag_Base;
-    class Portable_Boat_backpack : Weapon_Bag_Base {
+    class a3aa_portable_boat_backpack : Weapon_Bag_Base {
         scope = 2;
         displayName = "Portable Boat Bag";
         picture = "\A3\Drones_F\Weapons_F_Gamma\ammoboxes\bags\data\ui\icon_B_C_UAV_rgr_ca";
@@ -40,7 +40,7 @@ class CfgVehicles {
         class assembleInfo {
             primary = 1;
             base = "";
-            assembleTo = "Portable_Boat_boat";
+            assembleTo = "a3aa_mtc_portable_boat_boat";
             displayName = "Portable Boat";
             dissasembleTo[] = {};
         };

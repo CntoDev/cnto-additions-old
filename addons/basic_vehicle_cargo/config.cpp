@@ -7,7 +7,7 @@
  */
 
 class CfgPatches {
-    class Basic_Vehicle_Cargo {
+    class a3aa_basic_vehicle_cargo {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -18,9 +18,9 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class Basic_Vehicle_Cargo {
-        class All {
-            file = "\basic_vehicle_cargo";
+    class a3aa_basic_vehicle_cargo {
+        class all {
+            file = "\a3aa\basic_vehicle_cargo";
             class hookClasses;
             class setCargo;
         };
@@ -32,14 +32,14 @@ class CfgVehicles {
     class Logic : All {
         class EventHandlers;
     };
-    class basic_vehicle_cargo_filler : Logic {
+    class a3aa_basic_vehicle_cargo_filler : Logic {
         scope = 2;
         /* no Category => Other */
         vehicleClass = "Modules";
         icon = "iconCrateWpns";
         displayName = "Basic vehicle cargo";
         class EventHandlers : EventHandlers {
-            class process_cargo { init = "if (!is3DEN) then { (_this select 0) spawn Basic_Vehicle_Cargo_fnc_hookClasses }"; };
+            class process_cargo { init = "if (!is3DEN) then { (_this select 0) spawn a3aa_basic_vehicle_cargo_fnc_hookClasses }"; };
         };
     };
 };
@@ -50,7 +50,7 @@ class Cfg3DEN {
             class StateSpecial {
                 class Attributes {
                     class DontClearCargo {
-                        property = "basic_vehicle_cargo_dontclear";
+                        property = "a3aa_basic_vehicle_cargo_dontclear";
                         control = "Checkbox";
                         displayName = "Don't clear vehicle cargo";
                         expression = "_this setVariable [""%s"",_value,true]";

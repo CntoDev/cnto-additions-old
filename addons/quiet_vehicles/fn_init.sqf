@@ -1,5 +1,5 @@
 [
-    "quiet_vehicles_enable",
+    "a3aa_quiet_vehicles_enable",
     "CHECKBOX",
     ["Enable", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Quiet Vehicles"],
@@ -10,7 +10,7 @@
 ] call CBA_settings_fnc_init;
 
 [
-    "quiet_vehicles_level",
+    "a3aa_quiet_vehicles_level",
     "SLIDER",
     ["Sound level", "Volume inside vehicles (0 = complete silence, 1 = normal volume)."],
     ["Arma Additions", "Quiet Vehicles"],
@@ -18,18 +18,18 @@
     nil,           /* isGlobal - let each client sets its own */
     {
         /* changed mid-mission; after CBA settings initialized */
-        if (time > 0 && !isNil "Quiet_Vehicles_settings_initialized") then {
-            [] call Quiet_Vehicles_fnc_adjustSoundVolume;
+        if (time > 0 && !isNil "a3aa_quiet_vehicles_settings_initialized") then {
+            [] call a3aa_quiet_vehicles_fnc_adjustSoundVolume;
         };
     }
 ] call CBA_settings_fnc_init;
 
 ["CBA_settingsInitialized", {
-    [] call Quiet_Vehicles_fnc_registerEHs;
+    [] call a3aa_quiet_vehicles_fnc_registerEHs;
     /* this also runs on mission start, for a player in a vehicle */
     0 = [] spawn {
         waitUntil { time > 0 };
-        [] call Quiet_Vehicles_fnc_adjustSoundVolume;
+        [] call a3aa_quiet_vehicles_fnc_adjustSoundVolume;
     };
-    Quiet_Vehicles_settings_initialized = true;
+    a3aa_quiet_vehicles_settings_initialized = true;
 }] call CBA_fnc_addEventHandler;

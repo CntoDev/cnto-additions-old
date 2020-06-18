@@ -1,5 +1,5 @@
 [
-    "map_trackers_group_status",
+    "a3aa_map_trackers_group_status",
     "LIST",
     ["Group tracking", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
@@ -13,7 +13,7 @@
     true   /* needRestart */
 ] call CBA_settings_fnc_init;
 [
-    "map_trackers_group_shownames",
+    "a3aa_map_trackers_group_shownames",
     "CHECKBOX",
     ["Show group callsigns", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
@@ -21,7 +21,7 @@
     true   /* isGlobal */
 ] call CBA_settings_fnc_init;
 [
-    "map_trackers_group_showai",
+    "a3aa_map_trackers_group_showai",
     "CHECKBOX",
     ["Show AI-led groups", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
@@ -29,7 +29,7 @@
     true    /* isGlobal */
 ] call CBA_settings_fnc_init;
 [
-    "map_trackers_group_showself",
+    "a3aa_map_trackers_group_showself",
     "LIST",
     ["Shown own group", "How to determine which soldier icon (Leader/AR/AT/etc.) should be shown.\n\n...ed when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
@@ -44,7 +44,7 @@
 ] call CBA_settings_fnc_init;
 
 [
-    "map_trackers_unit_status",
+    "a3aa_map_trackers_unit_status",
     "LIST",
     ["Soldier tracking", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
@@ -58,16 +58,16 @@
     true   /* needRestart */
 ] call CBA_settings_fnc_init;
 [
-    "map_trackers_unit_dist",
+    "a3aa_map_trackers_unit_dist",
     "EDITBOX",
     ["Max soldier distance", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
     "100",  /* default */
     true,   /* isGlobal */
-    { map_trackers_unit_dist = parseNumber _this }
+    { a3aa_map_trackers_unit_dist = parseNumber _this }
 ] call CBA_settings_fnc_init;
 [
-    "map_trackers_unit_shownames",
+    "a3aa_map_trackers_unit_shownames",
     "CHECKBOX",
     ["Show soldier names", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
@@ -75,7 +75,7 @@
     nil     /* isGlobal */
 ] call CBA_settings_fnc_init;
 [
-    "map_trackers_unit_showlines",
+    "a3aa_map_trackers_unit_showlines",
     "CHECKBOX",
     ["Link soldiers to leader", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
@@ -83,7 +83,7 @@
     nil    /* isGlobal */
 ] call CBA_settings_fnc_init;
 [
-    "map_trackers_unit_iconsource",
+    "a3aa_map_trackers_unit_iconsource",
     "LIST",
     ["Soldier icon", "How to determine which soldier icon (Leader/AR/AT/etc.) should be shown.\n\n...ed when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
@@ -99,17 +99,17 @@
 
 ["CBA_settingsInitialized", {
     if (!hasInterface) exitWith {};
-    Map_Trackers_unit_lines = [];
-    Map_Trackers_units = [];
-    Map_Trackers_groups = [];
-    if (map_trackers_group_status != "disabled") then {
-        [] spawn Map_Trackers_fnc_groupUpdater;
+    a3aa_map_trackers_unit_lines = [];
+    a3aa_map_trackers_units = [];
+    a3aa_map_trackers_groups = [];
+    if (a3aa_map_trackers_group_status != "disabled") then {
+        [] spawn a3aa_map_trackers_fnc_groupUpdater;
     };
-    if (map_trackers_unit_status != "disabled") then {
-        [] spawn Map_Trackers_fnc_unitUpdater;
+    if (a3aa_map_trackers_unit_status != "disabled") then {
+        [] spawn a3aa_map_trackers_fnc_unitUpdater;
     };
-    if (map_trackers_unit_status != "disabled" || map_trackers_group_status != "disabled") then {
-        [] spawn Map_Trackers_fnc_hookAnyMapDisplay;
+    if (a3aa_map_trackers_unit_status != "disabled" || a3aa_map_trackers_group_status != "disabled") then {
+        [] spawn a3aa_map_trackers_fnc_hookAnyMapDisplay;
     };
     nil;
 }] call CBA_fnc_addEventHandler;

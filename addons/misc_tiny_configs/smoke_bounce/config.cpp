@@ -4,7 +4,7 @@
  */
 
 class CfgPatches {
-    class Smoke_Bounce {
+    class a3aa_mtc_smoke_bounce {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {

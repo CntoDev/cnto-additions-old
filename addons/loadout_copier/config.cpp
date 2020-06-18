@@ -1,19 +1,19 @@
 class CfgPatches {
-    class Loadout_Copier {
+    class a3aa_loadout_copier {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
             "cba_keybinding",
             "cba_xeh",
-            "Editor_Extensions_arsenal_respawn"  // fn_acreFixRadios
+            "a3aa_ee_arsenal_respawn"  // fn_acreFixRadios
         };
     };
 };
 
 class CfgFunctions {
-    class Loadout_Copier {
-        class All {
-            file = "\loadout_copier";
+    class a3aa_loadout_copier {
+        class all {
+            file = "\a3aa\loadout_copier";
             class registerKeybinds;
             class hackCBAKeybind3DEN;
             class copyPaste;
@@ -23,15 +23,15 @@ class CfgFunctions {
 
 class Cfg3DEN {
     class EventHandlers {
-        class Loadout_Copier {
+        class a3aa_loadout_copier {
             /* triggers on load as well, incl. sqm passed to arma3.exe */
-            onMissionNew = "[] call Loadout_Copier_fnc_hackCBAKeybind3DEN";
+            onMissionNew = "[] call a3aa_loadout_copier_fnc_hackCBAKeybind3DEN";
         };
     };
 };
 
 class Extended_PreInit_EventHandlers {
-    class Loadout_Copier {
-        init = "[] call Loadout_Copier_fnc_registerKeybinds";
+    class a3aa_loadout_copier {
+        init = "[] call a3aa_loadout_copier_fnc_registerKeybinds";
     };
 };

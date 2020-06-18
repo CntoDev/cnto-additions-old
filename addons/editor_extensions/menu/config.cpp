@@ -1,15 +1,15 @@
 class CfgPatches {
-    class Editor_Extensions_menu {
+    class a3aa_ee_menu {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"Editor_Extensions_shared"};
+        requiredAddons[] = {"a3aa_ee_shared"};
     };
 };
 
 class CfgFunctions {
-    class a3ee_menu {
-        class All {
-            file = "\editor_extensions\menu\functions";
+    class a3aa_ee_menu {
+        class all {
+            file = "\a3aa\ee\menu";
             class fillRoleDesc;
         };
     };
@@ -20,15 +20,15 @@ class display3DEN {
     class Controls {
         class MenuStrip: ctrlMenuStrip {
             class Items {
-                class A3EE {
+                class a3aa_ee {
                     items[] += {
-                        "A3EE_Fill_Role_Desc"
+                        "a3aa_ee_menu_fill_role_desc"
                     };
                 };
-                class A3EE_Fill_Role_Desc {
+                class a3aa_ee_menu_fill_role_desc {
                     text = "Fill in Role Description";
                     picture = "\a3\Modules_F_Curator\Data\portraitmissionname_ca.paa";
-                    action = "collect3DENHistory { [] call a3ee_menu_fnc_fillRoleDesc }";
+                    action = "collect3DENHistory { [] call a3aa_ee_menu_fnc_fillRoleDesc }";
                 };
             };
         };

@@ -8,7 +8,7 @@ waitUntil { !isNil "BIS_fnc_init" };
 waitUntil { !isNull player };
 
 private _get_units = {
-    switch (map_trackers_unit_status) do {
+    switch (a3aa_map_trackers_unit_status) do {
         case "group": {
             units group player;
         };
@@ -42,7 +42,7 @@ private _is_engi = {
 };
 
 private _get_icon = {
-    switch (map_trackers_unit_iconsource) do {
+    switch (a3aa_map_trackers_unit_iconsource) do {
         case "class": {
             private _icon = getText (
                 configFile >> "CfgVehicles" >> typeOf _this >> "icon"
@@ -81,9 +81,9 @@ private _get_color = {
 
 waitUntil {
     /* allow smooth fade-in @ soldier move speed (see EH) */
-    private _dist = map_trackers_unit_dist + 20;
+    private _dist = a3aa_map_trackers_unit_dist + 20;
 
-    if (map_trackers_unit_showlines) then {
+    if (a3aa_map_trackers_unit_showlines) then {
         private _leader = leader group player;
         private _sources = (units group player) select {
             _x != _leader && {player distance _x < _dist};
@@ -92,7 +92,7 @@ waitUntil {
             /* [src, dst] */
             [_x, _leader];
         };
-        Map_Trackers_unit_lines = _lines;
+        a3aa_map_trackers_unit_lines = _lines;
     };
 
     private _units = ([] call _get_units) select {
@@ -106,11 +106,11 @@ waitUntil {
             _x,
             _x call _get_icon,
             _x call _get_color,
-            if (map_trackers_unit_shownames) then { name _x } else { "" }
+            if (a3aa_map_trackers_unit_shownames) then { name _x } else { "" }
         ];
     };
 
-    Map_Trackers_units = _units;
+    a3aa_map_trackers_units = _units;
 
     sleep (1 + random 1);
 

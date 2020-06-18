@@ -1,25 +1,17 @@
 class CfgPatches {
-    class Editor_Extensions_insta_osd {
+    class a3aa_ee_insta_osd {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"Editor_Extensions_shared"};
+        requiredAddons[] = {"a3aa_ee_shared"};
     };
 };
 
 class CfgFunctions {
-    class a3ee_insta_osd {
+    class a3aa_ee_insta_osd {
         class all {
-            file = "\editor_extensions\insta_osd";
+            file = "\a3aa\ee\insta_osd";
             class nearLocText;
             class moduleOSD;
-        };
-    };
-    /*
-     * shared (external) API
-     */
-    class a3ee {
-        class insta_osd {
-            file = "\editor_extensions\insta_osd";
             class typeText;
             class instaOSD;
         };
@@ -28,16 +20,16 @@ class CfgFunctions {
 
 class CfgVehicles {
     class Logic;
-    class a3ee_module_base : Logic {
+    class a3aa_ee_shared_module_base : Logic {
         class EventHandlers;
     };
-    class a3ee_insta_osd : a3ee_module_base {
+    class a3aa_ee_insta_osd : a3aa_ee_shared_module_base {
         scope = 2;
         icon = "\A3\modules_f\data\portraitStrategicMapMission_ca.paa";
         displayName = "Insta OSD Location Info";
         class Attributes {
             class header {
-                property = "a3ee_header";
+                property = "a3aa_ee_insta_osd_header";
                 control = "Edit";
                 displayName = "Custom header";
                 expression = "_this setVariable [""%s"",_value]";
@@ -46,7 +38,7 @@ class CfgVehicles {
                 tooltip = "Displayed in bold above the location info. If unset, no header is displayed.\n\nGood for ie. mission name.";
             };
             class tojip {
-                property = "a3ee_tojip";
+                property = "a3aa_ee_insta_osd_tojip";
                 control = "Checkbox";
                 displayName = "Show to JIP players";
                 expression = "_this setVariable [""%s"",_value]";
@@ -54,7 +46,7 @@ class CfgVehicles {
             };
         };
         class EventHandlers : EventHandlers {
-            class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_insta_osd_fnc_moduleOSD }"; };
+            class insta_osd { init = "if (isServer) then { (_this select 0) call a3aa_ee_insta_osd_fnc_moduleOSD }"; };
         };
     };
 };

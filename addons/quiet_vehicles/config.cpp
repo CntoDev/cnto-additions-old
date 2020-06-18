@@ -1,8 +1,5 @@
-/*
- * reduce sound in vehicles to make direct speech communication viable
- */
 class CfgPatches {
-    class Quiet_Vehicles {
+    class a3aa_quiet_vehicles {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -14,9 +11,9 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class Quiet_Vehicles {
-        class All {
-            file = "\quiet_vehicles";
+    class a3aa_quiet_vehicles {
+        class all {
+            file = "\a3aa\quiet_vehicles";
             class init;
             class registerEHs;  /* scheduled by init */
             class adjustSoundVolume;
@@ -25,7 +22,7 @@ class CfgFunctions {
 };
 
 class Extended_PreInit_EventHandlers {
-    class Quiet_Vehicles {
-        init = "[] call Quiet_Vehicles_fnc_init";
+    class a3aa_quiet_vehicles {
+        init = "[] call a3aa_quiet_vehicles_fnc_init";
     };
 };

@@ -1,7 +1,7 @@
 {
     _x params ["_id", "_pretty"];
     [
-        format ["infopanel_control_%1", _id],
+        format ["a3aa_infopanel_control_%1", _id],
         "CHECKBOX",
         _pretty,
         ["Arma Additions", "InfoPanel Control"],
@@ -19,5 +19,5 @@
 ];
 
 ["CBA_settingsInitialized", {
-    [] call InfoPanel_Control_fnc_applySettings;
+    [] call a3aa_infopanel_control_fnc_applySettings;
 }] call CBA_fnc_addEventHandler;

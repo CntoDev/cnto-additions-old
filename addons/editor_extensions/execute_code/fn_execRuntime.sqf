@@ -8,7 +8,7 @@ private _forjip = _this getVariable "forjip";
 private _keepmodule = _this getVariable "keepmodule";
 
 /* unique internal variable name, based on position */
-private _uid = "exec_code_" + ((str position _this) call BIS_fnc_filterString);
+private _uid = "execute_code_" + ((str position _this) call BIS_fnc_filterString);
 
 [
     [_this getVariable "execenv",
@@ -16,7 +16,7 @@ private _uid = "exec_code_" + ((str position _this) call BIS_fnc_filterString);
      _this getVariable "waitforstart",
      _this getVariable "runoninit",
      _this getVariable "runonrespawn",
-     compile ((_this getVariable "code") call a3ee_execute_code_fnc_decomment),
+     compile ((_this getVariable "code") call a3aa_ee_execute_code_fnc_decomment),
      _keepmodule,
      _this,
      _uid],

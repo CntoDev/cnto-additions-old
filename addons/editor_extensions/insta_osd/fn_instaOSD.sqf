@@ -5,8 +5,8 @@
  * an optional header may be provided (such as mission name)
  *
  * examples:
- *   [] call a3ee_fnc_instaOSD;
- *   "Some Header" call a3ee_fnc_instaOSD;
+ *   [] call a3aa_ee_insta_osd_fnc_instaOSD;
+ *   "Some Header" call a3aa_ee_insta_osd_fnc_instaOSD;
  */
 
 params ["_header"];
@@ -21,7 +21,7 @@ if (!isNil "_header") then {
 private _date = date apply { if (_x < 10) then { "0" + str _x } else { _x } };
 _text pushBack format (["%1-%2-%3, %4%5"] + _date);
 
-private _loc_desc = player call a3ee_insta_osd_fnc_nearLocText;
+private _loc_desc = player call a3aa_ee_insta_osd_fnc_nearLocText;
 if (_loc_desc != "") then {
     _text pushBack _loc_desc;
 };
@@ -29,4 +29,4 @@ if (_loc_desc != "") then {
 private _world = getText (configFile >> "CfgWorlds" >> worldName >> "description");
 _text pushBack _world;
 
-_text call a3ee_fnc_typeText;
+_text call a3aa_ee_insta_osd_fnc_typeText;

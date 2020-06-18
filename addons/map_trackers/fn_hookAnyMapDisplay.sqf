@@ -13,7 +13,7 @@ waitUntil {
     private _done = {
         private _ctrl = _x displayCtrl IDC_MAP;
         if (!isNull _ctrl) then {
-            _ctrl call Map_Trackers_fnc_setupDrawEH;
+            _ctrl call a3aa_map_trackers_fnc_setupDrawEH;
             _hooked pushBack _x;
         };
         if (!isNull _ctrl && ctrlIDD _x == IDD_MAIN_MAP) exitWith { true };
@@ -39,10 +39,10 @@ waitUntil {
     private _ctrl = findDisplay IDD_RSCDISPLAYCURATOR
                         displayCtrl IDC_RSCDISPLAYCURATOR_MAINMAP;
     if (!isNull _ctrl) then {
-        private _hooked = _ctrl getVariable "Map_Trackers_hooked";
+        private _hooked = _ctrl getVariable "a3aa_map_trackers_hooked";
         if (isNil "_hooked") then {
-            _ctrl call Map_Trackers_fnc_setupDrawEH;
-            _ctrl setVariable ["Map_Trackers_hooked", true];
+            _ctrl call a3aa_map_trackers_fnc_setupDrawEH;
+            _ctrl setVariable ["a3aa_map_trackers_hooked", true];
         };
     };
     sleep (1 + random 1);

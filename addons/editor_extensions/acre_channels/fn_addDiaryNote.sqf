@@ -18,7 +18,7 @@ _text = _text + "</font>";
         if (isDedicated) exitWith {};
         waitUntil { !isNull player };
         /* ignored if exists */
-        player createDiarySubject ["a3ee_acre_setup", "ACRE2 Channels"];
-        player createDiaryRecord ["a3ee_acre_setup", [_title, _text]];
+        player createDiarySubject ["a3aa_ee_acre_channels_setup", "ACRE2 Channels"];
+        player createDiaryRecord ["a3aa_ee_acre_channels_setup", [_title, _text]];
     }
 ] remoteExec ["spawn", 0, true];

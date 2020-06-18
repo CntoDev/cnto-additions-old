@@ -129,7 +129,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
                         _this forgetTarget _x;
                     } forEach (_x targets [true]);
                 } forEach units _this;
-                private _isfleeing = _this getVariable "ares_extras_stopfleeing";
+                private _isfleeing = _this getVariable "a3aa_ares_extras_stopfleeing";
                 if (isNil "_isfleeing" || {isNull _isfleeing}) then {
                     _isfleeing = _this spawn {
                         sleep 120;
@@ -140,7 +140,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
                             _x enableAI "SUPPRESSION";
                         } forEach units _this;
                     };
-                    _this setVariable ["ares_extras_stopfleeing", _isfleeing];
+                    _this setVariable ["a3aa_ares_extras_stopfleeing", _isfleeing];
                 };
             }] remoteExec ["call", units _x select 0];
         } forEach _groups;
@@ -182,7 +182,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
             } forEach _units;
         };
         if (count _groups < 1) exitWith {};
-        _groups call Ares_Extras_fnc_assignTaskForce;
+        _groups call a3aa_ares_extras_fnc_assignTaskForce;
     }
 ] call Ares_fnc_RegisterCustomModule;
 
@@ -289,10 +289,10 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         [[_target, _groups], {
             params ["_target", "_groups"];
 
-            if (!isNil "ares_extras_transferring_units") exitWith {
+            if (!isNil "a3aa_ares_extras_transferring_units") exitWith {
                 "Locality transfer already running." remoteExec ["systemChat", remoteExecutedOwner];
             };
-            ares_extras_transferring_units = true;
+            a3aa_ares_extras_transferring_units = true;
 
             if (_target isEqualTo -1) then {
                 _target = 2;  /* special value for Server */
@@ -317,7 +317,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
                     format ["%1 done (%2/%3)", str _x, _i, _total] remoteExec ["systemChat", remoteExecutedOwner];
                 };
             } forEach _groups;
-            ares_extras_transferring_units = nil;
+            a3aa_ares_extras_transferring_units = nil;
             "Locality transfer done." remoteExec ["systemChat", remoteExecutedOwner];
         }] remoteExec ["spawn", 2];
     }
@@ -362,7 +362,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         private _values = [""] + (_cfgs apply { configName _x });
 
         private _defidx = 0;
-        private _defclass = profileNamespace getVariable "a3ee_player_insignia";
+        private _defclass = profileNamespace getVariable "a3aa_ee_extended_gear_player_insignia";
         if (!isNil "_defclass") then {
             if (_values find _defclass != -1) then {
                 _defidx = _values find _defclass;
@@ -381,12 +381,12 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         if (_class == "") then {
             /* remove insignia */
             {
-                profileNamespace setVariable ["a3ee_player_insignia", nil];
+                profileNamespace setVariable ["a3aa_ee_extended_gear_player_insignia", nil];
             } remoteExec ["call", _unit];
         } else {
             /* set insignia */
             [_class, {
-                profileNamespace setVariable ["a3ee_player_insignia", _this];
+                profileNamespace setVariable ["a3aa_ee_extended_gear_player_insignia", _this];
             }] remoteExec ["call", _unit];
         };
     }
@@ -446,17 +446,17 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
             ["Unit is not a soldier."] call Ares_fnc_ShowZeusMessage;
         };
 
-        Ares_Extras_collected_clients = [];
+        a3aa_ares_extras_collected_clients = [];
         {
             [[clientOwner, profileName], {
-                Ares_Extras_collected_clients pushBack _this;
+                a3aa_ares_extras_collected_clients pushBack _this;
             }] remoteExec ["call", remoteExecutedOwner];
         } remoteExec ["call"];
         sleep 1;
-        Ares_Extras_collected_clients sort true;
+        a3aa_ares_extras_collected_clients sort true;
 
-        private _clients = Ares_Extras_collected_clients apply { _x select 0 };
-        private _names = Ares_Extras_collected_clients apply { _x select 1 };
+        private _clients = a3aa_ares_extras_collected_clients apply { _x select 0 };
+        private _names = a3aa_ares_extras_collected_clients apply { _x select 1 };
         private _reply = [
             "Set new player unit",
             [

@@ -19,15 +19,15 @@ if (isNil "ace_interact_menu_fnc_createAction") exitWith {};
      */
 
     private _action = [
-        "Chestpack_onChest",
+        "a3aa_chestpack_onChest",
         "Backpack on Chest",
         "",
         {
-            private _back = (_this select 0) call Chestpack_fnc_removeBackpack;
-            [(_this select 0), _back] call Chestpack_fnc_setChestpack;
+            private _back = (_this select 0) call a3aa_chestpack_fnc_removeBackpack;
+            [(_this select 0), _back] call a3aa_chestpack_fnc_setChestpack;
         },
         {
-            private _chest = (_this select 0) getVariable "Chestpack_pack";
+            private _chest = (_this select 0) getVariable "a3aa_chestpack_pack";
             isNil "_chest" && {!isNull unitBackpack (_this select 0)};
         }
     /*
@@ -42,15 +42,15 @@ if (isNil "ace_interact_menu_fnc_createAction") exitWith {};
         call ace_interact_menu_fnc_addActionToClass;
 
     _action = [
-        "Chestpack_onBack",
+        "a3aa_chestpack_onBack",
         "Chestpack on Back",
         "",
         {
-            private _chest = (_this select 0) call Chestpack_fnc_removeChestpack;
-            [(_this select 0), _chest] call Chestpack_fnc_setBackpack;
+            private _chest = (_this select 0) call a3aa_chestpack_fnc_removeChestpack;
+            [(_this select 0), _chest] call a3aa_chestpack_fnc_setBackpack;
         },
         {
-            private _chest = (_this select 0) getVariable "Chestpack_pack";
+            private _chest = (_this select 0) getVariable "a3aa_chestpack_pack";
             !isNil "_chest" && {isNull unitBackpack (_this select 0)};
         }
     ] call ace_interact_menu_fnc_createAction;
@@ -58,17 +58,17 @@ if (isNil "ace_interact_menu_fnc_createAction") exitWith {};
         call ace_interact_menu_fnc_addActionToClass;
 
     _action = [
-        "Chestpack_swapPacks",
+        "a3aa_chestpack_swapPacks",
         "Swap Chest/Back packs",
         "",
         {
-            private _back = (_this select 0) call Chestpack_fnc_removeBackpack;
-            private _chest = (_this select 0) call Chestpack_fnc_removeChestpack;
-            [(_this select 0), _chest] call Chestpack_fnc_setBackpack;
-            [(_this select 0), _back] call Chestpack_fnc_setChestpack;
+            private _back = (_this select 0) call a3aa_chestpack_fnc_removeBackpack;
+            private _chest = (_this select 0) call a3aa_chestpack_fnc_removeChestpack;
+            [(_this select 0), _chest] call a3aa_chestpack_fnc_setBackpack;
+            [(_this select 0), _back] call a3aa_chestpack_fnc_setChestpack;
         },
         {
-            private _chest = (_this select 0) getVariable "Chestpack_pack";
+            private _chest = (_this select 0) getVariable "a3aa_chestpack_pack";
             !isNil "_chest" && {!isNull unitBackpack (_this select 0)};
         }
     ] call ace_interact_menu_fnc_createAction;
@@ -81,53 +81,53 @@ if (isNil "ace_interact_menu_fnc_createAction") exitWith {};
      */
 
     _action = [
-        "Chestpack_onChest_other",
+        "a3aa_chestpack_onChest_other",
         "Backpack on Chest",
         "",
         {
-            private _back = (_this select 0) call Chestpack_fnc_removeBackpack;
-            [(_this select 0), _back] call Chestpack_fnc_setChestpack;
+            private _back = (_this select 0) call a3aa_chestpack_fnc_removeBackpack;
+            [(_this select 0), _back] call a3aa_chestpack_fnc_setChestpack;
         },
         {
-            private _chest = (_this select 0) getVariable "Chestpack_pack";
+            private _chest = (_this select 0) getVariable "a3aa_chestpack_pack";
             isNil "_chest" && {!isNull unitBackpack (_this select 0)}
-            && (_this select 0) call Chestpack_fnc_isDead;
+            && (_this select 0) call a3aa_chestpack_fnc_isDead;
         }
     ] call ace_interact_menu_fnc_createAction;
     [_playerclass, 0, ["ACE_MainActions"], _action]
         call ace_interact_menu_fnc_addActionToClass;
 
     _action = [
-        "Chestpack_onBack_other",
+        "a3aa_chestpack_onBack_other",
         "Chestpack on Back",
         "",
         {
-            private _chest = (_this select 0) call Chestpack_fnc_removeChestpack;
-            [(_this select 0), _chest] call Chestpack_fnc_setBackpack;
+            private _chest = (_this select 0) call a3aa_chestpack_fnc_removeChestpack;
+            [(_this select 0), _chest] call a3aa_chestpack_fnc_setBackpack;
         },
         {
-            private _chest = (_this select 0) getVariable "Chestpack_pack";
+            private _chest = (_this select 0) getVariable "a3aa_chestpack_pack";
             !isNil "_chest" && {isNull unitBackpack (_this select 0)}
-            && (_this select 0) call Chestpack_fnc_isDead;
+            && (_this select 0) call a3aa_chestpack_fnc_isDead;
         }
     ] call ace_interact_menu_fnc_createAction;
     [_playerclass, 0, ["ACE_MainActions"], _action]
         call ace_interact_menu_fnc_addActionToClass;
 
     _action = [
-        "Chestpack_swapPacks_other",
+        "a3aa_chestpack_swapPacks_other",
         "Swap Chest/Back packs",
         "",
         {
-            private _back = (_this select 0) call Chestpack_fnc_removeBackpack;
-            private _chest = (_this select 0) call Chestpack_fnc_removeChestpack;
-            [(_this select 0), _chest] call Chestpack_fnc_setBackpack;
-            [(_this select 0), _back] call Chestpack_fnc_setChestpack;
+            private _back = (_this select 0) call a3aa_chestpack_fnc_removeBackpack;
+            private _chest = (_this select 0) call a3aa_chestpack_fnc_removeChestpack;
+            [(_this select 0), _chest] call a3aa_chestpack_fnc_setBackpack;
+            [(_this select 0), _back] call a3aa_chestpack_fnc_setChestpack;
         },
         {
-            private _chest = (_this select 0) getVariable "Chestpack_pack";
+            private _chest = (_this select 0) getVariable "a3aa_chestpack_pack";
             !isNil "_chest" && {!isNull unitBackpack (_this select 0)}
-            && (_this select 0) call Chestpack_fnc_isDead;
+            && (_this select 0) call a3aa_chestpack_fnc_isDead;
         }
     ] call ace_interact_menu_fnc_createAction;
     [_playerclass, 0, ["ACE_MainActions"], _action]

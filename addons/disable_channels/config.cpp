@@ -1,9 +1,5 @@
-/*
- * Disable unused chat channels for convenience
- */
-
 class CfgPatches {
-    class Disable_Channels {
+    class a3aa_disable_channels {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -14,16 +10,16 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class Disable_Channels {
-        class All {
-            file = "\disable_channels";
+    class a3aa_disable_channels {
+        class all {
+            file = "\a3aa\disable_channels";
             class init;
         };
     };
 };
 
 class Extended_PreInit_EventHandlers {
-    class Disable_Channels {
-        init = "[] call Disable_Channels_fnc_init";
+    class a3aa_disable_channels {
+        init = "[] call a3aa_disable_channels_fnc_init";
     };
 };

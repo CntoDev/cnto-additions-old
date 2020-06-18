@@ -1,5 +1,5 @@
 class CfgPatches {
-    class Stamina_Tweak {
+    class a3aa_mtc_stamina_tweak {
         units[] = {};
         weapons[] = {};
         requiredVersion = 1.54;  /* new stamina system needed */

@@ -7,10 +7,10 @@ if (time < 60 || !isDedicated) exitWith {};
 
 private _unit = _this;
 
-if (isNil "AI_Dynamic_Skill_latest_warning") then {
-    AI_Dynamic_Skill_latest_warning = 0;
+if (isNil "a3aa_ai_dynamic_skill_latest_warning") then {
+    a3aa_ai_dynamic_skill_latest_warning = 0;
 };
-if (time - AI_Dynamic_Skill_latest_warning < 10) exitWith {};
+if (time - a3aa_ai_dynamic_skill_latest_warning < 10) exitWith {};
 
 {
     private _name = _x;
@@ -31,7 +31,7 @@ if (time - AI_Dynamic_Skill_latest_warning < 10) exitWith {};
      */
     if (_skill >= 0.2 && _skill > 0 && abs (_skill-_final) > 0.05) then {
         private _msg = format [
-            "ai_dynamic_skill: skill %1 is %2, but skillFinal is %3",
+            "a3aa_ai_dynamic_skill: skill %1 is %2, but skillFinal is %3",
             _name, _skill toFixed 2, _final toFixed 2
         ];
         _msg remoteExec ["systemChat"];
@@ -50,4 +50,4 @@ if (time - AI_Dynamic_Skill_latest_warning < 10) exitWith {};
     "general"
 ];
 
-AI_Dynamic_Skill_latest_warning = time;
+a3aa_ai_dynamic_skill_latest_warning = time;

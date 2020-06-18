@@ -16,6 +16,6 @@
     waitUntil { abs ((_this skill "general")-0.5) < 0.05 };
 
     /* unblock updateSkills and call it */
-    _this setVariable ["AI_Dynamic_Skill_initialized", true];
-    _this call AI_Dynamic_Skill_fnc_updateSkills;
+    _this setVariable ["a3aa_ai_dynamic_skill_initialized", true];
+    _this call a3aa_ai_dynamic_skill_fnc_updateSkills;
 };

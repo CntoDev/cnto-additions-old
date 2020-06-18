@@ -5,7 +5,7 @@
  */
 
 class CfgPatches {
-    class Bright_Flares {
+    class a3aa_mtc_bright_flares {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {

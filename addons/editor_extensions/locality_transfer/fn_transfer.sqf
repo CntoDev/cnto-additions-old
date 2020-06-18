@@ -7,7 +7,7 @@ private _hcs_required = _this getVariable "hcs_required";
 
     /* which groups to transfer - exit if none */
     private _groups = allGroups select {
-        _x getVariable "a3ee_locality_transfer";
+        _x getVariable "a3aa_ee_locality_transfer";
     };
     if (_groups isEqualTo []) exitWith {};
 

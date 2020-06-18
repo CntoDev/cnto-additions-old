@@ -1,15 +1,15 @@
 class CfgPatches {
-    class Editor_Extensions_ambient_anim {
+    class a3aa_ee_ambient_anim {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"Editor_Extensions_shared"};
+        requiredAddons[] = {"a3aa_ee_shared"};
     };
 };
 
 class CfgFunctions {
-    class a3ee_ambient_anim {
+    class a3aa_ee_ambient_anim {
         class all {
-            file = "\editor_extensions\ambient_anim";
+            file = "\a3aa\ee\ambient_anim";
             class scheduleAnim;
             class doAnim;
         };
@@ -18,21 +18,21 @@ class CfgFunctions {
 
 class CfgVehicles {
     class Logic;
-    class a3ee_module_base : Logic {
+    class a3aa_ee_shared_module_base : Logic {
         class EventHandlers;
     };
-    class a3ee_ambient_anim : a3ee_module_base {
+    class a3aa_ee_ambient_anim : a3aa_ee_shared_module_base {
         scope = 2;
         icon = "A3\Modules_F_Tacops\Data\CivilianPresenceUnit\icon32_ca.paa";
         displayName = "Ambient animation";
         class Attributes {
             class structured_hint {
-                property = "a3ee_structured_hint";
+                property = "a3aa_ee_ambient_anim_structured_hint";
                 control = "StructuredText1";
                 description = "Hint: Synchronize soldier units to this module.";
             };
             class animlist {
-                property = "a3ee_animlist";
+                property = "a3aa_ee_ambient_anim_animlist";
                 control = "Edit";
                 displayName = "Anim";
                 expression = "_this setVariable [""%s"",_value]";
@@ -41,7 +41,7 @@ class CfgVehicles {
                 tooltip = "Animation classname. If multiple (comma-separated) are specified, a random one is chosen and played.";
             };
             class maxdelay {
-                property = "a3ee_maxdelay";
+                property = "a3aa_ee_ambient_anim_maxdelay";
                 control = "EditShort";
                 displayName = "Random delay";
                 expression = "_this setVariable [""%s"",_value]";
@@ -50,7 +50,7 @@ class CfgVehicles {
                 tooltip = "Wait up to the specified amount of seconds before applying the animation. Useful when multiple adjacent units share the same animation and you want to avoid their jarring frame-perfect sync with each other.";
             };
             class exitcombat {
-                property = "a3ee_exitcombat";
+                property = "a3aa_ee_ambient_anim_exitcombat";
                 control = "Checkbox";
                 displayName = "Combat cancels animation";
                 expression = "_this setVariable [""%s"",_value]";
@@ -58,7 +58,7 @@ class CfgVehicles {
                 tooltip = "When the unit's group enters COMBAT state, exit with the Exit animation.";
             };
             class exitanim {
-                property = "a3ee_exitanim";
+                property = "a3aa_ee_ambient_anim_exitanim";
                 control = "Combo";
                 displayName = "Exit animation";
                 expression = "_this setVariable [""%s"",_value]";
@@ -73,7 +73,7 @@ class CfgVehicles {
             };
         };
         class EventHandlers : EventHandlers {
-            class exec_code { init = "if (isServer) then { (_this select 0) call a3ee_ambient_anim_fnc_scheduleAnim }"; };
+            class ambient_anim { init = "if (isServer) then { (_this select 0) call a3aa_ee_ambient_anim_fnc_scheduleAnim }"; };
         };
     };
 };

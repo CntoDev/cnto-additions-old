@@ -30,7 +30,7 @@ switch (_variant) do {
                         call BIS_fnc_3DENNotification;
                 };
                 private _loadout = getUnitLoadout (_units select 0);
-                _loadout call a3ee_arsenal_respawn_fnc_acreFixRadios;
+                _loadout call a3aa_ee_arsenal_respawn_fnc_acreFixRadios;
                 copyToClipboard str _loadout;
             };
             case "paste": {
@@ -40,7 +40,7 @@ switch (_variant) do {
                 };
                 private _loadout = parseSimpleArray copyFromClipboard;
                 if (!isNil "_loadout") then {
-                    _loadout call a3ee_arsenal_respawn_fnc_acreFixRadios;
+                    _loadout call a3aa_ee_arsenal_respawn_fnc_acreFixRadios;
                     collect3DENHistory {
                         { _x setUnitLoadout [_loadout, false] } forEach _units;
                         save3DENInventory _units;
@@ -59,8 +59,8 @@ switch (_variant) do {
                         call BIS_fnc_curatorHint;
                 };
                 private _loadout = getUnitLoadout (_units select 0);
-                _loadout call a3ee_arsenal_respawn_fnc_acreFixRadios;
-                Loadout_Copier_transient_loadout = _loadout;
+                _loadout call a3aa_ee_arsenal_respawn_fnc_acreFixRadios;
+                a3aa_loadout_copier_transient_loadout = _loadout;
                 if (isServer) then { copyToClipboard str _loadout };
             };
             case "paste": {
@@ -70,17 +70,17 @@ switch (_variant) do {
                         call BIS_fnc_curatorHint;
                 };
                 if (isMultiplayer) then {
-                    if (isNil "Loadout_Copier_transient_loadout") exitWith {
+                    if (isNil "a3aa_loadout_copier_transient_loadout") exitWith {
                         ["Loadout Paste Error",
                         "No loadout copied (and cannot paste clipboard in MP).", 3]
                             call BIS_fnc_curatorHint;
                     };
-                    private _loadout = Loadout_Copier_transient_loadout;
+                    private _loadout = a3aa_loadout_copier_transient_loadout;
                     { _x setUnitLoadout [_loadout, false] } forEach _units;
                 } else {
                     private _loadout = parseSimpleArray copyFromClipboard;
                     if (!isNil "_loadout") then {
-                        _loadout call a3ee_arsenal_respawn_fnc_acreFixRadios;
+                        _loadout call a3aa_ee_arsenal_respawn_fnc_acreFixRadios;
                         { _x setUnitLoadout [_loadout, false] } forEach _units;
                     };
                 };
@@ -98,22 +98,22 @@ switch (_variant) do {
             case "copy": {
                 systemChat format ["Copying loadout of %1", name _target];
                 private _loadout = getUnitLoadout _target;
-                _loadout call a3ee_arsenal_respawn_fnc_acreFixRadios;
-                Loadout_Copier_transient_loadout = _loadout;
+                _loadout call a3aa_ee_arsenal_respawn_fnc_acreFixRadios;
+                a3aa_loadout_copier_transient_loadout = _loadout;
                 if (isServer) then { copyToClipboard str _loadout };
             };
             case "paste": {
                 systemChat format ["Pasting loadout to %1", name _target];
                 if (isMultiplayer) then {
-                    if (isNil "Loadout_Copier_transient_loadout") exitWith {
+                    if (isNil "a3aa_loadout_copier_transient_loadout") exitWith {
                         systemChat "No loadout copied (and cannot paste clipboard in MP).";
                     };
-                    private _loadout = Loadout_Copier_transient_loadout;
+                    private _loadout = a3aa_loadout_copier_transient_loadout;
                     _target setUnitLoadout [_loadout, false];
                 } else {
                     private _loadout = parseSimpleArray copyFromClipboard;
                     if (!isNil "_loadout") then {
-                        _loadout call a3ee_arsenal_respawn_fnc_acreFixRadios;
+                        _loadout call a3aa_ee_arsenal_respawn_fnc_acreFixRadios;
                         _target setUnitLoadout [_loadout, false];
                     };
                 };

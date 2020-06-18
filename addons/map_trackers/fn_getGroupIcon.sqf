@@ -47,7 +47,7 @@ private _group_type = {
     private _type = nil;
 
     /* set by mission */
-    _type = _grp getVariable "Map_Trackers_group_type";
+    _type = _grp getVariable "a3aa_map_trackers_group_type";
     if (!isNil "_type") exitWith { _type };
 
     /*

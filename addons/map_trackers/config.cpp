@@ -2,7 +2,7 @@
  * reduce sound in vehicles to make direct speech communication viable
  */
 class CfgPatches {
-    class Map_Trackers {
+    class a3aa_map_trackers {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -14,9 +14,9 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class Map_Trackers {
-        class All {
-            file = "\map_trackers";
+    class a3aa_map_trackers {
+        class all {
+            file = "\a3aa\map_trackers";
             class init;
             class hookAnyMapDisplay;  /* scheduled by init */
             class setupDrawEH;
@@ -28,7 +28,7 @@ class CfgFunctions {
 };
 
 class Extended_PreInit_EventHandlers {
-    class Map_Trackers {
-        init = "[] call Map_Trackers_fnc_init";
+    class a3aa_map_trackers {
+        init = "[] call a3aa_map_trackers_fnc_init";
     };
 };

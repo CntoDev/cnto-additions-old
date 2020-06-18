@@ -5,7 +5,7 @@ if (isClass (configFile >> "CfgPatches" >> "acex_volume")) exitWith {};
  * fadeSound previously, not always - in case mission maker used fadeSound
  * for custom purposes
  */
-if (!quiet_vehicles_enable) exitWith {};
+if (!a3aa_quiet_vehicles_enable) exitWith {};
 
 private _veh = vehicle player;
 
@@ -20,5 +20,5 @@ if (_veh isKindOf "Car"
     || {_veh isKindOf "Plane"}
     || {_veh isKindOf "Ship"}) then {
     /* entered vehicle eligible for sound reduction */
-    1 fadeSound quiet_vehicles_level;
+    1 fadeSound a3aa_quiet_vehicles_level;
 };

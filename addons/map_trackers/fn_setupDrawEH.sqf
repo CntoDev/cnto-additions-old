@@ -33,15 +33,15 @@ _this ctrlAddEventHandler ["Draw", {
             26,
             0
         ];
-    } forEach Map_Trackers_groups;
+    } forEach a3aa_map_trackers_groups;
 
     /*
      * lines between unit (soldier) icons
      */
     private _calc_alpha = {
         /* fade gradually on the last 10% of distance */
-        private _dist_from_edge = map_trackers_unit_dist - _this;
-        (_dist_from_edge/(map_trackers_unit_dist*0.1)) max 0 min 1;
+        private _dist_from_edge = a3aa_map_trackers_unit_dist - _this;
+        (_dist_from_edge/(a3aa_map_trackers_unit_dist*0.1)) max 0 min 1;
     };
     {
         _x params ["_src", "_dst"];
@@ -51,7 +51,7 @@ _this ctrlAddEventHandler ["Draw", {
             _dst,
             [0, 0, 1, 0.5*(_maxdist call _calc_alpha)]
         ];
-    } forEach Map_Trackers_unit_lines;
+    } forEach a3aa_map_trackers_unit_lines;
 
     /*
      * unit (soldier) icons
@@ -80,5 +80,5 @@ _this ctrlAddEventHandler ["Draw", {
             16,
             getDir _unit
         ];
-    } forEach Map_Trackers_units;
+    } forEach a3aa_map_trackers_units;
 }];

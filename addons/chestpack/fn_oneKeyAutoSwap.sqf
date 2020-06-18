@@ -13,7 +13,7 @@ private _desc = "self";
 /* getCursorObjectParams is as imprecise as cursorTarget */
 private _pointed = cursorTarget;
 if (_pointed isKindOf "CAManBase" && {player distance _pointed < 2}
-                            && {_pointed call Chestpack_fnc_isDead}) then {
+                            && {_pointed call a3aa_chestpack_fnc_isDead}) then {
     _target = _pointed;
     _desc = "target's";
 };
@@ -30,26 +30,26 @@ if (isNull _target) exitWith {};
  *  --> swap them
  */
 
-private _chestpack = _target getVariable "Chestpack_pack";
+private _chestpack = _target getVariable "a3aa_chestpack_pack";
 private _has_chestpack = if (isNil "_chestpack") then { false } else { true };
 private _has_backpack = !isNull unitBackpack _target;
 
 if (_has_backpack && !_has_chestpack) then {
     systemChat format ["Putting %1 backpack on chest", _desc];
-    private _back = _target call Chestpack_fnc_removeBackpack;
-    [_target, _back] call Chestpack_fnc_setChestpack;
+    private _back = _target call a3aa_chestpack_fnc_removeBackpack;
+    [_target, _back] call a3aa_chestpack_fnc_setChestpack;
 } else {
     if (!_has_backpack && _has_chestpack) then {
         systemChat format ["Putting %1 chestpack on back", _desc];
-        private _chest = _target call Chestpack_fnc_removeChestpack;
-        [_target, _chest] call Chestpack_fnc_setBackpack;
+        private _chest = _target call a3aa_chestpack_fnc_removeChestpack;
+        [_target, _chest] call a3aa_chestpack_fnc_setBackpack;
     } else {
         if (_has_backpack && _has_chestpack) then {
             systemChat format ["Swapping %1 Chest/Back packs", _desc];
-            private _back = _target call Chestpack_fnc_removeBackpack;
-            private _chest = _target call Chestpack_fnc_removeChestpack;
-            [_target, _chest] call Chestpack_fnc_setBackpack;
-            [_target, _back] call Chestpack_fnc_setChestpack;
+            private _back = _target call a3aa_chestpack_fnc_removeBackpack;
+            private _chest = _target call a3aa_chestpack_fnc_removeChestpack;
+            [_target, _chest] call a3aa_chestpack_fnc_setBackpack;
+            [_target, _back] call a3aa_chestpack_fnc_setChestpack;
         };
     };
 };

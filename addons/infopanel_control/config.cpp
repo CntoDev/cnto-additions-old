@@ -1,5 +1,5 @@
 class CfgPatches {
-    class InfoPanel_Control {
+    class a3aa_infopanel_control {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -11,9 +11,9 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class InfoPanel_Control {
-        class All {
-            file = "\infopanel_control";
+    class a3aa_infopanel_control {
+        class all {
+            file = "\a3aa\infopanel_control";
             class initSettings;
             class applySettings;  /* scheduled by initSettings */
             class disablePanels;
@@ -22,7 +22,7 @@ class CfgFunctions {
 };
 
 class Extended_PreInit_EventHandlers {
-    class InfoPanel_Control {
-        init = "[] call InfoPanel_Control_fnc_initSettings";
+    class a3aa_infopanel_control {
+        init = "[] call a3aa_infopanel_control_fnc_initSettings";
     };
 };

@@ -3,7 +3,7 @@ if (!hasInterface) exitWith {};
 private _disabled = [];
 {
     private _setting = missionNamespace getVariable
-                            format ["infopanel_control_%1", _x];
+                            format ["a3aa_infopanel_control_%1", _x];
     if (!_setting) then {
         _disabled pushBack _x;
     };
@@ -15,13 +15,13 @@ private _disabled = [];
     "CrewDisplay"
 ];
 if (_disabled isEqualTo []) exitWith {};
-InfoPanel_Control_disabled = _disabled;
+a3aa_infopanel_control_disabled = _disabled;
 
 0 = [] spawn {
     waitUntil { !isNull player };
     player addEventHandler ["GetInMan", {
         params ["_unit", "_role", "_vehicle", "_turret"];
-        _vehicle call InfoPanel_Control_fnc_disablePanels;
+        _vehicle call a3aa_infopanel_control_fnc_disablePanels;
     }];
 
     /*
@@ -32,7 +32,7 @@ InfoPanel_Control_disabled = _disabled;
     waitUntil {
         sleep 1;
         if (!isNull player) then {
-            vehicle player call InfoPanel_Control_fnc_disablePanels;
+            vehicle player call a3aa_infopanel_control_fnc_disablePanels;
         };
         false;
     };

@@ -8,25 +8,25 @@
 
 [
     ["Arma Additions", "Loadout Copier"],
-    "loadout_copier_editor_curator_copy",
+    "a3aa_loadout_copier_editor_curator_copy",
     "Copy Loadout (Editor/Zeus)",
-    { ["editor_curator", "copy"] call Loadout_Copier_fnc_copyPaste }
+    { ["editor_curator", "copy"] call a3aa_loadout_copier_fnc_copyPaste }
 ] call CBA_fnc_addKeybind;
 [
     ["Arma Additions", "Loadout Copier"],
-    "loadout_copier_editor_curator_paste",
+    "a3aa_loadout_copier_editor_curator_paste",
     "Paste Loadout (Editor/Zeus)",
-    { ["editor_curator", "paste"] call Loadout_Copier_fnc_copyPaste }
+    { ["editor_curator", "paste"] call a3aa_loadout_copier_fnc_copyPaste }
 ] call CBA_fnc_addKeybind;
 [
     ["Arma Additions", "Loadout Copier"],
-    "loadout_copier_1st_3rd_person_copy",
+    "a3aa_loadout_copier_1st_3rd_person_copy",
     "Copy Loadout (1st/3rd person)",
-    { ["1st_3rd_person", "copy"] call Loadout_Copier_fnc_copyPaste }
+    { ["1st_3rd_person", "copy"] call a3aa_loadout_copier_fnc_copyPaste }
 ] call CBA_fnc_addKeybind;
 [
     ["Arma Additions", "Loadout Copier"],
-    "loadout_copier_1st_3rd_person_paste",
+    "a3aa_loadout_copier_1st_3rd_person_paste",
     "Paste Loadout (1st/3rd person)",
-    { ["1st_3rd_person", "paste"] call Loadout_Copier_fnc_copyPaste }
+    { ["1st_3rd_person", "paste"] call a3aa_loadout_copier_fnc_copyPaste }
 ] call CBA_fnc_addKeybind;

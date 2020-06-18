@@ -105,7 +105,7 @@ Features
   * **rhs_suppressors** - RHS specific version of silent_ops suppressor tweaks, make them quieter
   * **smoke_bounce** - tone down UGL smoke bounce on impact, they're not rubber balls anymore
   * **weight_fixes** - adjust inventory weight of (mainly small utility) items to make it less realistic, but more balanced
-* **prevent_negative_rating** - avoids mistreatment by the engine (cannot enter friendly vehicles) after friendly fire
+* **no_neg_rating** - avoids mistreatment by the engine (cannot enter friendly vehicles) after friendly fire
   * does nothing if ACE Interaction is present in the modset (it provides the same functionality)
 * **quiet_vehicles** - lower volume in vehicles for easier direct speech communication
   * does nothing if ACEX Volume is present in the modset
@@ -116,5 +116,5 @@ Features
     * to use, (1) place any blue/red/green soldier, (2) place SilentOP, (3) group-link SilentOp to b/r/g soldier, (4) delete original b/r/g soldier (just the soldier icon, not group icon), (5) SilentOp is now blue/red/green
   * throwing grenades no longer counts as loud shooting :)
   * various **tweaks to suppressors** to make them much quieter, 7.62mm > 6.5mm > 5.56mm > 9mm
-* **spectator_acre_channel** - when using vanilla spectator, switches the player to ACRE2 spectator channel
-* **static_line_chute** - organized group jumping, initiated by pilot/grplead, parachute not provided (you need to have one already)
+* **spectator_acre** - when using vanilla spectator, switches the player to ACRE2 spectator channel
+* **static_line** - organized group jumping, initiated by pilot/grplead, parachute not provided (you need to have one already)

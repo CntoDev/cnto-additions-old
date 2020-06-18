@@ -11,7 +11,7 @@
  */
 
 class CfgPatches {
-    class RHS_Vanilla_Ammo {
+    class a3aa_mtc_rhs_vanilla_ammo {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {

@@ -1,5 +1,5 @@
 class CfgPatches {
-    class Chestpack {
+    class a3aa_chestpack {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -11,9 +11,9 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class Chestpack {
-        class All {
-            file = "\chestpack";
+    class a3aa_chestpack {
+        class all {
+            file = "\a3aa\chestpack";
             /* preInit because of newControllableObject */
             class hookACEInteract { preInit = 1; };
             class hookCBAKeybind;
@@ -28,7 +28,7 @@ class CfgFunctions {
 };
 
 class Extended_PreInit_EventHandlers {
-    class Chestpack {
-        init = "[] call Chestpack_fnc_hookCBAKeybind";
+    class a3aa_chestpack {
+        init = "[] call a3aa_chestpack_fnc_hookCBAKeybind";
     };
 };

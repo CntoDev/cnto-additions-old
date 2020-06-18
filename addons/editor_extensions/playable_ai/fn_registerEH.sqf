@@ -1,6 +1,6 @@
 if (is3DEN) exitWith {};
 
-a3ee_playable_ai_args = [
+a3aa_ee_playable_ai_args = [
     _this getVariable "stop_ai",
     compile (_this getVariable "custom_code")
 ];
@@ -10,7 +10,7 @@ addMissionEventHandler ["HandleDisconnect", {
 
     if (!local _unit || !alive _unit || side _unit == sideLogic) exitWith {};
 
-    a3ee_playable_ai_args params ["_stop_ai", "_code"];
+    a3aa_ee_playable_ai_args params ["_stop_ai", "_code"];
 
     if (_stop_ai) then {
         _unit disableAI "AUTOTARGET";

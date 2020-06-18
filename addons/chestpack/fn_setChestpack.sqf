@@ -15,7 +15,7 @@ private _obj = createSimpleObject [_model, [0,0,0]];
 _obj attachTo [_unit, [0.02,-0.04,-0.3], "pelvis"];
 
 [_unit, true] remoteExec ["forceWalk", _unit];
-_unit setVariable ["Chestpack_pack", [_obj, _packinfo], true];
+_unit setVariable ["a3aa_chestpack_pack", [_obj, _packinfo], true];
 
 
 /*

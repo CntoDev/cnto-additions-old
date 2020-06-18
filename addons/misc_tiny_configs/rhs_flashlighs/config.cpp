@@ -3,7 +3,7 @@
  */
 
 class CfgPatches {
-    class RHS_Map_Flashlights {
+    class a3aa_mtc_rhs_map_flashlights {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {

@@ -4,7 +4,7 @@
 
 [
     ["Arma Additions", "Chestpack"],
-    "chestpack_switch_packs",
+    "a3aa_chestpack_switch_packs",
     "Switch packs",
-    { [] call Chestpack_fnc_oneKeyAutoSwap }
+    { [] call a3aa_chestpack_fnc_oneKeyAutoSwap }
 ] call CBA_fnc_addKeybind;

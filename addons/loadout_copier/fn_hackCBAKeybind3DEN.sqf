@@ -20,7 +20,7 @@ disableSerialization;
 private _d = findDisplay 313;
 if (isNull _d) exitWith {};
 
-private _exists = _d getVariable "Loadout_Copier_hooked_313";
+private _exists = _d getVariable "a3aa_loadout_copier_hooked_313";
 if (!isNil "_exists") exitWith {};
 
 _d displayAddEventHandler ["KeyUp", {
@@ -43,15 +43,15 @@ _d displayAddEventHandler ["KeyUp", {
          */
         [
             "Arma Additions",
-            "Loadout_Copier_editor_curator_copy",
-            { ["editor_curator", "copy"] call Loadout_Copier_fnc_copyPaste }
+            "a3aa_loadout_copier_editor_curator_copy",
+            { ["editor_curator", "copy"] call a3aa_loadout_copier_fnc_copyPaste }
         ],
         [
             "Arma Additions",
-            "Loadout_Copier_editor_curator_paste",
-            { ["editor_curator", "paste"] call Loadout_Copier_fnc_copyPaste }
+            "a3aa_loadout_copier_editor_curator_paste",
+            { ["editor_curator", "paste"] call a3aa_loadout_copier_fnc_copyPaste }
         ]
     ];
 }];
 
-_d setVariable ["Loadout_Copier_hooked_313", true];
+_d setVariable ["a3aa_loadout_copier_hooked_313", true];
