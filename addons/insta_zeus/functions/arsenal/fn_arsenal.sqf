@@ -1,3 +1,5 @@
+#include "\A3\ui_f_curator\ui\defineResinclDesign.inc"
+
 /* allow only if logged in, see fn_maintainCurator */
 if (isMultiplayer && !serverCommandAvailable "#kick") exitWith {};
 
@@ -22,7 +24,7 @@ switch _this do {
     };
     case "spawn": {
         private "_pos";
-        if (!isNull findDisplay 312) then {
+        if (!isNull findDisplay IDD_RSCDISPLAYCURATOR) then {
             /* has curator interface open, use mouse cursor position */
             _pos = screenToWorld getMousePosition;
         } else {
