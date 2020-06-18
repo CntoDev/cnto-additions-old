@@ -30,6 +30,17 @@ private _get_units = {
     };
 };
 
+private _is_medic = {
+    _this getUnitTrait "medic"
+    && {
+        !(_this getUnitTrait "engineer")
+        && !(_this getUnitTrait "explosiveSpecialist")
+    }
+};
+private _is_engi = {
+    _this getUnitTrait "engineer" && !(_this getUnitTrait "medic")
+};
+
 private _get_icon = {
     switch (map_trackers_unit_iconsource) do {
         case "class": {
@@ -39,11 +50,17 @@ private _get_icon = {
             if (_icon == "") then { "iconMan" } else { _icon };
         };
         case "guess": {
-            // TODO: AT/MG recognition
-            if (leader group _this == _this) then {
-                "iconManLeader";
-            } else {
-                "iconMan";
+            private _mags = getArray (configFile >> "CfgWeapons" >> primaryWeapon _this >> "magazines");
+            private _bulletcnt = if (!(_mags isEqualTo [])) then {
+                getNumber (configFile >> "CfgMagazines" >> (_mags select 0) >> "count");
+            } else {};
+            switch true do {
+                case (leader group _this == _this): { "iconManLeader" };
+                case (_this call _is_medic): { "iconManMedic" };
+                case (_this call _is_engi): { "iconManEngineer" };
+                case (secondaryWeapon _this != ""): { "iconManAT" };
+                case (!isNil "_bulletcnt" && {_bulletcnt >= 50}): { "iconManMG" };
+                default { "iconMan" };
             };
         };
         default {

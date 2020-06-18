@@ -60,7 +60,7 @@ _this ctrlAddEventHandler ["Draw", {
         _x params ["_unit", "_icon", "_color", "_name"];
         private _alpha = (player distance _unit) call _calc_alpha;
         _ctrl drawIcon [
-            _icon,
+            "iconMan",
             [0, 0, 0, _alpha],
             _unit,
             20,
