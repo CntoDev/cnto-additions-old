@@ -4,13 +4,29 @@
     ["Group tracking", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
     [
-        ["disabled","players_only","players_and_ai"],
-        ["Disabled","Led by players","Led by players/AI"],
+        ["disabled","side","allies","all"],
+        ["Disabled","Same side","Allied sides","All groups"],
         1
     ],     /* default */
     true,  /* isGlobal */
     nil,   /* script */
     true   /* needRestart */
+] call CBA_settings_fnc_init;
+[
+    "map_trackers_group_shownames",
+    "CHECKBOX",
+    ["Show group callsigns", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
+    ["Arma Additions", "Map Trackers"],
+    true,  /* default */
+    true   /* isGlobal */
+] call CBA_settings_fnc_init;
+[
+    "map_trackers_group_showai",
+    "CHECKBOX",
+    ["Show AI-led groups", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
+    ["Arma Additions", "Map Trackers"],
+    false,  /* default */
+    true    /* isGlobal */
 ] call CBA_settings_fnc_init;
 [
     "map_trackers_group_showself",
@@ -33,8 +49,8 @@
     ["Soldier tracking", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
     [
-        ["disabled","group","side","all"],
-        ["Disabled","Same group","Allied players","All players"],
+        ["disabled","group","side","allies","all"],
+        ["Disabled","Same group","Same side","Allied sides","All players"],
         1
     ],     /* default */
     true,  /* isGlobal */
@@ -46,8 +62,9 @@
     "EDITBOX",
     ["Max soldier distance", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
-    "50",  /* default */
-    true   /* isGlobal */
+    "100",  /* default */
+    true,   /* isGlobal */
+    { map_trackers_unit_dist = parseNumber _this }
 ] call CBA_settings_fnc_init;
 [
     "map_trackers_unit_shownames",
@@ -81,18 +98,18 @@
 ] call CBA_settings_fnc_init;
 
 ["CBA_settingsInitialized", {
-    map_trackers_unit_dist = parseNumber map_trackers_unit_dist;
+    if (!hasInterface) exitWith {};
+    Map_Trackers_unit_lines = [];
     Map_Trackers_units = [];
-/*
-    if (map_trackers_group_enable) then {
+    Map_Trackers_groups = [];
+    if (map_trackers_group_status != "disabled") then {
         [] spawn Map_Trackers_fnc_groupUpdater;
     };
-*/
     if (map_trackers_unit_status != "disabled") then {
         [] spawn Map_Trackers_fnc_unitUpdater;
     };
     if (map_trackers_unit_status != "disabled" || map_trackers_group_status != "disabled") then {
-        [] spawn Map_Trackers_fnc_setupDrawEH;
+        [] spawn Map_Trackers_fnc_hookAnyMapDisplay;
     };
     nil;
 }] call CBA_fnc_addEventHandler;

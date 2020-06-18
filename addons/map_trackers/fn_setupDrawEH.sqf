@@ -2,30 +2,69 @@
  * draw soldier / group icons on each frame
  */
 
-#include "\A3\ui_f\hpp\defineResincl.inc"
-
-disableSerialization;
-
-private ["_ctrl"];
-waitUntil {
-    _ctrl = findDisplay IDD_MAIN_MAP displayCtrl IDC_MAP;
-    !isNull _ctrl;
-};
-
-_ctrl ctrlAddEventHandler ["Draw", {
+_this ctrlAddEventHandler ["Draw", {
     params ["_ctrl"];
+
+    /*
+     * group icons (NATO)
+     */
+    {
+        _x params ["_leader", "_icon", "_color", "_name"];
+        if (_name != "") then {
+            _ctrl drawIcon [
+                "#(rgb,1,1,1)color(1,1,1,0)",
+                [0,0,0,1],
+                _leader,
+                26,
+                26,
+                0,
+                _name,
+                0,
+                0.04,
+                "RobotoCondensed",
+                "right"
+            ];
+        };
+        _ctrl drawIcon [
+            _icon,
+            _color,
+            _leader,
+            26,
+            26,
+            0
+        ];
+    } forEach Map_Trackers_groups;
+
+    /*
+     * lines between unit (soldier) icons
+     */
+    private _calc_alpha = {
+        /* fade gradually on the last 10% of distance */
+        private _dist_from_edge = map_trackers_unit_dist - _this;
+        (_dist_from_edge/(map_trackers_unit_dist*0.1)) max 0 min 1;
+    };
+    {
+        _x params ["_src", "_dst"];
+        private _maxdist = (player distance _src) max (player distance _dst);
+        _ctrl drawLine [
+            _src,
+            _dst,
+            [0, 0, 1, 0.5*(_maxdist call _calc_alpha)]
+        ];
+    } forEach Map_Trackers_unit_lines;
+
+    /*
+     * unit (soldier) icons
+     */
     {
         _x params ["_unit", "_icon", "_color", "_name"];
-        /* fade gradually on the last 10% of distance */
-        private _dist_from_edge = map_trackers_unit_dist-(player distance _unit);
-        private _alpha = (_dist_from_edge/(map_trackers_unit_dist*0.1)) max 0 min 1;
-        // TODO: draw line if map_trackers_unit_showlines
+        private _alpha = (player distance _unit) call _calc_alpha;
         _ctrl drawIcon [
             _icon,
             [0, 0, 0, _alpha],
             _unit,
-            18,
-            18,
+            20,
+            20,
             getDir _unit,
             _name,
             0,
@@ -37,8 +76,8 @@ _ctrl ctrlAddEventHandler ["Draw", {
             _icon,
             _color+[_alpha],
             _unit,
-            14,
-            14,
+            16,
+            16,
             getDir _unit
         ];
     } forEach Map_Trackers_units;

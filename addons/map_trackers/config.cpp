@@ -18,11 +18,11 @@ class CfgFunctions {
         class All {
             file = "\map_trackers";
             class init;
-            //class groupUpdater;  /* scheduled by init */
-            class unitUpdater;   /* scheduled by init */
-            class setupDrawEH;   /* scheduled by init */
-            class guessUnitIcon;
-            class getUnitTeamColor;
+            class hookAnyMapDisplay;  /* scheduled by init */
+            class setupDrawEH;
+            class groupUpdater;       /* scheduled by init */
+            class getGroupIcon;
+            class unitUpdater;        /* scheduled by init */
         };
     };
 };
