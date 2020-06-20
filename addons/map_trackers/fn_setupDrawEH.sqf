@@ -7,33 +7,36 @@ _this ctrlAddEventHandler ["Draw", {
 
     /*
      * group icons (NATO)
+     * - only if High Command icons are hidden
      */
-    {
-        _x params ["_leader", "_icon", "_color", "_name"];
-        if (_name != "") then {
+    if (!(groupIconsVisible select 0)) then {
+        {
+            _x params ["_leader", "_icon", "_color", "_name"];
+            if (_name != "") then {
+                _ctrl drawIcon [
+                    "#(rgb,1,1,1)color(1,1,1,0)",
+                    [0,0,0,1],
+                    _leader,
+                    26,
+                    26,
+                    0,
+                    _name,
+                    0,
+                    0.04,
+                    "RobotoCondensed",
+                    "right"
+                ];
+            };
             _ctrl drawIcon [
-                "#(rgb,1,1,1)color(1,1,1,0)",
-                [0,0,0,1],
+                _icon,
+                _color,
                 _leader,
                 26,
                 26,
-                0,
-                _name,
-                0,
-                0.04,
-                "RobotoCondensed",
-                "right"
+                0
             ];
-        };
-        _ctrl drawIcon [
-            _icon,
-            _color,
-            _leader,
-            26,
-            26,
-            0
-        ];
-    } forEach a3aa_map_trackers_groups;
+        } forEach a3aa_map_trackers_groups;
+    };
 
     /*
      * lines between unit (soldier) icons
