@@ -105,7 +105,7 @@ class CfgVehicles {
             };
         };
         class EventHandlers : EventHandlers {
-            class execute_code { init = "if (isServer) then { (_this select 0) call a3aa_ee_execute_code_fnc_execRuntime }"; };
+            class a3aa_ee_execute_code { init = "if (isServer) then { (_this select 0) call a3aa_ee_execute_code_fnc_execRuntime }"; };
         };
     };
     class a3aa_ee_execute_code_3den : a3aa_ee_shared_module_base {

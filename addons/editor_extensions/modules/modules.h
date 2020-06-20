@@ -55,7 +55,7 @@ class a3aa_ee_custom_location : a3aa_ee_shared_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class makeloc { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_createLoc }"; };
+        class a3aa_ee_custom_location { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_createLoc }"; };
     };
 };
 
@@ -125,7 +125,7 @@ class a3aa_ee_briefing : a3aa_ee_shared_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class send_briefing { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_sendBriefing }"; };
+        class a3aa_ee_briefing { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_sendBriefing }"; };
     };
 };
 
@@ -134,7 +134,7 @@ class a3aa_ee_teleport_on_jip : a3aa_ee_shared_module_base {
     icon = "\a3\Missions_F_Curator\data\img\portraitMPTypeSectorControl_ca.paa";
     displayName = "Teleport on JIP";
     class EventHandlers : EventHandlers {
-        class teleport { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_teleportOnJIP }"; };
+        class a3aa_ee_teleport_on_jip { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_teleportOnJIP }"; };
     };
 };
 
@@ -153,7 +153,7 @@ class a3aa_ee_move_respawn : a3aa_ee_shared_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class teleport { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_moveRespawn }"; };
+        class a3aa_ee_move_respawn { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_moveRespawn }"; };
     };
 };
 
@@ -169,7 +169,7 @@ class a3aa_ee_attach_synced : a3aa_ee_shared_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class attach { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_attachSynced }"; };
+        class a3aa_ee_attach_synced { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_attachSynced }"; };
     };
 };
 
@@ -185,7 +185,7 @@ class a3aa_ee_kill_on_jip : a3aa_ee_shared_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class kill_on_jip { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_killOnJIP }"; };
+        class a3aa_ee_kill_on_jip { init = "if (isServer) then { (_this select 0) call a3aa_ee_modules_fnc_killOnJIP }"; };
     };
 };
 
@@ -364,7 +364,7 @@ class a3aa_ee_post_process : a3aa_ee_shared_module_base {
         };
     };
     class EventHandlers : EventHandlers {
-        class post_process {
+        class a3aa_ee_post_process {
             init = "if (isServer && !is3DEN) then { (_this select 0) call a3aa_ee_modules_fnc_postProcess }";
             AttributesChanged3DEN = "[(_this select 0), 'add'] call a3aa_ee_modules_fnc_postProcess";
             UnregisteredFromWorld3DEN = "[(_this select 0), 'del'] call a3aa_ee_modules_fnc_postProcess";

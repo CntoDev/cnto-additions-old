@@ -44,7 +44,7 @@ class CfgVehicles {
             };
         };
         class EventHandlers : EventHandlers {
-            class playable_ai { init = "if (isServer) then { (_this select 0) call a3aa_ee_playable_ai_fnc_registerEH }"; };
+            class a3aa_ee_playable_ai { init = "if (isServer) then { (_this select 0) call a3aa_ee_playable_ai_fnc_registerEH }"; };
         };
     };
 };

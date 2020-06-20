@@ -33,7 +33,7 @@ class CfgVehicles {
             };
         };
         class EventHandlers : EventHandlers {
-            class setup_respawn { init = "(_this select 0) call a3aa_ee_arsenal_respawn_fnc_setupRespawn"; };
+            class a3aa_ee_arsenal_respawn { init = "(_this select 0) call a3aa_ee_arsenal_respawn_fnc_setupRespawn"; };
         };
     };
 };

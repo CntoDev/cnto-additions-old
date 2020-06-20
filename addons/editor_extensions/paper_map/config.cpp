@@ -44,7 +44,7 @@ class CfgVehicles {
             };
         };
         class EventHandlers : EventHandlers {
-            class paper_map { init = "if (isServer) then { (_this select 0) call a3aa_ee_paper_map_fnc_init }"; };
+            class a3aa_ee_paper_map { init = "if (isServer) then { (_this select 0) call a3aa_ee_paper_map_fnc_init }"; };
         };
     };
 };

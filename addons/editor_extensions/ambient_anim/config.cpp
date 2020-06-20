@@ -73,7 +73,7 @@ class CfgVehicles {
             };
         };
         class EventHandlers : EventHandlers {
-            class ambient_anim { init = "if (isServer) then { (_this select 0) call a3aa_ee_ambient_anim_fnc_scheduleAnim }"; };
+            class a3aa_ee_ambient_anim { init = "if (isServer) then { (_this select 0) call a3aa_ee_ambient_anim_fnc_scheduleAnim }"; };
         };
     };
 };

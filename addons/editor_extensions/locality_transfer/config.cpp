@@ -60,7 +60,7 @@ class CfgVehicles {
             };
         };
         class EventHandlers : EventHandlers {
-            class locality_transfer { init = "if (isServer) then { (_this select 0) call a3aa_ee_locality_transfer_fnc_transfer }"; };
+            class a3aa_ee_locality_transfer { init = "if (isServer) then { (_this select 0) call a3aa_ee_locality_transfer_fnc_transfer }"; };
         };
     };
 };

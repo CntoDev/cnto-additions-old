@@ -46,7 +46,7 @@ class CfgVehicles {
             };
         };
         class EventHandlers : EventHandlers {
-            class insta_osd { init = "if (isServer) then { (_this select 0) call a3aa_ee_insta_osd_fnc_moduleOSD }"; };
+            class a3aa_ee_insta_osd { init = "if (isServer) then { (_this select 0) call a3aa_ee_insta_osd_fnc_moduleOSD }"; };
         };
     };
 };
