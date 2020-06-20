@@ -7,20 +7,20 @@
  */
 
 class CfgPatches {
-    class a3aa_basic_vehicle_cargo {
+    class a3aa_ee_basic_vehicle_cargo {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
-            "3den",
+            "a3aa_ee_shared",
             "cba_xeh"     /* dynamic class hook from module */
         };
     };
 };
 
 class CfgFunctions {
-    class a3aa_basic_vehicle_cargo {
+    class a3aa_ee_basic_vehicle_cargo {
         class all {
-            file = "\a3aa\basic_vehicle_cargo";
+            file = "\a3aa\ee\basic_vehicle_cargo";
             class hookClasses;
             class setCargo;
         };
@@ -28,18 +28,16 @@ class CfgFunctions {
 };
 
 class CfgVehicles {
-    class All;
-    class Logic : All {
+    class Logic;
+    class a3aa_ee_shared_module_base : Logic {
         class EventHandlers;
     };
-    class a3aa_basic_vehicle_cargo_filler : Logic {
+    class a3aa_ee_basic_vehicle_cargo : a3aa_ee_shared_module_base {
         scope = 2;
-        /* no Category => Other */
-        vehicleClass = "Modules";
         icon = "iconCrateWpns";
         displayName = "Basic vehicle cargo";
         class EventHandlers : EventHandlers {
-            class process_cargo { init = "if (!is3DEN) then { (_this select 0) spawn a3aa_basic_vehicle_cargo_fnc_hookClasses }"; };
+            class a3aa_ee_basic_vehicle_cargo { init = "if (!is3DEN) then { (_this select 0) spawn a3aa_ee_basic_vehicle_cargo_fnc_hookClasses }"; };
         };
     };
 };
@@ -50,7 +48,7 @@ class Cfg3DEN {
             class StateSpecial {
                 class Attributes {
                     class DontClearCargo {
-                        property = "a3aa_basic_vehicle_cargo_dontclear";
+                        property = "a3aa_ee_basic_vehicle_cargo_dontclear";
                         control = "Checkbox";
                         displayName = "Don't clear vehicle cargo";
                         expression = "_this setVariable [""%s"",_value,true]";
