@@ -1,28 +1,25 @@
 if (is3DEN) exitWith {};
 
-private _enable = _this getVariable "enabledexec";
+private _enable = _this getVariable "a3aa_ee_execute_code_enabledexec";
 if (!_enable) exitWith {};
 
-private _execonmp = _this getVariable "execonmp";
-private _forjip = _this getVariable "forjip";
-private _keepmodule = _this getVariable "keepmodule";
+private _execonmp = _this getVariable "a3aa_ee_execute_code_execonmp";
+private _forjip = _this getVariable "a3aa_ee_execute_code_forjip";
+private _keepmodule = _this getVariable "a3aa_ee_execute_code_keepmodule";
 
 /* unique internal variable name, based on position */
-private _uid = "execute_code_" + ((str position _this) call BIS_fnc_filterString);
+private _uid = "a3aa_ee_execute_code_" + ((str position _this) call BIS_fnc_filterString);
 
 [
-    [_this getVariable "execenv",
-     _this getVariable "waitforplayer",
-     _this getVariable "waitforstart",
-     _this getVariable "runoninit",
-     _this getVariable "runonrespawn",
-     compile ((_this getVariable "code") call a3aa_ee_execute_code_fnc_decomment),
+    [_this getVariable "a3aa_ee_execute_code_execenv",
+     _this getVariable "a3aa_ee_execute_code_runoninit",
+     _this getVariable "a3aa_ee_execute_code_runonrespawn",
+     compile ((_this getVariable "a3aa_ee_execute_code_code") call a3aa_ee_execute_code_fnc_decomment),
      _keepmodule,
      _this,
      _uid],
     {
-        params ["_execenv", "_waitforplayer", "_waitforstart",
-                "_runoninit", "_runonrespawn", "_code",
+        params ["_execenv", "_runoninit", "_runonrespawn", "_code",
                 "_keepmodule", "_module", "_uid"];
 
         if (_runoninit) then {

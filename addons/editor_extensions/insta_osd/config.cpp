@@ -28,7 +28,7 @@ class CfgVehicles {
         icon = "\A3\modules_f\data\portraitStrategicMapMission_ca.paa";
         displayName = "Insta OSD Location Info";
         class Attributes {
-            class header {
+            class a3aa_ee_insta_osd_header {
                 property = "a3aa_ee_insta_osd_header";
                 control = "Edit";
                 displayName = "Custom header";
@@ -37,7 +37,7 @@ class CfgVehicles {
                 defaultValue = """""";
                 tooltip = "Displayed in bold above the location info. If unset, no header is displayed.\n\nGood for ie. mission name.";
             };
-            class tojip {
+            class a3aa_ee_insta_osd_tojip {
                 property = "a3aa_ee_insta_osd_tojip";
                 control = "Checkbox";
                 displayName = "Show to JIP players";

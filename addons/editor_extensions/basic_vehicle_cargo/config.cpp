@@ -47,7 +47,7 @@ class Cfg3DEN {
         class AttributeCategories {
             class StateSpecial {
                 class Attributes {
-                    class DontClearCargo {
+                    class a3aa_ee_basic_vehicle_cargo_dontclear {
                         property = "a3aa_ee_basic_vehicle_cargo_dontclear";
                         control = "Checkbox";
                         displayName = "Don't clear vehicle cargo";

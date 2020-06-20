@@ -3,8 +3,8 @@
 
 if (is3DEN) exitWith {};
 
-private _markrange = _this getVariable "markrange";
-private _nodelete = _this getVariable "nodelete";
+private _markrange = _this getVariable "a3aa_ee_paper_map_markrange";
+private _nodelete = _this getVariable "a3aa_ee_paper_map_nodelete";
 
 /*
  * server-side

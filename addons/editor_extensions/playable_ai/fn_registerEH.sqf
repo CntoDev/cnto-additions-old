@@ -1,8 +1,8 @@
 if (is3DEN) exitWith {};
 
 a3aa_ee_playable_ai_args = [
-    _this getVariable "stop_ai",
-    compile (_this getVariable "custom_code")
+    _this getVariable "a3aa_ee_playable_ai_stop_ai",
+    compile (_this getVariable "a3aa_ee_playable_ai_custom_code")
 ];
 
 addMissionEventHandler ["HandleDisconnect", {

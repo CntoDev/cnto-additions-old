@@ -5,7 +5,7 @@
 sleep 3;
 if (!local _this) exitWith {};
 
-if (_this getVariable ["DontClearCargo", false]) exitWith {};
+if (_this getVariable ["a3aa_ee_basic_vehicle_cargo_dontclear", false]) exitWith {};
 
 clearWeaponCargoGlobal _this;
 clearMagazineCargoGlobal _this;

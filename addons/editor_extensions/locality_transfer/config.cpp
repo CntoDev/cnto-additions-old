@@ -44,7 +44,7 @@ class CfgVehicles {
         icon = "iconVirtual";
         displayName = "Locality transfer (to HC)";
         class Attributes {
-            class hcs_required {
+            class a3aa_ee_locality_transfer_hcs_required {
                 property = "a3aa_ee_locality_transfer_hcs_required";
                 control = "EditShort";
                 displayName = "Require HCs";
@@ -53,7 +53,7 @@ class CfgVehicles {
                 typeName = "NUMBER";
                 tooltip = "How many HCs should we wait for on the map briefing screen before starting group redistribution - if this amount of HCs isn't reached before the mission start, the transfer is aborted.";
             };
-            class structured_hint {
+            class a3aa_ee_locality_transfer_structured_hint {
                 property = "a3aa_ee_locality_transfer_structured_hint";
                 control = "StructuredText2";
                 description = "Hint: This module does the actual transfer, but you still need to pick which groups to transfer in group attributes.";

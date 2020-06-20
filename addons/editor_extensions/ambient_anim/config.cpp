@@ -26,12 +26,12 @@ class CfgVehicles {
         icon = "A3\Modules_F_Tacops\Data\CivilianPresenceUnit\icon32_ca.paa";
         displayName = "Ambient animation";
         class Attributes {
-            class structured_hint {
+            class a3aa_ee_ambient_anim_structured_hint {
                 property = "a3aa_ee_ambient_anim_structured_hint";
                 control = "StructuredText1";
                 description = "Hint: Synchronize soldier units to this module.";
             };
-            class animlist {
+            class a3aa_ee_ambient_anim_animlist {
                 property = "a3aa_ee_ambient_anim_animlist";
                 control = "Edit";
                 displayName = "Anim";
@@ -40,7 +40,7 @@ class CfgVehicles {
                 defaultValue = """""";
                 tooltip = "Animation classname. If multiple (comma-separated) are specified, a random one is chosen and played.";
             };
-            class maxdelay {
+            class a3aa_ee_ambient_anim_maxdelay {
                 property = "a3aa_ee_ambient_anim_maxdelay";
                 control = "EditShort";
                 displayName = "Random delay";
@@ -49,7 +49,7 @@ class CfgVehicles {
                 defaultValue = "0";
                 tooltip = "Wait up to the specified amount of seconds before applying the animation. Useful when multiple adjacent units share the same animation and you want to avoid their jarring frame-perfect sync with each other.";
             };
-            class exitcombat {
+            class a3aa_ee_ambient_anim_exitcombat {
                 property = "a3aa_ee_ambient_anim_exitcombat";
                 control = "Checkbox";
                 displayName = "Combat cancels animation";
@@ -57,7 +57,7 @@ class CfgVehicles {
                 defaultValue = "true";
                 tooltip = "When the unit's group enters COMBAT state, exit with the Exit animation.";
             };
-            class exitanim {
+            class a3aa_ee_ambient_anim_exitanim {
                 property = "a3aa_ee_ambient_anim_exitanim";
                 control = "Combo";
                 displayName = "Exit animation";

@@ -25,7 +25,7 @@ class CfgVehicles {
         icon = "\A3\modules_f\data\portraitStrategicMapInit_ca.paa";
         displayName = "Paper map";
         class Attributes {
-            class markrange {
+            class a3aa_ee_paper_map_markrange {
                 property = "a3aa_ee_paper_map_markrange";
                 control = "EditShort";
                 displayName = "Marker sharing range";
@@ -34,7 +34,7 @@ class CfgVehicles {
                 defaultValue = "20";
                 tooltip = "Maximum range in meters across which markers can be shared.";
             };
-            class nodelete {
+            class a3aa_ee_paper_map_nodelete {
                 property = "a3aa_ee_paper_map_nodelete";
                 control = "Checkbox";
                 displayName = "Prevent marker deletion";

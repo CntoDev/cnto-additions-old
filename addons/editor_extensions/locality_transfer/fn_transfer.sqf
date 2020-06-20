@@ -1,5 +1,5 @@
 if (is3DEN) exitWith {};
-private _hcs_required = _this getVariable "hcs_required";
+private _hcs_required = _this getVariable "a3aa_ee_locality_transfer_hcs_required";
 
 0 = _hcs_required spawn {
     /* all units must be initialized */

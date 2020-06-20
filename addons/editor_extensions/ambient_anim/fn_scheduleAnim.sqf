@@ -3,10 +3,10 @@ if (is3DEN) exitWith {};
 /* run scheduled because synchronizedObjects needs extra time */
 0 = _this spawn {
 
-private _animlist = _this getVariable "animlist";
-private _maxdelay = _this getVariable "maxdelay";
-private _exitcombat = _this getVariable "exitcombat";
-private _exitanim = _this getVariable "exitanim";
+private _animlist = _this getVariable "a3aa_ee_ambient_anim_animlist";
+private _maxdelay = _this getVariable "a3aa_ee_ambient_anim_maxdelay";
+private _exitcombat = _this getVariable "a3aa_ee_ambient_anim_exitcombat";
+private _exitanim = _this getVariable "a3aa_ee_ambient_anim_exitanim";
 
 private _parsed_list = _animlist splitString ",. """;
 if (_parsed_list isEqualTo []) exitWith {};

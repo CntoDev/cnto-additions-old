@@ -28,7 +28,7 @@ class Cfg3DEN {
         class Controls;
         class Title;
         class Value;
-        class ComboCfgGlasses : Combo {
+        class a3aa_ee_extended_gear_combo_cfg_glasses : Combo {
             class Controls : Controls {
                 class Title : Title {};
                 class Value : Value {
@@ -53,7 +53,7 @@ class Cfg3DEN {
         /*
          * like UnitInsignia, but with custom values
          */
-        class ComboInsignia : Combo {
+        class a3aa_ee_extended_gear_combo_insignia : Combo {
             class Controls : Controls {
                 class Title : Title {};
                 class Value : Value {
@@ -83,7 +83,7 @@ class Cfg3DEN {
          * like the Face control, but with NoChange
          */
         class Face;
-        class FaceWithNoChange : Face {
+        class a3aa_ee_extended_gear_face_nochange : Face {
             class Controls : Controls {
                 class Title : Title {};
                 class Value : Value {
@@ -106,7 +106,7 @@ class Cfg3DEN {
                 class Attributes {
                     class goggles {
                         property = "a3aa_ee_extended_gear_goggles";
-                        control = "ComboCfgGlasses";
+                        control = "a3aa_ee_extended_gear_combo_cfg_glasses";
                         displayName = "Goggles";
                         expression = "[_this, _value] call a3aa_ee_extended_gear_fnc_goggles";
                         condition = "objectBrain";
@@ -115,7 +115,7 @@ class Cfg3DEN {
                     };
                     class insignia {
                         property = "a3aa_ee_extended_gear_insignia";
-                        control = "ComboInsignia";
+                        control = "a3aa_ee_extended_gear_combo_insignia";
                         displayName = "Insignia";
                         expression = "[_this, _value] call a3aa_ee_extended_gear_fnc_insignia";
                         condition = "objectBrain";
@@ -124,7 +124,7 @@ class Cfg3DEN {
                     };
                     class face {
                         property = "a3aa_ee_extended_gear_face";
-                        control = "FaceWithNoChange";
+                        control = "a3aa_ee_extended_gear_face_nochange";
                         displayName = "Face";
                         expression = "[_this, _value] call a3aa_ee_extended_gear_fnc_face";
                         condition = "objectBrain";

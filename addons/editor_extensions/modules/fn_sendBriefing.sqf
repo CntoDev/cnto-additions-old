@@ -1,11 +1,11 @@
 if (is3DEN) exitWith {};
-private _briefingfor = _this getVariable "briefingfor";
+private _briefingfor = _this getVariable "a3aa_ee_briefing_briefingfor";
 private _contents = [
-    ["Situation", _this getVariable "situation"],
-    ["Mission", _this getVariable "mission"],
-    ["Execution", _this getVariable "execution"],
-    ["Admin & Logistics", _this getVariable "admin_logistics"],
-    ["Command & Signal", _this getVariable "command_signal"]
+    ["Situation", _this getVariable "a3aa_ee_briefing_situation"],
+    ["Mission", _this getVariable "a3aa_ee_briefing_mission"],
+    ["Execution", _this getVariable "a3aa_ee_briefing_execution"],
+    ["Admin & Logistics", _this getVariable "a3aa_ee_briefing_admin_logistics"],
+    ["Command & Signal", _this getVariable "a3aa_ee_briefing_command_signal"]
 ];
 /* filter out empty */
 _contents = _contents select { (_x select 1) != "" };

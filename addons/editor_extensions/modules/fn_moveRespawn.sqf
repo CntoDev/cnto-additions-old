@@ -1,6 +1,6 @@
 if (is3DEN) exitWith {};
 
-private _markers = _this getVariable "movemarkers";
+private _markers = _this getVariable "a3aa_ee_move_respawn_movemarkers";
 
 /* put Z 0.1m higher, to account for terrain bugs
  * - this sets only search distance downwards, not an actual position */

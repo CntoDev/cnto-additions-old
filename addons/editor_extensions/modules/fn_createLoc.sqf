@@ -1,8 +1,8 @@
 if (is3DEN) exitWith {};
 private _area = _this getVariable "objectArea";
-private _locname = _this getVariable "locname";
-private _loctype = _this getVariable "loctype";
-private _delcorpse = _this getVariable "delcorpse";
+private _locname = _this getVariable "a3aa_ee_custom_location_locname";
+private _loctype = _this getVariable "a3aa_ee_custom_location_loctype";
+private _delcorpse = _this getVariable "a3aa_ee_custom_location_delcorpse";
 
 /* JIP safety;
  * completely decouple details from the logic object as - by the time

@@ -14,20 +14,20 @@ params ["_module", "_3den_action"];
 private _effects = [];
 
 /* color corrections */
-if (_module getVariable "cc_enable") then {
+if (_module getVariable "a3aa_ee_post_process_cc_enable") then {
     _effects pushBack [
         "ColorCorrections",
         -1,
         1500,
         [
-            _module getVariable "cc_brightness",
-            _module getVariable "cc_contrast",
-            _module getVariable "cc_contrast_off"
-        ] + (_module getVariable "cc_blend_color") + [
-            _module getVariable "cc_blend_factor"
-        ] + (_module getVariable "cc_desat_color") + [
-            _module getVariable "cc_desat_factor"
-        ] + (_module getVariable "cc_desat_weight") + [
+            _module getVariable "a3aa_ee_post_process_cc_brightness",
+            _module getVariable "a3aa_ee_post_process_cc_contrast",
+            _module getVariable "a3aa_ee_post_process_cc_contrast_off"
+        ] + (_module getVariable "a3aa_ee_post_process_cc_blend_color") + [
+            _module getVariable "a3aa_ee_post_process_cc_blend_factor"
+        ] + (_module getVariable "a3aa_ee_post_process_cc_desat_color") + [
+            _module getVariable "a3aa_ee_post_process_cc_desat_factor"
+        ] + (_module getVariable "a3aa_ee_post_process_cc_desat_weight") + [
             0  /* not used */
         ],
         [
@@ -41,13 +41,13 @@ if (_module getVariable "cc_enable") then {
     ];
 };
 /* dynamic blur */
-if (_module getVariable "db_enable") then {
+if (_module getVariable "a3aa_ee_post_process_db_enable") then {
     _effects pushBack [
         "DynamicBlur",
         -1,
         400,
         [
-            _module getVariable "db_bluriness"
+            _module getVariable "a3aa_ee_post_process_db_bluriness"
         ],
         [
             0
@@ -55,13 +55,13 @@ if (_module getVariable "db_enable") then {
     ];
 };
 /* chromatic aberration */
-if (_module getVariable "ca_enable") then {
+if (_module getVariable "a3aa_ee_post_process_ca_enable") then {
     _effects pushBack [
         "ChromAberration",
         -1,
         200,
-        (_module getVariable "ca_power") + [
-            _module getVariable "ca_correction"
+        (_module getVariable "a3aa_ee_post_process_ca_power") + [
+            _module getVariable "a3aa_ee_post_process_ca_correction"
         ],
         [
             0.005, 0.005, false
@@ -115,7 +115,7 @@ if (is3DEN) exitWith {
         _module setVariable ["3den_previous_handles", nil];
     };
 
-    if (!(_module getVariable "preview")) exitWith {};
+    if (!(_module getVariable "a3aa_ee_post_process_preview")) exitWith {};
     if (_effects isEqualTo []) exitWith {};
 
     if (_3den_action == "add") then {
@@ -134,9 +134,9 @@ if (is3DEN) exitWith {
 if (_effects isEqualTo []) exitWith {};
 
 private _runtime_opts = [
-    _module getVariable "runtime",
-    _module getVariable "fade_in",
-    _module getVariable "fade_out"
+    _module getVariable "a3aa_ee_post_process_runtime",
+    _module getVariable "a3aa_ee_post_process_fade_in",
+    _module getVariable "a3aa_ee_post_process_fade_out"
 ];
 
 [
@@ -179,7 +179,7 @@ private _runtime_opts = [
     }
 ] remoteExec ["spawn", 0, true];
 
-if (_module getVariable "runtime") then {
+if (_module getVariable "a3aa_ee_post_process_runtime") then {
     /* start with effects off */
     _module enableSimulationGlobal false;
 } else {

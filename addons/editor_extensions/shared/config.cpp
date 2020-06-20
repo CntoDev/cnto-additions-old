@@ -23,10 +23,10 @@ class Cfg3DEN {
          * big edit boxes
          */
         class EditMulti3;
-        class EditMulti5 : EditMulti3 {
+        class a3aa_ee_EditMulti5 : EditMulti3 {
             class Controls { class Title; class Value; };
         };
-        class EditBig15 : EditMulti5 {
+        class a3aa_ee_EditBig15 : a3aa_ee_EditMulti5 {
             h = 15 * SIZE_M * GRID_H;
             class Controls : Controls {
                 class Title: Title { h = 15 * SIZE_M * GRID_H; };
@@ -36,10 +36,10 @@ class Cfg3DEN {
         /*
          * big code boxes
          */
-        class EditCodeMulti5 : EditMulti5 {
+        class a3aa_ee_EditCodeMulti5 : a3aa_ee_EditMulti5 {
             class Controls { class Title; class Value; };
         };
-        class EditCode30 : EditCodeMulti5 {
+        class a3aa_ee_EditCode30 : a3aa_ee_EditCodeMulti5 {
             h = 30 * SIZE_XS * GRID_H;
             class Controls: Controls {
                 class Title: Title { h = 30 * SIZE_XS * GRID_H; };

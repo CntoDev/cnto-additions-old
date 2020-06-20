@@ -25,7 +25,7 @@ class CfgVehicles {
         icon = "\a3\Modules_F_Curator\Data\portraitAnimals_ca.paa";
         displayName = "Keep Playable AI";
         class Attributes {
-            class stop_ai {
+            class a3aa_ee_playable_ai_stop_ai {
                 property = "a3aa_ee_playable_ai_stop_ai";
                 control = "Checkbox";
                 displayName = "Stop AI";
@@ -33,7 +33,7 @@ class CfgVehicles {
                 defaultValue = "true";
                 tooltip = "Order the AI to stop, hold fire, go prone and generally be passive to avoid exposing the players to danger instead of trying to play/follow along. Can be overruled by group leader using AI commands.";
             };
-            class custom_code {
+            class a3aa_ee_playable_ai_custom_code {
                 property = "a3aa_ee_playable_ai_custom_code";
                 control = "EditCodeMulti3";
                 displayName = "Code";

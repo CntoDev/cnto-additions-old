@@ -1,6 +1,6 @@
 if (is3DEN) exitWith {};
-private _header = _this getVariable "header";
-private _tojip = _this getVariable "tojip";
+private _header = _this getVariable "a3aa_ee_insta_osd_header";
+private _tojip = _this getVariable "a3aa_ee_insta_osd_tojip";
 
 [
     _header,

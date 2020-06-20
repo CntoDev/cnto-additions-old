@@ -27,7 +27,7 @@ class CfgVehicles {
         icon = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
         displayName = "Execute code";
         class Attributes {
-            class enabledexec {
+            class a3aa_ee_execute_code_enabledexec {
                 property = "a3aa_ee_execute_code_enabledexec";
                 control = "Checkbox";
                 displayName = "Enable";
@@ -35,7 +35,7 @@ class CfgVehicles {
                 defaultValue = "true";
                 tooltip = "Enable this module. Uncheck to disable without having to remove the module completely.";
             };
-            class execonmp {
+            class a3aa_ee_execute_code_execonmp {
                 property = "a3aa_ee_execute_code_execonmp";
                 control = "Combo";
                 displayName = "Execute on (MP)";
@@ -48,14 +48,14 @@ class CfgVehicles {
                 typeName = "NUMBER";
                 defaultValue = "0";
             };
-            class forjip {
+            class a3aa_ee_execute_code_forjip {
                 property = "a3aa_ee_execute_code_forjip";
                 control = "Checkbox";
                 displayName = "Exec for JIP players";
                 expression = "_this setVariable [""%s"",_value]";
                 defaultValue = "true";
             };
-            class execenv {
+            class a3aa_ee_execute_code_execenv {
                 property = "a3aa_ee_execute_code_execenv";
                 control = "Combo";
                 displayName = "Environment";
@@ -67,7 +67,7 @@ class CfgVehicles {
                 typeName = "NUMBER";
                 defaultValue = "1";
             };
-            class runoninit {
+            class a3aa_ee_execute_code_runoninit {
                 property = "a3aa_ee_execute_code_runoninit";
                 control = "Checkbox";
                 displayName = "Run on init";
@@ -75,7 +75,7 @@ class CfgVehicles {
                 defaultValue = "true";
                 tooltip = "Run once, on mission initialization.";
             };
-            class runonrespawn {
+            class a3aa_ee_execute_code_runonrespawn {
                 property = "a3aa_ee_execute_code_runonrespawn";
                 control = "Checkbox";
                 displayName = "Run on respawn";
@@ -83,7 +83,7 @@ class CfgVehicles {
                 defaultValue = "false";
                 tooltip = "Run on each player respawn.\n\nWorks only on clients and fires only for respawn of client's own player unit, not for any other units.";
             };
-            class keepmodule {
+            class a3aa_ee_execute_code_keepmodule {
                 property = "a3aa_ee_execute_code_keepmodule";
                 control = "Checkbox";
                 displayName = "Keep module after mission start";
@@ -91,9 +91,9 @@ class CfgVehicles {
                 defaultValue = "false";
                 tooltip = "Keep this module around at all times and pass it as an object argument to the executed code. This allows the use of this module as a reference point (for positions, distances, synchronizedObjects, etc.).";
             };
-            class code {
+            class a3aa_ee_execute_code_code {
                 property = "a3aa_ee_execute_code_code";
-                control = "EditCode30";
+                control = "a3aa_ee_EditCode30";
                 displayName = "Code";
                 expression = "_this setVariable [""%s"",_value]";
                 defaultValue = """""";
@@ -113,14 +113,14 @@ class CfgVehicles {
         icon = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
         displayName = "Execute code (Eden)";
         class Attributes {
-            class structured_hint {
+            class a3aa_ee_execute_code_3den_structured_hint {
                 property = "a3aa_ee_execute_code_3den_structured_hint";
                 control = "StructuredText1";
                 description = "Hint: This module will self-delete itself after code execution. See the inhibitor module.";
             };
-            class 3den_code {
+            class a3aa_ee_execute_code_3den_code {
                 property = "a3aa_ee_execute_code_3den_code";
-                control = "EditCode30";
+                control = "a3aa_ee_EditCode30";
                 displayName = "Code";
                 expression = "[_this, _value] call a3aa_ee_execute_code_fnc_exec3DEN";
                 defaultValue = """""";
@@ -134,7 +134,7 @@ class CfgVehicles {
         icon = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
         displayName = "Execute code inhibit (Eden)";
         class Attributes {
-            class structured_hint {
+            class a3aa_ee_execute_code_3den_inhibit_structured_hint {
                 property = "a3aa_ee_execute_code_3den_inhibit_structured_hint";
                 control = "StructuredText2";
                 description = "Hint: When this module is present in Eden, ""Execute Code (Eden)"" does not execute its code and does not delete itself. This module has no other use.";
