@@ -3,9 +3,11 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
-            "cba_xeh",
             "A3_Data_F",
-            "A3_3DEN"
+            "A3_3DEN",
+            "cba_settings",
+            "cba_events",
+            "cba_xeh"
         };
     };
 };
@@ -21,7 +23,14 @@ class CfgFunctions {
             class currentSkills;
             class scheduleInitSkills;
             class warnBadCfg;
+            class initSettings;
         };
+    };
+};
+
+class Extended_PreInit_EventHandlers {
+    class a3aa_ai_dynamic_skill {
+        init = "[] call a3aa_ai_dynamic_skill_fnc_initSettings";
     };
 };
 

@@ -27,7 +27,6 @@ private [
 
 /* -------------------------------------------------------------------------- */
 
-
 /*
  * make infantry fairly accurate, vehicles more so
  * (avoid >=0.9 for vehicles as it makes them single-shoot MGs)
@@ -40,7 +39,7 @@ if (_veh != _unit && {_unit in [driver _veh, gunner _veh, commander _veh]}) then
         _aimingAccuracy = 0.7;
     };
     /* when in COMBAT, don't exit a vehicle if it becomes immobilized */
-    if (behaviour _unit == "COMBAT") then {
+    if (behaviour _unit == "COMBAT" && a3aa_ai_dynamic_skill_immobile) then {
         _veh allowCrewInImmobile true;
     } else {
         _veh allowCrewInImmobile false;

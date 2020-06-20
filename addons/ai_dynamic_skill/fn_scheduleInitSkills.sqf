@@ -12,6 +12,8 @@
  */
 
 0 = _this spawn {
+    waitUntil { !isNil "a3aa_ai_dynamic_skill_settings_initialized" };
+
     /* wait for the skills to become 0.5, account for dedi server rounding */
     waitUntil { abs ((_this skill "general")-0.5) < 0.05 };
 
