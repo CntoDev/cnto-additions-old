@@ -49,15 +49,4 @@ class CfgFunctions {
             class classKindOf;
         };
     };
-    /* historical namespace from editor_extensions, deprecated */
-    class a3ee {
-        class all {
-            file = "a3aa\functions\a3ee";
-            class modifyLoadout;
-            class godlike;
-            class boxGuard {
-                file = "a3aa\functions\cargo\fn_boxGuard.sqf";
-            };
-        };
-    };
 };
