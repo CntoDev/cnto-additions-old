@@ -21,7 +21,8 @@ class CfgFunctions {
             class hookAnyMapDisplay;  /* scheduled by init */
             class setupDrawEH;
             class groupUpdater;       /* scheduled by init */
-            class getGroupIcon;
+            class getGroupIconColor;
+            class getGroupIconType;
             class unitUpdater;        /* scheduled by init */
         };
     };

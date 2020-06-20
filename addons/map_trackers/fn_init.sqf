@@ -4,8 +4,8 @@
     ["Group tracking", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Map Trackers"],
     [
-        ["disabled","side","allies","all"],
-        ["Disabled","Same side","Allied sides","All groups"],
+        ["disabled","side","allies","all","scripted"],
+        ["Disabled","Same side","Allied sides","All groups","Script-selected groups"],
         1
     ],     /* default */
     true,  /* isGlobal */

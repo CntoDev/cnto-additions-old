@@ -1,36 +1,3 @@
-private _get_nato_color = {
-    /* from profile, probably for colorblind settings */
-    private _idx = switch (_this) do {
-        case "blue": {
-            [
-                ["Map_BLUFOR_R", 0],
-                ["Map_BLUFOR_G", 0.3],
-                ["Map_BLUFOR_B", 0.6],
-                ["Map_BLUFOR_A", 1]
-            ]
-        };
-        case "green": {
-            [
-                ["Map_Independent_R", 0],
-                ["Map_Independent_G", 0.5],
-                ["Map_Independent_B", 0],
-                ["Map_Independent_A", 1]
-            ]
-        };
-        case "red": {
-            [
-                ["Map_OPFOR_R", 0.5],
-                ["Map_OPFOR_G", 0],
-                ["Map_OPFOR_B", 0],
-                ["Map_OPFOR_A", 1]
-            ]
-        };
-    };
-    _idx apply {
-        profilenamespace getvariable _x;
-    };
-};
-
 private _is_medic = {
     _this getUnitTrait "medic"
     && {
@@ -44,7 +11,7 @@ private _is_engi = {
 
 private _group_type = {
     params ["_grp"];
-    private _type = nil;
+    private "_type";
 
     /* set by mission */
     _type = _grp getVariable "a3aa_map_trackers_group_type";
@@ -118,33 +85,19 @@ private _group_type = {
     };
 };
 
-
 params ["_group"];
-
 private _grp_side = side _group;
 private _player_side = side group player;
-private _type = _group call _group_type;
 
-/* %1: prefix ('b_', 'n_', 'o_') , %2: type ('inf', 'armor', etc.) */
-private _icon_path = "\A3\ui_f\data\map\Markers\NATO\%1_%2.paa";
-
-switch true do {
-    case (_grp_side == _player_side): {
-        [
-            format [_icon_path, "b", _type],
-            "blue" call _get_nato_color
-        ];
-    };
-    case (_grp_side getFriend _player_side >= 0.6): {
-        [
-            format [_icon_path, "n", _type],
-            "green" call _get_nato_color
-        ];
-    };
-    default {
-        [
-            format [_icon_path, "o", _type],
-            "red" call _get_nato_color
-        ];
-    };
+private _letter = switch true do {
+    case (_grp_side == _player_side): { "b" };
+    case (_grp_side getFriend _player_side >= 0.6): { "n" };
+    default { "o" };
 };
+
+/* %1: prefix ('b', 'n', 'o') , %2: type ('inf', 'armor', etc.) */
+format [
+    "\A3\ui_f\data\map\Markers\NATO\%1_%2.paa",
+    _letter,
+    _group call _group_type
+];
