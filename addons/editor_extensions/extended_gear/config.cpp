@@ -2,7 +2,12 @@ class CfgPatches {
     class a3aa_ee_extended_gear {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"a3aa_ee_shared"};
+        requiredAddons[] = {
+            "a3aa_ee_shared",
+            "cba_settings",
+            "cba_events",
+            "cba_xeh"
+        };
     };
 };
 
@@ -13,8 +18,15 @@ class CfgFunctions {
             class goggles;
             class insignia;
             class face;
-            class initExtendedGear { postInit = 1; };
+            class setupExtendedGear;
+            class init;
         };
+    };
+};
+
+class Extended_PreInit_EventHandlers {
+    class a3aa_ee_extended_gear {
+        init = "[] call a3aa_ee_extended_gear_fnc_init";
     };
 };
 
@@ -62,10 +74,6 @@ class Cfg3DEN {
                         class NoChange {
                             text = "No change";
                             data = "";
-                        };
-                        class None {
-                            text = "Use player insignia";
-                            data = "a3aa_ee_extended_gear_use_player_insignia";
                         };
                     };
                     /* dynamic items */
