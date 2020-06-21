@@ -92,21 +92,18 @@ Features
   * works in Eden editor, Zeus and in 1st/3rd person (separate keybind for convenience)
   * uses clipboard in Eden or singleplayer, internal variable in MP due to Arma safety limitations
     * in hosted MP and [if you're the server](https://community.bistudio.com/wiki/copyToClipboard), copy outputs to clipboard in addition to variable, for debugging
+* **marker_enh** - map markers enhanced, rotating via shift+drag, moving via alt+drag
+  * does nothing if ACE Map (Markers) is present in the modset (it provides the same functionality)
 * **misc_tiny_configs** - various Config structure tweaks and (mostly) fixes
-  * **add_housedestructionsmoke** - fix for pop-up error on some CUP maps
   * **bright_flares** - Arma lighting update broke all lighting, this makes flares at least somewhat usable again
   * **collapsed_3den** - Eden editor has BLUFOR->NATO->Men expanded by default, this collapses it (presuming you want modded units instead)
-  * **ffv_wide_view** - much wider fire-from-vehicles angles in (especially) RHS HMMWV
-  * **fire_rate** - make Sting fire faster (due to low game FPS), add slow auto fire for Minimi, etc.
   * **limit_stui_features** - trim down some ShackTac addon features, leave only sthud
   * **portable_boat** - a boat in a backpack, what more do you want? .. unpack/repack like a mortar, cool for specop missions
-  * **recoil_tweaks** - adjust (mainly RHS) recoil of various MGs for game balance reasons
   * **rhs_flashlighs** - like bright_flares, make some flashlights much brighter to compensate for broken "HDR" lighting
   * **rhs_suppressors** - RHS specific version of silent_ops suppressor tweaks, make them quieter
   * **smoke_bounce** - tone down UGL smoke bounce on impact, they're not rubber balls anymore
-  * **weight_fixes** - adjust inventory weight of (mainly small utility) items to make it less realistic, but more balanced
 * **no_neg_rating** - avoids mistreatment by the engine (cannot enter friendly vehicles) after friendly fire
-  * does nothing if ACE Interaction is present in the modset (it provides the same functionality)
+  * does nothing if ACE Interaction is present in the modset
 * **quiet_vehicles** - lower volume in vehicles for easier direct speech communication
   * does nothing if ACEX Volume is present in the modset
 * **silent_ops** - various tweaks for stealthy gameplay
