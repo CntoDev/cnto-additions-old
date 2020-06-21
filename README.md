@@ -88,12 +88,14 @@ Features
 * **grasskeys** - CBA configurable hotkeys for setting terrain complexity (and hiding grass because AI cheats too)
 * **infopanel_control** - CBA configurable left/right panel UI, allows you to disable vanilla mine detector UI, GPS, etc. even if player has the item
 * **insta_zeus** - Zeus (Curator) and ACE Arsenal anytime, anywhere in SP, or for host / logged in admin in MP, no editor support needed
+* **join_group** - vanilla action to join another player's group or (if leader) make another player of own group a leader
+  * does nothing if ACE Interaction is present in the modset (it provides the same functionality)
 * **loadout_copier** - copy/pastes loadout in `getUnitLoadout` format to/from clipboard using a keybind
   * works in Eden editor, Zeus and in 1st/3rd person (separate keybind for convenience)
   * uses clipboard in Eden or singleplayer, internal variable in MP due to Arma safety limitations
     * in hosted MP and [if you're the server](https://community.bistudio.com/wiki/copyToClipboard), copy outputs to clipboard in addition to variable, for debugging
 * **marker_enh** - map markers enhanced, rotating via shift+drag, moving via alt+drag
-  * does nothing if ACE Map (Markers) is present in the modset (it provides the same functionality)
+  * does nothing if ACE Map (Markers) is present in the modset
 * **misc_tiny_configs** - various Config structure tweaks and (mostly) fixes
   * **bright_flares** - Arma lighting update broke all lighting, this makes flares at least somewhat usable again
   * **collapsed_3den** - Eden editor has BLUFOR->NATO->Men expanded by default, this collapses it (presuming you want modded units instead)
