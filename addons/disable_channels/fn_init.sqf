@@ -18,3 +18,26 @@
         };
     }
 ] call CBA_settings_fnc_init;
+[
+    "a3aa_disable_channels_default",
+    "LIST",
+    ["Default channel", "Switched to before mission start. Must be one of the non-disabled channel IDs.\n\nDoes nothing when using ACE, use: ACE Map -> Default Channel."],
+    ["Arma Additions", "Disable Channels"],
+    [
+        [0, 1, 2, 3, 4, 5],
+        ["0 (Global)","1 (Side)","2 (Command)","3 (Group)","4 (Vehicle)","5 (Direct communication)"],
+        0
+    ],     /* default */
+    true,  /* isGlobal */
+    {
+        if (!isMultiplayer) exitWith {};
+        if (isClass (configFile >> "CfgPatches" >> "ace_map")) exitWith {};
+        /* wait a bit for vanilla to set some channel, so we can override it */
+        0 = _this spawn {
+            if (isMultiplayer) then {
+                waitUntil { getClientStateNumber >= 9 };
+            };
+            setCurrentChannel _this;
+        };
+    }
+] call CBA_settings_fnc_init;
