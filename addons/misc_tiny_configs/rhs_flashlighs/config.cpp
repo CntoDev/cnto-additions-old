@@ -1,5 +1,5 @@
 /*
- * rhs map flashlights - make some RHS flashlights usable as ACE3 map lights
+ * rhs flashlights - make some RHS flashlights similar to vanilla
  */
 
 class CfgPatches {
@@ -27,27 +27,8 @@ class CfgWeapons {
 
                 color[] = {180, 160, 130};
                 ambient[] = {0.9, 0.81, 0.7};
-                intensity = 1000;
-                size = 1;
-                innerAngle = 10;
-                outerAngle = 80;
-                coneFadeCoef = 12;
-                position = "flashdir";
-                direction = "flash";
-                useFlare = 1;
-                flareSize = 1;
-                flareMaxDistance = 300;
-                dayLight = 1;
 
-                class Attenuation {
-                    start = 0;
-                    constant = 0;
-                    linear = 0;
-                    quadratic = 0.2;
-                    hardLimitStart = 260;
-                    hardLimitEnd = 300;
-                };
-                scale[] = {0};
+                #include "..\bright_flashlight\flashlight_params.h"
             };
         };
     };
@@ -65,27 +46,8 @@ class CfgWeapons {
 
                 color[] = {180, 160, 130};
                 ambient[] = {0.9, 0.81, 0.7};
-                intensity = 1000;
-                size = 1;
-                innerAngle = 10;
-                outerAngle = 80;
-                coneFadeCoef = 12;
-                position = "flash dir";
-                direction = "flash";
-                useFlare = 1;
-                flareSize = 1;
-                flareMaxDistance = 300;
-                dayLight = 1;
 
-                class Attenuation {
-                    start = 0;
-                    constant = 0;
-                    linear = 0;
-                    quadratic = 0.2;
-                    hardLimitStart = 260;
-                    hardLimitEnd = 300;
-                };
-                scale[] = {0};
+                #include "..\bright_flashlight\flashlight_params.h"
             };
         };
     };
