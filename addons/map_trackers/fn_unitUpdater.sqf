@@ -14,17 +14,14 @@ private _get_units = {
         };
         case "side": {
             private _player_side = side player;
-            //allPlayers select { side _x == _player_side };
-            allUnits select { _x isKindOf "CAManBase" && side _x == _player_side };
+            allPlayers select { side _x == _player_side };
         };
         case "allies": {
             private _player_side = side player;
-            //allPlayers select { side _x getFriend _player_side >= 0.6 };
-            allUnits select { (_x isKindOf "CAManBase") && (side _x getFriend _player_side >= 0.6) };
+            allPlayers select { side _x getFriend _player_side >= 0.6 };
         };
         case "all": {
-            //allPlayers;
-            allUnits select { _x isKindOf "CAManBase" };
+            allPlayers;
         };
         default { [] };
     };
