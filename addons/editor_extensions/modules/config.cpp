@@ -16,7 +16,6 @@ class CfgFunctions {
             class moveRespawn;
             class attachSynced;
             class killOnJIP;
-            class postProcess;
         };
     };
 };
