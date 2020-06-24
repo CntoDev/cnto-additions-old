@@ -8,10 +8,7 @@ class CfgPatches {
         weapons[] = {};
         magazines[] = {};
         requiredAddons[] = {
-            "ace_ballistics",  /* muzzle_snds_* overrides */
-            "A3_Weapons_F",
-            "A3_Weapons_F_Acc",
-            "A3_Weapons_F_Mod",
+            "a3aa_mtc_suppressors",
             "rhsusf_c_weapons"  /* rhsusf_silencer_base */
         };
     };
