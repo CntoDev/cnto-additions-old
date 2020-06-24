@@ -153,7 +153,7 @@ profile example" under [server.armaprofile](https://community.bistudio.com/wiki/
 and [Arma 3 Difficulty Menu](https://community.bistudio.com/wiki/Arma_3_Difficulty_Menu)
 for the various possible settings (some not seen in the example).
 
-The notable options that stand out:
+The notable `.Arma3Profile` options that stand out:
 
 * `groupIndicators` as a vanilla version of ShackTac's indicators
 * `tacticalPing` as an alternative to ACE pointing
@@ -166,3 +166,9 @@ If you want a full example of server `.Arma3Profile`, you can also take a look
 at my [self-hosted dedicated server repo](https://github.com/freghar/arma3dedicated)
 that supports all these and their 0/1/2 values (unlike TADST) and also never
 overwrites your config (unlike TADST). :)
+
+Some notable `server.cfg` options:
+
+* `verifySignatures = 3` is an undocumented value that enforces 1:1 exact modset
+  between the server and all clients, incl. mod ordering
+  * decent alternative to ACE PBO checking
