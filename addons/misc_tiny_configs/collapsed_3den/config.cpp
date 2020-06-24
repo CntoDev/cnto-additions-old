@@ -9,7 +9,7 @@
  */
 
 class CfgPatches {
-    class Collapsed_3DEN {
+    class a3aa_mtc_collapsed_3den {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {"3den"};

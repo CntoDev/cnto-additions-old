@@ -15,8 +15,8 @@ if (!isServer) exitWith {};
         if (_cnt > 0) then {
             private _slp = 10 / _cnt;
             {
-                _x call AI_Dynamic_Skill_fnc_updateSkills;
-                _x call AI_Dynamic_Skill_fnc_warnBadCfg;
+                _x call a3aa_ai_dynamic_skill_fnc_updateSkills;
+                _x call a3aa_ai_dynamic_skill_fnc_warnBadCfg;
                 sleep _slp;
             } forEach _ents;
         };

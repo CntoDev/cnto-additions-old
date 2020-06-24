@@ -1,5 +1,5 @@
 class CfgPatches {
-    class Ares_Extras {
+    class a3aa_ares_extras {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -9,29 +9,16 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class Ares_Extras {
-        class All {
-            file = "\ares_extras";
+    class a3aa_ares_extras {
+        class all {
+            file = "\a3aa\ares_extras";
             class init { postInit = 1; };
         };
-        class Task_Force {
-            file = "\ares_extras\task_force";
+        class task_force {
+            file = "\a3aa\ares_extras\task_force";
             class assignTaskForce;
             class unassignTaskForce;
             class informLoopTaskForces { postInit = 1; };
         };
-    };
-};
-
-class CfgVehicles {
-    /*
-     * hide all vanilla stuff in Respawn, related to public-server-style-respawn
-     */
-    class Module_F;
-    class ModuleRespawnInventory_F : Module_F {
-        scopeCurator = 0;
-    };
-    class ModuleRespawnPositionWest_F : Module_F {
-        scopeCurator = 0;
     };
 };

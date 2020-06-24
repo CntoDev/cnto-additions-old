@@ -1,19 +1,20 @@
 class CfgPatches {
-    class GrassKeys {
+    class a3aa_grasskeys {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
             "cba_keybinding",
             "cba_settings",
+            "cba_events",
             "cba_xeh"
         };
     };
 };
 
 class CfgFunctions {
-    class GrassKeys {
-        class All {
-            file = "\grasskeys";
+    class a3aa_grasskeys {
+        class all {
+            file = "\a3aa\grasskeys";
             class init;
             class setTerrain;
         };
@@ -21,7 +22,7 @@ class CfgFunctions {
 };
 
 class Extended_PreInit_EventHandlers {
-    class GrassKeys {
-        init = "[] call GrassKeys_fnc_init";
+    class a3aa_grasskeys {
+        init = "[] call a3aa_grasskeys_fnc_init";
     };
 };

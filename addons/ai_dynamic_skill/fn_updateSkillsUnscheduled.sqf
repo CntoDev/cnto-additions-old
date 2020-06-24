@@ -7,8 +7,8 @@ private _unit = _this;
 
 if (!alive _unit) exitWith {};
 
-private _prev = _unit getVariable "AI_Dynamic_Skill_prevskills";
-private _curr = _unit call AI_Dynamic_Skill_fnc_currentSkills;
+private _prev = _unit getVariable "a3aa_ai_dynamic_skill_prevskills";
+private _curr = _unit call a3aa_ai_dynamic_skill_fnc_currentSkills;
 /* if _prev are not identical to current skills, user has modified them, exit */
 if (!isNil "_prev" && {!(_prev isEqualTo _curr)}) exitWith {};
 
@@ -27,7 +27,6 @@ private [
 
 /* -------------------------------------------------------------------------- */
 
-
 /*
  * make infantry fairly accurate, vehicles more so
  * (avoid >=0.9 for vehicles as it makes them single-shoot MGs)
@@ -40,7 +39,7 @@ if (_veh != _unit && {_unit in [driver _veh, gunner _veh, commander _veh]}) then
         _aimingAccuracy = 0.7;
     };
     /* when in COMBAT, don't exit a vehicle if it becomes immobilized */
-    if (behaviour _unit == "COMBAT") then {
+    if (behaviour _unit == "COMBAT" && a3aa_ai_dynamic_skill_immobile) then {
         _veh allowCrewInImmobile true;
     } else {
         _veh allowCrewInImmobile false;
@@ -92,7 +91,7 @@ private _skills = [
     _aimingAccuracy, _aimingShake, _aimingSpeed, _endurance, _spotDistance,
     _spotTime, _courage, _reloadSpeed, _commanding, _general
 ];
-[_unit, _skills] call AI_Dynamic_Skill_fnc_setSkills;
+[_unit, _skills] call a3aa_ai_dynamic_skill_fnc_setSkills;
 
 /* set new "prev" skills */
-_unit setVariable ["AI_Dynamic_Skill_prevskills", _skills];
+_unit setVariable ["a3aa_ai_dynamic_skill_prevskills", _skills];

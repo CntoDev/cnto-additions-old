@@ -3,15 +3,12 @@
  */
 
 class CfgPatches {
-    class RHS_Suppressors {
+    class a3aa_mtc_rhs_suppressors {
         units[] = {};
         weapons[] = {};
         magazines[] = {};
         requiredAddons[] = {
-            "A3_Weapons_F",
-            "A3_Weapons_F_Acc",
-            "A3_Weapons_F_Mod",
-            "ace_ballistics",  /* muzzle_snds_* overrides */
+            "a3aa_mtc_suppressors",
             "rhsusf_c_weapons"  /* rhsusf_silencer_base */
         };
     };

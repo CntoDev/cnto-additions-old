@@ -1,15 +1,15 @@
 class CfgPatches {
-    class Editor_Extensions_acre_channels {
+    class a3aa_ee_acre_channels {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"Editor_Extensions_shared"};
+        requiredAddons[] = {"a3aa_ee_shared"};
     };
 };
 
 class CfgFunctions {
-    class a3ee_acre_channels {
+    class a3aa_ee_acre_channels {
         class all {
-            file = "\editor_extensions\acre_channels";
+            file = "\a3aa\ee\acre_channels";
             class setChannels;
             class addDiaryNote;
             class initClient { postInit = 1; };
@@ -22,8 +22,8 @@ class Cfg3DEN {
         class AttributeCategories {
             class Control {
                 class Attributes {
-                    class a3ee_acre_chlist {
-                        property = "a3ee_acre_chlist";
+                    class a3aa_ee_acre_channels_chlist {
+                        property = "a3aa_ee_acre_channels_chlist";
                         control = "EditArray";
                         displayName = "ACRE2 Preset Channels";
                         expression = "_this setVariable [""%s"",_value,true]";
