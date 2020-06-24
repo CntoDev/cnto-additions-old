@@ -11,10 +11,10 @@ inspired by some algorithms.
 Versions
 --------
 
-1. Full (CBA + ACE3 + RHSAFRF + RHSUSAF required)
-1. ACE only (CBA + ACE3 required)
-1. RHS only (CBA + RHSAFRF + RHSUSAF required)
-1. Vanilla edition (only CBA required)
+1. Full (CBA + ACE3 + RHSAFRF + RHSUSAF required) - [steam link](https://steamcommunity.com/sharedfiles/filedetails/?id=1470700937)
+1. ACE only (CBA + ACE3 required) - [steam link](https://steamcommunity.com/sharedfiles/filedetails/?id=2140874311)
+1. RHS only (CBA + RHSAFRF + RHSUSAF required) - [steam link](https://steamcommunity.com/sharedfiles/filedetails/?id=2140875197)
+1. Vanilla edition (only CBA required) - [steam link](https://steamcommunity.com/sharedfiles/filedetails/?id=1470811778)
 
 Most of the code is version-agnostic, so you can run the Vanilla edition with
 ACE and most of the features will automatically switch to ACE logic, but there
@@ -28,6 +28,16 @@ To build:
 1. ACE only - merge in the `norhs` branch
 1. RHS only - merge in the `noace` branch
 1. Vanilla edition - merge in both `norhs` and `noace`
+
+Mods used / modified
+--------------------
+
+Aside from the mandatory dependencies (see Versions above), these additions make
+use of and configure (but not depend on):
+
+* ACEX - [github](https://github.com/acemod/ACEX/) or [steam](https://steamcommunity.com/workshop/filedetails/?id=708250744)
+* Achilles - [github](https://github.com/ArmaAchilles/Achilles) or [steam](https://steamcommunity.com/workshop/filedetails/?id=723217262)
+* ACRE2 - [github](https://github.com/IDI-Systems/acre2) or [steam](https://steamcommunity.com/sharedfiles/filedetails/?id=751965892)
 
 Features
 --------
@@ -51,7 +61,7 @@ Features
   * **Set new player unit** - basically what Achilles does on Alt+doubleclick, but for another client, not Zeus
   * **Forgive onelife death** - if onelife editor module is used and player dies into spectator, this allows him to respawn
   * **End Mission - Won/Lost** - yeah, that
-  * **Move respawn\*** - set new position for the respawn_\* map marker placed in editor
+  * **Move respawn** - set new position for the respawn_\* map marker placed in editor
   * **Move JIP teleport point** - same, but for the JIP teleport editor module
   * **Delete units (really)** - very handy if pressing the Delete key throws an error msg because Arma
 * **chestpack** - it's a backpack for your belly! .. for when you need something more immediate on your back, like a parachute
