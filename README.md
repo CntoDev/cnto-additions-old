@@ -49,7 +49,7 @@ Features
   * **Reveal enemies** - useful to make AI start shooting on a target which should be obvious
   * **Watch** - makes AI turn to watch a direction (ie. tank turret)
   * **No unload in combat** - stops truck passengers from jumping out when shot upon
-  * **Flee** - forcibly make AI run somewhere (don't think it works anymore)
+  * **Flee** - forcibly make AI run somewhere
   * **Suppress (bis)** - calls doSuppressiveFire scripting cmd, makes tank shoot cannot at heli, etc.
   * **Assign Task Force** - allows sharing reported contacts between AI groups, so they shoot more
   * **Force WP Setting** - if you set yellow face (AWARE) on a waypoint, this forces it even if AI gets shot at

@@ -117,21 +117,21 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         { _groups pushBackUnique group _x } forEach _units;
         {
             [_x, {
-                _this setBehaviour "AWARE";
-                _this setSpeedMode "FULL";
-                {
-                    _x setUnitPos "UP";
-                    _x disableAI "AUTOCOMBAT";
-                    _x disableAI "AUTOTARGET";
-                    _x disableAI "TARGET";
-                    _x disableAI "SUPPRESSION";
+                private _isfleeing = _this getVariable "a3aa_ares_extras_fleeing";
+                if (isNil "_isfleeing") then {
                     {
-                        _this forgetTarget _x;
-                    } forEach (_x targets [true]);
-                } forEach units _this;
-                private _isfleeing = _this getVariable "a3aa_ares_extras_stopfleeing";
-                if (isNil "_isfleeing" || {isNull _isfleeing}) then {
-                    _isfleeing = _this spawn {
+                        _x setUnitPos "UP";
+                        _x disableAI "AUTOCOMBAT";
+                        _x disableAI "AUTOTARGET";
+                        _x disableAI "TARGET";
+                        _x disableAI "SUPPRESSION";
+                        {
+                            _this forgetTarget _x;
+                        } forEach (_x targets []);
+                    } forEach units _this;
+                    _this setBehaviour "AWARE";
+                    _this setSpeedMode "FULL";
+                    _this spawn {
                         sleep 120;
                         {
                             _x enableAI "AUTOCOMBAT";
@@ -139,10 +139,11 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
                             _x enableAI "TARGET";
                             _x enableAI "SUPPRESSION";
                         } forEach units _this;
+                        _this setVariable ["a3aa_ares_extras_fleeing", nil, true];
                     };
-                    _this setVariable ["a3aa_ares_extras_stopfleeing", _isfleeing];
+                    _this setVariable ["a3aa_ares_extras_fleeing", true, true];
                 };
-            }] remoteExec ["call", units _x select 0];
+            }] remoteExec ["call", leader _x];
         } forEach _groups;
     }
 ] call Ares_fnc_RegisterCustomModule;
