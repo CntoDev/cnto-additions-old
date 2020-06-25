@@ -44,7 +44,6 @@ Features
 
 * **ai_dynamic_skill** - dynamic AI skill setting based on combat mode, vehicles, etc.
 * **ares_extras** - additions to (former) Ares, now Achilles
-  * **Allow Crew In Immobile (vehicle)** - ai_dynamic_skill enables this by default, but you can disable it for a more vanilla experience
   * **Forget enemies** - incredibly useful if AI suddenly spots sneaky players and you don't want to break the immersion
   * **Reveal enemies** - useful to make AI start shooting on a target which should be obvious
   * **Watch** - makes AI turn to watch a direction (ie. tank turret)

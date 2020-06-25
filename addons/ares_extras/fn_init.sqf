@@ -10,21 +10,6 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
 
 [
     "AI Behaviour",
-    "[U] Allow Crew In Immobile",
-    {
-        private _units = [_this select 1];
-        if (objNull in _units) then {
-            _units = ["vehicles"] call Achilles_fnc_SelectUnits;
-        };
-        if (isNil "_units") exitWith {};
-        {
-            (vehicle _x) allowCrewInImmobile true;
-        } forEach _units;
-    }
-] call Ares_fnc_RegisterCustomModule;
-
-[
-    "AI Behaviour",
     "[U] Forget enemies",
     {
         private _units = [_this select 1];
