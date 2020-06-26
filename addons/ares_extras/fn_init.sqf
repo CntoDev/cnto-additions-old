@@ -83,9 +83,8 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         };
         if (isNil "_units") exitWith {};
         {
-            [(vehicle _this), false, false]
-                remoteExec ["setUnloadInCombat", _this];
-        } forEach _units;
+            [_x, false, false] remoteExec ["setUnloadInCombat", _x];
+        } forEach (_units apply { vehicle _x });
     }
 ] call Ares_fnc_RegisterCustomModule;
 
