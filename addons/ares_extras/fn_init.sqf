@@ -455,52 +455,6 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     }
 ] call Ares_fnc_RegisterCustomModule;
 
-// TODO: not working for respawn
-[
-    "Players",
-    "Forgive onelife death",
-    {
-        params ["_pos", "_unit"];
-
-        if (isNil "a3ee_onelife_disconnects") exitWith {
-            ["No disconnect data found."] call Ares_fnc_ShowZeusMessage;
-        };
-
-        private _uids = [];
-        private _names = [];
-        {
-            if (!isNull _x) then {
-                private _uid = getPlayerUID _x;
-                private _name = name _x;
-                if (_name != "" && _uid != "") then {
-                    _uids pushBack _uid;
-                    _names pushBack _name;
-                };
-            };
-        } forEach playableUnits;
-        if (_uids isEqualTo []) exitWith {};
-
-        private _reply = [
-            "Forgive onelife death",
-            [
-                ["Choose player", _names]
-            ]
-        ] call Ares_fnc_showChooseDialog;
-        if (_reply isEqualTo []) exitWith {};
-        private _uid = _uids select (_reply select 0);
-
-        /* pretend the player unit was originally alive */
-        [_uid, {
-            private _data = [a3ee_onelife_disconnects, _this]
-                call a3aa_fnc_hashGet;
-            if (!isNil "_data") then {
-                _data set [0, true];
-                publicVariable "a3ee_onelife_disconnects";
-            };
-        }] remoteExecCall ["call", 2];
-    }
-] call Ares_fnc_RegisterCustomModule;
-
 /*
  * Scenario Flow
  */
