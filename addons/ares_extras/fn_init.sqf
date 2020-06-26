@@ -547,19 +547,16 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     "Respawn",
     "Move JIP teleport point",
     {
-        /* needs the Editor_Extensions pbo */
         params ["_pos", "_unit"];
-
+        _pos = ATLToASL _pos;
         /* spawn the module if it wasn't placed in the editor */
-        private _cfg = configFile >> "CfgVehicles" >> "a3ee_teleport_on_jip";
-        if (isNil "a3ee_teleport_on_jip_pos") then {
-            if (isClass (configFile >> "CfgVehicles" >> "a3ee_teleport_on_jip")) then {
-                private _grp = createGroup sideLogic;
-                _grp createUnit ["a3ee_teleport_on_jip", _pos, [], 0, "CAN_COLLIDE"];
+        if (isNil "a3aa_ee_teleport_on_jip_pos") then {
+            if (isClass (configFile >> "CfgVehicles" >> "a3aa_ee_teleport_on_jip")) then {
+                (createGroup sideLogic) createUnit ["a3aa_ee_teleport_on_jip", _pos, [], 0, "CAN_COLLIDE"];
             };
         } else {
-            a3ee_teleport_on_jip_pos = _pos;
-            publicVariable "a3ee_teleport_on_jip_pos";
+            a3aa_ee_teleport_on_jip_pos = _pos;
+            publicVariable "a3aa_ee_teleport_on_jip_pos";
         };
     }
 ] call Ares_fnc_RegisterCustomModule;
