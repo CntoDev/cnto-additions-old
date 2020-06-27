@@ -5,7 +5,9 @@
 
 private _unit = _this;
 
-if (!alive _unit) exitWith {};
+if (!simulationEnabled _unit || !alive _unit || isPlayer _unit) exitWith {};
+private _initialized = _this getVariable "a3aa_ai_dynamic_skill_initialized";
+if (isNil "_initialized") exitWith {};
 
 private _prev = _unit getVariable "a3aa_ai_dynamic_skill_prevskills";
 private _curr = _unit call a3aa_ai_dynamic_skill_fnc_currentSkills;

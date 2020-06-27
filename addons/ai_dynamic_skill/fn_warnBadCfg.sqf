@@ -16,8 +16,9 @@ if (time - a3aa_ai_dynamic_skill_latest_warning < 10) exitWith {};
     private _name = _x;
 
     /* atomic, just in case the skill is modified from elsewhere */
-    private ["_skill", "_final"];
+    private ["_isplayer", "_skill", "_final"];
     isNil {
+        _isplayer = isPlayer _unit;
         _skill = _unit skill _name;
         _final = _unit skillFinal _name;
     };
@@ -28,8 +29,11 @@ if (time - a3aa_ai_dynamic_skill_latest_warning < 10) exitWith {};
      * set > 0:    because we cannot distinguish between createVehicle and
      *             createUnit, the latter having initially skill/skillFinal 0
      * abs check:  because of floating point MP errors in the final skill
+     *
+     * isplayer check: because of race conditions; the unit would have 0.5 skill
+     *                 and trigger a warning
      */
-    if (_skill >= 0.2 && _skill > 0 && abs (_skill-_final) > 0.05) then {
+    if (_skill >= 0.2 && _skill > 0 && abs (_skill-_final) > 0.05 && !_isplayer) then {
         private _msg = format [
             "a3aa_ai_dynamic_skill: skill %1 is %2, but skillFinal is %3",
             _name, _skill toFixed 2, _final toFixed 2
