@@ -12,6 +12,8 @@ class CfgPatches {
         weapons[] = {};
         requiredAddons[] = {
             "a3aa_ee_shared",
+            "cba_settings",
+            "cba_events",
             "cba_xeh"     /* dynamic class hook from module */
         };
     };
@@ -23,7 +25,14 @@ class CfgFunctions {
             file = "\a3aa\ee\basic_vehicle_cargo";
             class hookClasses;
             class setCargo;
+            class init;
         };
+    };
+};
+
+class Extended_PreInit_EventHandlers {
+    class a3aa_ee_basic_vehicle_cargo {
+        init = "[] call a3aa_ee_basic_vehicle_cargo_fnc_init";
     };
 };
 

@@ -7,10 +7,14 @@ if (!local _this) exitWith {};
 
 if (_this getVariable ["a3aa_ee_basic_vehicle_cargo_dontclear", false]) exitWith {};
 
+waitUntil { !isNil "a3aa_ee_basic_vehicle_cargo_settings_initialized" };
+
 clearWeaponCargoGlobal _this;
 clearMagazineCargoGlobal _this;
 clearBackpackCargoGlobal _this;
 clearItemCargoGlobal _this;
+
+if (a3aa_ee_basic_vehicle_cargo_cleanonly) exitWith {};
 
 private _item_exists = { isClass (configFile >> "CfgWeapons" >> _this) };
 private _add_if_exists = {
