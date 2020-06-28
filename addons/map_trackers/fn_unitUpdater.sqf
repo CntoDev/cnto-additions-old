@@ -61,7 +61,7 @@ private _get_icon = {
             };
         };
         default {
-            { "iconMan" };
+            "iconMan";
         };
     };
 };

@@ -91,10 +91,8 @@
         ["none","class","guess"],
         ["Generic","Class","Autoguess"],
         2
-    ],     /* default */
-    true,  /* isGlobal */
-    nil,   /* script */
-    true   /* needRestart */
+    ],    /* default */
+    true  /* isGlobal */
 ] call CBA_settings_fnc_init;
 
 ["CBA_settingsInitialized", {
