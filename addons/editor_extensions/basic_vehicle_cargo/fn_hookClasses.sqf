@@ -4,7 +4,7 @@
  */
 
 #define HOOK_EH(target) \
-    [#target, "init", { \
+    [#target, "InitPost", { \
         (_this select 0) spawn a3aa_ee_basic_vehicle_cargo_fnc_setCargo; \
     }, true, [], true] call CBA_fnc_addClassEventHandler;
 

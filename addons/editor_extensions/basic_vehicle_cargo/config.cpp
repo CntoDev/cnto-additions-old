@@ -63,7 +63,7 @@ class Cfg3DEN {
                         expression = "_this setVariable [""%s"",_value,true]";
                         condition = "objectHasInventoryCargo";
                         defaultValue = "false";
-                        tooltip = "By default, all inventories of vehicles are wiped 1sec after mission starts, to prevent stupid mods from adding their items via init EHs into random vehicles. This prevents mission makers from specifying loadout via Eden UI. Use this option to disable the functionality at your own risk.\n\nThis option is useless without the appropriate cargo-clearing editor module placed.";
+                        tooltip = "When the 'Basic Vehicle Cargo' module is present, all inventories of vehicles are wiped after their 'init' scripts run. This prevents mission makers from specifying loadout via Eden UI. Use this option to disable the functionality.";
                     };
                 };
             };

@@ -1,8 +1,3 @@
-/*
- * wait for various stupid modded init EHs to insert their ...
- * items into misc vehicles, then remove them
- */
-sleep 3;
 if (!local _this) exitWith {};
 
 if (_this getVariable ["a3aa_ee_basic_vehicle_cargo_dontclear", false]) exitWith {};
