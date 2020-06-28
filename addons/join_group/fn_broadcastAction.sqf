@@ -25,7 +25,7 @@ private _act = _this addAction [
     "",
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
-        [_caller, {
+        [_target, {
             private _grp = group _this;
             [_grp, _this] remoteExec ["selectLeader", groupOwner _grp];
         }] remoteExec ["call", 2];
