@@ -90,6 +90,8 @@ waitUntil {
             [_x, _leader];
         };
         a3aa_map_trackers_unit_lines = _lines;
+    } else {
+        a3aa_map_trackers_unit_lines = [];
     };
 
     private _units = ([] call _get_units) select {
