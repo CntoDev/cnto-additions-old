@@ -153,7 +153,7 @@ used when you're playing with ACE and the additions one when not.
 Server settings
 ---------------
 
-Note that the ai_dynamic_skill addon requires [specific Arma3Profile settings](addons/ai_dynamic_skill/README.txt)
+Note that the ai_dynamic_skill addon requires [specific Arma3Profile settings](addons/ai_dynamic_skill/README.md)
 to work correctly.
 
 In addition, there is some vanilla functionality that can serve as replacement
