@@ -6,7 +6,7 @@
     [
         ["disabled","side","allies","all"],
         ["Disabled","Same side","Allied sides","All groups"],
-        1
+        2
     ],     /* default */
     true,  /* isGlobal */
     nil,   /* script */
@@ -25,8 +25,8 @@
     "CHECKBOX",
     ["Show AI-led groups", "Track all groups, not just ones led by players."],
     ["Arma Additions", "Map Trackers"],
-    false,  /* default */
-    true    /* isGlobal */
+    true,  /* default */
+    true   /* isGlobal */
 ] call CBA_settings_fnc_init;
 [
     "a3aa_map_trackers_group_showself",
