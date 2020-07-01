@@ -181,3 +181,27 @@ Some notable `server.cfg` options:
 * `verifySignatures = 3` is an undocumented value that enforces 1:1 exact modset
   between the server and all clients, incl. mod ordering
   * decent alternative to ACE PBO checking
+
+description.ext settings
+------------------------
+
+Like the `.Arma3Profile` above, these are not strictly needed for the additions,
+but may be useful for reference in general.
+
+See [BI wiki page](https://community.bistudio.com/wiki/Description.ext) for
+a full list.
+
+* `class CfgUnitInsignia` may be useful for a custom "extended gear" insignia
+  * re-load the mission in Eden after saving `description.ext`, it will appear
+    in the list of insignia in soldier attributes
+* reasonable revive settings (here or in Eden)
+
+      reviveMode = 1;
+      reviveUnconsciousStateMode = 0;
+      reviveRequiredTrait = 0;
+      reviveRequiredItems = 2;                
+      reviveRequiredItemsFakConsumed = 1;     
+      reviveDelay = 60;
+      reviveMedicSpeedMultiplier = 3;
+      reviveForceRespawnDelay = 3;
+      reviveBleedOutDelay = 600;
