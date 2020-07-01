@@ -9,41 +9,42 @@ publicVariable "a3aa_ee_teleport_on_jip_pos";
     {
         if (!hasInterface || !isRemoteExecutedJIP) exitWith {};
 
-        addMissionEventHandler ["PreloadFinished", {
-            a3aa_ee_teleport_on_jip_finished = true;
-            removeMissionEventHandler ["PreloadFinished", _thisEventHandler];
-        }];
-
-        waitUntil { !isNull player };
-
-        private _simul = simulationEnabled player;
-        player enableSimulation false;
-
-        waitUntil { !isNil "a3aa_ee_teleport_on_jip_pos" };
-
-        /* add 1m to Z, just in case it's inside a road, etc. */
-        private _pos = +a3aa_ee_teleport_on_jip_pos;
-        _pos set [2, (_pos select 2) + 1];
-
         /*
          * due to some stupid vanilla logic, the player unit is being teleported
          * on JIP several times at seemingly random points (ie. [0,0,0] or half-
          * way between our teleport destination and the original spawn point
-         * --> there's no way to beat the bullshit reasonably, so just keep
-         *     teleporting the player for 1 second and hope for the best
-         * (also don't rely on 'time', it may not yet be synced from server)
+         *
+         * even if we keep teleporting for several seconds to the destination,
+         * the player might be teleported back once our timer ends
+         * - this suggests that vanilla keeps teleporting the unit back to start
+         *   until it detects player on the starting position
+         *
+         * so instead of constantly teleporting the player to dest, give vanilla
+         * logic a chance to register the starting position before we teleport
+         * the player once (no need to re-try)
          */
-        waitUntil {
-            player setPosASL _pos;
-            !isNil "a3aa_ee_teleport_on_jip_finished";
-        };
-        private _end = diag_tickTime + 1;
-        waitUntil {
-            player setPosASL _pos;
-            diag_tickTime > _end;
-        };
-        sleep 0.2;
-        player enableSimulation _simul;
+        addMissionEventHandler ["PreloadFinished", {
+            0 = [] spawn {
+                sleep 1;
+
+                waitUntil { !isNil "a3aa_ee_teleport_on_jip_simul" };
+
+                /* add 1m to Z, just in case it's inside a road, etc. */
+                waitUntil { !isNil "a3aa_ee_teleport_on_jip_pos" };
+                private _pos = +a3aa_ee_teleport_on_jip_pos;
+                _pos set [2, (_pos select 2) + 1];
+                moveOut player;
+                player setPosASL _pos;
+
+                sleep 1;
+                player enableSimulation a3aa_ee_teleport_on_jip_simul;
+            };
+            removeMissionEventHandler ["PreloadFinished", _thisEventHandler];
+        }];
+
+        waitUntil { !isNull player };
+        a3aa_ee_teleport_on_jip_simul = simulationEnabled player;
+        player enableSimulation false;
     }
 ] remoteExec ["spawn", 0, true];
 
