@@ -8,7 +8,17 @@ publicVariable "a3aa_ee_teleport_on_jip_pos";
     [],  // 'spawn' needs this, doesn't accept just {} like 'call'
     {
         if (!hasInterface || !isRemoteExecutedJIP) exitWith {};
+
+        addMissionEventHandler ["PreloadFinished", {
+            a3aa_ee_teleport_on_jip_finished = true;
+            removeMissionEventHandler ["PreloadFinished", _thisEventHandler];
+        }];
+
         waitUntil { !isNull player };
+
+        private _simul = simulationEnabled player;
+        player enableSimulation false;
+
         waitUntil { !isNil "a3aa_ee_teleport_on_jip_pos" };
 
         /* add 1m to Z, just in case it's inside a road, etc. */
@@ -23,15 +33,17 @@ publicVariable "a3aa_ee_teleport_on_jip_pos";
          *     teleporting the player for 1 second and hope for the best
          * (also don't rely on 'time', it may not yet be synced from server)
          */
+        waitUntil {
+            player setPosASL _pos;
+            !isNil "a3aa_ee_teleport_on_jip_finished";
+        };
         private _end = diag_tickTime + 1;
-        private _dmg = isDamageAllowed player;
-        player allowDamage false;
         waitUntil {
             player setPosASL _pos;
             diag_tickTime > _end;
         };
-        sleep 2;
-        player allowDamage _dmg;
+        sleep 0.2;
+        player enableSimulation _simul;
     }
 ] remoteExec ["spawn", 0, true];
 

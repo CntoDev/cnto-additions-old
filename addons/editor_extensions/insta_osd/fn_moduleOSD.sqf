@@ -17,6 +17,7 @@ private _tojip = _this getVariable "a3aa_ee_insta_osd_tojip";
                     [] call a3aa_ee_insta_osd_fnc_instaOSD;
                 };
             };
+            removeMissionEventHandler ["PreloadFinished", _thisEventHandler];
         }];
     }
 ] remoteExec ["call", 0, _tojip];
