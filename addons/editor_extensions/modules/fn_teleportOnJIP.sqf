@@ -27,24 +27,25 @@ publicVariable "a3aa_ee_teleport_on_jip_pos";
             0 = [] spawn {
                 sleep 1;
 
-                waitUntil { !isNil "a3aa_ee_teleport_on_jip_simul" };
+                waitUntil { !isNil "a3aa_ee_teleport_on_jip_dmg" };
 
                 /* add 1m to Z, just in case it's inside a road, etc. */
                 waitUntil { !isNil "a3aa_ee_teleport_on_jip_pos" };
                 private _pos = +a3aa_ee_teleport_on_jip_pos;
                 _pos set [2, (_pos select 2) + 1];
                 moveOut player;
+                player setVelocity [0,0,0];
                 player setPosASL _pos;
 
                 sleep 1;
-                player enableSimulation a3aa_ee_teleport_on_jip_simul;
+                player allowDamage a3aa_ee_teleport_on_jip_dmg;
             };
             removeMissionEventHandler ["PreloadFinished", _thisEventHandler];
         }];
 
         waitUntil { !isNull player };
-        a3aa_ee_teleport_on_jip_simul = simulationEnabled player;
-        player enableSimulation false;
+        a3aa_ee_teleport_on_jip_dmg = isDamageAllowed player;
+        player allowDamage false;
     }
 ] remoteExec ["spawn", 0, true];
 
