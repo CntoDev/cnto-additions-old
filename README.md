@@ -112,6 +112,7 @@ Features
   * **collapsed_3den** - Eden editor has BLUFOR->NATO->Men expanded by default, this collapses it (presuming you want modded units instead)
   * **flag_insignia** - vanilla "country flags" used for map markers, but now available as uniform insignia
   * **hide_actions** - hide the Eject action for safety, use a (vanilla) keybind for ejecting
+  * **max_gun_elev** - no angle limitation on soldier aiming upwards/downwards
   * **portable_boat** - a boat in a backpack, what more do you want? .. unpack/repack like a mortar, cool for specop missions
   * **rhs_flashlighs** - like bright_flares, make some flashlights much brighter to compensate for broken "HDR" lighting
   * **rhs_suppressors** - RHS specific version of silent_ops suppressor tweaks, make them quieter
