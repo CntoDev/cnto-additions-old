@@ -114,9 +114,9 @@ Features
   * **hide_actions** - hide the Eject action for safety, use a (vanilla) keybind for ejecting
   * **max_gun_elev** - no angle limitation on soldier aiming upwards/downwards
   * **portable_boat** - a boat in a backpack, what more do you want? .. unpack/repack like a mortar, cool for specop missions
-  * **rhs_flashlighs** - like bright_flares, make some flashlights much brighter to compensate for broken "HDR" lighting
-  * **rhs_suppressors** - RHS specific version of silent_ops suppressor tweaks, make them quieter
-  * **rhs_vanilla_ammo** - make RHS UGLs use vanilla shells (when fired, not magazines), for smoke_bounce compatibility
+  * **rhs_flashlighs** - like bright_flashlight tweak for WMX/2DP RHS flashlights (some guns don't take vanilla flashlight)
+  * **rhs_suppressors** - like suppressors tweak, but for rhs M4/AK/etc. suppressors
+  * **rhs_vanilla_ammo** - like smoke_bounce tweak, by making RHS UGLs use vanilla shells (when fired, not magazines)
   * **silent_op** - a special "Silent Operative" unit (under CIV)
     * has much quieter footstep sounds and is nearly invisible to AI without NVGs during dusk/dawn/night
     * highly trained, can hack UAVs, is medic/engineer, can bury bodies like in Operation Flashpoint!
