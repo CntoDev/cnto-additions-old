@@ -22,7 +22,7 @@ class CfgVehicles {
         displayName = "Silent Operative";
 
         camouflage = 0.3;
-        audible = 0.005;
+        audible = 0.002;
         attendant = 1;
         engineer = 1;
         uavHacker = 1;
