@@ -4,7 +4,7 @@
 
 class CfgPatches {
     class a3aa_mtc_silent_op {
-        units[] = {};
+        units[] = { "a3aa_silent_ops_silent_operative" };
         weapons[] = {};
         magazines[] = {};
         requiredAddons[] = {
