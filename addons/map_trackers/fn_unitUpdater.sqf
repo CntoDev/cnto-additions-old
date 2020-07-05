@@ -77,27 +77,15 @@ private _get_color = {
 };
 
 waitUntil {
-    /* allow smooth fade-in @ soldier move speed (see EH) */
+    /* allow smooth fade-in @ soldier move speed (see Draw EH) */
     private _dist = a3aa_map_trackers_unit_dist + 20;
 
-    if (a3aa_map_trackers_unit_showlines) then {
-        private _leader = leader group player;
-        private _sources = (units group player) select {
-            _x != _leader && {player distance _x < _dist};
-        };
-        private _lines = _sources apply {
-            /* [src, dst] */
-            [_x, _leader];
-        };
-        a3aa_map_trackers_unit_lines = _lines;
-    } else {
-        a3aa_map_trackers_unit_lines = [];
-    };
-
+    /*
+     * soldier icons
+     */
     private _units = ([] call _get_units) select {
         player distance _x < _dist;
     };
-
     private _grp_units = units group player;
     _units = _units apply {
         /* [object, icon, color, name] */
@@ -109,7 +97,23 @@ waitUntil {
         ];
     };
 
+    /*
+     * blue lines
+     */
+    private _lines = [];
+    if (a3aa_map_trackers_unit_showlines && !(_units isEqualTo [])) then {
+        private _leader = leader group player;
+        private _sources = (units group player) select {
+            _x != _leader && {player distance _x < _dist};
+        };
+        _lines = _sources apply {
+            /* [src, dst] */
+            [_x, _leader];
+        };
+    };
+
     a3aa_map_trackers_units = _units;
+    a3aa_map_trackers_unit_lines = _lines;
 
     sleep (1 + random 1);
 
