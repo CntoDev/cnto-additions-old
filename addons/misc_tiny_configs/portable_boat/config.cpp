@@ -4,7 +4,7 @@
 
 class CfgPatches {
     class a3aa_mtc_portable_boat {
-        units[] = {};
+        units[] = { "a3aa_mtc_portable_boat_boat" };
         weapons[] = {};
         requiredAddons[] = {
             "A3_Static_F",
