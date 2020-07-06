@@ -127,7 +127,6 @@ Features
     * by loudness: 9.3mm + 8.6mm (.338) > 7.62mm > 6.5mm + 5.8mm > 5.56mm > 9mm
 * **no_neg_rating** - avoids mistreatment by the engine (cannot enter friendly vehicles) after friendly fire
 * **quiet_vehicles** - lower volume in vehicles for easier direct speech communication
-* **spectator_acre** - when using vanilla spectator, switches the player to ACRE2 spectator channel
 * **static_line** - organized group jumping, initiated by pilot/grplead, parachute not provided (you need to have one already)
 
 ACE Compatibility Notes
