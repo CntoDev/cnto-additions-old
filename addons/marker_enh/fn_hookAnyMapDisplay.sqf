@@ -1,5 +1,4 @@
-#include "\A3\ui_f_curator\ui\defineResinclDesign.inc"
-//#include "\A3\ui_f\hpp\defineResincl.inc"  // included by the above
+#include "\A3\ui_f\hpp\defineResincl.inc"
 
 disableSerialization;
 

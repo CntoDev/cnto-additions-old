@@ -109,5 +109,5 @@
     if (a3aa_map_trackers_unit_status != "disabled" || a3aa_map_trackers_group_status != "disabled") then {
         [] spawn a3aa_map_trackers_fnc_hookAnyMapDisplay;
     };
-    nil;
+    a3aa_map_trackers_settings_initialized = true;
 }] call CBA_fnc_addEventHandler;

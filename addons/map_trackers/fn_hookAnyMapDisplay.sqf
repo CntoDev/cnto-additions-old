@@ -1,5 +1,4 @@
-#include "\A3\ui_f_curator\ui\defineResinclDesign.inc"
-//#include "\A3\ui_f\hpp\defineResincl.inc"  // included by the above
+#include "\A3\ui_f\hpp\defineResincl.inc"
 
 disableSerialization;
 
@@ -28,23 +27,4 @@ waitUntil {
     );
     /* in case there were no displays left to hook this frame */
     if (isNil "_done") then { false } else { _done };
-};
-
-/*
- * now stay in background and watch for and hook any curator map control
- * - this needs to be constantly running as the curator display gets created
- *   and destroyed whenever the interface is opened/closed
- */
-waitUntil {
-    private _ctrl = findDisplay IDD_RSCDISPLAYCURATOR
-                        displayCtrl IDC_RSCDISPLAYCURATOR_MAINMAP;
-    if (!isNull _ctrl) then {
-        private _hooked = _ctrl getVariable "a3aa_map_trackers_hooked";
-        if (isNil "_hooked") then {
-            _ctrl call a3aa_map_trackers_fnc_setupDrawEH;
-            _ctrl setVariable ["a3aa_map_trackers_hooked", true];
-        };
-    };
-    sleep (1 + random 1);
-    false;
 };
