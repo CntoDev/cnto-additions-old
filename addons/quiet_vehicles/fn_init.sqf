@@ -4,7 +4,7 @@
     ["Enable", "Enable player-configurable sound reduction in vehicles.\n\nAutomatically disabled when using ACEX Volume."],
     ["Arma Additions", "Quiet Vehicles"],
     true,  /* default */
-    true,  /* isGlobal */
+    nil,   /* isGlobal */
     nil,   /* script */
     true   /* needRestart */
 ] call CBA_settings_fnc_init;
