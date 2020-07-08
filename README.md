@@ -130,6 +130,11 @@ Features
 * **quiet_vehicles** - lower volume in vehicles for easier direct speech communication
 * **static_line** - organized group jumping, initiated by pilot/grplead, parachute not provided (you need to have one already)
 
+Optionals
+---------
+
+* **force_video_settings** - force 1.0 brightness and contrast, to limit cheating when playing without NVGs
+
 ACE Compatibility Notes
 -----------------------
 
