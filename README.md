@@ -125,6 +125,7 @@ Features
   * **stamina_tweak** - making vanilla stamina system more realistic
   * **suppressors** - make various weapon suppressors much more effective, to compensate for AI hearing through walls
     * by loudness: 9.3mm + 8.6mm (.338) > 7.62mm > 6.5mm + 5.8mm > 5.56mm > 9mm
+* **nightvision** - make all NVGs fullscreen (your display already has FOV=70, so chill with realism), add grain/blur/colorcorrect
 * **no_neg_rating** - avoids mistreatment by the engine (cannot enter friendly vehicles) after friendly fire
 * **quiet_vehicles** - lower volume in vehicles for easier direct speech communication
 * **static_line** - organized group jumping, initiated by pilot/grplead, parachute not provided (you need to have one already)
