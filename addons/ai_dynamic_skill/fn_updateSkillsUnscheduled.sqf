@@ -35,10 +35,10 @@ private [
  */
 private _veh = vehicle _unit;
 if (_veh != _unit && {_unit in [driver _veh, gunner _veh, commander _veh]}) then {
-    if (_veh isKindOf "Car") then {
-        _aimingAccuracy = 0.5;
-    } else {
+    if (_veh isKindOf "Tank_F" || {_veh isKindOf "Helicopter" || _veh isKindOf "Plane"}) then {
         _aimingAccuracy = 0.7;
+    } else {
+        _aimingAccuracy = 0.5;
     };
     /* when in COMBAT, don't exit a vehicle if it becomes immobilized */
     if (behaviour _unit == "COMBAT" && a3aa_ai_dynamic_skill_immobile) then {
