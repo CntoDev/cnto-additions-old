@@ -9,7 +9,8 @@ class CfgPatches {
         magazines[] = {};
         requiredAddons[] = {
             "a3aa_mtc_suppressors",
-            "rhsusf_c_weapons"  /* rhsusf_silencer_base */
+            "rhsusf_c_weapons",  /* rhsusf_silencer_base */
+            "rhs_c_weapons"      /* rhs_silencer_base */
         };
     };
 };
@@ -29,4 +30,16 @@ class CfgWeapons {
             };
         };
     };
+
+    /* RHS AFRF suppressors */
+    class rhs_silencer_base : muzzle_snds_H {
+        class ItemInfo : InventoryMuzzleItem_Base_F {
+            class AmmoCoef {
+                /* ~10m */
+                audibleFire = 0.005;
+                visibleFire = 0.005;
+            };
+        };
+    };
+
 };
