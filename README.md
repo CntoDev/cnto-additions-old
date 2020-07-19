@@ -58,7 +58,6 @@ Features
   * **Set player insignia (in profile)** - if you set unit insignia in editor to use per-player insignia, this sets it for that specific player
   * **Terrain Objects Hide/Show** - pretty obvious, doesn't work persistenly though
   * **Set new player unit** - basically what Achilles does on Alt+doubleclick, but for another client, not Zeus
-  * **Forgive onelife death** - if onelife editor module is used and player dies into spectator, this allows him to respawn
   * **End Mission - Won/Lost** - yeah, that
   * **Move respawn** - set new position for the respawn_\* map marker placed in editor
   * **Move JIP teleport point** - same, but for the JIP teleport editor module
@@ -109,6 +108,7 @@ Features
 * **misc_tiny_configs** - various Config structure tweaks and (mostly) fixes
   * **bright_flares** - Arma lighting update broke all lighting, this makes flares at least somewhat usable again
   * **bright_flashlight** - same, but for the default vanilla flashlight; also fix light intensity being different for self vs others
+  * **cfglights_fixes** - various CfgLights tweaks to fix fireplaces / grenade flashes / etc. after Arma 3 v1.60+
   * **collapsed_3den** - Eden editor has BLUFOR->NATO->Men expanded by default, this collapses it (presuming you want modded units instead)
   * **flag_insignia** - vanilla "country flags" used for map markers, but now available as uniform insignia
   * **hide_actions** - hide the Eject action for safety, use a (vanilla) keybind for ejecting
