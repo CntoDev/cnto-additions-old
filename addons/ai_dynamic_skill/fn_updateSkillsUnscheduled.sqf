@@ -64,6 +64,9 @@ if (faction _unit in _guerrilla_factions) then {
 } else {
     _aimingShake = 0.9;  /* 1.0 seems to do unnatural insta-headshot-kills */
 };
+/* some hidden overrides for manual tuning */
+if (!isNil "a3aa_ai_dynamic_skill_easymode") then { _aimingShake = 0.4 };
+if (!isNil "a3aa_ai_dynamic_skill_hardmode") then { _aimingShake = 0.9 };
 
 _aimingSpeed = 0.95;
 _endurance = 1.0;
