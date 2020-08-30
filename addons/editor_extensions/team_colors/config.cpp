@@ -1,15 +1,15 @@
 class CfgPatches {
-    class Editor_Extensions_team_colors {
+    class a3aa_ee_team_colors {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"Editor_Extensions_shared"};
+        requiredAddons[] = {"a3aa_ee_shared"};
     };
 };
 
 class CfgFunctions {
-    class a3ee_team_colors {
-        class All {
-            file = "\editor_extensions\team_colors";
+    class a3aa_ee_team_colors {
+        class all {
+            file = "\a3aa\ee\team_colors";
             class setColor;
         };
     };
@@ -20,11 +20,11 @@ class Cfg3DEN {
         class AttributeCategories {
             class Control {
                 class Attributes {
-                    class a3ee_teamcolor {
-                        property = "a3ee_teamcolor";
+                    class a3aa_ee_team_colors {
+                        property = "a3aa_ee_team_colors";
                         control = "Combo";
                         displayName = "Team color";
-                        expression = "[_this, _value] call a3ee_team_colors_fnc_setColor";
+                        expression = "[_this, _value] call a3aa_ee_team_colors_fnc_setColor";
                         condition = "objectBrain";
                         class Values {
                             class Default { name = "Default"; value = "MAIN"; };

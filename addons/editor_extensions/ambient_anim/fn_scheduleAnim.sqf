@@ -3,10 +3,10 @@ if (is3DEN) exitWith {};
 /* run scheduled because synchronizedObjects needs extra time */
 0 = _this spawn {
 
-private _animlist = _this getVariable "animlist";
-private _maxdelay = _this getVariable "maxdelay";
-private _exitcombat = _this getVariable "exitcombat";
-private _exitanim = _this getVariable "exitanim";
+private _animlist = _this getVariable "a3aa_ee_ambient_anim_animlist";
+private _maxdelay = _this getVariable "a3aa_ee_ambient_anim_maxdelay";
+private _exitcombat = _this getVariable "a3aa_ee_ambient_anim_exitcombat";
+private _exitanim = _this getVariable "a3aa_ee_ambient_anim_exitanim";
 
 private _parsed_list = _animlist splitString ",. """;
 if (_parsed_list isEqualTo []) exitWith {};
@@ -27,7 +27,7 @@ private _unit_anims = _synced_soldiers apply {
 
 /* flag the units as active (for later combat/etc. check) */
 {
-    _x setVariable ["a3ee_ambient_anim_active", true, true];
+    _x setVariable ["a3aa_ee_ambient_anim_active", true, true];
 } forEach _synced_soldiers;
 
 /* watch (only on the server) for combat state changes */
@@ -53,9 +53,9 @@ private _unit_anims = _synced_soldiers apply {
                     /* injured */
                     count (((getAllHitPointsDamage _x) select 2) - [0]) > 0 ||
                     /* made inactive by scripting */
-                    !(_x getVariable ["a3ee_ambient_anim_active", false])
+                    !(_x getVariable ["a3aa_ee_ambient_anim_active", false])
                 ) then {
-                    _x setVariable ["a3ee_ambient_anim_active", nil, true];
+                    _x setVariable ["a3aa_ee_ambient_anim_active", nil, true];
                     if (alive _x) then {
                         [[_x, _exitanim], {
                             params ["_unit", "_exit"];
@@ -98,10 +98,10 @@ private _unit_anims = _synced_soldiers apply {
                 0 = [_unit, _anim, _delay] spawn {
                     params ["_unit", "_anim", "_delay"];
                     sleep _delay;
-                    [_unit, _anim] call a3ee_ambient_anim_fnc_doAnim;
+                    [_unit, _anim] call a3aa_ee_ambient_anim_fnc_doAnim;
                 };
             } else {
-                [_unit, _anim] call a3ee_ambient_anim_fnc_doAnim;
+                [_unit, _anim] call a3aa_ee_ambient_anim_fnc_doAnim;
             };
         } forEach _unit_anims;
     }

@@ -1,5 +1,5 @@
 class CfgPatches {
-    class Editor_Extensions_shared {
+    class a3aa_ee_shared {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {"3den"};
@@ -26,11 +26,11 @@ class Cfg3DEN {
         class EditMulti5 : EditMulti3 {
             class Controls { class Title; class Value; };
         };
-        class EditBig15 : EditMulti5 {
+        class a3aa_ee_EditBig15 : EditMulti5 {
             h = 15 * SIZE_M * GRID_H;
             class Controls : Controls {
-                class Title: Title { h = 15 * SIZE_M * GRID_H; };
-                class Value: Value { h = 15 * SIZE_M * GRID_H; };
+                class Title : Title { h = 15 * SIZE_M * GRID_H; };
+                class Value : Value { h = 15 * SIZE_M * GRID_H; };
             };
         };
         /*
@@ -39,11 +39,11 @@ class Cfg3DEN {
         class EditCodeMulti5 : EditMulti5 {
             class Controls { class Title; class Value; };
         };
-        class EditCode30 : EditCodeMulti5 {
+        class a3aa_ee_EditCode30 : EditCodeMulti5 {
             h = 30 * SIZE_XS * GRID_H;
-            class Controls: Controls {
-                class Title: Title { h = 30 * SIZE_XS * GRID_H; };
-                class Value: Value { h = 30 * SIZE_XS * GRID_H; };
+            class Controls : Controls {
+                class Title : Title { h = 30 * SIZE_XS * GRID_H; };
+                class Value : Value { h = 30 * SIZE_XS * GRID_H; };
             };
         };
     };
@@ -51,17 +51,17 @@ class Cfg3DEN {
 
 class CfgFactionClasses {
     class NO_CATEGORY;
-    class A3EE : NO_CATEGORY {
-        displayName = "A3EE";
+    class a3aa_ee : NO_CATEGORY {
+        displayName = "A3AA";
     };
 };
 class CfgVehicles {
     /* without all the engine logic surrounding Module_F, we just want 3DEN
      * Attributes and init EH */
     class Logic;
-    class a3ee_module_base : Logic {
+    class a3aa_ee_shared_module_base : Logic {
         scope = 0;
-        category = A3EE;
+        category = a3aa_ee;
         vehicleClass = "Modules";
         icon = "iconModule";
         class EventHandlers;
@@ -77,10 +77,10 @@ class display3DEN {
         class MenuStrip : ctrlMenuStrip {
             class Items {
                 class Tools {
-                    items[] += { "A3EE" };
+                    items[] += { "a3aa_ee" };
                 };
-                class A3EE {
-                    text = "A3EE Tools";
+                class a3aa_ee {
+                    text = "A3AA Tools";
                     picture = "\a3\3DEN\Data\CfgWaypoints\Scripted_ca.paa";
                     items[] = {};
                 };

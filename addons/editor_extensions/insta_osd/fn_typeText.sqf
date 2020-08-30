@@ -7,8 +7,8 @@
  *   is heading - true/false
  *
  * examples:
- *   ["first line", "second line"] call a3ee_fnc_typeText;
- *   [["big heading", true], "second line"] call a3ee_fnc_typeText;
+ *   ["first line", "second line"] call a3aa_ee_insta_osd_fnc_typeText;
+ *   [["big heading", true], "second line"] call a3aa_ee_insta_osd_fnc_typeText;
  */
 
 private _textblocks = [];

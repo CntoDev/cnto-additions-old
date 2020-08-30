@@ -1,20 +1,32 @@
 class CfgPatches {
-    class Editor_Extensions_extended_gear {
+    class a3aa_ee_extended_gear {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"Editor_Extensions_shared"};
+        requiredAddons[] = {
+            "a3aa_ee_shared",
+            "cba_settings",
+            "cba_events",
+            "cba_xeh"
+        };
     };
 };
 
 class CfgFunctions {
-    class a3ee_extended_gear {
+    class a3aa_ee_extended_gear {
         class all {
-            file = "\editor_extensions\extended_gear";
+            file = "\a3aa\ee\extended_gear";
             class goggles;
             class insignia;
             class face;
-            class initExtendedGear { postInit = 1; };
+            class setupExtendedGear;
+            class init;
         };
+    };
+};
+
+class Extended_PreInit_EventHandlers {
+    class a3aa_ee_extended_gear {
+        init = "[] call a3aa_ee_extended_gear_fnc_init";
     };
 };
 
@@ -28,7 +40,7 @@ class Cfg3DEN {
         class Controls;
         class Title;
         class Value;
-        class ComboCfgGlasses : Combo {
+        class a3aa_ee_extended_gear_combo_cfg_glasses : Combo {
             class Controls : Controls {
                 class Title : Title {};
                 class Value : Value {
@@ -53,7 +65,7 @@ class Cfg3DEN {
         /*
          * like UnitInsignia, but with custom values
          */
-        class ComboInsignia : Combo {
+        class a3aa_ee_extended_gear_combo_insignia : Combo {
             class Controls : Controls {
                 class Title : Title {};
                 class Value : Value {
@@ -62,10 +74,6 @@ class Cfg3DEN {
                         class NoChange {
                             text = "No change";
                             data = "";
-                        };
-                        class None {
-                            text = "Use player insignia";
-                            data = "a3ee_use_player_insignia";
                         };
                     };
                     /* dynamic items */
@@ -83,7 +91,7 @@ class Cfg3DEN {
          * like the Face control, but with NoChange
          */
         class Face;
-        class FaceWithNoChange : Face {
+        class a3aa_ee_extended_gear_face_nochange : Face {
             class Controls : Controls {
                 class Title : Title {};
                 class Value : Value {
@@ -100,33 +108,33 @@ class Cfg3DEN {
 
     class Object {
         class AttributeCategories {
-            class Extended_Gear {
+            class extended_gear {
                 displayName = "Extended Gear";
                 collapsed = 1;
                 class Attributes {
                     class goggles {
-                        property = "a3ee_extgear_goggles";
-                        control = "ComboCfgGlasses";
+                        property = "a3aa_ee_extended_gear_goggles";
+                        control = "a3aa_ee_extended_gear_combo_cfg_glasses";
                         displayName = "Goggles";
-                        expression = "[_this, _value] call a3ee_extended_gear_fnc_goggles";
+                        expression = "[_this, _value] call a3aa_ee_extended_gear_fnc_goggles";
                         condition = "objectBrain";
                         defaultValue = "''";
                         tooltip = "Override goggles/glasses/facewear on a player.\n\nUse ""None"" to force remove any goggles.";
                     };
                     class insignia {
-                        property = "a3ee_extgear_insignia";
-                        control = "ComboInsignia";
+                        property = "a3aa_ee_extended_gear_insignia";
+                        control = "a3aa_ee_extended_gear_combo_insignia";
                         displayName = "Insignia";
-                        expression = "[_this, _value] call a3ee_extended_gear_fnc_insignia";
+                        expression = "[_this, _value] call a3aa_ee_extended_gear_fnc_insignia";
                         condition = "objectBrain";
                         defaultValue = "''";
-                        tooltip = "Insignia from CfgUnitInsignia (mod or description.ext).\n\n""Use player insignia"" tries to find a variable named ""a3ee_player_insignia"" in the client profile, specifying a CfgUnitInsignia class name - if found, it is assigned. Otherwise behaves like ""No change"".";
+                        tooltip = "Insignia from CfgUnitInsignia (mod or description.ext).\n\n""Use player insignia"" tries to find a variable named ""a3aa_ee_extended_gear_player_insignia"" in the client profile, specifying a CfgUnitInsignia class name - if found, it is assigned. Otherwise behaves like ""No change"".";
                     };
                     class face {
-                        property = "a3ee_extgear_face";
-                        control = "FaceWithNoChange";
+                        property = "a3aa_ee_extended_gear_face";
+                        control = "a3aa_ee_extended_gear_face_nochange";
                         displayName = "Face";
-                        expression = "[_this, _value] call a3ee_extended_gear_fnc_face";
+                        expression = "[_this, _value] call a3aa_ee_extended_gear_fnc_face";
                         condition = "objectBrain";
                         defaultValue = "''";
                         tooltip = "Override player face.";

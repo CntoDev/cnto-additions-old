@@ -5,7 +5,7 @@
  */
 
 class CfgPatches {
-    class Bright_Flares {
+    class a3aa_mtc_bright_flares {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -15,24 +15,25 @@ class CfgPatches {
     };
 };
 
+#define FLARECFG \
+    intensity = 500000; \
+    size = 0.1; \
+    timeToLive = 50; \
+    coefGravity = 0.4;
+
 class CfgAmmo {
     class FlareCore;
     class FlareBase;
     class Flare_82mm_AMOS_White : FlareCore {
-        timeToLive = 80;
-        intensity  = 500000;
-        size = 0.1;
+        FLARECFG
     };
     class F_40mm_White : FlareBase {
-        intensity  = 500000;
-        size = 0.1;
+        FLARECFG
     };
     class F_20mm_White : FlareBase {
-        intensity  = 500000;
-        size = 0.1;
+        FLARECFG
     };
     class F_Signal_Green : FlareBase {
-        intensity  = 500000;
-        size = 0.1;
+        FLARECFG
     };
 };

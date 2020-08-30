@@ -4,21 +4,21 @@
 
 if (!isServer) exitWith {};
 
-ares_extras_task_forces = [];
+a3aa_ares_extras_task_forces = [];
 
 0 = [] spawn {
     waitUntil {
         sleep (10 + random 5);
 
         /* cleanup invalid groups / empty TFs */
-        for "_i" from 0 to (count ares_extras_task_forces - 1) do {
-            private _tf_groups = ares_extras_task_forces select _i;
+        for "_i" from 0 to (count a3aa_ares_extras_task_forces - 1) do {
+            private _tf_groups = a3aa_ares_extras_task_forces select _i;
             _tf_groups = _tf_groups select {
                 count units _x > 0;  /* also serves as !isNull */
             };
-            ares_extras_task_forces set [_i, _tf_groups];
+            a3aa_ares_extras_task_forces set [_i, _tf_groups];
         };
-        ares_extras_task_forces = ares_extras_task_forces select {
+        a3aa_ares_extras_task_forces = a3aa_ares_extras_task_forces select {
             count _x > 0  /* more than 0 groups in TF */
         };
 
@@ -50,7 +50,7 @@ ares_extras_task_forces = [];
                     }
                 ] remoteExec ["call"];
             };
-        } forEach ares_extras_task_forces;
+        } forEach a3aa_ares_extras_task_forces;
         false;
     };
 };

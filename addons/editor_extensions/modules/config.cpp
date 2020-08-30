@@ -1,22 +1,21 @@
 class CfgPatches {
-    class Editor_Extensions_modules {
+    class a3aa_ee_modules {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"Editor_Extensions_shared"};
+        requiredAddons[] = {"a3aa_ee_shared"};
     };
 };
 
 class CfgFunctions {
-    class a3ee_modules {
-        class All {
-            file = "\editor_extensions\modules\functions";
+    class a3aa_ee_modules {
+        class all {
+            file = "\a3aa\ee\modules";
             class createLoc;
             class sendBriefing;
             class teleportOnJIP;
             class moveRespawn;
             class attachSynced;
             class killOnJIP;
-            class postProcess;
         };
     };
 };

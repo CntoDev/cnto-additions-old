@@ -1,8 +1,9 @@
-if (!grasskeys_enable) exitWith {};
+if (isNil "a3aa_grasskeys_settings_initialized") exitWith {};
+if (!a3aa_grasskeys_enable) exitWith {};
 
 switch (_this) do {
     case "low": {
-        if (grasskeys_hidegrass) then {
+        if (a3aa_grasskeys_hidegrass) then {
             setTerrainGrid 50;
         } else {
             setTerrainGrid 47;
