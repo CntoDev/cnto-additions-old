@@ -10,21 +10,6 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
 
 [
     "AI Behaviour",
-    "[U] Allow Crew In Immobile",
-    {
-        private _units = [_this select 1];
-        if (objNull in _units) then {
-            _units = ["vehicles"] call Achilles_fnc_SelectUnits;
-        };
-        if (isNil "_units") exitWith {};
-        {
-            (vehicle _x) allowCrewInImmobile true;
-        } forEach _units;
-    }
-] call Ares_fnc_RegisterCustomModule;
-
-[
-    "AI Behaviour",
     "[U] Forget enemies",
     {
         private _units = [_this select 1];
@@ -98,9 +83,8 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         };
         if (isNil "_units") exitWith {};
         {
-            [(vehicle _this), false, false]
-                remoteExec ["setUnloadInCombat", _this];
-        } forEach _units;
+            [_x, false, false] remoteExec ["setUnloadInCombat", _x];
+        } forEach (_units apply { vehicle _x });
     }
 ] call Ares_fnc_RegisterCustomModule;
 
@@ -117,21 +101,21 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         { _groups pushBackUnique group _x } forEach _units;
         {
             [_x, {
-                _this setBehaviour "AWARE";
-                _this setSpeedMode "FULL";
-                {
-                    _x setUnitPos "UP";
-                    _x disableAI "AUTOCOMBAT";
-                    _x disableAI "AUTOTARGET";
-                    _x disableAI "TARGET";
-                    _x disableAI "SUPPRESSION";
+                private _isfleeing = _this getVariable "a3aa_ares_extras_fleeing";
+                if (isNil "_isfleeing") then {
                     {
-                        _this forgetTarget _x;
-                    } forEach (_x targets [true]);
-                } forEach units _this;
-                private _isfleeing = _this getVariable "ares_extras_stopfleeing";
-                if (isNil "_isfleeing" || {isNull _isfleeing}) then {
-                    _isfleeing = _this spawn {
+                        _x setUnitPos "UP";
+                        _x disableAI "AUTOCOMBAT";
+                        _x disableAI "AUTOTARGET";
+                        _x disableAI "TARGET";
+                        _x disableAI "SUPPRESSION";
+                        {
+                            _this forgetTarget _x;
+                        } forEach (_x targets []);
+                    } forEach units _this;
+                    _this setBehaviour "AWARE";
+                    _this setSpeedMode "FULL";
+                    _this spawn {
                         sleep 120;
                         {
                             _x enableAI "AUTOCOMBAT";
@@ -139,10 +123,11 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
                             _x enableAI "TARGET";
                             _x enableAI "SUPPRESSION";
                         } forEach units _this;
+                        _this setVariable ["a3aa_ares_extras_fleeing", nil, true];
                     };
-                    _this setVariable ["ares_extras_stopfleeing", _isfleeing];
+                    _this setVariable ["a3aa_ares_extras_fleeing", true, true];
                 };
-            }] remoteExec ["call", units _x select 0];
+            }] remoteExec ["call", leader _x];
         } forEach _groups;
     }
 ] call Ares_fnc_RegisterCustomModule;
@@ -182,7 +167,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
             } forEach _units;
         };
         if (count _groups < 1) exitWith {};
-        _groups call Ares_Extras_fnc_assignTaskForce;
+        _groups call a3aa_ares_extras_fnc_assignTaskForce;
     }
 ] call Ares_fnc_RegisterCustomModule;
 
@@ -289,10 +274,10 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         [[_target, _groups], {
             params ["_target", "_groups"];
 
-            if (!isNil "ares_extras_transferring_units") exitWith {
+            if (!isNil "a3aa_ares_extras_transferring_units") exitWith {
                 "Locality transfer already running." remoteExec ["systemChat", remoteExecutedOwner];
             };
-            ares_extras_transferring_units = true;
+            a3aa_ares_extras_transferring_units = true;
 
             if (_target isEqualTo -1) then {
                 _target = 2;  /* special value for Server */
@@ -317,7 +302,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
                     format ["%1 done (%2/%3)", str _x, _i, _total] remoteExec ["systemChat", remoteExecutedOwner];
                 };
             } forEach _groups;
-            ares_extras_transferring_units = nil;
+            a3aa_ares_extras_transferring_units = nil;
             "Locality transfer done." remoteExec ["systemChat", remoteExecutedOwner];
         }] remoteExec ["spawn", 2];
     }
@@ -362,7 +347,7 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         private _values = [""] + (_cfgs apply { configName _x });
 
         private _defidx = 0;
-        private _defclass = profileNamespace getVariable "a3ee_player_insignia";
+        private _defclass = profileNamespace getVariable "a3aa_ee_extended_gear_player_insignia";
         if (!isNil "_defclass") then {
             if (_values find _defclass != -1) then {
                 _defidx = _values find _defclass;
@@ -381,12 +366,12 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         if (_class == "") then {
             /* remove insignia */
             {
-                profileNamespace setVariable ["a3ee_player_insignia", nil];
+                profileNamespace setVariable ["a3aa_ee_extended_gear_player_insignia", nil];
             } remoteExec ["call", _unit];
         } else {
             /* set insignia */
             [_class, {
-                profileNamespace setVariable ["a3ee_player_insignia", _this];
+                profileNamespace setVariable ["a3aa_ee_extended_gear_player_insignia", _this];
             }] remoteExec ["call", _unit];
         };
     }
@@ -446,17 +431,17 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
             ["Unit is not a soldier."] call Ares_fnc_ShowZeusMessage;
         };
 
-        Ares_Extras_collected_clients = [];
+        a3aa_ares_extras_collected_clients = [];
         {
             [[clientOwner, profileName], {
-                Ares_Extras_collected_clients pushBack _this;
+                a3aa_ares_extras_collected_clients pushBack _this;
             }] remoteExec ["call", remoteExecutedOwner];
         } remoteExec ["call"];
         sleep 1;
-        Ares_Extras_collected_clients sort true;
+        a3aa_ares_extras_collected_clients sort true;
 
-        private _clients = Ares_Extras_collected_clients apply { _x select 0 };
-        private _names = Ares_Extras_collected_clients apply { _x select 1 };
+        private _clients = a3aa_ares_extras_collected_clients apply { _x select 0 };
+        private _names = a3aa_ares_extras_collected_clients apply { _x select 1 };
         private _reply = [
             "Set new player unit",
             [
@@ -467,52 +452,6 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
         private _client = _clients select (_reply select 0);
 
         _unit remoteExec ["selectPlayer", _client];
-    }
-] call Ares_fnc_RegisterCustomModule;
-
-// TODO: not working for respawn
-[
-    "Players",
-    "Forgive onelife death",
-    {
-        params ["_pos", "_unit"];
-
-        if (isNil "a3ee_onelife_disconnects") exitWith {
-            ["No disconnect data found."] call Ares_fnc_ShowZeusMessage;
-        };
-
-        private _uids = [];
-        private _names = [];
-        {
-            if (!isNull _x) then {
-                private _uid = getPlayerUID _x;
-                private _name = name _x;
-                if (_name != "" && _uid != "") then {
-                    _uids pushBack _uid;
-                    _names pushBack _name;
-                };
-            };
-        } forEach playableUnits;
-        if (_uids isEqualTo []) exitWith {};
-
-        private _reply = [
-            "Forgive onelife death",
-            [
-                ["Choose player", _names]
-            ]
-        ] call Ares_fnc_showChooseDialog;
-        if (_reply isEqualTo []) exitWith {};
-        private _uid = _uids select (_reply select 0);
-
-        /* pretend the player unit was originally alive */
-        [_uid, {
-            private _data = [a3ee_onelife_disconnects, _this]
-                call a3aa_fnc_hashGet;
-            if (!isNil "_data") then {
-                _data set [0, true];
-                publicVariable "a3ee_onelife_disconnects";
-            };
-        }] remoteExecCall ["call", 2];
     }
 ] call Ares_fnc_RegisterCustomModule;
 
@@ -608,19 +547,16 @@ if (isNil "Ares_fnc_RegisterCustomModule") exitWith {};
     "Respawn",
     "Move JIP teleport point",
     {
-        /* needs the Editor_Extensions pbo */
         params ["_pos", "_unit"];
-
+        _pos = ATLToASL _pos;
         /* spawn the module if it wasn't placed in the editor */
-        private _cfg = configFile >> "CfgVehicles" >> "a3ee_teleport_on_jip";
-        if (isNil "a3ee_teleport_on_jip_pos") then {
-            if (isClass (configFile >> "CfgVehicles" >> "a3ee_teleport_on_jip")) then {
-                private _grp = createGroup sideLogic;
-                _grp createUnit ["a3ee_teleport_on_jip", _pos, [], 0, "CAN_COLLIDE"];
+        if (isNil "a3aa_ee_teleport_on_jip_pos") then {
+            if (isClass (configFile >> "CfgVehicles" >> "a3aa_ee_teleport_on_jip")) then {
+                (createGroup sideLogic) createUnit ["a3aa_ee_teleport_on_jip", _pos, [], 0, "CAN_COLLIDE"];
             };
         } else {
-            a3ee_teleport_on_jip_pos = _pos;
-            publicVariable "a3ee_teleport_on_jip_pos";
+            a3aa_ee_teleport_on_jip_pos = _pos;
+            publicVariable "a3aa_ee_teleport_on_jip_pos";
         };
     }
 ] call Ares_fnc_RegisterCustomModule;

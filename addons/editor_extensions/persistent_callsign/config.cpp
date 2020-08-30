@@ -1,15 +1,15 @@
 class CfgPatches {
-    class Editor_Extensions_persistent_callsign {
+    class a3aa_ee_persistent_callsign {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"Editor_Extensions_shared"};
+        requiredAddons[] = {"a3aa_ee_shared"};
     };
 };
 
 class CfgFunctions {
-    class a3ee_persistent_callsign {
+    class a3aa_ee_persistent_callsign {
         class modules {
-            file = "\editor_extensions\persistent_callsign";
+            file = "\a3aa\ee\persistent_callsign";
             class restore;
         };
     };
@@ -20,8 +20,8 @@ class Cfg3DEN {
         class AttributeCategories {
             class Init {
                 class Attributes {
-                    class a3ee_persistent_callsign {
-                        property = "a3ee_persistent_callsign";
+                    class a3aa_ee_persistent_callsign {
+                        property = "a3aa_ee_persistent_callsign";
                         control = "Edit";
                         displayName = "Persistent Callsign";
                         expression = "";
@@ -40,15 +40,15 @@ class display3DEN {
     class Controls {
         class MenuStrip: ctrlMenuStrip {
             class Items {
-                class A3EE {
+                class a3aa_ee {
                     items[] += {
-                        "A3EE_Restore_Persistent_Callsigns"
+                        "a3aa_ee_persistent_callsign_restore"
                     };
                 };
-                class A3EE_Restore_Persistent_Callsigns {
+                class a3aa_ee_persistent_callsign_restore {
                     text = "Restore persistent Callsigns";
                     picture = "\a3\Modules_F_Curator\Data\portraitradio_ca.paa";
-                    action = "collect3DENHistory { [] call a3ee_persistent_callsign_fnc_restore }";
+                    action = "collect3DENHistory { [] call a3aa_ee_persistent_callsign_fnc_restore }";
                 };
             };
         };

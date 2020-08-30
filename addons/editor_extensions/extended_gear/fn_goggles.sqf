@@ -7,5 +7,5 @@ if (is3DEN) then {
         _unit linkItem _goggles;
     };
 } else {
-    _unit setVariable ["a3ee_extgear_goggles", _goggles, true];
+    _unit setVariable ["a3aa_ee_extended_gear_goggles", _goggles, true];
 };

@@ -5,7 +5,7 @@
 
 /* return 1 if callsign was changed, 0 if not, -1 on fatal err */
 private _restore_one = {
-    private _sign = _this get3DENAttribute "a3ee_persistent_callsign";
+    private _sign = _this get3DENAttribute "a3aa_ee_persistent_callsign";
     if (_sign isEqualTo [] || _sign isEqualTo [""]) exitWith {0};
     _sign = _sign select 0;
 

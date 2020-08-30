@@ -3,21 +3,21 @@
 
 if (is3DEN) exitWith {};
 
-private _markrange = _this getVariable "markrange";
-private _nodelete = _this getVariable "nodelete";
+private _markrange = _this getVariable "a3aa_ee_paper_map_markrange";
+private _nodelete = _this getVariable "a3aa_ee_paper_map_nodelete";
 
 /*
  * server-side
  */
 
 /* hash of per-UID makers */
-a3ee_paper_map_uidspecific = [] call a3aa_fnc_hashInit;
+a3aa_ee_paper_map_uidspecific = [] call a3aa_fnc_hashInit;
 
 /* push directplay ID and per-UID makers to clients */
 addMissionEventHandler ["PlayerConnected", {
     params ["_id", "_uid", "_name", "_jip", "_owner"];
 
-    private _peruid = [a3ee_paper_map_uidspecific, _uid]
+    private _peruid = [a3aa_ee_paper_map_uidspecific, _uid]
         call a3aa_fnc_hashGet;
     if (isNil "_peruid") then {
         _peruid = [sideUnknown, []];
@@ -27,14 +27,14 @@ addMissionEventHandler ["PlayerConnected", {
     [[_id, _peruid], {
         params ["_dpid", "_peruid"];
         if (!hasInterface) exitWith {};
-        a3ee_paper_map_uidmarkers = _peruid;
+        a3aa_ee_paper_map_uidmarkers = _peruid;
         waitUntil { !isNull player };
-        player setVariable ["a3ee_directplay_id", _dpid, true];
+        player setVariable ["a3aa_ee_paper_map_directplay_id", _dpid, true];
     }] remoteExec ["spawn", _owner];
 }];
 addMissionEventHandler ["HandleDisconnect", {
-	params ["_unit", "_id", "_uid", "_name"];
-	_unit setVariable ["a3ee_directplay_id", nil, true];
+    params ["_unit", "_id", "_uid", "_name"];
+    _unit setVariable ["a3aa_ee_paper_map_directplay_id", nil, true];
 }];
 // TODO: addMissionEventHandler ["TeamSwitch", { ?
 
@@ -42,10 +42,10 @@ addMissionEventHandler ["HandleDisconnect", {
 0 = [] spawn {
     waitUntil { time > 0 };
     /* all that were initially added on briefing screen */
-    a3ee_paper_map_permarkers = allMapMarkers select {
+    a3aa_ee_paper_map_permarkers = allMapMarkers select {
         _x find "_USER_DEFINED" == 0
     };
-    publicVariable "a3ee_paper_map_permarkers";
+    publicVariable "a3aa_ee_paper_map_permarkers";
 };
 
 
@@ -61,11 +61,11 @@ addMissionEventHandler ["HandleDisconnect", {
         params ["_markrange", "_nodelete"];
 
         waitUntil { !isNull player };
-        waitUntil { !isNil "a3ee_paper_map_permarkers" };
-        private _permarkers = a3ee_paper_map_permarkers;
+        waitUntil { !isNil "a3aa_ee_paper_map_permarkers" };
+        private _permarkers = a3aa_ee_paper_map_permarkers;
 
-        waitUntil { !isNil "a3ee_paper_map_uidmarkers" };
-        a3ee_paper_map_uidmarkers params ["_side", "_prev"];
+        waitUntil { !isNil "a3aa_ee_paper_map_uidmarkers" };
+        a3aa_ee_paper_map_uidmarkers params ["_side", "_prev"];
         private _uidmarkers = [];
         if (playerSide == _side) then {
             _uidmarkers = _prev;
@@ -104,7 +104,7 @@ addMissionEventHandler ["HandleDisconnect", {
                 alive _x && { player distance _x < _markrange }
             };
             private _dpids = _players apply {
-                _x getVariable "a3ee_directplay_id"
+                _x getVariable "a3aa_ee_paper_map_directplay_id"
             };
             _dpids = _dpids - [nil];
 
@@ -127,7 +127,7 @@ addMissionEventHandler ["HandleDisconnect", {
             if (time > _nextsync) then {
                 [[getPlayerUID player, [playerSide, _uidmarkers]], {
                     params ["_uid", "_data"];
-                    [a3ee_paper_map_uidspecific, _uid, _data]
+                    [a3aa_ee_paper_map_uidspecific, _uid, _data]
                         call a3aa_fnc_hashSet;
                 }] remoteExec ["call", 2];
                 _nextsync = time + 10 + random 10;

@@ -1,15 +1,15 @@
 class CfgPatches {
-    class Editor_Extensions_validate_mission {
+    class a3aa_ee_validate_mission {
         units[] = {};
         weapons[] = {};
-        requiredAddons[] = {"Editor_Extensions_shared"};
+        requiredAddons[] = {"a3aa_ee_shared"};
     };
 };
 
 class CfgFunctions {
-    class a3ee_validate_mission {
+    class a3aa_ee_validate_mission {
         class all {
-            file = "\editor_extensions\validate_mission\functions";
+            file = "\a3aa\ee\validate_mission";
             class runAllChecks;
             class getEntityInfo;
             class checkOverload;
@@ -24,15 +24,15 @@ class display3DEN {
     class Controls {
         class MenuStrip: ctrlMenuStrip {
             class Items {
-                class A3EE {
+                class a3aa_ee {
                     items[] += {
-                        "A3EE_Validate_Mission"
+                        "a3aa_ee_validate_mission"
                     };
                 };
-                class A3EE_Validate_Mission {
+                class a3aa_ee_validate_mission {
                     text = "Validate mission";
                     picture = "\a3\Modules_F\Data\iconTaskSetState_ca.paa";
-                    action = "collect3DENHistory { [] call a3ee_validate_mission_fnc_runAllChecks }";
+                    action = "collect3DENHistory { [] call a3aa_ee_validate_mission_fnc_runAllChecks }";
                 };
             };
         };

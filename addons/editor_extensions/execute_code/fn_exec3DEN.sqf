@@ -4,9 +4,9 @@ if (!is3DEN) exitWith { deleteVehicle _module };
 
 /* inhibitor present, do nothing */
 private _all_logic = (all3DENEntities select 3) apply { typeOf _x };
-if ("a3ee_exec_code_3den_inhibit" in _all_logic) exitWith {};
+if ("a3aa_ee_execute_code_3den_inhibit" in _all_logic) exitWith {};
 
-private _code = compile (_value call a3ee_execute_code_fnc_decomment);
+private _code = compile (_value call a3aa_ee_execute_code_fnc_decomment);
 if (!(_code isEqualTo {})) then {
     [_module] call _code;
 

@@ -1,5 +1,5 @@
 class CfgPatches {
-    class Insta_Zeus {
+    class a3aa_insta_zeus {
         units[] = {};
         weapons[] = {};
         requiredAddons[] = {
@@ -11,45 +11,42 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-    class Insta_Zeus {
+    class a3aa_insta_zeus {
         /* instance dedicated to logged in / voted admin */
-        class AdminCurator {
-            file = "\insta_zeus\functions\admin_curator";
+        class admin_curator {
+            file = "\a3aa\insta_zeus\admin_curator";
             class createGlobalCurator { postInit = 1; };
             class maintainCurator { postInit = 1; };
         };
         /* checkbox-based (Eden) per-unit curator instances */
-        class UnitCurator {
-            file = "\insta_zeus\functions\unit_curator";
+        class unit_curator {
+            file = "\a3aa\insta_zeus\unit_curator";
             class createUnitCurator;
         };
         /* keybind-based arsenal functionality for the admin instance */
-        class Arsenal {
-            file = "\insta_zeus\functions\arsenal";
+        class arsenal {
+            file = "\a3aa\insta_zeus\arsenal";
             class arsenal;
-            class arsenalKeys { postInit = 1; };
+            class arsenalKeys;
         };
         /* misc keepers for all curators */
-        class Runtime {
-            file = "\insta_zeus\functions\runtime";
+        class runtime {
+            file = "\a3aa\insta_zeus\runtime";
             class addPlayer { postInit = 1; };
             class onRespawn { postInit = 1; };
         };
         /* internal and external */
-        class Api {
-            file = "\insta_zeus\functions\api";
+        class api {
+            file = "\a3aa\insta_zeus\api";
             class mkCurator;
             class curatorOpened;
         };
-        //class Unused {
-        //    class activateAddons { preInit = 1; };
-        //};
     };
 };
 
 class CfgVehicles {
     class Logic;
-    class Insta_Zeus_Dumb_Curator : Logic {
+    class a3aa_insta_zeus_dumb_curator : Logic {
         scope = 1;
         /* creates a curator instance upon creating this Vehicle */
         simulation = "curator";
@@ -61,11 +58,11 @@ class Cfg3DEN {
         class AttributeCategories {
             class Control {
                 class Attributes {
-                    class insta_zeus_unit_curator {
-                        property = "insta_zeus_unit_curator";
+                    class a3aa_insta_zeus_unit_curator {
+                        property = "a3aa_insta_zeus_unit_curator";
                         control = "Checkbox";
                         displayName = "Create Zeus for this unit";
-                        expression = "[_this, _value] call Insta_Zeus_fnc_createUnitCurator";
+                        expression = "[_this, _value] call a3aa_insta_zeus_fnc_createUnitCurator";
                         condition = "objectBrain";
                         defaultValue = "false";
                         tooltip = "Create a new Curator instance and assign it to the unit.\nWorks only in Multiplayer (global admin Curator instance is used in SP regardless).";
@@ -76,9 +73,8 @@ class Cfg3DEN {
     };
 };
 
-/* for ACRE spectator in Curator */
-class Extended_DisplayLoad_EventHandlers {
-    class RscDisplayCurator {
-        insta_zeus_onLoad = "[true, (_this select 0)] call Insta_Zeus_fnc_acreOpenCloseSpectator";
+class Extended_PreInit_EventHandlers {
+    class a3aa_insta_zeus {
+        init = "[] call a3aa_insta_zeus_fnc_arsenalKeys";
     };
 };
