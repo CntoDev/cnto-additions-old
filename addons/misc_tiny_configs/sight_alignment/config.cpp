@@ -27,7 +27,7 @@ class CfgWeaponHandling {
          * how quickly is the misalignment corrected when not moving mouse
          * (higher = faster recovery)
          */
-        decay = 0.6;  // default: 1.8
+        decay = 1;  // default: 1.8
         /*
          * how quickly is the alignment thrown off (ie. by small mouse moves),
          * eg. how resistant the alignment is to motion
