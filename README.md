@@ -127,6 +127,7 @@ Features
     * by loudness: 9.3mm + 8.6mm (.338) > 7.62mm > 6.5mm + 5.8mm > 5.56mm > 9mm
 * **nightvision** - make all NVGs fullscreen (your display already has FOV=70, so chill with realism), add grain/blur/colorcorrect
 * **no_neg_rating** - avoids mistreatment by the engine (cannot enter friendly vehicles) after friendly fire
+* **player_novoice** - disable player contact reports, shouting when suppressed, reporting injury, etc.
 * **quiet_vehicles** - lower volume in vehicles for easier direct speech communication
 * **static_line** - organized group jumping, initiated by pilot/grplead, parachute not provided (you need to have one already)
 
@@ -153,6 +154,8 @@ used when you're playing with ACE and the additions one when not.
   * ACE disables vanilla stamina completely, so it shouldn't conflict
 * no_neg_rating
   * checks for ACE Interaction
+* player_novoice
+  * checks for ACE's own ACE_NoVoice
 * quiet_vehicles
   * checks for ACEX Volume
 
