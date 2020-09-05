@@ -78,10 +78,8 @@ class Extended_DisplayLoad_EventHandlers {
         HOOK_CONTROL(IDC_RSCDISPLAYCURATOR_MAINMAP);
     };
 
-#ifdef unused_for_now
     /* IDD_CUSTOMINFO_MINIMAP */
     class RscCustomInfoMiniMap {
         HOOK_CONTROL(IDC_MINIMAP);
     };
-#endif
 };
