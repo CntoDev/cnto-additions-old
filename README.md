@@ -114,6 +114,7 @@ Features
   * **hide_actions** - hide the Eject action for safety, use a (vanilla) keybind for ejecting
   * **max_gun_elev** - no angle limitation on soldier aiming upwards/downwards
   * **portable_boat** - a boat in a backpack, what more do you want? .. unpack/repack like a mortar, cool for specop missions
+  * **puffy_smoke** - smoke hand/rifle grenades are slightly better, but not as cartoonish as ACE optionals/particles
   * **rhs_flashlighs** - like bright_flashlight tweak for WMX/2DP RHS flashlights (some guns don't take vanilla flashlight)
   * **rhs_suppressors** - like suppressors tweak, but for rhs M4/AK/etc. suppressors
   * **rhs_vanilla_ammo** - like smoke_bounce tweak, by making RHS UGLs use vanilla shells (when fired, not magazines)
@@ -150,6 +151,8 @@ used when you're playing with ACE and the additions one when not.
   * checks for ACE Interaction
 * marker_enh
   * checks for ACE Map (Markers)
+* misc_tiny_configs / puffy_smoke
+  * ACE optionals/particles overrides it when in use
 * misc_tiny_configs / stamina_tweak
   * ACE disables vanilla stamina completely, so it shouldn't conflict
 * no_neg_rating
