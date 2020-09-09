@@ -115,7 +115,6 @@ waitUntil {
     a3aa_map_trackers_units = _units;
     a3aa_map_trackers_unit_lines = _lines;
 
-    sleep (1 + random 1);
-
+    sleep 1;
     false;
 }
