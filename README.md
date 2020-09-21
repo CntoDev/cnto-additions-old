@@ -110,6 +110,7 @@ Features
   * **bright_flashlight** - same, but for the default vanilla flashlight; also fix light intensity being different for self vs others
   * **cfglights_fixes** - various CfgLights tweaks to fix fireplaces / grenade flashes / etc. after Arma 3 v1.60+
   * **collapsed_3den** - Eden editor has BLUFOR->NATO->Men expanded by default, this collapses it (presuming you want modded units instead)
+  * **difficulties** - misc Arma difficulty (Regular/Veteran) tweaks for convenience, no effect when Custom is used
   * **flag_insignia** - vanilla "country flags" used for map markers, but now available as uniform insignia
   * **hide_actions** - hide the Eject action for safety, use a (vanilla) keybind for ejecting
   * **max_gun_elev** - no angle limitation on soldier aiming upwards/downwards

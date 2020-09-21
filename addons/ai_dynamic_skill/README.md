@@ -1,7 +1,9 @@
-Ensure that you have set skillAI and precisionAI in your .Arma3Profile to 1,
-that is multiplying the set skill values by 1, thus not lowering them further
-beyond what this addon sets. Also, don't forget to force the "custom" difficulty
-in server.cfg if you don't want to select Custom every time.
+This addon requires skillAI and precisionAI to be set to 1.0.
+
+Use either Regular or Veteran difficulty (and do not remove the
+`misc_tiny_configs/difficulties` pbo) or (in case of Custom difficulty)
+make sure that both settings are set to 1.0 in the server's `.Arma3Profile`,
+and the Custom difficulty is selected/forced by `server.cfg`.
 
 `.Arma3Profile`:
 
