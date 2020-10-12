@@ -42,6 +42,7 @@ use of and configure (but not depend on):
 Features
 --------
 
+* **acre_unconscious** - prevent (vanilla) unconscious players from talking over ACRE2 direct/radio
 * **ai_dynamic_skill** - dynamic AI skill setting based on combat mode, vehicles, etc.
 * **ares_extras** - additions to (former) Ares, now Achilles
   * **Forget enemies** - incredibly useful if AI suddenly spots sneaky players and you don't want to break the immersion
@@ -147,6 +148,8 @@ says Enabled) to not conflict with almost-identical ACE/ACEX functionality.
 The idea is that you can configure both (ie. keybinds) and the ACE one will get
 used when you're playing with ACE and the additions one when not.
 
+* acre_unconscious
+  * checks for ACE Medical
 * door_keybind
   * checks for ACE Interaction
 * join_group
