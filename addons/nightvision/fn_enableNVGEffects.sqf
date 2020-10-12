@@ -35,9 +35,22 @@ if (_enable) then {
     a3aa_nightvision_effects pushBack (
         ["FilmGrain", 200, [0.15, 1.25, 2.6, 0.3, 0.3]] call _setup_pp
     );
-    /* more yellow-ish green, shamelessly stolen from ACE */
+    private _color_params = switch (a3aa_nightvision_color_style) do {
+        case "acelike": {
+            /* more yellow-ish green, shamelessly stolen from ACE */
+            [0.6, 0.6, 0, [0,0,0,0], [1.3,1.2,0,0.9], [6,1,1,0]];
+        };
+        case "whitephosphor": {
+            /* taken from various google images of real white phosphor NVGs */
+            [0.8, 0.8, 0, [0,0,0,0], [0.3,0.7,0.8,0], [1,1,1,0]];
+        };
+        default {
+            /* vanilla */
+            [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
+        };
+    };
     a3aa_nightvision_effects pushBack (
-        ["ColorCorrections", 2003, [0.6, 0.6, 0, [0,0,0,0], [1.3,1.2,0,0.9], [6,1,1,0]]] call _setup_pp
+        ["ColorCorrections", 2003, _color_params] call _setup_pp
     );
 } else {
     if (!isNil "a3aa_nightvision_effects") then {
