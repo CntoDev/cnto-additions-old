@@ -18,9 +18,15 @@ class CfgFunctions {
     class a3aa_nightvision {
         class all {
             file = "\a3aa\nightvision";
-            class init { postInit = 1; };
+            class init;
             class enableNVGEffects;
         };
+    };
+};
+
+class Extended_PreInit_EventHandlers {
+    class a3aa_nightvision {
+        init = "[] call a3aa_nightvision_fnc_init";
     };
 };
 
