@@ -33,7 +33,7 @@ if (_enable) then {
     );
     /* light grain, much more visible in the dark */
     a3aa_nightvision_effects pushBack (
-        ["FilmGrain", 200, [0.15, 1.25, 2.6, 0.3, 0.3]] call _setup_pp
+        ["FilmGrain", 200, [0.15, 2.25, 3.6, 0.3, 0.3]] call _setup_pp
     );
     private _color_params = switch (a3aa_nightvision_color_style) do {
         case "acelike": {
