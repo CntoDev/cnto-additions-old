@@ -17,9 +17,7 @@ if (is3DEN) exitWith {};
     _synced deleteAt 0;
 
     {
-        private _dir = getDir _x;
-        _x attachTo [_target];
-        _x setDir (_dir - getDir _x);
+        [_x, _target] call BIS_fnc_attachToRelative;
     } forEach _synced;
 
     deleteVehicle _this;
