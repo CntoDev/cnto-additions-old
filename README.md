@@ -88,6 +88,17 @@ The scripts and documentation of this repository were created by <a rel="license
 * **spectator_acre_channel** - when using vanilla spectator, switches the player to ACRE2 spectator channel
 * **static_line_chute** - organized group jumping, initiated by pilot/grplead, parachute not provided (you need to have one already)
 
+# Contributing
+
+## Windows
+
+Build process uses Powershell 7 and Armake by KoffeinFlummi. Minimal OS requirements is Windows 7 SP1.
+
+1. Go to https://github.com/PowerShell/PowerShell and download latest release of powershell for x64 (PowerShell-7.1.0-win-x64.msi) or x32 system and install it (MSI version).
+2. Go to https://github.com/KoffeinFlummi/armake and download latest armake version (currently 0.63).
+3. Extract armake files, for example in D:\cnto\dev\armake_v0.6.3\ folder.
+4. Edit Tools\Setup-Tools.ps1 variables file to proper tool locations on your drive.
+5. Open powershell and start Tools\Build-Pbo.ps1 script.
 
 # Copyright License
 
