@@ -1,7 +1,7 @@
 params ["_vehicle"];
 private _size = 1 / (getResolution select 5);
 [{
-    _this#0 params ["_vehicle",""];
+    _this#0 params ["_vehicle","_size"];
     if (vehicle player == _vehicle) then {
         if (driver _vehicle == player && !isGamePaused && isEngineOn _vehicle) then {
             drawIcon3D [
