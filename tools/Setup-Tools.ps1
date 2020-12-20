@@ -1,2 +1,2 @@
-$addonBuilder = "D:\cnto\dev\armake_v0.6.3\armake_w64.exe"
-$destination = "D:\cnto\dev\build\@cnto-additions\"
+$addonBuilder = "C:\Users\Seb White Tower\Documents\Armake2\armake_w64.exe"
+$destination = "C:\Users\Seb White Tower\Documents\Armake2\built\cnto-additions"
