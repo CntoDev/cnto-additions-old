@@ -15,7 +15,7 @@ class CfgFunctions {
         class all {
             file = "\a3aa\littlebird_hud";
             class init;
-            class vehFunc;
+            class hud;
         };
     };
 };
