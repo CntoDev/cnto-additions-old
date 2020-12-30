@@ -13,13 +13,18 @@ if (!hasInterface) exitWith {};
 	waitUntil { !isNull player };
 	["vehicle", {
 		params ["_unit", "_newVehicle", "_oldVehicle"];
-		if (_newVehicle isKindOf "RHS_MELB_AH6M" OR _newVehicle isKindOf "B_Heli_Light_01_dynamicLoadout_F" && a3aa_littlebird_hud_enable) then {
+		if (_newVehicle isKindOf "RHS_MELB_AH6M" OR _newVehicle isKindOf "Heli_Light_01_armed_base_F" && a3aa_littlebird_hud_enable) then {
 			_newVehicle call a3aa_littlebird_hud_fnc_hud;
 		};
 	}] call CBA_fnc_addPlayerEventHandler;
 	
 	private _playerVeh = vehicle player;
-	if (_playerVeh isKindOf "RHS_MELB_AH6M" OR _playerVeh isKindOf "B_Heli_Light_01_dynamicLoadout_F" && a3aa_littlebird_hud_enable) then {
+	if (_playerVeh isKindOf "RHS_MELB_AH6M" OR _playerVeh isKindOf "Heli_Light_01_armed_base_F" && a3aa_littlebird_hud_enable) then {
 		_playerVeh call a3aa_littlebird_hud_fnc_hud;
+	};
+
+	// remove grease dot
+	if (a3aa_littlebird_hud_enable) then {
+		["Heli_Light_01_armed_base_F", "initPost", {_this#0 setObjectTexture [1,""]}] call CBA_fnc_addClassEventHandler;
 	};
 };
