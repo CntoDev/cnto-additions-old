@@ -53,7 +53,6 @@ waitUntil {
 
     a3aa_map_trackers_groups = _groups;
 
-    sleep (1 + random 1);
-
+    sleep 1;
     false;
 }

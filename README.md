@@ -6,6 +6,7 @@ The scripts and documentation of this repository were created by <a rel="license
 Features
 --------
 
+* **acre_unconscious** - prevent (vanilla) unconscious players from talking over ACRE2 direct/radio
 * **ares_extras** - additions to (former) Ares, now Achilles
   * **Forget enemies** - incredibly useful if AI suddenly spots sneaky players and you don't want to break the immersion
   * **Reveal enemies** - useful to make AI start shooting on a target which should be obvious
@@ -73,10 +74,12 @@ Features
   * **bright_flashlight** - same, but for the default vanilla flashlight; also fix light intensity being different for self vs others
   * **cfglights_fixes** - various CfgLights tweaks to fix fireplaces / grenade flashes / etc. after Arma 3 v1.60+
   * **collapsed_3den** - Eden editor has BLUFOR->NATO->Men expanded by default, this collapses it (presuming you want modded units instead)
+  * **difficulties** - misc Arma difficulty (Regular/Veteran) tweaks for convenience, no effect when Custom is used
   * **flag_insignia** - vanilla "country flags" used for map markers, but now available as uniform insignia
   * **hide_actions** - hide the Eject action for safety, use a (vanilla) keybind for ejecting
   * **max_gun_elev** - no angle limitation on soldier aiming upwards/downwards
   * **portable_boat** - a boat in a backpack, what more do you want? .. unpack/repack like a mortar, cool for specop missions
+  * **puffy_smoke** - smoke hand/rifle grenades are slightly better, but not as cartoonish as ACE optionals/particles
   * **rhs_flashlighs** - like bright_flashlight tweak for WMX/2DP RHS flashlights (some guns don't take vanilla flashlight)
   * **rhs_suppressors** - like suppressors tweak, but for rhs M4/AK/etc. suppressors
   * **rhs_vanilla_ammo** - like smoke_bounce tweak, by making RHS UGLs use vanilla shells (when fired, not magazines)
@@ -88,8 +91,10 @@ Features
   * **stamina_tweak** - making vanilla stamina system more realistic
   * **suppressors** - make various weapon suppressors much more effective, to compensate for AI hearing through walls
     * by loudness: 9.3mm + 8.6mm (.338) > 7.62mm > 6.5mm + 5.8mm > 5.56mm > 9mm
+  * **view_distance** - slightly increase default 1600m hard limit in MP to 4000m
 * **nightvision** - make all NVGs fullscreen (your display already has FOV=70, so chill with realism), add grain/blur/colorcorrect
 * **no_neg_rating** - avoids mistreatment by the engine (cannot enter friendly vehicles) after friendly fire
+* **player_novoice** - disable player contact reports, shouting when suppressed, reporting injury, etc.
 * **quiet_vehicles** - lower volume in vehicles for easier direct speech communication
 * **static_line** - organized group jumping, initiated by pilot/grplead, parachute not provided (you need to have one already)
 
@@ -106,16 +111,22 @@ says Enabled) to not conflict with almost-identical ACE/ACEX functionality.
 The idea is that you can configure both (ie. keybinds) and the ACE one will get
 used when you're playing with ACE and the additions one when not.
 
+* acre_unconscious
+  * checks for ACE Medical
 * door_keybind
   * checks for ACE Interaction
 * join_group
   * checks for ACE Interaction
 * marker_enh
   * checks for ACE Map (Markers)
+* misc_tiny_configs / puffy_smoke
+  * ACE optionals/particles overrides it when in use
 * misc_tiny_configs / stamina_tweak
   * ACE disables vanilla stamina completely, so it shouldn't conflict
 * no_neg_rating
   * checks for ACE Interaction
+* player_novoice
+  * checks for ACE's own ACE_NoVoice
 * quiet_vehicles
   * checks for ACEX Volume
 

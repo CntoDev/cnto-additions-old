@@ -10,12 +10,10 @@ waitUntil {
      * game map)
      */
     private _done = {
-        private _ctrl = _x displayCtrl IDC_MAP;
-        if (!isNull _ctrl) then {
-            _ctrl call a3aa_map_trackers_fnc_setupDrawEH;
-            _hooked pushBack _x;
-        };
-        if (!isNull _ctrl && ctrlIDD _x == IDD_MAIN_MAP) exitWith { true };
+        [_x, IDC_MAP] call a3aa_map_trackers_fnc_hookMapDisplay;
+        _hooked pushBack _x;
+        /* MAIN_MAP is always the last (on game start) */
+        if (ctrlIDD _x == IDD_MAIN_MAP) exitWith { true };
         false;
     } forEach (
         [
