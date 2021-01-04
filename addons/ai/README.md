@@ -1,10 +1,13 @@
 The `dynamic_skill` addon requires skillAI and precisionAI to be set to 1.0
 and was tuned for `CfgAISkill` to have an absolute (full) scale.
 
-Use either Regular or Veteran difficulty (and do not remove the
-`misc_tiny_configs/difficulties` pbo) or (in case of Custom difficulty)
-make sure that both settings are set to 1.0 in the server's `.Arma3Profile`,
-and the Custom difficulty is selected/forced by `server.cfg`.
+The former is set by the `level_presets` config for the Regular and Veteran
+difficulties, the latter is set by the `cfg_ai_skill` config. Both enabled by
+default, so unless you replace them with your own logic, do not remove them.
+
+If you want to use a Custom difficulty instead of Regular/Veteran, make sure
+that both skillAI and precisionAI are set to 1.0 in the server's
+`.Arma3Profile`, and the Custom difficulty is selected/forced by `server.cfg`.
 
 `.Arma3Profile`:
 
@@ -24,6 +27,9 @@ and the Custom difficulty is selected/forced by `server.cfg`.
             precisionAI=1;
         };
     };
+
+Note that `class CustomAILevel` is NOT inside `class CustomDifficulty` as
+erroneously documented on some BI wiki pages.
 
 `server.cfg`:
 

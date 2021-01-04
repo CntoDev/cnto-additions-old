@@ -1,5 +1,5 @@
 /*
- * misc changes to default Arma difficulties and AI skill
+ * misc changes to default Arma difficulties
  */
 
 class CfgPatches {
@@ -13,23 +13,13 @@ class CfgPatches {
     };
 };
 
-class CfgAILevelPresets {
-    /* up Veteran to maximum */
-    class AILevelHigh {
-        skillAI = 1;
-        precisionAI = 1;
-    };
-};
-
 /*
  * set Veteran to some reasonable realism-minded values that I play with
- *
- * set Regular to be similar (same AI skill for consistency), but less hardcore
- * and more useful in SP and for testing/screenshots, as Regular is the default
+ * set Regular to be similar, but less hardcore and more useful in SP
+ * and for testing/screenshots, as Regular is the default
  */
 class CfgDifficultyPresets {
     class Veteran {
-        levelAI = "AILevelHigh";
         class Options {
             reducedDamage = 0;
             groupIndicators = 0;
@@ -56,7 +46,6 @@ class CfgDifficultyPresets {
         };
     };
     class Regular {
-        levelAI = "AILevelHigh";
         class Options {
             reducedDamage = 0;
             groupIndicators = 1;
