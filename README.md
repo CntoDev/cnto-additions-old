@@ -62,6 +62,7 @@ Features
 * **infopanel_control** - CBA configurable left/right panel UI, allows you to disable vanilla mine detector UI, GPS, etc. even if player has the item
 * **insta_zeus** - Zeus (Curator) and ACE Arsenal anytime, anywhere in SP, or for host / logged in admin in MP, no editor support needed
 * **join_group** - vanilla action to join another player's group or (if leader) make another player of own group a leader
+* **littlebird_hud** - Removes grease pen drawn on aiming reticle from AH-6 Littlebird and AH-9 Pawnee and replaces it with a HUD that matches weapon direction regardless of pilot head position
 * **loadout_copier** - copy/pastes loadout in `getUnitLoadout` format to/from clipboard using a keybind
   * works in Eden editor, Zeus and in 1st/3rd person (separate keybind for convenience)
   * uses clipboard in Eden or singleplayer, internal variable in MP due to Arma safety limitations
