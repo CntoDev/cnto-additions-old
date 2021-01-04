@@ -43,7 +43,9 @@ Features
 --------
 
 * **acre_unconscious** - prevent (vanilla) unconscious players from talking over ACRE2 direct/radio
-* **ai_dynamic_skill** - dynamic AI skill setting based on combat mode, vehicles, etc.
+* **ai** - dynamic AI skill setting based on combat mode, vehicles, etc., and related AI configs
+  * **dynamic_skill** - the dynamic AI skill logic itself
+  * **cfg_ai_skill** - CfgAISkill tuning to reference an absolute 0-1 scale, basically mandatory for dynamic_skill
 * **ares_extras** - additions to (former) Ares, now Achilles
   * **Forget enemies** - incredibly useful if AI suddenly spots sneaky players and you don't want to break the immersion
   * **Reveal enemies** - useful to make AI start shooting on a target which should be obvious

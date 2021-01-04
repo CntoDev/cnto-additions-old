@@ -1,4 +1,5 @@
-This addon requires skillAI and precisionAI to be set to 1.0.
+The `dynamic_skill` addon requires skillAI and precisionAI to be set to 1.0
+and was tuned for `CfgAISkill` to have an absolute (full) scale.
 
 Use either Regular or Veteran difficulty (and do not remove the
 `misc_tiny_configs/difficulties` pbo) or (in case of Custom difficulty)
