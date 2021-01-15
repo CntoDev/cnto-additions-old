@@ -14,7 +14,7 @@ private _size = 1 / (getResolution select 5);
             drawIcon3D [
                 "a3aa\littlebird_hud\reticle.paa", 
                 a3aa_littlebird_hud_colour, 
-                _vehicle modelToWorldVisual [0, 1000, _eyeZ]), 
+                (_vehicle modelToWorldVisual [0, 1000, _eyeZ]), 
                 _zoomSize, 
                 _zoomSize, 
                 0
