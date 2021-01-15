@@ -9,6 +9,17 @@
 	false   /* needRestart */
 ] call CBA_settings_fnc_init;
 
+[
+	"a3aa_littlebird_hud_colour",
+	"COLOR",
+	["Colour", "Change the colour of the helicopter reticle"],
+	["Arma Additions", "Littlebird HUD"],
+	[0.3, 1.0 , 0.3, 0.5],  /* default */
+	false,  /* isGlobal */
+	nil,   /* script */
+	false   /* needRestart */
+] call CBA_settings_fnc_init;
+
 0 spawn {
 	if (!hasInterface) exitWith {};
 	waitUntil { !isNull player };
